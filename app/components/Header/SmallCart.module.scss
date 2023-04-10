@@ -1,0 +1,18 @@
+.btnCart {
+  background: var(--color-lightgreen);
+  position: relative;
+  height: 38px;
+  width: 38px;
+  padding: 0;
+  &::before {
+    background: url("../../../assets/cart.svg") center / 20px no-repeat;
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  &:hover {
+    background: var(--color-light);
+  }
+}

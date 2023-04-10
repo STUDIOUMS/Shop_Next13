@@ -4,6 +4,7 @@ import { set_currency } from "@/options/settings"
 import { OrderType } from "@/options/types"
 import Link from "next/link"
 import { useDispatch } from "react-redux"
+import styles from "./Basket.module.scss"
 
 interface IBasketRow {
   index: number
@@ -14,12 +15,18 @@ const BasketRow: React.FC<IBasketRow> = ({ index, order }) => {
   const dispatch = useDispatch<AppDispatch>()
   
   return (
-    <tr>
-      <th scope="row">{index}</th>
-      <td><img src={order.img} alt="" style={{width: '40px'}} /></td>
+    <tr className={styles.basketRow}>
+      <td>{index}</td>
+      <td  className={styles.basketRowImg}>
+        <Link href={`/product/${order.slug}`}>
+          <img src={order.img} alt="" style={{width: '40px'}} />
+        </Link>
+      </td>
       <td>
-        <Link href={`/catalog/${order.id}`}>{order.title}</Link><br />
-        <small>Артикул: {order.art}</small>
+        <div className={styles.basketRowName}>
+          <Link href={`/product/${order.slug}`}>{order.title}</Link>
+        </div>
+        <div className={styles.basketRowArt}>Артикул: {order.art}</div>
       </td>
       <td>{order.price} {set_currency}</td>
       <td>

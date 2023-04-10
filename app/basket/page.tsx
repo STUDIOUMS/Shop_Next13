@@ -6,25 +6,35 @@ import { useSelector } from "react-redux"
 import { RootState } from "../store/store"
 import BasketRow from "./components/BasketRow"
 import BasketTotal from "./components/BasketTotal"
+import styles from "./components/Basket.module.scss"
+import BreadCrumbs from "../components/BreadCrumbs"
+import { BreadCrumbsType } from "@/options/types"
+
+/* BreadCrumbs */
+const crumbs: BreadCrumbsType[] = [
+  { name: 'Корзина', slug: `/basket` },
+]
 
 const Basket: NextPage = () => {
   const orders = useSelector((state: RootState) => state.app.orders)
   
   return (
     <div>
+      <BreadCrumbs list={crumbs} />
+
       <h1>Корзина</h1>
 
       {orders.length ?
       <>
-        <table className="table table-striped">
+        <table className={styles.basketTable}>
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col" colSpan={2}>Product</th>
-              <th scope="col">Price</th>
-              <th scope="col">Count</th>
-              <th scope="col">Total</th>
-              <th scope="col">x</th>
+              <th scope="col" colSpan={2}>Название товара</th>
+              <th scope="col">Цена</th>
+              <th scope="col">Кол-во</th>
+              <th scope="col">Стоимость</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -34,7 +44,7 @@ const Basket: NextPage = () => {
         </table>
         
         <BasketTotal orders={orders} />
-        <Link href="/order" className="btn btn-primary">Оформить заказ</Link>
+        <Link href="/order" className="btn btn-success">Оформить заказ</Link>
         
       </> : <p>Корзина пуста</p>}
     </div>
