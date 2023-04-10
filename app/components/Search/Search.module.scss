@@ -1,0 +1,39 @@
+.searchbox {
+  flex: 1;
+  margin: 0 30px;
+  position: relative;
+  &Dropdown {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    position: absolute;
+    margin-top: 10px;
+    padding: 4px;
+    width: 100%;
+  }
+  &Item {
+    list-style: none;
+    a {
+      border-radius: 6px;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      padding: 6px 12px;
+      text-decoration: none;
+      transition: all 200ms ease-in-out;
+      &:hover {background: #f1f1f1;}
+    }
+    &Img {
+      display: block;
+      min-width: 30px;
+      max-width: 30px;
+      margin-right: 16px;
+      img {display: block;}
+    }
+    &Title {
+      font-size: 14px;
+      line-height: 16px;
+      margin-right: auto;
+    }
+  }
+}

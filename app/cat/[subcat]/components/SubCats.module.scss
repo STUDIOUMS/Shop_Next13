@@ -1,0 +1,18 @@
+.subcats {
+  margin-bottom: 20px;
+  &Item {
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    display: block;
+    padding: 16px;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    min-height: 100%;
+    transition: all 200ms ease-in-out;
+    &:hover {box-shadow: 0 2px 8px rgba(0,0,0,0.25);}
+    img {display: block; height: 40px; margin: 0 auto 10px;}
+  }
+}

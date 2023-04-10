@@ -1,0 +1,32 @@
+.filter {
+  border: 1px solid #dedede;
+  border-radius: 8px;
+  padding: 16px;
+  position: sticky;
+  top: 10px;
+  &Field {margin: 0 0 8px;}
+  &Title {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+    margin: 0 0 20px;
+  }
+  &Name {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  &Alert {
+    position: absolute;
+    border: 1px solid red;
+    background: rgb(239, 184, 184);
+    border-radius: 8px;
+    left: 100%;
+    margin-left: 10px;
+    top: 0;
+    white-space: nowrap;
+    padding: 8px 16px;
+    z-index: 100;
+  }
+}

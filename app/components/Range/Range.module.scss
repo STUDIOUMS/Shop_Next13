@@ -1,0 +1,12 @@
+.rangebox {
+  display: flex;
+  align-items: center;
+  margin: 0 0 16px;
+  &Divider {
+    background: #000;
+    min-width: 10px;
+    max-width: 10px;
+    height: 1px;
+    margin: 0 8px;
+  }
+}
