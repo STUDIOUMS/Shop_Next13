@@ -30,10 +30,12 @@ body {
 [class*="col-"] {padding-left: 10px; padding-right: 10px;}
 .row-sm > [class*="col-"] {padding-left: 4px; padding-right: 4px;}
 img {max-width: 100%;}
+a {color: var(--color-green);}
 .form-field {margin: 0 0 16px;}
 .btn-block {width: 100%;}
 .main_container {padding-top: 20px; padding-bottom: 40px;}
 .goods-row {margin-bottom: 20px;}
+.breadcrumb {margin-bottom: 24px;}
 
 h1 {
   font-family: var(--font2);
@@ -88,13 +90,13 @@ h1 {
 
 /* header */
 .header {
-  &-top {padding: 8px 0;}
-  &-mid {padding: 16px 0;}
-  &-top, &-mid {
+  padding: 8px 0;
+  &-mid {background: #fff; padding: 4px 0; position: sticky; top: 0; z-index: 1000;}
+  &, &-mid {
     border-bottom: 1px solid #ededed;
     .container {display: flex; align-items: center; position: relative;}
   }
-  &-top .container {justify-content: space-between;}
+  .container {justify-content: space-between;}
   &-logo {
     margin: 0 30px 0 0;
     img {display: block;}
@@ -115,7 +117,6 @@ h1 {
 }
 
 
-
 /* catpopup */
 .catpopup {
   &-btn {position: relative;}
@@ -124,15 +125,16 @@ h1 {
     border-radius: 8px; left: 12px; right: 12px; position: absolute !important;
     padding: 20px; z-index: 1000;
   }
-  &-item {margin-bottom: 14px;}
+  &-item {margin-bottom: 30px;}
   &-list {column-count: 6; column-gap: 20px;}
   &-title {
-    font-weight: 700; margin: 0 0 8px; font-size: 16px; line-height: 20px;
-    a {color: inherit; text-decoration: none;}
+    font-weight: 700; margin: 0 0 14px; font-size: 18px; line-height: 22px;
+    a {color: inherit; text-decoration: none; display: flex; align-items: center;}
+    a img {display: block; margin: 0 16px 0 0; height: 40px;}
   }
   ul {
-    margin: 0; padding: 0 0 0 14px;
-    li {margin: 0 0 6px; font-size: 14px; line-height: 16px;}
+    margin: 0 0 0 20px; padding: 0;
+    li {list-style: none; margin: 0 0 10px; font-size: 14px; line-height: 16px;}
     li:last-child {margin: 0;}
     li a {color: #565656; text-decoration: none;}
   }
@@ -144,4 +146,11 @@ h1 {
   &.opened &-btn {z-index: 1000;}
   &.opened &-dropdown {opacity: 1; visibility: visible; z-index: 1000;}
   &.opened &-overlay {opacity: 1; visibility: visible;}
+}
+
+
+/* footer */
+.footer {
+  background: var(--color-light);
+  padding: 40px 0;
 }

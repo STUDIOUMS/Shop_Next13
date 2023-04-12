@@ -1,0 +1,27 @@
+.tabs {
+  &Header {
+    display: flex;
+    margin: 0 0 20px;
+    padding: 0;
+    li {
+      list-style: none;
+      margin: 0 4px 0 0;
+      &:last-child {margin: 0;}
+    }
+  }
+  &Pane {
+    display: none;
+    &Active {display: block;}
+  }
+}
+
+.features {
+  margin: 0;
+  padding: 0;
+  li {
+    display: flex; padding: 8px 16px; border-radius: 4px;
+    &:nth-child(odd) {background: var(--color-light);}
+  }
+  &Key {display: block; min-width: 120px; max-width: 120px; margin: 0 16px 0 0; color: var(--color-text2);}
+  &Val {display: block;}
+}

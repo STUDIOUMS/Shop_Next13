@@ -61,13 +61,13 @@ const Filter: React.FC<IFilter> = () => {
 
   return (
     <div className={styles.filter}>
-      <div className={styles.filterTitle}>Filter</div>
+      <div className={styles.filterTitle}>Фильтр</div>
       <CheckField handler={setHit} title="Хит" type="checkbox" value="hit" name="hit" checked={queryHit} />
       <div className={styles.filterName}>Цена</div>
       <Range setPriceFrom={setPriceFrom} setPriceTo={setPriceTo} from={queryRangeFrom!} to={queryRangeTo!} />
 
-      <button className="btn btn-block btn-primary" onClick={filterHandler}>
-        Apply
+      <button className="btn btn-block btn-success" onClick={filterHandler}>
+        Применить
         {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
       </button>
     </div>

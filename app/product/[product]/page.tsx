@@ -1,6 +1,6 @@
 import BreadCrumbs from "@/app/components/BreadCrumbs"
-import { getCatForProduct, getProduct } from "@/options/helpers"
-import { BreadCrumbsType, CatType, GoodType } from "@/options/types"
+import { getAttributes, getCatForProduct, getProduct } from "@/options/helpers"
+import { BreadCrumbsType, CatType, featPackType, GoodType } from "@/options/types"
 import Link from "next/link"
 import Gallery from "./components/Gallery"
 import Meta from "./components/Meta"
@@ -19,6 +19,14 @@ async function ProductPage({ params }: { params: { product: string } }) {
   })
   crumbs = [...crumbs, { name: good.title, slug: '' }]
 
+  // Attrs
+  const attrArray = good.attrs.map(el => el.featuresID)
+  const attrsKeys: featPackType[] = await getAttributes(attrArray)
+  const featList = attrsKeys.map(el => {
+    const val = good.attrs.find(attr => attr.featuresID === el.id)?.value
+    el['value'] = val
+    return el
+  })
 
   return (
     <div>
@@ -38,7 +46,7 @@ async function ProductPage({ params }: { params: { product: string } }) {
           <Meta el={good} />
         </div>
       </div>
-      <ProductTabs description={good.description} />
+      <ProductTabs description={good.description} features={featList} />
     </div>
   )
 }

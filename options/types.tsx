@@ -7,6 +7,11 @@ export type CatType = {
   parentID: number
 }
 
+export type attrType = {
+  featuresID: number
+  value: string
+}
+
 export type GoodType = {
   id: number
   title: string
@@ -18,6 +23,8 @@ export type GoodType = {
   stock: boolean
   art: string
   hit?: boolean
+  attrs: attrType[]
+  pack: number[]
 }
 
 export type OrderType = {
@@ -49,4 +56,23 @@ export type ProductsDataType = {
 export type SortItemType = {
   value: string
   name: string
+}
+
+export type NavItemType = {
+  id: number
+  title: string
+  path: string
+}
+
+export type featPackType = {
+  id: number
+  name: string
+  value?: string
+}
+
+export type newsType = {
+  id: number
+  title: string
+  description: string
+  date: number
 }

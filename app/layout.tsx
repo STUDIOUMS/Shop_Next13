@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './globals.scss'
 import Header from './components/Header/Header'
 import Providers from './store/Providers'
+import Footer from './components/Footer'
 
 export const metadata = {
   title: 'Create Next App',
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="container main_container">
             {children}
           </div>
+          <Footer />
         </body>
       </Providers>
     </html>

@@ -1,7 +1,9 @@
-import { SortItemType } from "./types"
+import { NavItemType, SortItemType } from "./types"
 
-export const url_cats = 'http://localhost:5000/categories'
-export const url_products = 'http://localhost:5000/products'
+export const url = 'http://localhost:5000'
+export const url_cats = `${url}/categories`
+export const url_products = `${url}/products`
+export const url_features = `${url}/features`
 
 // CATEGORY PAGE
 // get category
@@ -50,6 +52,14 @@ export async function getCatForProduct(cats: number[]) {
   return data
 }
 
+// get keys of attributes of product
+export async function getAttributes(arr: number[]) {
+  const uri = arr.map(el => `id=${el}`).join('&')
+  const response = await fetch(`${url_features}?${uri}`)
+  const data = await response.json()
+  return data
+}
+
 
 // Debounce
 export function debounce(cb: any, delay: number) {
@@ -71,4 +81,11 @@ export const SortItems: SortItemType[] = [
   { name: 'По алфавиту [Я-А]', value: 'title-desc' }
 ]
 
-
+// navItems
+export const navItems: NavItemType[] = [
+  { id: 1, title: "Главная", path: "/" },
+  { id: 2, title: "Блог", path: "/blog" },
+  { id: 3, title: "О компании", path: "/about" },
+  { id: 4, title: "Доставка и оплата", path: "/about" },
+  { id: 5, title: "Контакты", path: "/contacts" },
+]

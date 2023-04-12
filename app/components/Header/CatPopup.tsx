@@ -24,7 +24,7 @@ const CatPopup = () => {
         <div className="row">
           {cats.filter(el => el.parentID === 0).map(el => {
             const subcats = cats.filter(subcat => subcat.parentID === el.id)
-            return <CatPopupItem key={el.id} slug={el.slug} name={el.name} subcats={subcats} setShow={setShow} />
+            return <CatPopupItem key={el.id} slug={el.slug} name={el.name} img={el.img} subcats={subcats} setShow={setShow} />
           })}
         </div>
       </div>

@@ -10,7 +10,7 @@ import SubCats from "./components/SubCats"
 
 async function SubCat({ params, searchParams }: { params: { subcat: string }, searchParams: any }) {
   const cat: CatType = await getCat(params.subcat)
-  const limitProducts = 3
+  const limitProducts = 8
 
   // is Category main
   const isMainCat = cat.parentID === 0
