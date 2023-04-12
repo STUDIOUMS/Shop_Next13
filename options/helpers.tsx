@@ -4,6 +4,7 @@ export const url = 'http://localhost:5000'
 export const url_cats = `${url}/categories`
 export const url_products = `${url}/products`
 export const url_features = `${url}/features`
+export const url_packages = `${url}/packages`
 
 // CATEGORY PAGE
 // get category
@@ -56,6 +57,14 @@ export async function getCatForProduct(cats: number[]) {
 export async function getAttributes(arr: number[]) {
   const uri = arr.map(el => `id=${el}`).join('&')
   const response = await fetch(`${url_features}?${uri}`)
+  const data = await response.json()
+  return data
+}
+
+// get packages of product
+export async function getPackages(arr: number[]) {
+  const uri = arr.map(el => `id=${el}`).join('&')
+  const response = await fetch(`${url_packages}?${uri}`)
   const data = await response.json()
   return data
 }

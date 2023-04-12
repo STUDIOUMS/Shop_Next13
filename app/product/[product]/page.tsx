@@ -1,10 +1,12 @@
 import BreadCrumbs from "@/app/components/BreadCrumbs"
-import { getAttributes, getCatForProduct, getProduct } from "@/options/helpers"
+import { getAttributes, getCatForProduct, getPackages, getProduct } from "@/options/helpers"
 import { BreadCrumbsType, CatType, featPackType, GoodType } from "@/options/types"
 import Link from "next/link"
 import Gallery from "./components/Gallery"
 import Meta from "./components/Meta"
+import Package from "./components/Package"
 import ProductTabs from "./components/ProductTabs"
+import styles from './components/Package.module.scss'
 
 
 async function ProductPage({ params }: { params: { product: string } }) {
@@ -28,6 +30,10 @@ async function ProductPage({ params }: { params: { product: string } }) {
     return el
   })
 
+  // packages
+  const packages: featPackType[] = await getPackages(good.pack)
+
+
   return (
     <div>
       <BreadCrumbs list={crumbs} />
@@ -43,6 +49,9 @@ async function ProductPage({ params }: { params: { product: string } }) {
               <li key={el.id}><Link href={`/cat/${el.slug}`}>{el.name}</Link></li>
             ))}
           </ul>
+          <div className={styles.packages}>
+            {packages.map((el, index) => <Package key={el.id} index={index} name={el.name} />)}
+          </div>
           <Meta el={good} />
         </div>
       </div>

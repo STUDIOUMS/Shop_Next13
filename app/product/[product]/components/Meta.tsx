@@ -12,7 +12,7 @@ const Meta: React.FC<IMeta> = ({ el }) => {
     <div>
       <p>Артикул: {el.art}</p>
       <p>Цена: {el.price} руб.</p>
-      <AddCart el={el} />
+      <AddCart el={el} inBasket={false} />
     </div>
   )
 }
