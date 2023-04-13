@@ -44,7 +44,11 @@ export const appSlice = createSlice({
     // setOrder
     setOrder: (state, action) => {
       const newOrder = { ...action.payload, count: 1 }
-      let existOrder = state.orders.find(el => el.id === action.payload.id)
+      let existOrder = state.orders.find(el => {
+        if (el.id === action.payload.id)
+        return el
+      })
+
       if (existOrder) {
         state.orders.map(el => {
           if (el.id === action.payload.id) {

@@ -34,7 +34,7 @@ export type GoodType = {
 }
 
 export type OrderType = {
-  id: number
+  id: string
   title: string
   price: number
   slug: string

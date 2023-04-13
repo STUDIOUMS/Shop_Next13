@@ -16,7 +16,7 @@ const AddCart: React.FC<IAddCart> = ({ big, el, img, pack, price }) => {
   const dispatch = useDispatch<AppDispatch>()
 
   const order: OrderType = {
-    id: el.id,
+    id: String(el.id) + '-' + pack,
     title: el.title,
     slug: el.slug,
     art: el.art,
