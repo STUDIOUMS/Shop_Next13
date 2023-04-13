@@ -26,6 +26,7 @@
     text-align: center;
   }
   input:checked + span {
+    background: var(--color-light);
     border-color: var(--color-text2);
     color: var(--color-text);
   }
