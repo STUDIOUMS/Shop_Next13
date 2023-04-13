@@ -63,7 +63,7 @@
 
 .btnCart {
   span {
-    padding-right: 28px; position: relative;
+    padding-right: 28px; position: relative; display: block;
     &::after {
       background: url('../../../../assets/cart-white.svg') center / 18px no-repeat;
       content: '';
@@ -72,13 +72,8 @@
       width: 20px;
       height: 20px;
       right: 0;
-      top: -2px;
-    }
-  }
-  &In {
-    background: #858585 !important;
-    span::after {
-      background-image: url('../../../../assets/check.svg');
+      top: 50%;
+      margin-top: -10px;
     }
   }
 }

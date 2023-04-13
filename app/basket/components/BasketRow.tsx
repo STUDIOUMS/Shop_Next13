@@ -19,14 +19,21 @@ const BasketRow: React.FC<IBasketRow> = ({ index, order }) => {
       <td>{index}</td>
       <td  className={styles.basketRowImg}>
         <Link href={`/product/${order.slug}`}>
-          <img src={order.img} alt="" style={{width: '40px'}} />
+          <img src={order.img} alt="" />
         </Link>
       </td>
       <td>
         <div className={styles.basketRowName}>
           <Link href={`/product/${order.slug}`}>{order.title}</Link>
         </div>
-        <div className={styles.basketRowArt}>Артикул: {order.art}</div>
+        <div className={styles.basketRowArt}>
+          <span>Фасовка:</span>
+          <b>{order.pack}</b>
+        </div>
+        <div className={styles.basketRowArt}>
+          <span>Код товара:</span>
+          <b>{order.art}</b>
+        </div>
       </td>
       <td>{order.price} {set_currency}</td>
       <td>

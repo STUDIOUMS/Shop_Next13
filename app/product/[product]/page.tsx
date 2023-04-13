@@ -32,7 +32,7 @@ async function ProductPage({ params }: { params: { product: string } }) {
 
       <h1>{good.title}</h1>
       
-      <ProductCard good={good} cats={cats} packages={packages} />
+      <ProductCard good={good} packages={packages} />
 
       <ProductTabs description={good.description} features={featuresList} />
     </div>

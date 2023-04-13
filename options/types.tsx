@@ -42,6 +42,7 @@ export type OrderType = {
   art: string
   count?: number
   total: number
+  pack: string
 }
 
 export type dataType = {

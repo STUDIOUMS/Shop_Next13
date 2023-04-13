@@ -1,45 +1,37 @@
 import { setOrder } from "@/app/store/appSlice"
 import { AppDispatch } from "@/app/store/store"
 import { GoodType, OrderType } from "@/options/types"
-import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import styles from "../cat/[subcat]/components/Card.module.scss"
 
 interface IAddCart {
+  big?: boolean
   el: GoodType
-  inBasket: boolean
+  pack: string
+  img: string
+  price: number
 }
 
-const AddCart: React.FC<IAddCart> = ({ el, inBasket }) => {
+const AddCart: React.FC<IAddCart> = ({ big, el, img, pack, price }) => {
   const dispatch = useDispatch<AppDispatch>()
-  const [name, setName] = useState<string>('В корзину')
-  const [classOf, setClassOf] = useState<string>('btn btn-sm btn-success')
-  const [added, setAdded] = useState<string>('')
-
-  useEffect(() => {
-    if (inBasket) {
-      setName('В корзине')
-      setClassOf('btn btn-sm btn-secondary')
-      setAdded(` ${styles.btnCartIn}`)
-    }
-  }, [inBasket])
 
   const order: OrderType = {
     id: el.id,
     title: el.title,
-    price: el.pack[0].price,
     slug: el.slug,
-    img: el.pack[0].img,
     art: el.art,
-    total: el.pack[0].price
+    price,
+    total: price,
+    img,
+    pack
   }
 
   return (
     <button
-      className={classOf + ' ' + styles.btnCart + added}
+      className={`btn ${!big ? "btn-sm" : ""} btn-success ${styles.btnCart}`}
       onClick={() => dispatch(setOrder(order))}
     >
-      <span>{name}</span>
+      <span>В корзину</span>
     </button>
   )
 }
