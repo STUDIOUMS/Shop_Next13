@@ -1,10 +1,10 @@
-import { NavItemType, SortItemType } from "./types"
+import { attrType, featPackType, NavItemType, packType, SortItemType } from "./types"
 
-export const url = 'http://localhost:5000'
-export const url_cats = `${url}/categories`
-export const url_products = `${url}/products`
-export const url_features = `${url}/features`
-export const url_packages = `${url}/packages`
+export const serverURL = 'http://localhost:5000'
+export const url_cats = `${serverURL}/categories`
+export const url_products = `${serverURL}/products`
+export const url_features = `${serverURL}/features`
+export const url_packages = `${serverURL}/packages`
 
 // CATEGORY PAGE
 // get category
@@ -14,7 +14,7 @@ export async function getCat(slug: string) {
   return data[0]
 }
 
-// get parent cat
+// get parent category
 export async function getParentCat(id: number) {
   const response = await fetch(`${url_cats}?id=${id}`, { cache: 'no-cache' })
   const data = await response.json()
@@ -30,7 +30,9 @@ export async function getSubcats(id: number) {
 
 // getProducts of category
 export async function getProducts(id: number, uri: string, limit: number) {
-  const response = await fetch(`${url_products}?category_like=${id}${uri}&_limit=${limit}`, { cache: 'no-cache' })
+  const response = await fetch(`${url_products}?category_like=${id}${uri}&_limit=${limit}`, {
+    cache: 'no-cache'
+  })
   const total = response.headers.get('X-Total-Count')
   const data = await response.json()
   return { data, total }
@@ -62,8 +64,8 @@ export async function getAttributes(arr: number[]) {
 }
 
 // get packages of product
-export async function getPackages(arr: number[]) {
-  const uri = arr.map(el => `id=${el}`).join('&')
+export async function getPackages(arr: packType[]) {
+  const uri = arr.map(el => `id=${el.packID}`).join('&')
   const response = await fetch(`${url_packages}?${uri}`)
   const data = await response.json()
   return data
@@ -79,6 +81,17 @@ export function debounce(cb: any, delay: number) {
       cb(...args)
     }, delay)
   }
+}
+
+
+// create Attributes
+export function createAttributes(keys: featPackType[], feats: attrType[]): featPackType[] {
+  const output = keys.map(el => {
+    const val = feats.find(attr => attr.featuresID === el.id)?.value
+    el['value'] = val
+    return el
+  })
+  return output
 }
 
 

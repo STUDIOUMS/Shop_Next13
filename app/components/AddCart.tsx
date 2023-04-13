@@ -27,11 +27,11 @@ const AddCart: React.FC<IAddCart> = ({ el, inBasket }) => {
   const order: OrderType = {
     id: el.id,
     title: el.title,
-    price: el.price,
+    price: el.pack[0].price,
     slug: el.slug,
-    img: el.images[0],
+    img: el.pack[0].img,
     art: el.art,
-    total: el.price
+    total: el.pack[0].price
   }
 
   return (

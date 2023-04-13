@@ -25,14 +25,14 @@ const Card: React.FC<ICard> = ({ el }) => {
       <div className={styles.good}>
         <div className={styles.goodTop}>
           <div className={styles.goodImage}>
-            <Link href={`/product/${el.slug}`}><img src={el.images[0]} alt="" /></Link>
+            <Link href={`/product/${el.slug}`}><img src={el.pack[0].img} alt="" /></Link>
             {el.hit && <span className={styles.goodHit}>hit</span>}
           </div>
           <div className={styles.goodDetails}>
             <div className={styles.goodTitle}>
               <Link href={`/product/${el.slug}`}>{el.title}</Link>
             </div>
-            <div className={styles.goodPrice}>{el.price} <small>{set_currency}</small></div>
+            <div className={styles.goodPrice}>{el.pack[0].price} <small>{set_currency}</small></div>
           </div>
         </div>
         <div className={styles.goodBottom}>

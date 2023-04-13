@@ -12,19 +12,25 @@ export type attrType = {
   value: string
 }
 
+export type packType = {
+  packID: number
+  img: string
+  price: number
+  oldPrice?: number
+}
+
 export type GoodType = {
   id: number
   title: string
-  price: number
   category: number[]
   description: string
   slug: string
-  images: string[]
   stock: boolean
   art: string
   hit?: boolean
+  sale?: string
   attrs: attrType[]
-  pack: number[]
+  pack: packType[]
 }
 
 export type OrderType = {

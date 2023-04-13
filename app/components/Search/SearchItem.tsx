@@ -12,9 +12,9 @@ const SearchItem: React.FC<ISearchItem> = ({ el, close }) => {
   return (
     <li className={styles.searchboxItem}>
       <Link href={`/product/${el.slug}`} onClick={close}>
-        <span className={styles.searchboxItemImg}><img src={el.images[0]} alt="" /></span>
+        <span className={styles.searchboxItemImg}><img src={el.pack[0].img} alt="" /></span>
         <span className={styles.searchboxItemTitle}>{el.title}</span>
-        <span className="badge bg-warning text-dark">{el.price} руб.</span>
+        <span className="badge bg-warning text-dark">{el.pack[0].price} руб.</span>
       </Link>
     </li>
   )

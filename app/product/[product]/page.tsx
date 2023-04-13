@@ -1,12 +1,8 @@
 import BreadCrumbs from "@/app/components/BreadCrumbs"
-import { getAttributes, getCatForProduct, getPackages, getProduct } from "@/options/helpers"
+import { createAttributes, getAttributes, getCatForProduct, getPackages, getProduct } from "@/options/helpers"
 import { BreadCrumbsType, CatType, featPackType, GoodType } from "@/options/types"
-import Link from "next/link"
-import Gallery from "./components/Gallery"
-import Meta from "./components/Meta"
-import Package from "./components/Package"
 import ProductTabs from "./components/ProductTabs"
-import styles from './components/Package.module.scss'
+import ProductCard from "./components/Card"
 
 
 async function ProductPage({ params }: { params: { product: string } }) {
@@ -24,11 +20,7 @@ async function ProductPage({ params }: { params: { product: string } }) {
   // Attrs
   const attrArray = good.attrs.map(el => el.featuresID)
   const attrsKeys: featPackType[] = await getAttributes(attrArray)
-  const featList = attrsKeys.map(el => {
-    const val = good.attrs.find(attr => attr.featuresID === el.id)?.value
-    el['value'] = val
-    return el
-  })
+  const featuresList = createAttributes(attrsKeys, good.attrs)
 
   // packages
   const packages: featPackType[] = await getPackages(good.pack)
@@ -39,23 +31,10 @@ async function ProductPage({ params }: { params: { product: string } }) {
       <BreadCrumbs list={crumbs} />
 
       <h1>{good.title}</h1>
-      <div className="row">
-        <div className="col-12 col-lg-4">
-          <Gallery images={good.images} />
-        </div>
-        <div className="col-12 col-lg-8">
-          <ul className="cats">
-            {cats.map(el => (
-              <li key={el.id}><Link href={`/cat/${el.slug}`}>{el.name}</Link></li>
-            ))}
-          </ul>
-          <div className={styles.packages}>
-            {packages.map((el, index) => <Package key={el.id} index={index} name={el.name} />)}
-          </div>
-          <Meta el={good} />
-        </div>
-      </div>
-      <ProductTabs description={good.description} features={featList} />
+      
+      <ProductCard good={good} cats={cats} packages={packages} />
+
+      <ProductTabs description={good.description} features={featuresList} />
     </div>
   )
 }
