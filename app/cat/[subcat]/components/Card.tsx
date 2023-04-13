@@ -12,13 +12,9 @@ interface ICard {
 
 const Card: React.FC<ICard> = ({ el }) => {
   const view = useSelector((state: RootState) => state.app.view)
-  const orders = useSelector((state: RootState) => state.app.orders)
   const classGrid = `col-12 col-md-6 col-lg-4 col-xl-3 ${styles.goodGrid}`
   const classList = `col-12 ${styles.goodList}`
   const parentClass = (view === 'list') ? classList : classGrid
-
-  // isInBasket
-  const isInBasket = orders.some(i => i.id === el.id)
 
   return (
     <div className={parentClass}>
@@ -36,7 +32,7 @@ const Card: React.FC<ICard> = ({ el }) => {
           </div>
         </div>
         <div className={styles.goodBottom}>
-          <AddCart el={el} inBasket={isInBasket} />
+          <AddCart el={el} img={el.pack[0].img} pack={''} price={el.pack[0].price} />
         </div>
       </div>
     </div>

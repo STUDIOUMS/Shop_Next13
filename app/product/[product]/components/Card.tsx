@@ -1,9 +1,9 @@
 'use client'
 
 import AddCart from "@/app/components/AddCart"
+import Packages from "@/app/components/Packages/Packages"
 import { GoodType, featPackType, packType } from "@/options/types"
 import { useEffect, useState } from "react"
-import Package from "./Package"
 import styles from './Card.module.scss'
 
 interface IProductCard {
@@ -45,14 +45,7 @@ const ProductCard: React.FC<IProductCard> = ({ good, packages }) => {
           
           <div className={styles.cardPrice}>{price} <small>руб.</small></div>
 
-          <div className={styles.packages}>
-            <div className={styles.packagesTitle}>Фасовка:</div>
-            <div className={styles.packagesRow}>
-              {packages.map((el, index) => (
-                <Package key={el.id} index={index} name={el.name} value={el.id} handler={choosePack} />
-              ))}
-            </div>
-          </div>
+          <Packages packages={packages} handler={choosePack} />
 
           <div className={styles.cardItem}>
             <AddCart big={true} el={good} pack={currentPackName} price={price} img={img} />
