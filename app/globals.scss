@@ -31,6 +31,7 @@ body {
 .row-sm > [class*="col-"] {padding-left: 4px; padding-right: 4px;}
 img {max-width: 100%;}
 a {color: var(--color-green);}
+a:hover {color: var(--color-green-hover);}
 .form-field {margin: 0 0 16px;}
 .btn-block {width: 100%;}
 .main_container {padding-top: 20px; padding-bottom: 40px;}

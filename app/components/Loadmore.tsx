@@ -46,7 +46,7 @@ const Loadmore: React.FC<ILoadmore> = ({ all, pages }) => {
   return (
     <div className="text-center mb-4">
       <button className="btn btn-outline-success" onClick={loadmoreHandler}>
-        Load more
+        Показать еще
         {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
       </button>
     </div>

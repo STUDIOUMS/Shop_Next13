@@ -49,7 +49,7 @@
     margin: 0 0 4px;
   }
   &Hit {background: #f48216;}
-  &Sale {background: red;}
+  &Sale {background: url('../../../../assets/sale.svg') center / cover no-repeat;}
   &New {background: var(--color-green);}
   &Details {
     flex: 1; display: flex; flex-direction: column;
@@ -68,9 +68,7 @@
       display: block;
       text-decoration: none;
       transition: all 200ms ease-in-out;
-      &:hover {
-        color: rgb(58, 119, 231);
-      }
+      &:hover {color: var(--color-green-hover);}
     }
   }
   .btnCart {width: 100%;}
