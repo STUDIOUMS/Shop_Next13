@@ -14,7 +14,7 @@ const CatPopupItem: React.FC<ICatPopupItem> = ({ img, name, slug, setShow, subca
     <div className="col-12 col-md-6 col-lg-4 catpopup-item">
       <div className="catpopup-title">
         <Link href={`cat/${slug}`} onClick={() => setShow(false)}>
-          {img && <img src={img} alt="" />}
+          {img && <span className="catpopup-img"><img src={img} alt="" /></span>}
           <span>{name}</span>
         </Link>
       </div>

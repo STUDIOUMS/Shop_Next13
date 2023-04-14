@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: center;
     min-height: 300px;
+    margin: 0 0 20px;
     img {display: block; max-height: 260px;}
   }
   &Item {
@@ -19,5 +20,12 @@
     line-height: 24px;
     margin: 24px 0;
     small {font-weight: 400; font-size: 16px;}
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .cardGallery {
+    min-height: 200px;
+    img {max-height: 180px;}
   }
 }

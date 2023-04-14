@@ -29,6 +29,7 @@ export type GoodType = {
   art: string
   hit?: boolean
   sale?: string
+  new?: string
   attrs: attrType[]
   pack: packType[]
 }

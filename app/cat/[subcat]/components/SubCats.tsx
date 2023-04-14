@@ -11,7 +11,7 @@ const SubCats: React.FC<ISubCats> = ({ list }) => {
     <div className={styles.subcats}>
       <div className="row">
         {list.map(el => (
-          <div key={el.id} className="col-12 col-lg-3">
+          <div key={el.id} className="col-12 col-sm-6 col-md-4 col-xl-3">
             <Link href={`/cat/${el.slug}`} className={styles.subcatsItem}>
               <img src={el.img} alt="" />
               <span>{el.name}</span>

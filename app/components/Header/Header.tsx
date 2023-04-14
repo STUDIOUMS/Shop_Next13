@@ -28,7 +28,7 @@ const Header: React.FC = () => {
       <header className="header">
         <div className="container">
           <Navbar />
-          <div className="header-address">Доставка с 8:00 до 23:00 {set_phone}</div>
+          <div className="header-address">Доставка с 8:00 до 23:00 &bull; {set_phone}</div>
         </div>
       </header>
       <div className="header-mid">

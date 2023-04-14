@@ -21,6 +21,7 @@ const CatPopup = () => {
     <div className={dropdownClass}>
       <button className="btn btn-outline-success catpopup-btn" onClick={() => setShow(!show)}>Каталог</button>
       <div className="catpopup-dropdown">
+      <div className="catpopup-header">Каталог</div>
         <div className="row">
           {cats.filter(el => el.parentID === 0).map(el => {
             const subcats = cats.filter(subcat => subcat.parentID === el.id)
