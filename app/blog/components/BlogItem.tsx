@@ -1,15 +1,20 @@
+import { createDate } from "@/options/helpers"
 import { blogType } from "@/options/types"
 import Link from "next/link"
+import styles from "../components/Blog.module.scss"
 
 interface IBlogItem {
   post: blogType
 }
 
 const BlogItem: React.FC<IBlogItem> = ({ post }) => {
+  const date = createDate(post.date)
+
   return (
-    <div>
+    <div className={styles.blogItem}>
       <h2><Link href={`/blog/${post.slug}`}>{post.title}</Link></h2>
-      <div dangerouslySetInnerHTML={{__html: post.description}}></div>
+      <div className={styles.blogDate}>{date}</div>
+      <div className={styles.blogShort}>{post.short}</div>
     </div>
   )
 }

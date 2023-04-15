@@ -31,10 +31,16 @@ export async function getSubcats(id: number) {
 
 // getProducts of category
 export async function getProducts(id: number, uri: string, limit: number) {
-  const response = await fetch(`${url_products}?category_like=${id}${uri}&_limit=${limit}`, {
+  const isLimit = uri.includes('_limit')
+  const isSort = uri.includes('_sort')
+  const uriLimit = isLimit ? '' : `&_limit=${limit}`
+  const uriSort = isSort ? '' : '&_sort=createdAt&_order=desc'
+  const params = `${uriLimit}${uriSort}${uri}`
+
+  const response = await fetch(`${url_products}?category_like=${id}${params}`, {
     cache: 'no-cache'
   })
-  const total = response.headers.get('X-Total-Count')
+  const total = await response.headers.get('X-Total-Count')
   const data = await response.json()
   return { data, total }
 }
@@ -76,7 +82,7 @@ export async function getPackages(arr: packType[]) {
 // get blog
 export async function getBlogs(limit: number) {
   const uri = ''
-  const response = await fetch(`${url_blog}?_limit=${limit}${uri}`, {
+  const response = await fetch(`${url_blog}?_limit=${limit}&_sort=date&_order=desc${uri}`, {
     cache: 'no-cache'
   })
   const total = response.headers.get('X-Total-Count')

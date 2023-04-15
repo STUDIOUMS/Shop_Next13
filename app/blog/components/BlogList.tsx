@@ -9,7 +9,7 @@ interface IBlogList {
 const BlogList: React.FC<IBlogList> = ({ list, total }) => {
   return (
     <div>
-      {list.map(post => <BlogItem post={post} />)}
+      {list.map(post => <BlogItem key={post.id} post={post} />)}
     </div>
   )
 }

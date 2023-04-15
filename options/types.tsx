@@ -30,6 +30,7 @@ export type GoodType = {
   hit?: boolean
   sale?: string
   new?: string
+  createdAt: number
   attrs: attrType[]
   pack: packType[]
 }
@@ -82,6 +83,7 @@ export type blogType = {
   id: number
   slug: string
   title: string
+  short?: string
   description: string
   date: number
 }
