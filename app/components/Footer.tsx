@@ -21,8 +21,16 @@ const Footer: React.FC = () => {
               {navItems.map(el => <li key={el.id}><Link href={el.path}>{el.title}</Link></li>)}
             </ul>
           </div>
-          <div className="col-12 col-lg-3"></div>
-          <div className="col-12 col-lg-3"></div>
+          <div className="col-12 col-lg-3">
+            <ul>
+              {navItems.map(el => <li key={el.id}><Link href={el.path}>{el.title}</Link></li>)}
+            </ul>
+          </div>
+          <div className="col-12 col-lg-3">
+            <p>Lorem ipsum dolor sit amet, consectetur</p>
+            <p>Lorem ipsum dolor sit amet, consectetur</p>
+            <p>Lorem ipsum dolor sit amet, consectetur</p>
+          </div>
         </div>
       </div>
     </footer>

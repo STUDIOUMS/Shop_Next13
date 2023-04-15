@@ -1,0 +1,3 @@
+{
+  "/api/v1/products/pack/packID_like=:packID": "/products/pack/packID_like=:packID"
+}

@@ -14,12 +14,13 @@ const CatPopup = () => {
       .then(data => setCats(data))
   }, [])
 
+  const btnClass = show ? "btn btn-outline-success catpopup-btn active" : "btn btn-outline-success catpopup-btn"
   const dropdownClass = show ? "catpopup opened" : "catpopup"
   
   
   return (
     <div className={dropdownClass}>
-      <button className="btn btn-outline-success catpopup-btn" onClick={() => setShow(!show)}>Каталог</button>
+      <button className={btnClass} onClick={() => setShow(!show)}>Каталог</button>
       <div className="catpopup-dropdown">
       <div className="catpopup-header">Каталог</div>
         <div className="row">

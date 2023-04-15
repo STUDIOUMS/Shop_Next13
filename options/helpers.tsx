@@ -5,6 +5,7 @@ export const url_cats = `${serverURL}/categories`
 export const url_products = `${serverURL}/products`
 export const url_features = `${serverURL}/features`
 export const url_packages = `${serverURL}/packages`
+export const url_blog = `${serverURL}/blog`
 
 // CATEGORY PAGE
 // get category
@@ -70,6 +71,19 @@ export async function getPackages(arr: packType[]) {
   const data = await response.json()
   return data
 }
+
+
+// get blog
+export async function getBlogs(limit: number) {
+  const uri = ''
+  const response = await fetch(`${url_blog}?_limit=${limit}${uri}`, {
+    cache: 'no-cache'
+  })
+  const total = response.headers.get('X-Total-Count')
+  const data = await response.json()
+  return { data, total }
+}
+
 
 
 // Debounce

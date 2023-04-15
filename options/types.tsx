@@ -78,8 +78,9 @@ export type featPackType = {
   value?: string
 }
 
-export type newsType = {
+export type blogType = {
   id: number
+  slug: string
   title: string
   description: string
   date: number

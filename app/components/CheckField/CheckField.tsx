@@ -15,7 +15,7 @@ const CheckField: React.FC<ICheckField> = ({ handler, name, title, type = 'check
       <label className={styles.checkField}>
         <input
           type={type}
-          className="form-check"
+          className={styles.formCheck}
           name={name}
           value={value}
           onChange={(e: any) => handler(e.target.checked)}

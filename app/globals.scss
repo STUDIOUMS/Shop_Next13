@@ -53,11 +53,11 @@ h1 {
   line-height: 20px;
   padding: 9px 20px;
   &-success {
-    background: var(--color-green);
+    background-color: var(--color-green);
     border-color: transparent;
     color: #fff;
     &:hover, &:active {
-      background: var(--color-green-hover) !important;
+      background-color: var(--color-green-hover) !important;
       border-color: transparent !important;
     }
   }
@@ -67,6 +67,11 @@ h1 {
     &:hover, &:active {
       background: var(--color-green-hover) !important;
       border-color: var(--color-green-hover) !important;
+    }
+    &.active {
+      background-color: var(--color-lightgreen) !important;
+      border-color: transparent !important;
+      color: var(--color-text);
     }
   }
   &-sm {

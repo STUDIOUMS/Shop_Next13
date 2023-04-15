@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "server": "json-server --watch db.json -d 500 -p 5000",
+    "server": "json-server --watch db.json -d 500 -p 5000 --routes routes.json",
     "serve": "concurrently \"next dev\" \"npm run server\""
   },
   "dependencies": {

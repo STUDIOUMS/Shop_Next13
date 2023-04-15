@@ -4,12 +4,12 @@ import CheckField from "@/app/components/CheckField/CheckField"
 import Range from "@/app/components/Range/Range"
 import { setLoadFilter } from "@/app/store/appSlice"
 import { AppDispatch, RootState } from "@/app/store/store"
+import { url_packages } from "@/options/helpers"
+import { featPackType } from "@/options/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import styles from './Filter.module.scss'
-
-interface IFilter {}
 
 /* fields */
 type IFilterField = {
@@ -18,14 +18,21 @@ type IFilterField = {
   value: string
 }
 
-const Filter: React.FC<IFilter> = () => {
+const Filter: React.FC = () => {
   const [priceFrom, setPriceFrom] = useState<string>('')
   const [priceTo, setPriceTo] = useState<string>('')
+  const [packs, setPacks] = useState<featPackType[]>([])
   const [hit, setHit] = useState<boolean>(false)
   const [sale, setSale] = useState<boolean>(false)
   const [newF, setNewF] = useState<boolean>(false)
   const load = useSelector((state: RootState) => state.app.loadFilter)
   const dispatch = useDispatch<AppDispatch>()
+
+  useEffect(() => {
+    fetch(`${url_packages}`)
+      .then(response => response.json())
+      .then(data => setPacks(data))
+  }, [])
 
   // url params
   const router = useRouter()
@@ -72,11 +79,24 @@ const Filter: React.FC<IFilter> = () => {
   return (
     <div className={styles.filter}>
       <div className={styles.filterTitle}>Фильтр</div>
-      <CheckField handler={setHit} title="Хит" type="checkbox" value="hit" name="hit" checked={queryHit} />
-      <CheckField handler={setSale} title="Скидка" type="checkbox" value="sale" name="sale" checked={querySale} />
-      <CheckField handler={setNewF} title="Новинки" type="checkbox" value="new" name="new" checked={queryNew} />
-      <div className={styles.filterName}>Цена</div>
-      <Range setPriceFrom={setPriceFrom} setPriceTo={setPriceTo} from={queryRangeFrom!} to={queryRangeTo!} />
+      
+      <div className={styles.filterSection}>
+        <CheckField handler={setHit} title="Хит" type="checkbox" value="hit" name="hit" checked={queryHit} />
+        <CheckField handler={setSale} title="Скидка" type="checkbox" value="sale" name="sale" checked={querySale} />
+        <CheckField handler={setNewF} title="Новинки" type="checkbox" value="new" name="new" checked={queryNew} />
+      </div>
+
+      <div className={styles.filterSection}>
+        <div className={styles.filterName}>Цена</div>
+        <Range setPriceFrom={setPriceFrom} setPriceTo={setPriceTo} from={queryRangeFrom!} to={queryRangeTo!} />
+      </div>
+
+      <div className={styles.filterSection}>
+        <div className={styles.filterName}>Упаковка</div>
+        {packs.map(el => (
+          <CheckField key={el.id} handler={() => {}} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={false} />
+        ))}
+      </div>
 
       <button className="btn btn-block btn-success" onClick={filterHandler}>
         Применить
