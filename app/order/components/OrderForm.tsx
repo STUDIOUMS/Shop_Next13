@@ -1,5 +1,6 @@
-import FormField from "@/app/components/FormField"
+'use client'
 
+import FormField from "@/app/components/FormField"
 
 const OrderForm: React.FC = () => {
   return (

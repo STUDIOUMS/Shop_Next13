@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
         {navItems.map(item => {
           const itemClass = pathname === item.path ? "active" : ""
           return <li key={item.id}>
-          <Link href={item.path} className={itemClass}>{item.title}</Link>
+          <Link href={item.path} className={itemClass} onClick={() => setActive(false)}>{item.title}</Link>
         </li>
         })}
       </ul>

@@ -74,6 +74,10 @@ export const appSlice = createSlice({
       state.orders = updatedOrders
       localStorage.removeItem('orders')
       localStorage.setItem('orders', JSON.stringify(updatedOrders))
+
+      if (!state.orders.length) {
+        localStorage.removeItem('orders')
+      }
     },
 
     // changeCountOrder
