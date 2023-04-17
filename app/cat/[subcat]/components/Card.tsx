@@ -42,7 +42,7 @@ const Card: React.FC<ICard> = ({ el }) => {
           </div>
         </div>
         <div className={styles.goodBottom}>
-          <Link className="btn btn-sm btn-block mb-2 btn-outline-secondary" href={`/product/${el.slug}`}>Другая фасовка</Link>
+          <Link className="btn btn-sm btn-block mb-2 btn-outline-secondary" href={`/product/${el.slug}`}>Другая тара</Link>
           <AddCart el={el} img={el.pack[0].img} pack={''} price={el.pack[0].price} />
         </div>
       </div>

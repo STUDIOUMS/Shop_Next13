@@ -7,48 +7,56 @@ import { useDispatch } from "react-redux"
 import styles from "./Basket.module.scss"
 
 interface IBasketRow {
-  index: number
   order: OrderType
 }
 
-const BasketRow: React.FC<IBasketRow> = ({ index, order }) => {
+const BasketRow: React.FC<IBasketRow> = ({ order }) => {
   const dispatch = useDispatch<AppDispatch>()
   
   return (
-    <tr className={styles.basketRow}>
-      <td>{index}</td>
-      <td  className={styles.basketRowImg}>
-        <Link href={`/product/${order.slug}`}>
-          <img src={order.img} alt="" />
-        </Link>
-      </td>
-      <td>
-        <div className={styles.basketRowName}>
-          <Link href={`/product/${order.slug}`}>{order.title}</Link>
+    <div className={styles.basketRow}>
+      <div className="row align-items-center">
+        <div className={`col-12 col-md-6 ${styles.basketDesc}`}>
+          <div className="row align-items-center">
+            <div className="col-3">
+            <Link href={`/product/${order.slug}`}>
+              <img src={order.img} alt="" />
+            </Link>
+            </div>
+            <div className="col-9">
+              <div className={styles.basketRowName}>
+                <Link href={`/product/${order.slug}`}>{order.title}</Link>
+              </div>
+              <div className={styles.basketRowArt}>
+                <span>Фасовка:</span>
+                <b>{order.pack}</b>
+              </div>
+              <div className={styles.basketRowArt}>
+                <span>Код товара:</span>
+                <b>{order.art}</b>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className={styles.basketRowArt}>
-          <span>Фасовка:</span>
-          <b>{order.pack}</b>
+        <div className="col-12 col-md-6">
+          <div className="row align-items-center">
+            <div className="col-4">{order.price} {set_currency}</div>
+            <div className="col-4">
+              <input
+                type="number"
+                className="form-control"
+                defaultValue={order.count}
+                min={1}
+                style={{width: '70px'}}
+                onChange={e => dispatch(changeCountOrder({ count: Number(e.target.value), id: order.id }))}
+              />
+            </div>
+            <div className="col-4">{order.total} {set_currency}</div>
+          </div>
         </div>
-        <div className={styles.basketRowArt}>
-          <span>Код товара:</span>
-          <b>{order.art}</b>
-        </div>
-      </td>
-      <td>{order.price} {set_currency}</td>
-      <td>
-        <input
-          type="number"
-          className="form-control"
-          defaultValue={order.count}
-          min={1}
-          style={{width: '70px'}}
-          onChange={e => dispatch(changeCountOrder({ count: Number(e.target.value), id: order.id }))}
-        />
-      </td>
-      <td>{order.total} {set_currency}</td>
-      <td><button className="btn btn-danger btn-sm" onClick={() => dispatch(removeOrder(order.id))}>x</button></td>
-    </tr>
+      </div>
+      <button className={styles.basketDelete} onClick={() => dispatch(removeOrder(order.id))}></button>
+    </div>
   )
 }
 

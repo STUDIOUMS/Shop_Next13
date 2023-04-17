@@ -9,6 +9,7 @@ import BasketTotal from "./components/BasketTotal"
 import styles from "./components/Basket.module.scss"
 import BreadCrumbs from "../components/BreadCrumbs"
 import { BreadCrumbsType } from "@/options/types"
+import BasketHead from "./components/BasketHead"
 
 /* BreadCrumbs */
 const crumbs: BreadCrumbsType[] = [
@@ -26,22 +27,11 @@ const Basket: NextPage = () => {
 
       {orders.length ?
       <>
-        <table className={styles.basketTable}>
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col" colSpan={2}>Название товара</th>
-              <th scope="col">Цена</th>
-              <th scope="col">Кол-во</th>
-              <th scope="col">Стоимость</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((el, index) => <BasketRow key={el.id} index={index + 1} order={el} />)}
-            {!orders.length && <tr><td colSpan={7}>Loading...</td></tr>}
-          </tbody>
-        </table>
+        <div className={styles.basket}>
+          <BasketHead />
+          {orders.map(el => <BasketRow key={el.id} order={el} />)}
+          {!orders.length && <p>Loading...</p>}
+        </div>
         
         <BasketTotal orders={orders} />
         <Link href="/order" className="btn btn-success">Оформить заказ</Link>
