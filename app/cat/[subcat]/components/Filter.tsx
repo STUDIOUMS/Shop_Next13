@@ -1,6 +1,7 @@
 'use client'
 
 import CheckField from "@/app/components/CheckField/CheckField"
+import CheckFieldVal from "@/app/components/CheckField/CheckFieldVal"
 import Range from "@/app/components/Range/Range"
 import { setLoadFilter } from "@/app/store/appSlice"
 import { AppDispatch, RootState } from "@/app/store/store"
@@ -22,6 +23,7 @@ const Filter: React.FC = () => {
   const [priceFrom, setPriceFrom] = useState<string>('')
   const [priceTo, setPriceTo] = useState<string>('')
   const [packs, setPacks] = useState<featPackType[]>([])
+  const [choosePack, setChoosePack] = useState<string[]>([])
   const [hit, setHit] = useState<boolean>(false)
   const [sale, setSale] = useState<boolean>(false)
   const [newF, setNewF] = useState<boolean>(false)
@@ -39,7 +41,7 @@ const Filter: React.FC = () => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  // Queries
+  // Get and has queries
   const queryRangeFrom = searchParams.get('price_gte')
   const queryRangeTo = searchParams.get('price_lte')
   const queryHit = searchParams.has('hit')
@@ -76,6 +78,15 @@ const Filter: React.FC = () => {
     dispatch(setLoadFilter(true))
   }
 
+  // packHandler
+  const packHandler = (val: string) => {
+    if (!choosePack.includes(val)) {
+      setChoosePack(prev => [...prev, val].sort())
+    } else {
+      setChoosePack(choosePack.filter(el => el !== val))
+    }
+  }
+
   return (
     <div className={styles.filter}>
       <div className={styles.filterTitle}>Фильтр</div>
@@ -94,7 +105,7 @@ const Filter: React.FC = () => {
       <div className={styles.filterSection}>
         <div className={styles.filterName}>Упаковка</div>
         {packs.map(el => (
-          <CheckField key={el.id} handler={() => {}} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={false} />
+          <CheckFieldVal key={el.id} handler={packHandler} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={false} />
         ))}
       </div>
 

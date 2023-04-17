@@ -3,7 +3,7 @@ import { getCat, getParentCat, getProducts, getSubcats, SortItems } from "@/opti
 import { BreadCrumbsType, CatType } from "@/options/types"
 import Filter from "./components/Filter"
 import GoodList from "./components/GoodList"
-import Loadmore from "@/app//components/Loadmore"
+import Loadmore from "@/app/components/Loadmore"
 import Sort from "@/app/components/Sort/Sort"
 import SubCats from "./components/SubCats"
 

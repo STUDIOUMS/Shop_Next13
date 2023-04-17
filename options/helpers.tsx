@@ -80,9 +80,10 @@ export async function getPackages(arr: packType[]) {
 
 
 // get blog
-export async function getBlogs(limit: number) {
-  const uri = ''
-  const response = await fetch(`${url_blog}?_limit=${limit}&_sort=date&_order=desc${uri}`, {
+export async function getBlogs(limit: number, uri: string) {
+  const isLimit = uri.includes('_limit')
+  const uri_limit = isLimit ? '' : `&_limit=${limit}`
+  const response = await fetch(`${url_blog}?_sort=date&_order=desc${uri}${uri_limit}`, {
     cache: 'no-cache'
   })
   const total = response.headers.get('X-Total-Count')
