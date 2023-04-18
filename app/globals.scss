@@ -41,12 +41,13 @@ a:hover {color: var(--color-green-hover);}
 .goods-row {margin-bottom: 20px;}
 .breadcrumb {margin-bottom: 24px;}
 
-h1 {
+h1, h3 {
   font-family: var(--font2);
   font-size: 28px;
   line-height: 32px;
   margin: 0 0 24px;
 }
+h3 {font-size: 20px; line-height: 24px;}
 
 
 /* forms */
@@ -87,6 +88,8 @@ h1 {
 .form-control, .form-select {
   box-shadow: none !important;
 }
+
+/* form-control */
 .form-control {
   border-color: var(--color-grey);
   box-shadow: none !important;
@@ -96,6 +99,10 @@ h1 {
   padding: 8px 14px;
   font-family: var(--font);
   &:focus {border-color: var(--color-green);}
+}
+textarea.form-control {
+  height: 100px;
+  resize: none;
 }
 
 

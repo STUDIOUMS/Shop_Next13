@@ -40,8 +40,15 @@ const BasketRow: React.FC<IBasketRow> = ({ order }) => {
         </div>
         <div className="col-12 col-md-6">
           <div className="row align-items-center">
-            <div className="col-4">{order.price} {set_currency}</div>
             <div className="col-4">
+              <div className={styles.basketMbTitle}>Цена</div>
+              <div className={styles.basketPrice}>
+                {order.price}
+                <small>{set_currency}</small>
+              </div>
+            </div>
+            <div className="col-4">
+              <div className={styles.basketMbTitle}>Кол-во</div>
               <input
                 type="number"
                 className="form-control"
@@ -51,7 +58,13 @@ const BasketRow: React.FC<IBasketRow> = ({ order }) => {
                 onChange={e => dispatch(changeCountOrder({ count: Number(e.target.value), id: order.id }))}
               />
             </div>
-            <div className="col-4">{order.total} {set_currency}</div>
+            <div className="col-4">
+              <div className={styles.basketMbTitle}>Стоимость</div>
+              <div className={styles.basketPrice}>
+                {order.total}
+                <small>{set_currency}</small>
+              </div>
+            </div>
           </div>
         </div>
       </div>

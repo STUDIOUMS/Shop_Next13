@@ -1,7 +1,23 @@
 .formCheck {
-  background: url('../../../assets/check.svg') center center / 14px no-repeat;
+  background: #fff url('../../../assets/check.svg') center center / 14px no-repeat;
   border: 1px solid var(--color-grey);
   border-radius: 3px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  &:checked {
+    background-color: var(--color-green);
+    border-color: var(--color-green);
+  }
+}
+
+.formRadio {
+  background: #fff url('../../../assets/radio.svg') center center / 8px no-repeat;
+  border: 1px solid var(--color-grey);
+  border-radius: 50%;
   cursor: pointer;
   width: 18px;
   height: 18px;

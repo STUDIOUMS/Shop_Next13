@@ -4,11 +4,10 @@
     border: 1px solid var(--color-grey);
     border-radius: 8px;
     margin: 0 0 10px;
-    padding: 15px;
+    padding: 10px 0;
     font-size: 16px;
     position: relative;
     &Img {
-      min-width: 70px; max-width: 70px; padding: 4px 15px 4px 0 !important;
       img {display: block;}
     }
     &Name {
@@ -23,6 +22,13 @@
       span {display: inline-block; min-width: 90px;}
       b {color: var(--color-text);}
     }
+  }
+  &MbTitle {
+    color: var(--color-text2);
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0 0 6px;
+    display: none;
   }
   &Delete {
     background: url(../../../assets/close.svg) center / 20px no-repeat;
@@ -46,10 +52,16 @@
     margin: 0 0 30px;
     b {font-weight: 700;}
   }
+  &Price {
+    font-weight: 500; font-size: 18px; line-height: 40px;
+    small {font-size: 14px;}
+  }
 }
 
 @media screen and (max-width: 750px) {
   .basketHead {display: none;}
+  .basketRow {padding: 16px;}
   .basketRowName {font-size: 16px; line-height: 18px; margin-right: 40px;}
   .basketDesc {margin-bottom: 20px;}
+  .basketMbTitle {display: block;}
 }
