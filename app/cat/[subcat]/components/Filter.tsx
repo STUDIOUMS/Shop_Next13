@@ -1,7 +1,6 @@
 'use client'
 
 import CheckField from "@/app/components/CheckField/CheckField"
-import CheckFieldVal from "@/app/components/CheckField/CheckFieldVal"
 import Range from "@/app/components/Range/Range"
 import { setLoadFilter } from "@/app/store/appSlice"
 import { AppDispatch, RootState } from "@/app/store/store"
@@ -23,7 +22,6 @@ const Filter: React.FC = () => {
   const [priceFrom, setPriceFrom] = useState<string>('')
   const [priceTo, setPriceTo] = useState<string>('')
   const [packs, setPacks] = useState<featPackType[]>([])
-  const [choosePack, setChoosePack] = useState<string[]>([])
   const [hit, setHit] = useState<boolean>(false)
   const [sale, setSale] = useState<boolean>(false)
   const [newF, setNewF] = useState<boolean>(false)
@@ -51,8 +49,8 @@ const Filter: React.FC = () => {
   // setFilter
   const setFilter = useCallback((arr: any[]) => {
     const params = new URLSearchParams(searchParams)
-    if (arr[0]) params.set('hit', arr[0])
-    if (!arr[0]) params.delete('hit')
+    if (arr[2]) params.set('hit', arr[2])
+    if (!arr[2]) params.delete('hit')
 
     if (arr[3]) params.set('sale', arr[3])
     if (!arr[3]) params.delete('sale')
@@ -62,39 +60,31 @@ const Filter: React.FC = () => {
 
     params.delete('_limit')
 
-    if (arr[1].length) params.set('price_gte', arr[1])
-    if (arr[2].length) params.set('price_lte', arr[2])
+    if (arr[0].length) params.set('price_gte', arr[0])
+    if (arr[1].length) params.set('price_lte', arr[1])
 
-    if (!arr[1].length) params.delete('price_gte')
-    if (!arr[2].length) params.delete('price_lte')
+    if (!arr[0].length) params.delete('price_gte')
+    if (!arr[1].length) params.delete('price_lte')
 
     return params.toString()
   }, [searchParams])
 
   // filterHandler
   const filterHandler = () => {
-    const uri: string = setFilter([hit, priceFrom, priceTo, sale, newF])
+    const uri: string = setFilter([priceFrom, priceTo, hit, sale, newF])
     router.push(pathname + '?' + uri)
     dispatch(setLoadFilter(true))
   }
-
-  // packHandler
-  const packHandler = (val: string) => {
-    if (!choosePack.includes(val)) {
-      setChoosePack(prev => [...prev, val].sort())
-    } else {
-      setChoosePack(choosePack.filter(el => el !== val))
-    }
-  }
+  
 
   return (
     <div className={styles.filter}>
       <div className={styles.filterTitle}>Фильтр</div>
       
       <div className={styles.filterSection}>
-        <CheckField handler={setHit} title="Хит" type="checkbox" value="hit" name="hit" checked={queryHit} />
-        <CheckField handler={setSale} title="Скидка" type="checkbox" value="sale" name="sale" checked={querySale} />
-        <CheckField handler={setNewF} title="Новинки" type="checkbox" value="new" name="new" checked={queryNew} />
+        <CheckField handler={setHit} title="Хит" type="checkbox" value="hit" name="hit" checked={queryHit} handCheck={true} />
+        <CheckField handler={setSale} title="Скидка" type="checkbox" value="sale" name="sale" checked={querySale} handCheck={true} />
+        <CheckField handler={setNewF} title="Новинки" type="checkbox" value="new" name="new" checked={queryNew} handCheck={true} />
       </div>
 
       <div className={styles.filterSection}>
@@ -105,7 +95,7 @@ const Filter: React.FC = () => {
       <div className={styles.filterSection}>
         <div className={styles.filterName}>Упаковка</div>
         {packs.map(el => (
-          <CheckFieldVal key={el.id} handler={packHandler} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={false} />
+          <CheckField key={el.id} handler={() => {}} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={false} />
         ))}
       </div>
 

@@ -1,9 +1,9 @@
 import { set_currency } from "@/options/settings"
-import { OrderType } from "@/options/types"
+import { BasketType } from "@/options/types"
 import styles from "./Basket.module.scss"
 
 interface IBasketTotal {
-  orders: OrderType[]
+  orders: BasketType[]
 }
 
 const BasketTotal: React.FC<IBasketTotal> = ({ orders }) => {

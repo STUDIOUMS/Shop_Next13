@@ -5,12 +5,22 @@ interface ICheckField {
   title: string
   type: 'checkbox' | 'radio'
   value: string
-  handler: (val: boolean) => void
+  handler: (val: any) => void
+  handCheck?: boolean
   checked?: boolean
 }
 
-const CheckField: React.FC<ICheckField> = ({ handler, name, title, type = 'checkbox', value, checked }) => {
+const CheckField: React.FC<ICheckField> = ({ handler, handCheck = false, name, title, type = 'checkbox', value, checked }) => {
   const className = (type === 'checkbox') ? styles.formCheck : styles.formRadio
+
+  // checkFunc
+  const checkFunc = (e: any) => {
+    if (handCheck) {
+      handler(e.target.checked)
+    } else {
+      handler(e.target.value)
+    }
+  }
   
   return (
     <div className={styles.checkFieldLine}>
@@ -20,7 +30,7 @@ const CheckField: React.FC<ICheckField> = ({ handler, name, title, type = 'check
           className={className}
           name={name}
           value={value}
-          onChange={(e: any) => handler(e.target.checked)}
+          onChange={checkFunc}
           defaultChecked={checked}
         />
         {title}

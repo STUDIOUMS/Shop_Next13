@@ -35,7 +35,7 @@ export type GoodType = {
   pack: packType[]
 }
 
-export type OrderType = {
+export type BasketType = {
   id: string
   title: string
   price: number
@@ -45,6 +45,20 @@ export type OrderType = {
   count?: number
   total: number
   pack: string
+}
+
+export type OrderType = {
+  name: string
+  email: string
+  phone: string
+  city: string
+  street: string
+  address: string
+  addition: string | undefined
+  delivery: string
+  payment: string
+  status: 'waiting' | 'processed' | 'delivered' | 'finished' | 'canceled'
+  list: BasketType[]
 }
 
 export type dataType = {

@@ -6,17 +6,31 @@ interface IFormField {
   value?: string
   place: string
   text?: string
+  func?: any
+  error?: string
 }
 
-const FormField: React.FC<IFormField> = ({ place, type, label, value = "", text }) => {
+const FormField: React.FC<IFormField> = ({ func, place, type, label, value = "", text, error }) => {
+  const classInput = error ? 'form-control error' : 'form-control'
+
   return (
     <div className="mb-3">
-      <label className="form-label">{label}</label>
+      {label && <label className="form-label">{label}</label>}
+
       {type !== 'area' ?
-        <input type={type} defaultValue={value} placeholder={place} className="form-control" /> :
-        <textarea placeholder={place} className="form-control"></textarea>
+        <input
+          type={type}
+          defaultValue={value}
+          placeholder={place}
+          className={classInput}
+          {...func}
+        /> :
+        <textarea placeholder={place} className={classInput}></textarea>
       }
+
       {text && <div className="form-text mb-1">{text}</div>}
+      
+      {error && <div className="invalid-feedback d-block">{error}</div>}
     </div>
   )
 }

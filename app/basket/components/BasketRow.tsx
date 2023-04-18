@@ -1,13 +1,13 @@
 import { changeCountOrder, removeOrder } from "@/app/store/appSlice"
 import { AppDispatch } from "@/app/store/store"
 import { set_currency } from "@/options/settings"
-import { OrderType } from "@/options/types"
+import { BasketType } from "@/options/types"
 import Link from "next/link"
 import { useDispatch } from "react-redux"
 import styles from "./Basket.module.scss"
 
 interface IBasketRow {
-  order: OrderType
+  order: BasketType
 }
 
 const BasketRow: React.FC<IBasketRow> = ({ order }) => {
