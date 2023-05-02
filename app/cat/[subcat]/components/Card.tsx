@@ -1,8 +1,10 @@
 import AddCart from "@/app/components/AddCart"
+import Packages from "@/app/components/Packages/Packages"
 import { RootState } from "@/app/store/store"
 import { set_currency } from "@/options/settings"
-import { GoodType } from "@/options/types"
+import { GoodType, featPackType } from "@/options/types"
 import Link from "next/link"
+import { useState } from "react"
 import { useSelector } from "react-redux"
 import styles from './Card.module.scss'
 
@@ -11,6 +13,7 @@ interface ICard {
 }
 
 const Card: React.FC<ICard> = ({ el }) => {
+  const [packs, setPacks] = useState<featPackType[]>([])
   const view = useSelector((state: RootState) => state.app.view)
   const classGrid = `col-12 col-sm-6 col-md-4 col-xl-3 ${styles.goodGrid}`
   const classList = `col-12 ${styles.goodList}`
@@ -39,6 +42,7 @@ const Card: React.FC<ICard> = ({ el }) => {
                 {el.pack[0].oldPrice} <small>{set_currency}</small>
               </div>}
             </div>
+            <Packages handler={() => {}} goodID={el.id} packs={el.pack} />
           </div>
         </div>
         <div className={styles.goodBottom}>

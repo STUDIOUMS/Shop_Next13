@@ -2,7 +2,7 @@
 
 import AddCart from "@/app/components/AddCart"
 import Packages from "@/app/components/Packages/Packages"
-import { GoodType, featPackType, packType } from "@/options/types"
+import { GoodType, featPackType } from "@/options/types"
 import { useEffect, useState } from "react"
 import styles from './Card.module.scss'
 
@@ -15,7 +15,6 @@ const ProductCard: React.FC<IProductCard> = ({ good, packages }) => {
   const [img, setImg] = useState<string>(good.pack[0].img)
   const [price, setPrice] = useState<number>(good.pack[0].price)
   const [currentPackID, setCurrentPackID] = useState<number>(good.pack[0].packID)
-  const [currentPack, setCurrentPack] = useState<packType>(good.pack[0])
   const [currentPackName, setCurrentPackName] = useState<string>(packages[0].name)
 
   useEffect(() => {
@@ -29,7 +28,6 @@ const ProductCard: React.FC<IProductCard> = ({ good, packages }) => {
     setCurrentPackID(id)
     setCurrentPackName(name)
   }
-  
 
   return (
     <div className={styles.card}>
@@ -45,7 +43,7 @@ const ProductCard: React.FC<IProductCard> = ({ good, packages }) => {
           
           <div className={styles.cardPrice}>{price} <small>руб.</small></div>
 
-          <Packages packages={packages} handler={choosePack} />
+          <Packages handler={choosePack} goodID={good.id} packs={good.pack} />
 
           <div className={styles.cardItem}>
             <AddCart big={true} el={good} pack={currentPackName} price={price} img={img} />
