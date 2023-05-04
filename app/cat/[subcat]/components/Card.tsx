@@ -1,10 +1,10 @@
 import AddCart from "@/app/components/AddCart"
 import Packages from "@/app/components/Packages/Packages"
+import { usePriceImg } from "@/app/components/price.hook"
 import { RootState } from "@/app/store/store"
 import { set_currency } from "@/options/settings"
-import { GoodType, featPackType } from "@/options/types"
+import { GoodType } from "@/options/types"
 import Link from "next/link"
-import { useState } from "react"
 import { useSelector } from "react-redux"
 import styles from './Card.module.scss'
 
@@ -13,18 +13,20 @@ interface ICard {
 }
 
 const Card: React.FC<ICard> = ({ el }) => {
-  const [packs, setPacks] = useState<featPackType[]>([])
   const view = useSelector((state: RootState) => state.app.view)
   const classGrid = `col-12 col-sm-6 col-md-4 col-xl-3 ${styles.goodGrid}`
   const classList = `col-12 ${styles.goodList}`
   const parentClass = (view === 'list') ? classList : classGrid
+
+  const packs = el.pack
+  const { choosePack, img, price, currentPack, packNames } = usePriceImg({packs})
 
   return (
     <div className={parentClass}>
       <div className={styles.good}>
         <div className={styles.goodTop}>
           <div className={styles.goodImage}>
-            <Link href={`/product/${el.slug}`}><img src={el.pack[0].img} alt="" /></Link>
+            <Link href={`/product/${el.slug}`}><img src={img} alt="" /></Link>
           </div>
           <div className={styles.goodDetails}>
             <div className={styles.goodTitle}>
@@ -36,18 +38,17 @@ const Card: React.FC<ICard> = ({ el }) => {
               </div>
             </div>
             <div className={styles.goodPrice}>
-              {el.pack[0].price} <small>{set_currency}</small>
+              {price} <small>{set_currency}</small>
 
               {el.pack[0].oldPrice && <div className={styles.goodOldPrice}>
                 {el.pack[0].oldPrice} <small>{set_currency}</small>
               </div>}
             </div>
-            <Packages handler={() => {}} goodID={el.id} packs={el.pack} />
+            <Packages handler={choosePack} goodID={el.id} packs={packNames} />
           </div>
         </div>
         <div className={styles.goodBottom}>
-          <Link className="btn btn-sm btn-block mb-2 btn-outline-secondary" href={`/product/${el.slug}`}>Другая тара</Link>
-          <AddCart el={el} img={el.pack[0].img} pack={''} price={el.pack[0].price} />
+          <AddCart el={el} img={img} pack={currentPack} price={price} />
         </div>
       </div>
     </div>

@@ -2,32 +2,17 @@
 
 import AddCart from "@/app/components/AddCart"
 import Packages from "@/app/components/Packages/Packages"
-import { GoodType, featPackType } from "@/options/types"
-import { useEffect, useState } from "react"
+import { usePriceImg } from "@/app/components/price.hook"
+import { GoodType } from "@/options/types"
 import styles from './Card.module.scss'
 
 interface IProductCard {
   good: GoodType
-  packages: featPackType[]
 }
 
-const ProductCard: React.FC<IProductCard> = ({ good, packages }) => {
-  const [img, setImg] = useState<string>(good.pack[0].img)
-  const [price, setPrice] = useState<number>(good.pack[0].price)
-  const [currentPackID, setCurrentPackID] = useState<number>(good.pack[0].packID)
-  const [currentPackName, setCurrentPackName] = useState<string>(packages[0].name)
-
-  useEffect(() => {
-    const findedPack = good.pack.find(el => el.packID === currentPackID)
-    setImg(findedPack!.img)
-    setPrice(findedPack!.price)
-  }, [currentPackID])
-
-  // choosePack
-  const choosePack = (id: number, name: string) => {
-    setCurrentPackID(id)
-    setCurrentPackName(name)
-  }
+const ProductCard: React.FC<IProductCard> = ({ good }) => {
+  const packs = good.pack
+  const { choosePack, img, price, currentPack, packNames } = usePriceImg({packs})
 
   return (
     <div className={styles.card}>
@@ -43,10 +28,10 @@ const ProductCard: React.FC<IProductCard> = ({ good, packages }) => {
           
           <div className={styles.cardPrice}>{price} <small>руб.</small></div>
 
-          <Packages handler={choosePack} goodID={good.id} packs={good.pack} />
+          <Packages handler={choosePack} goodID={good.id} packs={packNames} />
 
           <div className={styles.cardItem}>
-            <AddCart big={true} el={good} pack={currentPackName} price={price} img={img} />
+            <AddCart big={true} el={good} pack={currentPack} price={price} img={img} />
           </div>
 
           <p>Какой-то текст или информация о доставке</p>

@@ -22,17 +22,13 @@ async function ProductPage({ params }: { params: { product: string } }) {
   const attrsKeys: featPackType[] = await getAttributes(attrArray)
   const featuresList = createAttributes(attrsKeys, good.attrs)
 
-  // packages
-  const packages: featPackType[] = await getPackages(good.pack)
-
-
   return (
     <div>
       <BreadCrumbs list={crumbs} />
 
       <h1>{good.title}</h1>
       
-      <ProductCard good={good} packages={packages} />
+      <ProductCard good={good} />
 
       <ProductTabs description={good.description} features={featuresList} />
     </div>
