@@ -9,9 +9,14 @@ interface IPackages {
   title?: string
   goodID: number
   packs: featPackType[]
+  load: boolean
 }
 
-const Packages: React.FC<IPackages> = ({ handler, goodID, packs, title = 'Фасовка' }) => {
+const Packages: React.FC<IPackages> = ({ load, handler, goodID, packs, title = 'Фасовка' }) => {
+  if (load) {
+    return <p>Loading...</p>
+  }
+  
   return (
     <div className={styles.packages}>
       <div className={styles.packagesTitle}>{title}:</div>

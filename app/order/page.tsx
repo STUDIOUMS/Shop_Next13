@@ -1,5 +1,10 @@
+'use client'
+
 import { BreadCrumbsType } from "@/options/types"
+import { useRouter } from "next/navigation"
+import { useSelector } from "react-redux"
 import BreadCrumbs from "../components/BreadCrumbs"
+import { RootState } from "../store/store"
 import OrderCart from "./components/OrderCart"
 import OrderForm from "./components/OrderForm"
 
@@ -9,7 +14,14 @@ const crumbs: BreadCrumbsType[] = [
   { name: 'Оформление заказа', slug: `/order` }
 ]
 
-async function OrderPage() {
+function OrderPage() {
+  const orders = useSelector((state: RootState) => state.app.orders)
+  const router = useRouter()
+
+  if (!orders.length) {
+    //router.push('/basket')
+  }
+
   return (
     <div>
       <BreadCrumbs list={crumbs} />

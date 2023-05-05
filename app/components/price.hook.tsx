@@ -8,6 +8,7 @@ interface usePriceImgType {
   choosePack: (id: number, name: string) => void
   currentPack: string
   packNames: featPackType[]
+  load: boolean
 }
 
 export const usePriceImg = ({ packs }: { packs: packType[] }): usePriceImgType => {
@@ -16,6 +17,7 @@ export const usePriceImg = ({ packs }: { packs: packType[] }): usePriceImgType =
   const [currentPackID, setCurrentPackID] = useState<number>(packs[0].packID)
   const [packNames, setPackNames] = useState<featPackType[]>([])
   const [currentPack, setCurrentPack] = useState<string>('')
+  const [load, setLoad] = useState<boolean>(true)
 
   // ID of packages
   const packIDs: string = packs.map(el => `id=${el.packID}`).join('&')
@@ -32,6 +34,7 @@ export const usePriceImg = ({ packs }: { packs: packType[] }): usePriceImgType =
       .then(data => {
         setPackNames(data)
         setCurrentPack(data[0].name)
+        setLoad(false)
       })
   }, [])
 
@@ -42,6 +45,6 @@ export const usePriceImg = ({ packs }: { packs: packType[] }): usePriceImgType =
   }
 
   return {
-    img, price, choosePack, currentPack, packNames
+    img, price, choosePack, currentPack, packNames, load
   }
 }

@@ -48,6 +48,8 @@ export type BasketType = {
 }
 
 export type OrderType = {
+  id: number
+  orderID: string
   name: string
   email: string
   phone: string

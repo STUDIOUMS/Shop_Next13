@@ -25,7 +25,7 @@ const FormField: React.FC<IFormField> = ({ func, place, type, label, value = "",
           className={classInput}
           {...func}
         /> :
-        <textarea placeholder={place} className={classInput}></textarea>
+        <textarea placeholder={place} className={classInput} {...func}></textarea>
       }
 
       {text && <div className="form-text mb-1">{text}</div>}

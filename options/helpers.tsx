@@ -6,6 +6,7 @@ export const url_products = `${serverURL}/products`
 export const url_features = `${serverURL}/features`
 export const url_packages = `${serverURL}/packages`
 export const url_blog = `${serverURL}/blog`
+export const url_orders = `${serverURL}/orders`
 
 // CATEGORY PAGE
 // get category
