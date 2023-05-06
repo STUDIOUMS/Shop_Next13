@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 interface usePriceImgType {
   img: string
   price: number
+  oldprice?: number
   choosePack: (id: number, name: string) => void
   currentPack: string
   packNames: featPackType[]
@@ -14,6 +15,7 @@ interface usePriceImgType {
 export const usePriceImg = ({ packs }: { packs: packType[] }): usePriceImgType => {
   const [img, setImg] = useState<string>(packs[0].img)
   const [price, setPrice] = useState<number>(packs[0].price)
+  const [oldprice, setOldPrice] = useState<number | undefined>(packs[0].oldPrice)
   const [currentPackID, setCurrentPackID] = useState<number>(packs[0].packID)
   const [packNames, setPackNames] = useState<featPackType[]>([])
   const [currentPack, setCurrentPack] = useState<string>('')
@@ -26,6 +28,9 @@ export const usePriceImg = ({ packs }: { packs: packType[] }): usePriceImgType =
     const findedPack = packs.find(el => el.packID === currentPackID)
     setImg(findedPack!.img)
     setPrice(findedPack!.price)
+    if (findedPack?.oldPrice) {
+      setOldPrice(findedPack.oldPrice)
+    }
   }, [currentPackID])
 
   useEffect(() => {
@@ -45,6 +50,6 @@ export const usePriceImg = ({ packs }: { packs: packType[] }): usePriceImgType =
   }
 
   return {
-    img, price, choosePack, currentPack, packNames, load
+    img, price, oldprice, choosePack, currentPack, packNames, load
   }
 }
