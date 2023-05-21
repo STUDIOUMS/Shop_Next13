@@ -12,14 +12,17 @@ export default async function Blog({ searchParams }: { searchParams: any }) {
   const limitPosts = 3
   const uri = Object.entries(searchParams)
   let newUri = uri.map(el => '&' + el.join('=')).join('')
-  const { data, total } = await getBlogs(limitPosts, newUri)
+  const data = await getBlogs(limitPosts, newUri)
+
+  console.log(data)
+  
 
   return (
     <div>
       <BreadCrumbs list={crumbs} />
       <h1>Блог</h1>
-      <BlogList list={data} limit={limitPosts} />
-      <Loadmore pages={limitPosts} all={total!} />
+      <BlogList list={[]} limit={limitPosts} />
+      {/* <Loadmore pages={limitPosts} all={total!} /> */}
     </div>
   )
 }

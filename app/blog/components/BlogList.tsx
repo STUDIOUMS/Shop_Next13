@@ -22,14 +22,19 @@ const BlogList: React.FC<IBlogList> = ({ list, limit }) => {
   const isLimit = searchURI.includes('_limit=')
   const defaultLimit = isLimit ? '' : `&_limit=${limit}`
 
-  useEffect(() => {
-    fetch(`${url_blog}?_sort=date&_order=desc${defaultLimit}&${searchURI}`)
-      .then(response => response.json())
-      .then(data => {
-        setPosts(data)
-        dispatch(setLoadPager(false))
-      })
-  }, [searchURI])
+  // useEffect(() => {
+  //   fetch(`${url_blog}?_sort=date&_order=desc${defaultLimit}&${searchURI}`)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setPosts(data)
+  //       dispatch(setLoadPager(false))
+  //     })
+  // }, [searchURI])
+
+  // useEffect(() => {
+  //   fetch('https://next13.toomanof.ru/api/v1/catalog/products/')
+  //     .then(response => console.log(response))
+  // }, [])
 
   return (
     <div>

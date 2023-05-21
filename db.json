@@ -7,52 +7,11 @@
       "description": "<p>Для бережного очищения рук и тела от любых загрязнений даже в холодной воде</p><p><b>Преимущества:</b></p><p><ul><li>обладает прекрасными моющими свойствами и высокой антимикробной активностью в отношении грамположительных (кроме микобактерий туберкулеза) и грамотрицательных бактерий;</li><li>не вызывает раздражения кожи и аллергических реакций при многократном применении, применимо для чувствительной кожи;</li><li>обладает смягчающим эффектом;</li><li>создает обильную пену;</li><li>хорошо смывается водой;</li><li>обладает приятным ароматом;</li><li>подходит для использования в дозатор.</li></ul>",
       "stock": true,
       "price": 195,
-      "category": [
-        1,
-        7
-      ],
+      "category": [ 1, 7 ],
       "art": "52835",
       "hit": true,
       "sale": true,
-      "createdAt": 1681546667640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "Для бережного очищения рук и тела от любых загрязнений даже в холодной воде"
-        },
-        {
-          "featuresID": 2,
-          "value": "КраТриклозан, увлажняющие и ухаживающие за кожей добавки.сный"
-        },
-        {
-          "featuresID": 3,
-          "value": "18 месяцев"
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 1,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D0%BD%D1%82%D0%B8%D0%B1%D0%B0%D0%BA+%D0%B0%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81/svezhest_antibak_05-750x750.png",
-          "price": 195,
-          "oldPrice": 209
-        },
-        {
-          "packID": 2,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D0%BD%D1%82%D0%B8%D0%B1%D0%B0%D0%BA+%D0%B0%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81/svezhest_antibak_1kg-430x430.png",
-          "price": 255,
-          "oldPrice": 273
-        },
-        {
-          "packID": 3,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D0%BD%D1%82%D0%B8%D0%B1%D0%B0%D0%BA+%D0%B0%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81/svezhest_antibak_5kl-430x430.png",
-          "price": 1043,
-          "oldPrice": 1118
-        }
-      ]
+      "createdAt": 1681546667640
     },
     {
       "id": 2,
@@ -66,37 +25,7 @@
         8
       ],
       "art": "13583",
-      "createdAt": 1681546657640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "Гигиеническая обработка рук: 2,0 мл - 1 минута. Гигиеническая обработка рук хирургов перед антисептиком: 3,0 мл - 1 минута."
-        },
-        {
-          "featuresID": 2,
-          "value": "Тетранил-У. Увлажняющие и ухаживающие за кожей добавки."
-        },
-        {
-          "featuresID": 3,
-          "value": "3 года"
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 1,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D0%BD%D1%82%D0%B8%D0%B1%D0%B0%D0%BA+%D0%B0%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81/%D0%90%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81%200,5%D0%BB-430x430.png",
-          "price": 160
-        },
-        {
-          "packID": 2,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D0%BD%D1%82%D0%B8%D0%B1%D0%B0%D0%BA+%D0%B0%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81/%D0%90%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81%201%D0%BB-430x430.png",
-          "price": 244
-        }
-      ]
+      "createdAt": 1681546657640
     },
     {
       "id": 3,
@@ -111,32 +40,7 @@
       ],
       "art": "1163",
       "new": true,
-      "createdAt": 1681546467640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "Дезинфекция воздуха (Аэрозольный баллон спососбен распылить не менеее 1 мл дезинфицирующего средства за 1 секунду): Бактериальные инфекции: 1 мл/м3. Вирусные инфекции: 2 мл/м3."
-        },
-        {
-          "featuresID": 2,
-          "value": "в качестве действующих веществ содержит полигексаметиленгуанидина гидрохлорид (0,16%) и дидецилдиметиламмоний хлорид (0,03%), а также ингибитор коррозии, стабилизатор, пропеллент и другие функциональные добавки."
-        },
-        {
-          "featuresID": 3,
-          "value": "36 месяцев"
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 1,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D1%8D%D1%80%D0%BE%D0%BD/%D0%90%D1%8D%D1%80%D0%BE%D0%BD%20235%20%D0%BC%D0%BB-430x430.jpg",
-          "price": 471
-        }
-      ]
+      "createdAt": 1681546467640
     },
     {
       "id": 4,
@@ -151,32 +55,7 @@
       ],
       "art": "7255",
       "hit": true,
-      "createdAt": 1681546367640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "Гигиеническая обработка рук: 60 секунд Экспресс-дезинфекция поверхностей, оборудования, ИМН: Датчики диагностического оборудования Стоматологические наконечники, зеркала и другие мелкие инструменты Оптические приборы и оборудование"
-        },
-        {
-          "featuresID": 2,
-          "value": "Пропанол. Гуанидины. Амины. ЧАС."
-        },
-        {
-          "featuresID": 3,
-          "value": "3 года"
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 1,
-          "img": "https://images.prom.ua/4095562569_w640_h640_4095562569.jpg",
-          "price": 400
-        }
-      ]
+      "createdAt": 1681546367640
     },
     {
       "id": 5,
@@ -191,37 +70,7 @@
       ],
       "art": "49346",
       "hit": true,
-      "createdAt": 1681544567640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "Гигиеническая обработка рук: 60 секунд Экспресс-дезинфекция поверхностей, оборудования, ИМН: Датчики диагностического оборудования Стоматологические наконечники, зеркала и другие мелкие инструменты Оптические приборы и оборудование"
-        },
-        {
-          "featuresID": 2,
-          "value": "Пропанол. Гуанидины. Амины. ЧАС."
-        },
-        {
-          "featuresID": 3,
-          "value": "3 года"
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 3,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D1%81%D0%B0%D0%BB%D1%84%D0%B5%D1%82%D0%BA%D0%B8/%D0%90%D0%BA%D0%B2%D0%B0%D1%81%D0%B5%D0%BF%D1%82%D0%B8%D0%BA-%D1%81%D0%B0%D0%BB%D1%84%D0%B5%D1%82%D0%BA%D0%B8-430x430.png",
-          "price": 213
-        },
-        {
-          "packID": 4,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D1%81%D0%B0%D0%BB%D1%84%D0%B5%D1%82%D0%BA%D0%B8/%D0%B0%D0%BA%D0%B2%D0%B0%D1%81%D0%B5%D0%BF%D1%82%D0%B8%D0%BA%20300%20%D1%88%D1%82-430x430.jpg",
-          "price": 675
-        }
-      ]
+      "createdAt": 1681544567640
     },
     {
       "id": 6,
@@ -235,32 +84,7 @@
         7
       ],
       "art": "20365",
-      "createdAt": 1681546587640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "Стоматологические наконечники, зеркала и другие мелкие инструменты Оптические приборы и оборудование"
-        },
-        {
-          "featuresID": 2,
-          "value": "Пропанол. ЧАС."
-        },
-        {
-          "featuresID": 3,
-          "value": "3 года"
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 1,
-          "img": "https://hotel-service.com.ua/22771-thickbox_default/zasib-dlya-mittya-ta-dezinfekciyi-santekhniki-pro-service-limon-5l.jpg",
-          "price": 615
-        }
-      ]
+      "createdAt": 1681546587640
     },
     {
       "id": 7,
@@ -274,32 +98,7 @@
         8
       ],
       "art": "944",
-      "createdAt": 1681376667640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "Датчики диагностического оборудования Стоматологические наконечники, зеркала и другие мелкие инструменты Оптические приборы и оборудование"
-        },
-        {
-          "featuresID": 2,
-          "value": "Пропанол. Амины. ЧАС."
-        },
-        {
-          "featuresID": 3,
-          "value": "3 года"
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 2,
-          "img": "https://promserv.com.ua/image/cachewebp/catalog/products/bytovaya-himiya/chistyashie-i-moyushie-sredstva-poliroli/sredstva-dlya-mytya-polov/sredstvo-moyushee-dlya-pola-i-sten-universalnoe-okean-750ml-mr-proper-500x400.webp",
-          "price": 312
-        }
-      ]
+      "createdAt": 1681376667640
     },
     {
       "id": 8,
@@ -313,28 +112,7 @@
         8
       ],
       "art": "2944",
-      "createdAt": 1681544467640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "В мензурку или стакан наливают 50-100 мл хорошо перемешанного рабочего раствора дезинфицирующего средства комнатной температуры."
-        },
-        {
-          "featuresID": 3,
-          "value": "В невскрытой упаковке изготовителя - 18 месяцев с даты изготовления, указанной на упаковке. После первого вскрытия упаковки - 3 месяца."
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 1,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B8%D0%BD%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%BE%D0%BB%D0%BE%D1%81%D0%BA%D0%B8/%D0%B8%D0%BD%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D1%80%20%D0%BF%D0%BE%D0%BB%D0%BE%D1%81%D0%BA%D0%B8%20%D1%8D%D0%BA%D1%81%D1%82%D1%80%D0%B0%20%D0%BC%20%D0%BF%D1%80%D0%BE%D1%84%D0%B8%2050%20%D1%88%D1%82-430x430.jpg",
-          "price": 525
-        }
-      ]
+      "createdAt": 1681544467640
     },
     {
       "id": 9,
@@ -348,33 +126,7 @@
         9
       ],
       "art": "31524",
-      "createdAt": 1681546887640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "При незначительных загрязнениях 1–2% раствор моющего средства нанести на обрабатываемую поверхность,"
-        },
-        {
-          "featuresID": 3,
-          "value": "18 месяцев"
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 1,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-4/nika-4-430x430.png",
-          "price": 223
-        },
-        {
-          "packID": 2,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-4/nika-4_5l-430x430.png",
-          "price": 1003
-        }
-      ]
+      "createdAt": 1681546887640
     },
     {
       "id": 10,
@@ -388,37 +140,7 @@
         7
       ],
       "art": "41328",
-      "createdAt": 1681546547640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "0,5-8,0%."
-        },
-        {
-          "featuresID": 2,
-          "value": "Ортофосфорная кислота более 30%. НПАВ менее 5%. Комплексообразователь менее 5%."
-        },
-        {
-          "featuresID": 3,
-          "value": "18 месяцев"
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 1,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BA%D1%81/%D0%9A%D0%A1_1,5%D0%BA%D0%B3%20(1)-min-430x430.png",
-          "price": 807
-        },
-        {
-          "packID": 2,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BA%D1%81/%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BA%D1%81%207-430x430.jpg",
-          "price": 3716
-        }
-      ]
+      "createdAt": 1681546547640
     },
     {
       "id": 11,
@@ -432,32 +154,7 @@
         7
       ],
       "art": "12528",
-      "createdAt": 1681546277640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "0,5 – 5% в зависимости от степени загрязнения."
-        },
-        {
-          "featuresID": 2,
-          "value": "Калия гидроксид. Гипохлорит натрия. ПАВ. Метасиликат натрия. Вода."
-        },
-        {
-          "featuresID": 3,
-          "value": "1 год"
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 2,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-2%20%D1%85%D0%BB%D0%BE%D1%80/%D0%BD%D0%B8%D0%BA%D0%B0-2%20%D1%85%D0%BB%D0%BE%D1%80%20%D0%BF%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5%205%20%D0%BB-430x430.jpg",
-          "price": 1023
-        }
-      ]
+      "createdAt": 1681546277640
     },
     {
       "id": 12,
@@ -471,37 +168,7 @@
         8
       ],
       "art": "24317",
-      "createdAt": 1681546497640,
-      "attrs": [
-        {
-          "featuresID": 1,
-          "value": "0,2-10,0%."
-        },
-        {
-          "featuresID": 2,
-          "value": "Ортофосфорная кислота более 30%. ЧАС менее 5%. НПАВ менее 5%."
-        },
-        {
-          "featuresID": 3,
-          "value": "18 месяцев"
-        },
-        {
-          "featuresID": 4,
-          "value": "Ника"
-        }
-      ],
-      "pack": [
-        {
-          "packID": 1,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BA%D1%81/%D0%9A%D0%A1%D0%94%201%D0%BA%D0%B3%20(1)-430x430.jpg",
-          "price": 424
-        },
-        {
-          "packID": 2,
-          "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BA%D1%81/%D0%9A%D0%A1%D0%94%206%20%D0%BA%D0%B3%20(1)-430x430.jpg",
-          "price": 2230
-        }
-      ]
+      "createdAt": 1681546497640
     }
   ],
   "categories": [
@@ -618,8 +285,424 @@
       "name": "30л"
     }
   ],
+  "assigned_attrs": [
+    {
+      "id": 1,
+      "productID": 1,
+      "featuresID": 1,
+      "value": "Для бережного очищения рук и тела от любых загрязнений даже в холодной воде"
+    },
+    {
+      "id": 2,
+      "productID": 1,
+      "featuresID": 2,
+      "value": "КраТриклозан, увлажняющие и ухаживающие за кожей добавки.сный"
+    },
+    {
+      "id": 3,
+      "productID": 1,
+      "featuresID": 3,
+      "value": "18 месяцев"
+    },
+    {
+      "id": 4,
+      "productID": 1,
+      "featuresID": 4,
+      "value": "Ника"
+    },
+    {
+      "id": 5,
+      "productID": 2,
+      "featuresID": 1,
+      "value": "Гигиеническая обработка рук: 2,0 мл - 1 минута. Гигиеническая обработка рук хирургов перед антисептиком: 3,0 мл - 1 минута."
+    },
+    {
+      "id": 6,
+      "productID": 2,
+      "featuresID": 2,
+      "value": "Тетранил-У. Увлажняющие и ухаживающие за кожей добавки."
+    },
+    {
+      "id": 7,
+      "productID": 2,
+      "featuresID": 3,
+      "value": "3 года"
+    },
+    {
+      "id": 8,
+      "productID": 2,
+      "featuresID": 4,
+      "value": "Ника"
+    },
+    {
+      "id": 9,
+      "productID": 3,
+      "featuresID": 1,
+      "value": "Дезинфекция воздуха (Аэрозольный баллон спососбен распылить не менеее 1 мл дезинфицирующего средства за 1 секунду): Бактериальные инфекции: 1 мл/м3. Вирусные инфекции: 2 мл/м3."
+    },
+    {
+      "id": 10,
+      "productID": 3,
+      "featuresID": 2,
+      "value": "в качестве действующих веществ содержит полигексаметиленгуанидина гидрохлорид (0,16%) и дидецилдиметиламмоний хлорид (0,03%), а также ингибитор коррозии, стабилизатор, пропеллент и другие функциональные добавки."
+    },
+    {
+      "id": 11,
+      "productID": 3,
+      "featuresID": 3,
+      "value": "36 месяцев"
+    },
+    {
+      "id": 12,
+      "productID": 3,
+      "featuresID": 4,
+      "value": "Ника"
+    },
+    {
+      "id": 13,
+      "productID": 4,
+      "featuresID": 1,
+      "value": "Гигиеническая обработка рук: 60 секунд Экспресс-дезинфекция поверхностей, оборудования, ИМН: Датчики диагностического оборудования Стоматологические наконечники, зеркала и другие мелкие инструменты Оптические приборы и оборудование"
+    },
+    {
+      "id": 14,
+      "productID": 4,
+      "featuresID": 2,
+      "value": "Пропанол. Гуанидины. Амины. ЧАС."
+    },
+    {
+      "id": 15,
+      "productID": 4,
+      "featuresID": 3,
+      "value": "3 года"
+    },
+    {
+      "id": 16,
+      "productID": 4,
+      "featuresID": 4,
+      "value": "Ника"
+    },
+    {
+      "id": 17,
+      "productID": 5,
+      "featuresID": 1,
+      "value": "Гигиеническая обработка рук: 60 секунд Экспресс-дезинфекция поверхностей, оборудования, ИМН: Датчики диагностического оборудования Стоматологические наконечники, зеркала и другие мелкие инструменты Оптические приборы и оборудование"
+    },
+    {
+      "id": 18,
+      "productID": 5,
+      "featuresID": 2,
+      "value": "Пропанол. Гуанидины. Амины. ЧАС."
+    },
+    {
+      "id": 19,
+      "productID": 5,
+      "featuresID": 3,
+      "value": "3 года"
+    },
+    {
+      "id": 20,
+      "productID": 5,
+      "featuresID": 4,
+      "value": "Ника"
+    },
+    {
+      "id": 21,
+      "productID": 6,
+      "featuresID": 1,
+      "value": "Стоматологические наконечники, зеркала и другие мелкие инструменты Оптические приборы и оборудование"
+    },
+    {
+      "id": 22,
+      "productID": 6,
+      "featuresID": 2,
+      "value": "Пропанол. ЧАС."
+    },
+    {
+      "id": 23,
+      "productID": 6,
+      "featuresID": 3,
+      "value": "3 года"
+    },
+    {
+      "id": 24,
+      "productID": 6,
+      "featuresID": 4,
+      "value": "Ника"
+    },
+    {
+      "id": 25,
+      "productID": 7,
+      "featuresID": 1,
+      "value": "Датчики диагностического оборудования Стоматологические наконечники, зеркала и другие мелкие инструменты Оптические приборы и оборудование"
+    },
+    {
+      "id": 26,
+      "productID": 7,
+      "featuresID": 2,
+      "value": "Пропанол. Амины. ЧАС."
+    },
+    {
+      "id": 27,
+      "productID": 7,
+      "featuresID": 3,
+      "value": "3 года"
+    },
+    {
+      "id": 28,
+      "productID": 7,
+      "featuresID": 4,
+      "value": "Ника"
+    },
+    {
+      "id": 29,
+      "productID": 8,
+      "featuresID": 1,
+      "value": "В мензурку или стакан наливают 50-100 мл хорошо перемешанного рабочего раствора дезинфицирующего средства комнатной температуры."
+    },
+    {
+      "id": 30,
+      "productID": 8,
+      "featuresID": 3,
+      "value": "В невскрытой упаковке изготовителя - 18 месяцев с даты изготовления, указанной на упаковке. После первого вскрытия упаковки - 3 месяца."
+    },
+    {
+      "id": 31,
+      "productID": 8,
+      "featuresID": 4,
+      "value": "Ника"
+    },
+    {
+      "id": 32,
+      "productID": 9,
+      "featuresID": 1,
+      "value": "При незначительных загрязнениях 1–2% раствор моющего средства нанести на обрабатываемую поверхность,"
+    },
+    {
+      "id": 33,
+      "productID": 9,
+      "featuresID": 3,
+      "value": "18 месяцев"
+    },
+    {
+      "id": 34,
+      "productID": 9,
+      "featuresID": 4,
+      "value": "Ника"
+    },
+    {
+      "id": 35,
+      "productID": 10,
+      "featuresID": 1,
+      "value": "0,5-8,0%."
+    },
+    {
+      "id": 36,
+      "productID": 10,
+      "featuresID": 2,
+      "value": "Ортофосфорная кислота более 30%. НПАВ менее 5%. Комплексообразователь менее 5%."
+    },
+    {
+      "id": 37,
+      "productID": 10,
+      "featuresID": 3,
+      "value": "18 месяцев"
+    },
+    {
+      "id": 38,
+      "productID": 10,
+      "featuresID": 4,
+      "value": "Ника"
+    },
+    {
+      "id": 39,
+      "productID": 11,
+      "featuresID": 1,
+      "value": "0,5 – 5% в зависимости от степени загрязнения."
+    },
+    {
+      "id": 40,
+      "productID": 11,
+      "featuresID": 2,
+      "value": "Калия гидроксид. Гипохлорит натрия. ПАВ. Метасиликат натрия. Вода."
+    },
+    {
+      "id": 41,
+      "productID": 11,
+      "featuresID": 3,
+      "value": "1 год"
+    },
+    {
+      "id": 42,
+      "productID": 11,
+      "featuresID": 4,
+      "value": "Ника"
+    },
+    {
+      "id": 43,
+      "productID": 12,
+      "featuresID": 1,
+      "value": "0,2-10,0%."
+    },
+    {
+      "id": 44,
+      "productID": 12,
+      "featuresID": 2,
+      "value": "Ортофосфорная кислота более 30%. ЧАС менее 5%. НПАВ менее 5%."
+    },
+    {
+      "id": 45,
+      "productID": 12,
+      "featuresID": 3,
+      "value": "18 месяцев"
+    },
+    {
+      "id": 46,
+      "productID": 12,
+      "featuresID": 4,
+      "value": "Ника"
+    }
+  ],
+  "assigned_packs": [
+    {
+      "id": 1,
+      "packID": 1,
+      "productID": 1,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D0%BD%D1%82%D0%B8%D0%B1%D0%B0%D0%BA+%D0%B0%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81/svezhest_antibak_05-750x750.png",
+      "price": 195,
+      "oldPrice": 209
+    },
+    {
+      "id": 2,
+      "packID": 2,
+      "productID": 1,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D0%BD%D1%82%D0%B8%D0%B1%D0%B0%D0%BA+%D0%B0%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81/svezhest_antibak_1kg-430x430.png",
+      "price": 255,
+      "oldPrice": 273
+    },
+    {
+      "id": 3,
+      "packID": 3,
+      "productID": 1,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D0%BD%D1%82%D0%B8%D0%B1%D0%B0%D0%BA+%D0%B0%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81/svezhest_antibak_5kl-430x430.png",
+      "price": 1043,
+      "oldPrice": 1118
+    },
+    {
+      "id": 4,
+      "packID": 1,
+      "productID": 2,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D0%BD%D1%82%D0%B8%D0%B1%D0%B0%D0%BA+%D0%B0%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81/%D0%90%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81%200,5%D0%BB-430x430.png",
+      "price": 160
+    },
+    {
+      "id": 5,
+      "packID": 2,
+      "productID": 2,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D0%BD%D1%82%D0%B8%D0%B1%D0%B0%D0%BA+%D0%B0%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81/%D0%90%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D1%81%201%D0%BB-430x430.png",
+      "price": 244
+    },
+    {
+      "id": 6,
+      "packID": 1,
+      "productID": 3,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B0%D1%8D%D1%80%D0%BE%D0%BD/%D0%90%D1%8D%D1%80%D0%BE%D0%BD%20235%20%D0%BC%D0%BB-430x430.jpg",
+      "price": 471
+    },
+    {
+      "id": 7,
+      "packID": 1,
+      "productID": 4,
+      "img": "https://images.prom.ua/4095562569_w640_h640_4095562569.jpg",
+      "price": 400
+    },
+    {
+      "id": 8,
+      "packID": 3,
+      "productID": 5,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D1%81%D0%B0%D0%BB%D1%84%D0%B5%D1%82%D0%BA%D0%B8/%D0%90%D0%BA%D0%B2%D0%B0%D1%81%D0%B5%D0%BF%D1%82%D0%B8%D0%BA-%D1%81%D0%B0%D0%BB%D1%84%D0%B5%D1%82%D0%BA%D0%B8-430x430.png",
+      "price": 213
+    },
+    {
+      "id": 9,
+      "packID": 4,
+      "productID": 5,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D1%81%D0%B0%D0%BB%D1%84%D0%B5%D1%82%D0%BA%D0%B8/%D0%B0%D0%BA%D0%B2%D0%B0%D1%81%D0%B5%D0%BF%D1%82%D0%B8%D0%BA%20300%20%D1%88%D1%82-430x430.jpg",
+      "price": 675
+    },
+    {
+      "id": 10,
+      "packID": 1,
+      "productID": 6,
+      "img": "https://hotel-service.com.ua/22771-thickbox_default/zasib-dlya-mittya-ta-dezinfekciyi-santekhniki-pro-service-limon-5l.jpg",
+      "price": 615
+    },
+    {
+      "id": 11,
+      "packID": 2,
+      "productID": 7,
+      "img": "https://promserv.com.ua/image/cachewebp/catalog/products/bytovaya-himiya/chistyashie-i-moyushie-sredstva-poliroli/sredstva-dlya-mytya-polov/sredstvo-moyushee-dlya-pola-i-sten-universalnoe-okean-750ml-mr-proper-500x400.webp",
+      "price": 312
+    },
+    {
+      "id": 12,
+      "packID": 1,
+      "productID": 8,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%B8%D0%BD%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%BE%D0%BB%D0%BE%D1%81%D0%BA%D0%B8/%D0%B8%D0%BD%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D1%80%20%D0%BF%D0%BE%D0%BB%D0%BE%D1%81%D0%BA%D0%B8%20%D1%8D%D0%BA%D1%81%D1%82%D1%80%D0%B0%20%D0%BC%20%D0%BF%D1%80%D0%BE%D1%84%D0%B8%2050%20%D1%88%D1%82-430x430.jpg",
+      "price": 525
+    },
+    {
+      "id": 13,
+      "packID": 1,
+      "productID": 9,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-4/nika-4-430x430.png",
+      "price": 223
+    },
+    {
+      "id": 14,
+      "packID": 2,
+      "productID": 9,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-4/nika-4_5l-430x430.png",
+      "price": 1003
+    },
+    {
+      "id": 15,
+      "packID": 1,
+      "productID": 10,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BA%D1%81/%D0%9A%D0%A1_1,5%D0%BA%D0%B3%20(1)-min-430x430.png",
+      "price": 807
+    },
+    {
+      "id": 16,
+      "packID": 2,
+      "productID": 10,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BA%D1%81/%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BA%D1%81%207-430x430.jpg",
+      "price": 3716
+    },
+    {
+      "id": 17,
+      "packID": 2,
+      "productID": 11,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-2%20%D1%85%D0%BB%D0%BE%D1%80/%D0%BD%D0%B8%D0%BA%D0%B0-2%20%D1%85%D0%BB%D0%BE%D1%80%20%D0%BF%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5%205%20%D0%BB-430x430.jpg",
+      "price": 1023
+    },
+    {
+      "id": 18,
+      "packID": 1,
+      "productID": 12,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BA%D1%81/%D0%9A%D0%A1%D0%94%201%D0%BA%D0%B3%20(1)-430x430.jpg",
+      "price": 424
+    },
+    {
+      "id": 19,
+      "packID": 2,
+      "productID": 12,
+      "img": "https://nt.nikaural.ru/image/cache/catalog/%D0%94%D0%B5%D0%B7%D0%B8%D0%BD%D1%84%D0%B8%D1%86%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B8%D0%B5%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0/%D0%BD%D0%B8%D0%BA%D0%B0-%D0%BA%D1%81/%D0%9A%D0%A1%D0%94%206%20%D0%BA%D0%B3%20(1)-430x430.jpg",
+      "price": 2230
+    }
+  ],
   "orders": [],
-  "blog": [
+  "articles": [
     {
       "id": 1,
       "title": "Стали известны все пары первого раунда плей-офф НХЛ",

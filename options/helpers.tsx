@@ -1,11 +1,12 @@
 import { attrType, featPackType, NavItemType, packType, SortItemType } from "./types"
 
 export const serverURL = 'http://localhost:5000'
+export const newServer = 'https://next13.toomanof.ru'
 export const url_cats = `${serverURL}/categories`
 export const url_products = `${serverURL}/products`
 export const url_features = `${serverURL}/features`
 export const url_packages = `${serverURL}/packages`
-export const url_blog = `${serverURL}/blog`
+export const url_blog = `${newServer}/api/v1/blog/articles/`
 export const url_orders = `${serverURL}/orders`
 
 // CATEGORY PAGE
@@ -82,14 +83,15 @@ export async function getPackages(arr: packType[]) {
 
 // get blog
 export async function getBlogs(limit: number, uri: string) {
-  const isLimit = uri.includes('_limit')
-  const uri_limit = isLimit ? '' : `&_limit=${limit}`
-  const response = await fetch(`${url_blog}?_sort=date&_order=desc${uri}${uri_limit}`, {
+  // const isLimit = uri.includes('limit')
+  // const uri_limit = isLimit ? '' : `&limit=${limit}`
+  const response = await fetch(`${url_blog}`, {
     cache: 'no-cache'
   })
-  const total = response.headers.get('X-Total-Count')
-  const data = await response.json()
-  return { data, total }
+  // const total = response.headers.get('X-Total-Count')
+  // const data = await response.json()
+  console.log(response)
+  //return response
 }
 
 // get blog page
