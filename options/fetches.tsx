@@ -11,24 +11,10 @@ export const url_blog = `${serverURL}/api/v1/blog/articles/`
 // GET REQUESTS
 
 // get category
-export async function getCat(slug: string) {
-  const response = await fetch(`${url_cats}?slug=${slug}`, { cache: 'no-cache' })
+export async function getCat(id: number) {
+  const response = await fetch(`${url_cats}${id}`, { cache: 'no-cache' })
   const data = await response.json()
-  return data[0]
-}
-
-// get parent category
-export async function getParentCat(id: number) {
-  const response = await fetch(`${url_cats}?id=${id}`, { cache: 'no-cache' })
-  const data = await response.json()
-  return data[0]
-}
-
-// get sub categories
-export async function getSubcats(id: number) {
-  const response = await fetch(`${url_cats}?parentID=${id}`, { cache: 'no-cache' })
-  const data = await response.json()
-  return data
+  console.log(data)
 }
 
 // getProducts of category
@@ -61,7 +47,7 @@ export async function getBlogs(limit: number, uri: string) {
   const isLimit = uri.includes('limit')
   const uri_limit = isLimit ? `&${uri}` : `&limit=${limit}`
   
-  const response = await fetch(`${url_blog}/?ordering=-id${uri_limit}`, {
+  const response = await fetch(`${url_blog}?ordering=-id${uri_limit}`, {
     cache: 'no-cache'
   })
   const data: ResponseType = await response.json()

@@ -2,20 +2,18 @@ import { CatType } from "@/options/types"
 import Link from "next/link"
 
 interface ICatPopupItem {
-  name: string
-  slug: string
-  img: string
+  el: CatType
   subcats: CatType[]
   setShow: any
 }
 
-const CatPopupItem: React.FC<ICatPopupItem> = ({ img, name, slug, setShow, subcats }) => {
+const CatPopupItem: React.FC<ICatPopupItem> = ({ el, subcats, setShow }) => {
   return (
     <div className="col-12 col-md-6 col-lg-4 catpopup-item">
       <div className="catpopup-title">
-        <Link href={`cat/${slug}`} onClick={() => setShow(false)}>
-          {img && <span className="catpopup-img"><img src={img} alt="" /></span>}
-          <span>{name}</span>
+        <Link href={`cat/${el.slug}`} onClick={() => setShow(false)}>
+          {el.img && <span className="catpopup-img"><img src={el.img} alt="" /></span>}
+          <span>{el.name}</span>
         </Link>
       </div>
       <ul>

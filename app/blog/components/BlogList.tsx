@@ -24,7 +24,7 @@ const BlogList: React.FC<IBlogList> = ({ list, limit }) => {
   const defaultLimit = isLimit ? `&${searchURI}` : `&limit=${limit}`
 
   useEffect(() => {
-    fetch(`${url_blog}/?ordering=-id${defaultLimit}`)
+    fetch(`${url_blog}?ordering=-id${defaultLimit}`)
       .then(response => response.json())
       .then(data => {
         setPosts(data.results)

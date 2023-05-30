@@ -1,3 +1,5 @@
+@import "~bootstrap/scss/bootstrap";
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 
 :root {
@@ -25,7 +27,6 @@ body {
   font-family: var(--font);
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   font-size: 14px;
   line-height: 20px;
 }
@@ -67,16 +68,17 @@ h3 {font-size: 20px; line-height: 24px;}
     }
   }
   &-outline-success {
-    border-color: var(--color-green);
-    color: var(--color-green);
+    border-color: var(--color-green) !important;
+    color: var(--color-green) !important;
     &:hover, &:active {
       background: var(--color-green-hover) !important;
       border-color: var(--color-green-hover) !important;
+      color: #fff !important;
     }
     &.active {
       background-color: var(--color-lightgreen) !important;
       border-color: transparent !important;
-      color: var(--color-text);
+      color: var(--color-text) !important;
     }
   }
   &-sm {

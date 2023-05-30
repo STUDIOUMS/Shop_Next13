@@ -10,16 +10,17 @@ import { getCat, getProducts } from "@/options/fetches"
 
 
 async function SubCat({ params, searchParams }: { params: { subcat: string }, searchParams: any }) {
-  const cat: CatType = await getCat(params.subcat)
-  const limitProducts = 8
+  console.log(params)
+  // const cat: CatType = await getCat(params.subcat)
+  // const limitProducts = 8
 
   // is Category main
-  const isMainCat = cat.parent === 0
+  //const isMainCat = cat.parent === 0
   
   // Get products
-  const uri = Object.entries(searchParams)
-  let newUri = uri.map(el => '&' + el.join('=')).join('')
-  const { data, total } = await getProducts(cat.id, newUri, limitProducts)
+  // const uri = Object.entries(searchParams)
+  // let newUri = uri.map(el => '&' + el.join('=')).join('')
+  // const { data, total } = await getProducts(cat.id, newUri, limitProducts)
 
   // // Get subcats
   // let subcats: CatType[] | null = null
@@ -52,26 +53,26 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
     <div>
       {/* <BreadCrumbs list={crumbs} /> */}
 
-      <h1>{cat.name}</h1>
+      {/* <h1>{cat.name}</h1> */}
       
       <div className="row">
         <div className="col-12 col-lg-3">
-          <Filter />
+          {/* <Filter /> */}
         </div>
         <div className="col-12 col-lg-9">
           {/* {isMainCat && <SubCats list={subcats!} />} */}
 
           <Sort list={SortItems} />
 
-          <GoodList list={data!} catID={cat.id} limit={limitProducts} />
+          {/* <GoodList list={data!} catID={cat.id} limit={limitProducts} /> */}
 
-          <Loadmore pages={limitProducts} all={total!} />
+          {/* <Loadmore pages={limitProducts} all={total!} /> */}
         </div>
       </div>
       
       <div className="mt-3 pb-3">
         <h3>Seo description</h3>
-        <div dangerouslySetInnerHTML={{__html: cat.description}}></div>
+        {/* <div dangerouslySetInnerHTML={{__html: cat.description}}></div> */}
       </div>
     </div>
   )
