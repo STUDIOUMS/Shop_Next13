@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from "react"
+import { useCallback } from "react"
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/app/store/store"
@@ -8,7 +8,7 @@ import { setLoadPager } from "@/app/store/appSlice"
 
 interface ILoadmore {
   pages: number
-  all: string
+  all: number
 }
 
 const Loadmore: React.FC<ILoadmore> = ({ all, pages }) => {
@@ -22,9 +22,9 @@ const Loadmore: React.FC<ILoadmore> = ({ all, pages }) => {
   // setLoadmore
   const setLoadmore = useCallback(() => {
     const params = new URLSearchParams(searchParams)
-    const limitExists = params.get('_limit')
+    const limitExists = params.get('limit')
     const limit = limitExists ? Number(limitExists) + pages : pages * 2
-    params.set('_limit', limit.toString())
+    params.set('limit', limit.toString())
     return params.toString()
   }, [searchParams])
 
@@ -37,7 +37,7 @@ const Loadmore: React.FC<ILoadmore> = ({ all, pages }) => {
 
 
   // hide if there's no need
-  const urlLimit = searchParams.get('_limit') ? Number(searchParams.get('_limit')) : pages
+  const urlLimit = searchParams.get('limit') ? Number(searchParams.get('limit')) : pages
 
   if ( urlLimit! >= Number(all) ) {
     return null

@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { GoodType } from "@/options/types"
-import { url_products } from '../../../../options/helpers'
 import Card from "./Card"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/app/store/store"
 import { setLoadSort, setLoadFilter, setLoadPager } from "@/app/store/appSlice"
+import { url_products } from "@/options/fetches"
 
 interface IGoodList {
   list: GoodType[]

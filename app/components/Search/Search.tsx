@@ -1,6 +1,7 @@
 'use client'
 
-import { debounce, url_products } from "@/options/helpers"
+import { url_products } from "@/options/fetches"
+import { debounce } from "@/options/helpers"
 import { GoodType } from "@/options/types"
 import { useRef, useState } from "react"
 import styles from "./Search.module.scss"

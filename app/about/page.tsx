@@ -1,8 +1,15 @@
+import { BreadCrumbsType } from "@/options/types"
 import { NextPage } from "next"
+import BreadCrumbs from "../components/BreadCrumbs"
+
+const crumbs: BreadCrumbsType[] = [
+  { name: "О компании", slug: "about" }
+]
 
 const About: NextPage = () => {
   return (
     <div>
+      <BreadCrumbs list={crumbs} />
       <h1>О компании</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa culpa natus alias impedit itaque unde fugit vel quasi, totam veritatis voluptates reiciendis incidunt, soluta eveniet commodi minus cupiditate dolore aliquam, nulla officiis officia corporis. Doloribus dolorum necessitatibus officia, natus numquam dignissimos. Nobis ducimus nulla minus enim, accusamus, necessitatibus accusantium tenetur.</p>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque temporibus esse voluptatum ea quibusdam beatae aspernatur recusandae minus, quam earum.</p>

@@ -1,38 +1,17 @@
+export type ResponseType = {
+  count: number
+  next: string
+  previous: string
+  results: any
+}
+
 export type CatType = {
   id: number
   name: string
   description: string
   slug: string
   img: string
-  parentID: number
-}
-
-export type attrType = {
-  featuresID: number
-  value: string
-}
-
-export type packType = {
-  packID: number
-  img: string
-  price: number
-  oldPrice?: number
-}
-
-export type GoodType = {
-  id: number
-  title: string
-  category: number[]
-  description: string
-  slug: string
-  stock: boolean
-  art: string
-  hit?: boolean
-  sale?: string
-  new?: string
-  createdAt: number
-  attrs: attrType[]
-  pack: packType[]
+  parent: number
 }
 
 export type BasketType = {
@@ -63,19 +42,9 @@ export type OrderType = {
   list: BasketType[]
 }
 
-export type dataType = {
-  list: GoodType[]
-  total: string
-}
-
 export type BreadCrumbsType = {
   name: string
   slug: string
-}
-
-export type ProductsDataType = {
-  data: GoodType[]
-  total: number
 }
 
 export type SortItemType = {
@@ -89,17 +58,12 @@ export type NavItemType = {
   path: string
 }
 
-export type featPackType = {
-  id: number
-  name: string
-  value?: string
-}
-
 export type blogType = {
   id: number
   slug: string
   title: string
   short?: string
   description: string
-  date: number
+  createdAt: string
+  updatedAt: string
 }

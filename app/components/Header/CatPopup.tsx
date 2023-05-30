@@ -1,6 +1,5 @@
-import { url_cats } from "@/options/helpers"
+import { url_cats } from "@/options/fetches"
 import { CatType } from "@/options/types"
-import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import CatPopupItem from "./CatPopupItem"
 
@@ -11,7 +10,7 @@ const CatPopup = () => {
   useEffect(() => {
     fetch(`${url_cats}`)
       .then(response => response.json())
-      .then(data => setCats(data))
+      .then(data => setCats(data.results))
   }, [])
 
   const btnClass = show ? "btn btn-outline-success catpopup-btn active" : "btn btn-outline-success catpopup-btn"
@@ -24,8 +23,8 @@ const CatPopup = () => {
       <div className="catpopup-dropdown">
       <div className="catpopup-header">Каталог</div>
         <div className="row">
-          {cats.filter(el => el.parentID === 0).map(el => {
-            const subcats = cats.filter(subcat => subcat.parentID === el.id)
+          {cats.filter(el => el.parent === null).map(el => {
+            const subcats = cats.filter(subcat => subcat.parent === el.id)
             return <CatPopupItem key={el.id} slug={el.slug} name={el.name} img={el.img} subcats={subcats} setShow={setShow} />
           })}
         </div>

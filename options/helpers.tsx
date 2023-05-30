@@ -1,109 +1,4 @@
-import { attrType, featPackType, NavItemType, packType, SortItemType } from "./types"
-
-export const serverURL = 'http://localhost:5000'
-export const newServer = 'https://next13.toomanof.ru'
-export const url_cats = `${serverURL}/categories`
-export const url_products = `${serverURL}/products`
-export const url_features = `${serverURL}/features`
-export const url_packages = `${serverURL}/packages`
-export const url_blog = `${newServer}/api/v1/blog/articles/`
-export const url_orders = `${serverURL}/orders`
-
-// CATEGORY PAGE
-// get category
-export async function getCat(slug: string) {
-  const response = await fetch(`${url_cats}?slug=${slug}`, { cache: 'no-cache' })
-  const data = await response.json()
-  return data[0]
-}
-
-// get parent category
-export async function getParentCat(id: number) {
-  const response = await fetch(`${url_cats}?id=${id}`, { cache: 'no-cache' })
-  const data = await response.json()
-  return data[0]
-}
-
-// get sub categories
-export async function getSubcats(id: number) {
-  const response = await fetch(`${url_cats}?parentID=${id}`, { cache: 'no-cache' })
-  const data = await response.json()
-  return data
-}
-
-// getProducts of category
-export async function getProducts(id: number, uri: string, limit: number) {
-  const isLimit = uri.includes('_limit')
-  const isSort = uri.includes('_sort')
-  const uriLimit = isLimit ? '' : `&_limit=${limit}`
-  const uriSort = isSort ? '' : '&_sort=createdAt&_order=desc'
-  const params = `${uriLimit}${uriSort}${uri}`
-
-  const response = await fetch(`${url_products}?category_like=${id}${params}`, {
-    cache: 'no-cache'
-  })
-  const total = await response.headers.get('X-Total-Count')
-  const data = await response.json()
-  return { data, total }
-}
-
-
-// PRODUCT PAGE
-// get product
-export async function getProduct(slug: string) {
-  const response = await fetch(`${url_products}?slug=${slug}`, { cache: 'no-cache' })
-  const data = await response.json()
-  return data[0]
-}
-
-// get category for product
-export async function getCatForProduct(cats: number[]) {
-  const uri = cats.map(el => `id=${el}`).join('&')
-  const response = await fetch(`${url_cats}?${uri}`, { cache: 'no-cache' })
-  const data = await response.json()
-  return data
-}
-
-// get keys of attributes of product
-export async function getAttributes(arr: number[]) {
-  const uri = arr.map(el => `id=${el}`).join('&')
-  const response = await fetch(`${url_features}?${uri}`)
-  const data = await response.json()
-  return data
-}
-
-// get packages of product
-export async function getPackages(arr: packType[]) {
-  const uri = arr.map(el => `id=${el.packID}`).join('&')
-  const response = await fetch(`${url_packages}?${uri}`)
-  const data = await response.json()
-  return data
-}
-
-
-// get blog
-export async function getBlogs(limit: number, uri: string) {
-  // const isLimit = uri.includes('limit')
-  // const uri_limit = isLimit ? '' : `&limit=${limit}`
-  const response = await fetch(`${url_blog}`, {
-    cache: 'no-cache'
-  })
-  // const total = response.headers.get('X-Total-Count')
-  // const data = await response.json()
-  console.log(response)
-  //return response
-}
-
-// get blog page
-export async function getBlogPage(slug: string) {
-  const response = await fetch(`${url_blog}?slug=${slug}`, {
-    cache: 'no-cache'
-  })
-  const data = await response.json()
-  return data[0]
-}
-
-
+import { attrType, featPackType, NavItemType, SortItemType } from "./types"
 
 // Debounce
 export function debounce(cb: any, delay: number) {
@@ -116,7 +11,6 @@ export function debounce(cb: any, delay: number) {
   }
 }
 
-
 // create Attributes
 export function createAttributes(keys: featPackType[], feats: attrType[]): featPackType[] {
   const output = keys.map(el => {
@@ -128,9 +22,10 @@ export function createAttributes(keys: featPackType[], feats: attrType[]): featP
 }
 
 // createDate
-export function createDate(num: number, time?: boolean) {
+export function createDate(dateString: string, time?: boolean) {
   const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октбярь', 'Ноябрь', 'Декабрь']
-  const date = new Date(num)
+
+  const date = new Date(dateString)
   const day = date.getDay()
   const month = months[date.getMonth()]
   const year = date.getFullYear()
@@ -139,7 +34,6 @@ export function createDate(num: number, time?: boolean) {
   const timeString = `, ${hours}:${mins}`
   return `${day} ${month} ${year}${time ? timeString : ''}`
 }
-
 
 // SortItems
 export const SortItems: SortItemType[] = [
@@ -154,6 +48,6 @@ export const navItems: NavItemType[] = [
   { id: 1, title: "Главная", path: "/" },
   { id: 2, title: "Блог", path: "/blog" },
   { id: 3, title: "О компании", path: "/about" },
-  { id: 4, title: "Доставка и оплата", path: "/about" },
+  { id: 4, title: "Доставка и оплата", path: "/delivery" },
   { id: 5, title: "Контакты", path: "/contacts" },
 ]

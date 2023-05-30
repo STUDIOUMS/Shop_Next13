@@ -1,4 +1,4 @@
-import { getBlogs } from "@/options/helpers"
+import { getBlogs } from "@/options/fetches"
 import { BreadCrumbsType } from "@/options/types"
 import BreadCrumbs from "../components/BreadCrumbs"
 import Loadmore from "../components/Loadmore"
@@ -11,18 +11,15 @@ let crumbs: BreadCrumbsType[] = [
 export default async function Blog({ searchParams }: { searchParams: any }) {
   const limitPosts = 3
   const uri = Object.entries(searchParams)
-  let newUri = uri.map(el => '&' + el.join('=')).join('')
+  let newUri = uri.map(el => el.join('=')).join('')
   const data = await getBlogs(limitPosts, newUri)
-
-  console.log(data)
   
-
   return (
     <div>
       <BreadCrumbs list={crumbs} />
       <h1>Блог</h1>
-      <BlogList list={[]} limit={limitPosts} />
-      {/* <Loadmore pages={limitPosts} all={total!} /> */}
+      <BlogList list={data.results} limit={limitPosts} />
+      <Loadmore pages={limitPosts} all={data.count} />
     </div>
   )
 }

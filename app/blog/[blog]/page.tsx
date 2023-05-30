@@ -1,11 +1,12 @@
 import BreadCrumbs from "@/app/components/BreadCrumbs"
-import { createDate, getBlogPage } from "@/options/helpers"
+import { getBlogPage } from "@/options/fetches"
+import { createDate } from "@/options/helpers"
 import { blogType, BreadCrumbsType } from "@/options/types"
 import styles from "./../components/Blog.module.scss"
 
-export default async function BlogPage({ params }: { params: { blog: string } }) {
+export default async function BlogPage({ params }: { params: { blog: number } }) {
   const post: blogType = await getBlogPage(params.blog)
-  const date: string = createDate(post.date)
+  const date: string = createDate(post.createdAt)
 
   let crumbs: BreadCrumbsType[] = [
     { name: "Блог", slug: "/blog" },
@@ -17,7 +18,7 @@ export default async function BlogPage({ params }: { params: { blog: string } })
       <BreadCrumbs list={crumbs} />
       <h1>{post.title}</h1>
       <div className={styles.blogDate}>{date}</div>
-      <div dangerouslySetInnerHTML={{__html: post.description}}></div>
+      <div dangerouslySetInnerHTML={{__html: post.description!}}></div>
     </div>
   )
 }

@@ -8,11 +8,11 @@ interface IBlogItem {
 }
 
 const BlogItem: React.FC<IBlogItem> = ({ post }) => {
-  const date = createDate(post.date)
+  const date = createDate(post.createdAt)
 
   return (
     <div className={styles.blogItem}>
-      <h2><Link href={`/blog/${post.slug}`}>{post.title}</Link></h2>
+      <h2><Link href={`/blog/${post.id}`}>{post.title}</Link></h2>
       <div className={styles.blogDate}>{date}</div>
       <div className={styles.blogShort}>{post.short}</div>
     </div>

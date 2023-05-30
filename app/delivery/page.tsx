@@ -1,18 +1,15 @@
-import { NextPage } from "next"
 import { BreadCrumbsType } from "@/options/types"
 import BreadCrumbs from "../components/BreadCrumbs"
 
 const crumbs: BreadCrumbsType[] = [
-  { name: "Контакты", slug: "contacts" }
+  { name: "Доставка и оплата", slug: "delivery" }
 ]
 
-const Contacts: NextPage = () => {
+export default function Delivery() {
   return (
     <div>
       <BreadCrumbs list={crumbs} />
-      <h1>Контакты</h1>
+      <h1>Доставка и оплата</h1>
     </div>
   )
 }
-
-export default Contacts
