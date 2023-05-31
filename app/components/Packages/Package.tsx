@@ -6,13 +6,19 @@ interface IPackage {
   title: string
   value: number
   name: number
-  handler: (id: number, name: string) => void
+  handler: (id: number) => void
 }
 
 const Package: React.FC<IPackage> = ({ index, name, title, value, handler }) => {
   return (
     <label className={styles.package}>
-      <input type="radio" name={`pack=${name}`} value={value} defaultChecked={index === 0} onChange={() => handler(value, title)} />
+      <input
+        type="radio"
+        name={`pack-${name}`}
+        value={title}
+        onChange={() => handler(value)}
+        defaultChecked={index === 0}
+      />
       <span>{title}</span>
     </label>
   )

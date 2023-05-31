@@ -16,11 +16,11 @@
     small {font-size: 14px;}
   }
   &OldPrice {
-    font-size: 16px;
+    font-size: 14px;
     color: red;
     text-decoration: line-through;
     display: inline;
-    margin-left: 16px;
+    margin-left: 12px;
   }
   &Top {flex: 1; display: flex; flex-direction: column;}
   &Image {

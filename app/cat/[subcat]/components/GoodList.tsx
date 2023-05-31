@@ -2,21 +2,21 @@
 
 import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
-import { GoodType } from "@/options/types"
 import Card from "./Card"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/app/store/store"
 import { setLoadSort, setLoadFilter, setLoadPager } from "@/app/store/appSlice"
 import { url_products } from "@/options/fetches"
+import { ProductType } from "@/options/types"
 
 interface IGoodList {
-  list: GoodType[]
+  list: ProductType[]
   catID: number
   limit: number
 }
 
 const GoodList: React.FC<IGoodList> = ({ catID, limit, list }) => {
-  const [products, setProducts] = useState<GoodType[]>(list)
+  const [products, setProducts] = useState<ProductType[]>(list)
   const load = useSelector((state: RootState) => state.app.loadSort)
   const load2 = useSelector((state: RootState) => state.app.loadFilter)
   const load3 = useSelector((state: RootState) => state.app.loadPager)
@@ -25,16 +25,16 @@ const GoodList: React.FC<IGoodList> = ({ catID, limit, list }) => {
 
   // Search params
   const searchURI = searchParams.toString()
-  const isLimit = searchURI.includes('_limit=')
-  const isSort = searchURI.includes('_sort=')
-  const defaultLimit = !isLimit ? `&_limit=${limit}` : ''
-  const defaultSort = !isSort ? `&_sort=createdAt&_order=desc` : ''
-  
+  // const isLimit = searchURI.includes('_limit=')
+  // const isSort = searchURI.includes('_sort=')
+  // const defaultLimit = !isLimit ? `&_limit=${limit}` : ''
+  // const defaultSort = !isSort ? `&_sort=createdAt&_order=desc` : ''
+
   useEffect(() => {
-    fetch(`${url_products}?category_like=${catID}${defaultLimit}${defaultSort}&${searchURI}`)
+    fetch(`${url_products}?category=${catID}&ordering=-id`)
       .then(response => response.json())
       .then(data => {
-        setProducts(data)
+        setProducts(data.results)
         dispatch(setLoadFilter(false))
         dispatch(setLoadSort(false))
         dispatch(setLoadPager(false))
@@ -47,6 +47,7 @@ const GoodList: React.FC<IGoodList> = ({ catID, limit, list }) => {
         {products.map(el => <Card key={el.id} el={el} />)}
       </div>
       {products.length === 0 && <p>This category is empty</p>}
+      <pre>{JSON.stringify(list, null, 2)}</pre>
     </div>
   )
 }

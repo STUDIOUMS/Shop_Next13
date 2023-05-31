@@ -3,7 +3,7 @@ import { ResponseType } from "./types"
 // Variables
 export const serverURL = 'https://qwertynext.com'
 export const url_cats = `${serverURL}/api/v1/catalog/categories/`
-export const url_products = `${serverURL}/products`
+export const url_products = `${serverURL}/api/v1/catalog/products/?&ordering=-id`
 export const url_features = `${serverURL}/features`
 export const url_packages = `${serverURL}/api/v1/catalog/packs/`
 export const url_blog = `${serverURL}/api/v1/blog/articles/`
@@ -11,26 +11,25 @@ export const url_blog = `${serverURL}/api/v1/blog/articles/`
 // GET REQUESTS
 
 // get category
-export async function getCat(id: number) {
-  const response = await fetch(`${url_cats}${id}`, { cache: 'no-cache' })
+export async function getCat(slug: string) {
+  const response = await fetch(`${url_cats}${slug}`, { cache: 'no-cache' })
   const data = await response.json()
-  console.log(data)
+  return data
 }
 
 // getProducts of category
 export async function getProducts(id: number, uri: string, limit: number) {
-  const isLimit = uri.includes('_limit')
-  const isSort = uri.includes('_sort')
-  const uriLimit = isLimit ? '' : `&_limit=${limit}`
-  const uriSort = isSort ? '' : '&_sort=createdAt&_order=desc'
-  const params = `${uriLimit}${uriSort}${uri}`
+  // const isLimit = uri.includes('_limit')
+  // const isSort = uri.includes('_sort')
+  // const uriLimit = isLimit ? '' : `&_limit=${limit}`
+  // const uriSort = isSort ? '' : '&_sort=createdAt&_order=desc'
+  // const params = `${uriLimit}${uriSort}${uri}`
 
-  const response = await fetch(`${url_products}?category_like=${id}${params}`, {
+  const response = await fetch(`${url_products}&categories=${id}`, {
     cache: 'no-cache'
   })
-  const total = await response.headers.get('X-Total-Count')
-  const data = await response.json()
-  return { data, total }
+  const data: ResponseType = await response.json()
+  return { count: data.count, products: data.results }
 }
 
 
@@ -54,8 +53,8 @@ export async function getBlogs(limit: number, uri: string) {
   return data
 }
 
-export async function getBlogPage(id: number) {
-  const response = await fetch(`${url_blog}${id}`, {
+export async function getBlogPage(slug: number) {
+  const response = await fetch(`${url_blog}${slug}`, {
     cache: 'no-cache'
   })
   const data = await response.json()

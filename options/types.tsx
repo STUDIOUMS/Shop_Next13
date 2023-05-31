@@ -7,11 +7,54 @@ export type ResponseType = {
 
 export type CatType = {
   id: number
+  slug: string
   name: string
   description: string
-  slug: string
   img: string
   parent: number
+}
+
+export type RelatedAttrsType = {
+  id: number
+  attribute: {
+    id: number
+    name: string
+  }
+  value: string
+  product: 0
+}
+
+export type RelatedPacksType = {
+  id: number
+  pack: {
+    id: number
+    name: string
+  }
+  img: string
+  price: string
+  oldPrice: string
+  product: number
+}
+
+export type ProductCatType = {
+  pk: number
+  name: string
+  slug: string
+}
+
+export type ProductType = {
+  id: number
+  relatedAttrs: RelatedAttrsType[]
+  relatedPacks: RelatedPacksType[]
+  categories: ProductCatType[]
+  slug: string
+  title: string
+  description: string
+  art: string
+  new: boolean
+  hit: boolean
+  sale: boolean
+  createdAt: Date
 }
 
 export type BasketType = {
@@ -24,22 +67,6 @@ export type BasketType = {
   count?: number
   total: number
   pack: string
-}
-
-export type OrderType = {
-  id: number
-  orderID: string
-  name: string
-  email: string
-  phone: string
-  city: string
-  street: string
-  address: string
-  addition: string | undefined
-  delivery: string
-  payment: string
-  status: 'waiting' | 'processed' | 'delivered' | 'finished' | 'canceled'
-  list: BasketType[]
 }
 
 export type BreadCrumbsType = {

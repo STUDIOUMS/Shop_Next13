@@ -3,13 +3,13 @@ import Packages from "@/app/components/Packages/Packages"
 import { usePriceImg } from "@/app/components/price.hook"
 import { RootState } from "@/app/store/store"
 import { set_currency } from "@/options/settings"
-import { GoodType } from "@/options/types"
+import { ProductType } from "@/options/types"
 import Link from "next/link"
 import { useSelector } from "react-redux"
 import styles from './Card.module.scss'
 
 interface ICard {
-  el: GoodType
+  el: ProductType
 }
 
 const Card: React.FC<ICard> = ({ el }) => {
@@ -18,15 +18,16 @@ const Card: React.FC<ICard> = ({ el }) => {
   const classList = `col-12 ${styles.goodList}`
   const parentClass = (view === 'list') ? classList : classGrid
 
-  const packs = el.pack
-  const { choosePack, img, price, oldprice, currentPack, packNames, load } = usePriceImg({packs})
+  const { choosePack, img, price, oldprice } = usePriceImg(el.relatedPacks)
 
   return (
     <div className={parentClass}>
       <div className={styles.good}>
         <div className={styles.goodTop}>
           <div className={styles.goodImage}>
-            <Link href={`/product/${el.slug}`}><img src={img} alt="" /></Link>
+            <Link href={`/product/${el.slug}`}>
+              <img src={img} alt="" />
+            </Link>
           </div>
           <div className={styles.goodDetails}>
             <div className={styles.goodTitle}>
@@ -44,11 +45,11 @@ const Card: React.FC<ICard> = ({ el }) => {
                 {oldprice} <small>{set_currency}</small>
               </div>}
             </div>
-            <Packages handler={choosePack} goodID={el.id} packs={packNames} load={load} />
+            <Packages goodID={el.id} handler={choosePack} packs={el.relatedPacks} />
           </div>
         </div>
         <div className={styles.goodBottom}>
-          <AddCart el={el} img={img} pack={currentPack} price={price} />
+          {/* <AddCart el={el} img={img} pack={currentPack} price={price} /> */}
         </div>
       </div>
     </div>
