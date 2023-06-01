@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { featPackType } from "@/options/types"
+import { RelatedAttrsType } from "@/options/types"
 import styles from "./ProductTabs.module.scss"
 import ProductTab from "./ProductTab"
 
@@ -9,7 +9,7 @@ type tabsType = 'desc' | 'features' | 'reviews'
 
 interface IProductTabs {
   description: string
-  features: featPackType[]
+  features: RelatedAttrsType[]
 }
 
 const tabs = [
@@ -37,7 +37,7 @@ const ProductTabs: React.FC<IProductTabs> = ({ description, features }) => {
         <ul className={styles.features}>
           {features.map(el => (
             <li key={el.id}>
-              <div className={styles.featuresKey}>{el.name}</div>
+              <div className={styles.featuresKey}>{el.attribute.name}</div>
               <div className={styles.featuresVal}>{el.value}</div>
             </li>
           ))}

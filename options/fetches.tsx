@@ -19,13 +19,14 @@ export async function getCat(slug: string) {
 
 // getProducts of category
 export async function getProducts(id: number, uri: string, limit: number) {
-  // const isLimit = uri.includes('_limit')
-  // const isSort = uri.includes('_sort')
-  // const uriLimit = isLimit ? '' : `&_limit=${limit}`
-  // const uriSort = isSort ? '' : '&_sort=createdAt&_order=desc'
-  // const params = `${uriLimit}${uriSort}${uri}`
+  const isLimit = uri.includes('limit')
+  const uriLimit = isLimit ? '' : `&limit=${limit}`
+  const params = `${uriLimit}${uri}`
 
-  const response = await fetch(`${url_products}?&ordering=-id&categories=${id}`, {
+  console.log(`${url_products}?categories=${id}${params}&ordering=-id`)
+  
+
+  const response = await fetch(`${url_products}?categories=${id}${params}&ordering=-id`, {
     cache: 'no-cache'
   })
   const data: ResponseType = await response.json()
@@ -35,9 +36,9 @@ export async function getProducts(id: number, uri: string, limit: number) {
 
 // PRODUCT PAGE
 export async function getProduct(slug: string) {
-  const response = await fetch(`${url_products}?slug=${slug}`, { cache: 'no-cache' })
+  const response = await fetch(`${url_products}${slug}`, { cache: 'no-cache' })
   const data = await response.json()
-  return data[0]
+  return data
 }
 
 

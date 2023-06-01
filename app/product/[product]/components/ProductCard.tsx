@@ -4,16 +4,16 @@ import AddCart from "@/app/components/AddCart"
 import Packages from "@/app/components/Packages/Packages"
 import { usePriceImg } from "@/app/components/price.hook"
 import { set_currency } from "@/options/settings"
-import { GoodType } from "@/options/types"
-import styles from './Card.module.scss'
+import { ProductType } from "@/options/types"
+import styles from './ProductCard.module.scss'
 
 interface IProductCard {
-  good: GoodType
+  good: ProductType
 }
 
 const ProductCard: React.FC<IProductCard> = ({ good }) => {
-  const packs = good.pack
-  const { choosePack, img, price, oldprice, currentPack, packNames, load } = usePriceImg({packs})
+  const packs = good.relatedPacks
+  const { choosePack, img, price, oldprice } = usePriceImg(packs)
 
   return (
     <div className={styles.card}>
@@ -32,10 +32,10 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
             {oldprice && <div className={styles.cardOldPrice}>{oldprice} <small>{set_currency}</small></div>}
           </div>
 
-          <Packages handler={choosePack} goodID={good.id} packs={packNames} load={load} />
+          <Packages handler={choosePack} goodID={good.id} packs={packs} />
 
           <div className={styles.cardItem}>
-            <AddCart big={true} el={good} pack={currentPack} price={price} img={img} />
+            {/* <AddCart big={true} el={good} pack={currentPack} price={price} img={img} /> */}
           </div>
 
           <p>Какой-то текст или информация о доставке</p>

@@ -9,7 +9,7 @@ import SubCats from "./components/SubCats"
 import { getCat, getProducts } from "@/options/fetches"
 
 // number of visible products
-const limitProducts = 8
+const limitProducts = 4
 
 async function SubCat({ params, searchParams }: { params: { subcat: string }, searchParams: any }) {
   const cat: CatType = await getCat(params.subcat)
