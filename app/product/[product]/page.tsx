@@ -1,5 +1,4 @@
 import BreadCrumbs from "@/app/components/BreadCrumbs"
-import { createAttributes } from "@/options/helpers"
 import { BreadCrumbsType, ProductType } from "@/options/types"
 import ProductTabs from "./components/ProductTabs"
 import ProductCard from "./components/ProductCard"

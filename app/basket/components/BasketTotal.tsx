@@ -7,7 +7,7 @@ interface IBasketTotal {
 }
 
 const BasketTotal: React.FC<IBasketTotal> = ({ orders }) => {
-  const total: number = orders.reduce((acum, el) => acum += el.total, 0)
+  const total: number = orders.reduce((acum, el) => acum += Number(el.total), 0)
   
   return (
     <div className={styles.basketTotal}>

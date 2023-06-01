@@ -1,10 +1,10 @@
 'use client'
 
-import { OrderType } from '@/options/types'
+import { BasketType } from '@/options/types'
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface appState {
-  orders: OrderType[]
+  orders: BasketType[]
   view: 'grid' | 'list'
   loadFilter: boolean
   loadSort: boolean
@@ -53,7 +53,7 @@ export const appSlice = createSlice({
         state.orders.map(el => {
           if (el.id === action.payload.id) {
             el.count! += 1
-            el.total = Number(el.count) * el.price
+            el.total = String(Number(el.count) * Number(el.price))
           }
           return el
         })
@@ -85,7 +85,7 @@ export const appSlice = createSlice({
       const { id, count } = action.payload
       let currentOrder = state.orders.find(el => el.id === id)
       currentOrder!.count = count
-      currentOrder!.total = currentOrder!.price * Number(count)
+      currentOrder!.total = String(Number(currentOrder!.price) * Number(count))
       localStorage.removeItem('orders')
       localStorage.setItem('orders', JSON.stringify(state.orders))
     }

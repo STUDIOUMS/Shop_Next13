@@ -1,21 +1,21 @@
 import { setOrder } from "@/app/store/appSlice"
 import { AppDispatch } from "@/app/store/store"
-import { GoodType, OrderType } from "@/options/types"
+import { BasketType, ProductType } from "@/options/types"
 import { useDispatch } from "react-redux"
 import styles from "../cat/[subcat]/components/Card.module.scss"
 
 interface IAddCart {
   big?: boolean
-  el: GoodType
+  el: ProductType
   pack: string
   img: string
-  price: number
+  price: string
 }
 
 const AddCart: React.FC<IAddCart> = ({ big, el, img, pack, price }) => {
   const dispatch = useDispatch<AppDispatch>()
 
-  const order: OrderType = {
+  const order: BasketType = {
     id: String(el.id) + '-' + pack,
     title: el.title,
     slug: el.slug,

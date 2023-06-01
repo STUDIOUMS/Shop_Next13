@@ -8,7 +8,7 @@ import OrderCartItem from "./OrderCartItem"
 
 const OrderCart: React.FC = () => {
   const orders = useSelector((state: RootState) => state.app.orders)
-  const totalPrice = orders.reduce((prev, el) => el.total + prev, 0)
+  const totalPrice = orders.reduce((prev, el) => Number(el.total) + prev, 0)
 
   return (
     <div className={styles.orderCart}>

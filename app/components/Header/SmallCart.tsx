@@ -6,7 +6,7 @@ import styles from "./SmallCart.module.scss"
 const SmallCart: React.FC = () => {
   const orders = useSelector((state: RootState) => state.app.orders)
   const count = orders.reduce((prev, el) => {
-    return el.count! + prev
+    return Number(el.count) + prev
   }, 0)
 
   return (

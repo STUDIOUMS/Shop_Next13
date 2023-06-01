@@ -1,9 +1,9 @@
 import { set_currency } from "@/options/settings"
-import { OrderType } from "@/options/types"
+import { BasketType, OrderType } from "@/options/types"
 import styles from "./Order.module.scss"
 
 interface IOrderCartItem {
-  el: OrderType
+  el: BasketType
 }
 
 const OrderCartItem: React.FC<IOrderCartItem> = ({ el }) => {

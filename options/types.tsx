@@ -62,18 +62,6 @@ export type ProductType = {
   createdAt: Date
 }
 
-export type BasketType = {
-  id: string
-  title: string
-  price: number
-  slug: string
-  img: string
-  art: string
-  count?: number
-  total: number
-  pack: string
-}
-
 export type BreadCrumbsType = {
   name: string
   slug: string
@@ -98,4 +86,27 @@ export type blogType = {
   description: string
   createdAt: string
   updatedAt: string
+}
+
+export type BasketType = {
+  id: string
+  title: string
+  price: string
+  slug: string
+  img: string
+  art: string
+  count?: number
+  total: string
+  pack: string
+}
+
+export type OrderType = {
+  id: string
+  title: string
+  slug: string
+  art: string
+  price: string
+  total: string
+  img: string
+  pack: string
 }

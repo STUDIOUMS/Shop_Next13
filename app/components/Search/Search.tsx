@@ -2,13 +2,13 @@
 
 import { url_products } from "@/options/fetches"
 import { debounce } from "@/options/helpers"
-import { GoodType } from "@/options/types"
+import { ProductType } from "@/options/types"
 import { useRef, useState } from "react"
 import styles from "./Search.module.scss"
 import SearchItem from "./SearchItem"
 
 const Search: React.FC = () => {
-  const [results, setResults] = useState<GoodType[]>([])
+  const [results, setResults] = useState<ProductType[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
 
   // debounceVal
