@@ -18,7 +18,7 @@ const Card: React.FC<ICard> = ({ el }) => {
   const classList = `col-12 ${styles.goodList}`
   const parentClass = (view === 'list') ? classList : classGrid
 
-  const { choosePack, img, price, oldprice } = usePriceImg(el.relatedPacks)
+  const { choosePack, img, price, oldprice, currentPack } = usePriceImg(el.relatedPacks)
 
   // isSale
   const isSale = el.relatedPacks.some(el => el.oldPrice !== null)
@@ -52,7 +52,7 @@ const Card: React.FC<ICard> = ({ el }) => {
           </div>
         </div>
         <div className={styles.goodBottom}>
-          {/* <AddCart el={el} img={img} pack={currentPack} price={price} /> */}
+          <AddCart el={el} img={img} pack={currentPack} price={price} />
         </div>
       </div>
     </div>

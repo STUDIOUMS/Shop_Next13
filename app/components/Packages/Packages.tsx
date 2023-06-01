@@ -3,7 +3,7 @@ import Package from './Package'
 import styles from './Package.module.scss'
 
 interface IPackages {
-  handler: (id: number) => void
+  handler: (id: number, name: string) => void
   title?: string
   packs: RelatedPacksType[]
   goodID: number

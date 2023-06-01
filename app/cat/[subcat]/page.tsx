@@ -6,7 +6,7 @@ import GoodList from "./components/GoodList"
 import Loadmore from "@/app/components/Loadmore"
 import Sort from "@/app/components/Sort/Sort"
 import SubCats from "./components/SubCats"
-import { getCat, getProducts } from "@/options/fetches"
+import { getCat, getProducts, getSubcats } from "@/options/fetches"
 
 // number of visible products
 const limitProducts = 3
@@ -23,12 +23,7 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
   const { count, products } = await getProducts(cat.id, newUri, limitProducts)
 
   // Get subcats
-  // let subcats: CatType[] | null = null
-  // let subcatsIDs: number[] = []
-  // if (isMainCat) {
-  //   subcats = await getSubcats(cat.id)
-  //   subcatsIDs = subcats!.map(el => el.id)
-  // }
+  const subcats = await getSubcats(cat.id)
 
   // // Subcat parent
   // let parentCat: CatType | null = null
@@ -37,9 +32,9 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
   // }
   
   // Breadcrumbs
-  // const crumbs: BreadCrumbsType[] = [
-  //   { name: cat.name, slug: `/cat/${cat.slug}` },
-  // ]
+  const crumbs: BreadCrumbsType[] = [
+    { name: cat.name, slug: `/cat/${cat.slug}` },
+  ]
   // if (!isMainCat) {
   //   const parentCatItem: BreadCrumbsType = {
   //     name: parentCat!.name,
@@ -51,7 +46,9 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
 
   return (
     <div>
-      {/* <BreadCrumbs list={crumbs} /> */}
+      <BreadCrumbs list={crumbs} />
+
+      <pre>{JSON.stringify(crumbs, null, 2)}</pre>
 
       <h1>{cat.name}</h1>
       
@@ -60,7 +57,7 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
           <Filter />
         </div>
         <div className="col-12 col-lg-9">
-          {isMainCat && <SubCats list={[]} />}
+          {isMainCat && <SubCats list={subcats} />}
 
           <Sort list={SortItems} />
 

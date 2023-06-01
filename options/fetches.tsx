@@ -16,6 +16,13 @@ export async function getCat(slug: string) {
   return data
 }
 
+// get subcategories
+export async function getSubcats(id: number) {
+  const response = await fetch(`${url_cats}/?parent=${id}`, { cache: 'no-cache' })
+  const data: ResponseType = await response.json()
+  return data.results
+}
+
 // getProducts of category
 export async function getProducts(id: number, uri: string, limit: number) {
   const isLimit = uri.includes('limit')

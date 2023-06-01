@@ -13,7 +13,7 @@ interface IProductCard {
 
 const ProductCard: React.FC<IProductCard> = ({ good }) => {
   const packs = good.relatedPacks
-  const { choosePack, img, price, oldprice } = usePriceImg(packs)
+  const { choosePack, img, price, oldprice, currentPack } = usePriceImg(packs)
 
   return (
     <div className={styles.card}>
@@ -35,7 +35,7 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
           <Packages handler={choosePack} goodID={good.id} packs={packs} />
 
           <div className={styles.cardItem}>
-            {/* <AddCart big={true} el={good} pack={currentPack} price={price} img={img} /> */}
+            <AddCart big={true} el={good} pack={currentPack} price={price} img={img} />
           </div>
 
           <p>Какой-то текст или информация о доставке</p>

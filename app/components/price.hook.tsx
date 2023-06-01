@@ -1,11 +1,13 @@
 import { RelatedPacksType } from "@/options/types"
+import { strict } from "assert"
 import { useEffect, useState } from "react"
 
 interface usePriceImgType {
   img: string
   price: string
   oldprice?: string
-  choosePack: (id: number) => void
+  choosePack: (id: number, name: string) => void
+  currentPack: string
 }
 
 export const usePriceImg = (packs: RelatedPacksType[]): usePriceImgType => {
@@ -13,6 +15,7 @@ export const usePriceImg = (packs: RelatedPacksType[]): usePriceImgType => {
   const [price, setPrice] = useState<string>(packs.length ? packs[0].price : '')
   const [oldprice, setOldPrice] = useState<string>(packs.length ? packs[0].oldPrice : '')
   const [currentPackID, setCurrentPackID] = useState<number>(packs.length ? packs[0].id : 0)
+  const [currentPack, setCurrentPack] = useState<string>(packs[0].pack.name)
 
   useEffect(() => {
     const findedPack = packs.find(el => el.id === currentPackID)
@@ -24,11 +27,12 @@ export const usePriceImg = (packs: RelatedPacksType[]): usePriceImgType => {
   }, [currentPackID])
 
   // choosePack
-  const choosePack = (id: number) => {
+  const choosePack = (id: number, name: string) => {
     setCurrentPackID(id)
+    setCurrentPack(name)
   }
 
   return {
-    img, price, oldprice, choosePack
+    img, price, oldprice, choosePack, currentPack
   }
 }

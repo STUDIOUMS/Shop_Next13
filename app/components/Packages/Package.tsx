@@ -6,7 +6,7 @@ interface IPackage {
   title: string
   value: number
   name: number
-  handler: (id: number) => void
+  handler: (id: number, name: string) => void
 }
 
 const Package: React.FC<IPackage> = ({ index, name, title, value, handler }) => {
@@ -16,7 +16,7 @@ const Package: React.FC<IPackage> = ({ index, name, title, value, handler }) => 
         type="radio"
         name={`packname-${name}`}
         value={`pack-${title}`}
-        onChange={() => handler(value)}
+        onChange={() => handler(value, title)}
         defaultChecked={index === 0}
       />
       <span>{title}</span>
