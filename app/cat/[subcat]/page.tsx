@@ -48,8 +48,6 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
     <div>
       <BreadCrumbs list={crumbs} />
 
-      <pre>{JSON.stringify(crumbs, null, 2)}</pre>
-
       <h1>{cat.name}</h1>
       
       <div className="row">
