@@ -14,7 +14,7 @@ interface ICard {
 
 const Card: React.FC<ICard> = ({ el }) => {
   const view = useSelector((state: RootState) => state.app.view)
-  const classGrid = `col-12 col-sm-6 col-md-4 col-xl-3 ${styles.goodGrid}`
+  const classGrid = `col-12 col-sm-6 col-md-4 ${styles.goodGrid}`
   const classList = `col-12 ${styles.goodList}`
   const parentClass = (view === 'list') ? classList : classGrid
 

@@ -24,6 +24,11 @@ export type RelatedAttrsType = {
   product: 0
 }
 
+export type PackType = {
+  id: number
+  name: string
+}
+
 export type RelatedPacksType = {
   id: number
   pack: {

@@ -4,7 +4,6 @@ import { ResponseType } from "./types"
 export const serverURL = 'https://qwertynext.com'
 export const url_cats = `${serverURL}/api/v1/catalog/categories/`
 export const url_products = `${serverURL}/api/v1/catalog/products/`
-export const url_features = `${serverURL}/features`
 export const url_packages = `${serverURL}/api/v1/catalog/packs/`
 export const url_blog = `${serverURL}/api/v1/blog/articles/`
 
@@ -23,9 +22,7 @@ export async function getProducts(id: number, uri: string, limit: number) {
   const uriLimit = isLimit ? '' : `&limit=${limit}`
   const params = `${uriLimit}${uri}`
 
-  console.log(`${url_products}?categories=${id}${params}&ordering=-id`)
-  
-
+  // fetch
   const response = await fetch(`${url_products}?categories=${id}${params}&ordering=-id`, {
     cache: 'no-cache'
   })

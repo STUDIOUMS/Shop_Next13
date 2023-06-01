@@ -17,11 +17,6 @@ async function ProductPage({ params }: { params: { product: string } }) {
   // })
   // crumbs = [...crumbs, { name: good.title, slug: '' }]
 
-  // Attrs
-  // const attrArray = good.attrs.map(el => el.featuresID)
-  // const attrsKeys: featPackType[] = await getAttributes(attrArray)
-  // const featuresList = createAttributes(attrsKeys, good.attrs)
-
   return (
     <div>
       {/* <BreadCrumbs list={crumbs} /> */}

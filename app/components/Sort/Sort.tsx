@@ -23,24 +23,18 @@ const Sort: React.FC<ISort> = ({ list }) => {
   const pathname = usePathname()
   
   // Handle
-  const sortQuery = searchParams.get('_sort') || ''
-  const orderQuery = searchParams.get('_order') || ''
-  const valueQuery = (sortQuery.length && orderQuery.length)
-    ? sortQuery + '-' + orderQuery
-    : 'default'
+  const sortQuery = searchParams.get('ordering') || ''
+  const valueQuery = sortQuery.length ? sortQuery : 'default'
   
 
   // searchParams with a provided key/value pair
-  const createQueryString = useCallback((arr: string[]) => {
+  const createQueryString = useCallback((name: string, val: string) => {
     const params = new URLSearchParams(searchParams)
-    let defulatSort = arr.includes('default')
-    
-    params.set(arr[0], arr[1])
-    params.set(arr[2], arr[3])
+    let defulatSort = val.includes('default')
+    params.set(name, val)
 
     if (defulatSort) {
-      params.delete('_sort')
-      params.delete('_order')
+      params.delete('ordering')
     }
 
     return params.toString()
@@ -49,8 +43,7 @@ const Sort: React.FC<ISort> = ({ list }) => {
 
   // sortHandler
   const sortHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const values = e.target.value.split('-')
-    let uri = createQueryString(['_sort', values[0], '_order', values[1]])
+    let uri = createQueryString('ordering', e.target.value)
     router.push(pathname + `?` + uri)
     dispatch(setLoadSort(true))
   }

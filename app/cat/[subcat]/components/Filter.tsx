@@ -5,7 +5,7 @@ import Range from "@/app/components/Range/Range"
 import { setLoadFilter } from "@/app/store/appSlice"
 import { AppDispatch, RootState } from "@/app/store/store"
 import { url_packages } from "@/options/fetches"
-import { featPackType } from "@/options/types"
+import { PackType } from "@/options/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useCallback, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -21,7 +21,7 @@ type IFilterField = {
 const Filter: React.FC = () => {
   const [priceFrom, setPriceFrom] = useState<string>('')
   const [priceTo, setPriceTo] = useState<string>('')
-  const [packs, setPacks] = useState<featPackType[]>([])
+  const [packs, setPacks] = useState<PackType[]>([])
   const [hit, setHit] = useState<boolean>(false)
   const [sale, setSale] = useState<boolean>(false)
   const [newF, setNewF] = useState<boolean>(false)
@@ -31,7 +31,7 @@ const Filter: React.FC = () => {
   useEffect(() => {
     fetch(`${url_packages}`)
       .then(response => response.json())
-      .then(data => setPacks(data))
+      .then(data => setPacks(data.results))
   }, [])
 
   // url params
@@ -71,9 +71,9 @@ const Filter: React.FC = () => {
 
   // filterHandler
   const filterHandler = () => {
-    const uri: string = setFilter([priceFrom, priceTo, hit, sale, newF])
-    router.push(pathname + '?' + uri)
-    dispatch(setLoadFilter(true))
+    // const uri: string = setFilter([priceFrom, priceTo, hit, sale, newF])
+    // router.push(pathname + '?' + uri)
+    // dispatch(setLoadFilter(true))
   }
   
 

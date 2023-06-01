@@ -1,4 +1,4 @@
-import { attrType, featPackType, NavItemType, SortItemType } from "./types"
+import { NavItemType, SortItemType } from "./types"
 
 // Debounce
 export function debounce(cb: any, delay: number) {
@@ -9,16 +9,6 @@ export function debounce(cb: any, delay: number) {
       cb(...args)
     }, delay)
   }
-}
-
-// create Attributes
-export function createAttributes(keys: featPackType[], feats: attrType[]): featPackType[] {
-  const output = keys.map(el => {
-    const val = feats.find(attr => attr.featuresID === el.id)?.value
-    el['value'] = val
-    return el
-  })
-  return output
 }
 
 // createDate
@@ -37,10 +27,10 @@ export function createDate(dateString: string, time?: boolean) {
 
 // SortItems
 export const SortItems: SortItemType[] = [
-  { name: 'От дешевых', value: 'price-asc' },
-  { name: 'От дорогих', value: 'price-desc' },
-  { name: 'По алфавиту [А-Я]', value: 'title-asc' },
-  { name: 'По алфавиту [Я-А]', value: 'title-desc' }
+  { name: 'От дешевых', value: 'related_packs__price' },
+  { name: 'От дорогих', value: '-related_packs__price' },
+  { name: 'По алфавиту [А-Я]', value: 'title' },
+  { name: 'По алфавиту [Я-А]', value: '-title' }
 ]
 
 // navItems

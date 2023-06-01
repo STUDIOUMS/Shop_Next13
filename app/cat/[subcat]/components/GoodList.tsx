@@ -26,11 +26,14 @@ const GoodList: React.FC<IGoodList> = ({ catID, limit, list }) => {
   // Search params
   const searchURI = searchParams.toString()
   const isLimit = searchURI.includes('limit')
+  const isOrder = searchURI.includes('ordering')
+  
   const uriLimit = isLimit ? `limit=${searchParams.get('limit')}` : `limit=${limit}`
+  const uriOrder = isOrder ? `ordering=${searchParams.get('ordering')}` : `ordering=-id`
   
 
   useEffect(() => {
-    fetch(`${url_products}?${uriLimit}&categories=${catID}&ordering=-id`)
+    fetch(`${url_products}?categories=${catID}&${uriLimit}&${uriOrder}`)
       .then(response => response.json())
       .then(data => {
         setProducts(data.results)
