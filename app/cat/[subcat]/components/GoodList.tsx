@@ -25,13 +25,13 @@ const GoodList: React.FC<IGoodList> = ({ catID, limit, list }) => {
 
   // Search params
   const searchURI = searchParams.toString()
-  // const isLimit = searchURI.includes('_limit=')
-  // const isSort = searchURI.includes('_sort=')
+  // const isLimit = searchURI.includes('limit=')
+  // const isSort = searchURI.includes('ordering=')
   // const defaultLimit = !isLimit ? `&_limit=${limit}` : ''
   // const defaultSort = !isSort ? `&_sort=createdAt&_order=desc` : ''
 
   useEffect(() => {
-    fetch(`${url_products}?category=${catID}&ordering=-id`)
+    fetch(`${url_products}?categories=${catID}&ordering=-id`)
       .then(response => response.json())
       .then(data => {
         setProducts(data.results)
@@ -46,8 +46,7 @@ const GoodList: React.FC<IGoodList> = ({ catID, limit, list }) => {
       <div className="row">
         {products.map(el => <Card key={el.id} el={el} />)}
       </div>
-      {products.length === 0 && <p>This category is empty</p>}
-      <pre>{JSON.stringify(list, null, 2)}</pre>
+      {products.length === 0 && <p>В данной категории нет товаров</p>}
     </div>
   )
 }

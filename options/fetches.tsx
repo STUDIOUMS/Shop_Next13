@@ -3,7 +3,7 @@ import { ResponseType } from "./types"
 // Variables
 export const serverURL = 'https://qwertynext.com'
 export const url_cats = `${serverURL}/api/v1/catalog/categories/`
-export const url_products = `${serverURL}/api/v1/catalog/products/?&ordering=-id`
+export const url_products = `${serverURL}/api/v1/catalog/products/`
 export const url_features = `${serverURL}/features`
 export const url_packages = `${serverURL}/api/v1/catalog/packs/`
 export const url_blog = `${serverURL}/api/v1/blog/articles/`
@@ -25,7 +25,7 @@ export async function getProducts(id: number, uri: string, limit: number) {
   // const uriSort = isSort ? '' : '&_sort=createdAt&_order=desc'
   // const params = `${uriLimit}${uriSort}${uri}`
 
-  const response = await fetch(`${url_products}&categories=${id}`, {
+  const response = await fetch(`${url_products}?&ordering=-id&categories=${id}`, {
     cache: 'no-cache'
   })
   const data: ResponseType = await response.json()

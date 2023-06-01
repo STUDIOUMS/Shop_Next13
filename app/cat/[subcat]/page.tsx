@@ -60,7 +60,7 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
           {/* <Filter /> */}
         </div>
         <div className="col-12 col-lg-9">
-          {/* {isMainCat && <SubCats list={subcats!} />} */}
+          {isMainCat && <SubCats list={[]} />}
 
           <Sort list={SortItems} />
 

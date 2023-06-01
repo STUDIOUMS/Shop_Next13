@@ -20,6 +20,9 @@ const Card: React.FC<ICard> = ({ el }) => {
 
   const { choosePack, img, price, oldprice } = usePriceImg(el.relatedPacks)
 
+  // isSale
+  const isSale = el.relatedPacks.some(el => el.oldPrice !== null)
+
   return (
     <div className={parentClass}>
       <div className={styles.good}>
@@ -34,7 +37,7 @@ const Card: React.FC<ICard> = ({ el }) => {
               <Link href={`/product/${el.slug}`}>{el.title}</Link>
               <div className={styles.goodIcons}>
                 {el.hit && <span className={`${styles.goodIcon} ${styles.goodHit}`}>hit</span>}
-                {el.sale && <span className={`${styles.goodIcon} ${styles.goodSale}`}>{el.sale}</span>}
+                {isSale && <span className={`${styles.goodIcon} ${styles.goodSale}`}>sale</span>}
                 {el.new && <span className={`${styles.goodIcon} ${styles.goodNew}`}>new</span>}
               </div>
             </div>
