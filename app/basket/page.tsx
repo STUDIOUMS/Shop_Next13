@@ -1,44 +1,26 @@
-'use client'
-
-import { NextPage } from "next"
-import Link from "next/link"
-import { useSelector } from "react-redux"
-import { RootState } from "../store/store"
-import BasketRow from "./components/BasketRow"
-import BasketTotal from "./components/BasketTotal"
-import styles from "./components/Basket.module.scss"
 import BreadCrumbs from "../components/BreadCrumbs"
 import { BreadCrumbsType } from "@/options/types"
-import BasketHead from "./components/BasketHead"
+import BasketList from "./components/BasketList"
+
+// Metatags
+export const metadata = {
+  title: 'Корзина',
+  description: 'Корзина',
+}
 
 /* BreadCrumbs */
 const crumbs: BreadCrumbsType[] = [
   { name: 'Корзина', slug: `/basket` },
 ]
 
-const Basket: NextPage = () => {
-  const orders = useSelector((state: RootState) => state.app.orders)
-  
+export default function Basket() {
   return (
     <div>
       <BreadCrumbs list={crumbs} />
 
       <h1>Корзина</h1>
 
-      {orders.length ?
-      <>
-        <div className={styles.basket}>
-          <BasketHead />
-          {orders.map(el => <BasketRow key={el.id} order={el} />)}
-          {!orders.length && <p>Loading...</p>}
-        </div>
-        
-        <BasketTotal orders={orders} />
-        <Link href="/order" className="btn btn-success">Оформить заказ</Link>
-        
-      </> : <p>Корзина пуста</p>}
+      <BasketList />
     </div>
   )
 }
-
-export default Basket
