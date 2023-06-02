@@ -1,6 +1,12 @@
 import { serverURL } from "@/options/fetches"
 import styles from "./Home.module.scss"
 
+// Metatags
+export const metadata = {
+  title: 'Интернет-магазин моющих средств',
+  description: 'Главная',
+}
+
 export default function Home() {
   return (
     <div>

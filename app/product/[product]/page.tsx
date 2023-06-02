@@ -5,8 +5,17 @@ import ProductCard from "./components/ProductCard"
 import { getProduct } from "@/options/fetches"
 
 
+// Metatags
+export async function generateMetadata({ params }: { params: { product: string } }) {
+  const product: ProductType = await getProduct(params.product)
+  return {
+    title: product.title
+  }
+}
+
+
 async function ProductPage({ params }: { params: { product: string } }) {
-  const good: ProductType = await getProduct(params.product)
+  const product: ProductType = await getProduct(params.product)
 
   // Breadcrumbs
   // let crumbs: BreadCrumbsType[] = []
@@ -20,11 +29,11 @@ async function ProductPage({ params }: { params: { product: string } }) {
     <div>
       {/* <BreadCrumbs list={crumbs} /> */}
 
-      <h1>{good.title}</h1>
+      <h1>{product.title}</h1>
       
-      <ProductCard good={good} />
+      <ProductCard good={product} />
 
-      <ProductTabs description={good.description} features={good.relatedAttrs} />
+      <ProductTabs description={product.description} features={product.relatedAttrs} />
     </div>
   )
 }

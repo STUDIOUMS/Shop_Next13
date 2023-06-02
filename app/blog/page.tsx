@@ -8,6 +8,12 @@ let crumbs: BreadCrumbsType[] = [
   { name: "Блог", slug: "blog" }
 ]
 
+// Metatags
+export const metadata = {
+  title: 'Блог',
+  description: 'Блог',
+}
+
 export default async function Blog({ searchParams }: { searchParams: any }) {
   const limitPosts = 3
   const uri = Object.entries(searchParams)

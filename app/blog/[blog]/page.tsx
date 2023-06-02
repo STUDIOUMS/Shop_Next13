@@ -4,10 +4,21 @@ import { createDate } from "@/options/helpers"
 import { blogType, BreadCrumbsType } from "@/options/types"
 import styles from "./../components/Blog.module.scss"
 
+// Metatags
+export async function generateMetadata({ params }: { params: { blog: number } }) {
+  const post: blogType = await getBlogPage(params.blog)
+  return {
+    title: post.title,
+    description: post.short
+  }
+}
+
+
 export default async function BlogPage({ params }: { params: { blog: number } }) {
   const post: blogType = await getBlogPage(params.blog)
   const date: string = createDate(post.createdAt)
 
+  // Breadcrumbs
   let crumbs: BreadCrumbsType[] = [
     { name: "Блог", slug: "/blog" },
     { name: post.title, slug: post.slug }
