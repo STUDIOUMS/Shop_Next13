@@ -1,5 +1,4 @@
 import { BreadCrumbsType } from "@/options/types"
-import { NextPage } from "next"
 import BreadCrumbs from "../components/BreadCrumbs"
 
 // Metatags
@@ -13,7 +12,7 @@ const crumbs: BreadCrumbsType[] = [
   { name: "О компании", slug: "about" }
 ]
 
-const About: NextPage = () => {
+export default async function About() {
   return (
     <div>
       <BreadCrumbs list={crumbs} />
@@ -24,5 +23,3 @@ const About: NextPage = () => {
     </div>
   )
 }
-
-export default About

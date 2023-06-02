@@ -1,4 +1,3 @@
-import { NextPage } from "next"
 import { BreadCrumbsType } from "@/options/types"
 import BreadCrumbs from "../components/BreadCrumbs"
 
@@ -13,7 +12,7 @@ const crumbs: BreadCrumbsType[] = [
   { name: "Контакты", slug: "contacts" }
 ]
 
-const Contacts: NextPage = () => {
+export default async function Contacts() {
   return (
     <div>
       <BreadCrumbs list={crumbs} />
@@ -21,5 +20,3 @@ const Contacts: NextPage = () => {
     </div>
   )
 }
-
-export default Contacts
