@@ -1,4 +1,3 @@
-import { getPacks } from "@/options/fetches"
 import { BreadCrumbsType } from "@/options/types"
 import BreadCrumbs from "../components/BreadCrumbs"
 
@@ -14,10 +13,8 @@ const crumbs: BreadCrumbsType[] = [
 ]
 
 export default async function Page() {
-  const packs = await getPacks()
   return (
     <div>
-      <pre>{JSON.stringify(packs, null, 2)}</pre>
       <BreadCrumbs list={crumbs} />
       <h1>О компании</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa culpa natus alias impedit itaque unde fugit vel quasi, totam veritatis voluptates reiciendis incidunt, soluta eveniet commodi minus cupiditate dolore aliquam, nulla officiis officia corporis. Doloribus dolorum necessitatibus officia, natus numquam dignissimos. Nobis ducimus nulla minus enim, accusamus, necessitatibus accusantium tenetur.</p>
