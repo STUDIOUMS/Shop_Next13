@@ -1,47 +1,37 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import { useSearchParams } from "next/navigation"
 import Card from "./Card"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/app/store/store"
 import { setLoadSort, setLoadFilter, setLoadPager } from "@/app/store/appSlice"
-import { url_products } from "@/options/fetches"
+import { getProducts } from "@/options/fetches"
 import { ProductType } from "@/options/types"
 
 interface IGoodList {
   list: ProductType[]
   catID: number
   limit: number
+  uri: string
 }
 
-const GoodList: React.FC<IGoodList> = ({ catID, limit, list }) => {
+const GoodList: React.FC<IGoodList> = ({ catID, limit, list, uri }) => {
   const [products, setProducts] = useState<ProductType[]>(list)
   const load = useSelector((state: RootState) => state.app.loadSort)
   const load2 = useSelector((state: RootState) => state.app.loadFilter)
   const load3 = useSelector((state: RootState) => state.app.loadPager)
   const dispatch = useDispatch<AppDispatch>()
-  const searchParams = useSearchParams()
-
-  // Search params
-  const searchURI = searchParams.toString()
-  const isLimit = searchURI.includes('limit')
-  const isOrder = searchURI.includes('ordering')
   
-  const uriLimit = isLimit ? `limit=${searchParams.get('limit')}` : `limit=${limit}`
-  const uriOrder = isOrder ? `ordering=${searchParams.get('ordering')}` : `ordering=-id`
-  
-
   useEffect(() => {
-    fetch(`${url_products}?categories=${catID}&${uriLimit}&${uriOrder}`)
-      .then(response => response.json())
-      .then(data => {
-        setProducts(data.results)
-        dispatch(setLoadFilter(false))
-        dispatch(setLoadSort(false))
-        dispatch(setLoadPager(false))
-      })
-  }, [searchURI])
+    const getData = async () => {
+      const { products } = await getProducts(catID, uri, limit)
+      setProducts(products)
+      dispatch(setLoadFilter(false))
+      dispatch(setLoadSort(false))
+      dispatch(setLoadPager(false))
+    }
+    getData()
+  }, [uri])
   
   return (
     <div className="goods-row">

@@ -25,12 +25,23 @@ export async function getSubcats(id: number) {
 
 // getProducts of category
 export async function getProducts(id: number, uri: string, limit: number) {
-  const isLimit = uri.includes('limit')
-  const uriLimit = isLimit ? '' : `&limit=${limit}`
-  const params = `${uriLimit}${uri}`
+  const uriArray = uri.split('&')
 
+  // Params existence
+  const isLimit = uriArray.some(el => el.includes('limit'))
+  const isOrdering = uriArray.some(el => el.includes('ordering'))
+  
+  // Current params
+  const currentLimit = uriArray.find(el => el.includes('limit'))
+  const currentOrder = uriArray.find(el => el.includes('ordering'))
+
+  // Create params
+  const uriLimit = isLimit ? `&${currentLimit}` : `&limit=${limit}`
+  const uriOrder = isOrdering ? `&${currentOrder}` : `&ordering=-id`
+  const params = `${uriLimit}${uriOrder}`
+  
   // fetch
-  const response = await fetch(`${url_products}?categories=${id}${params}&ordering=-id`, {
+  const response = await fetch(`${url_products}?categories=${id}${params}`, {
     cache: 'no-cache'
   })
   const data: ResponseType = await response.json()

@@ -40,11 +40,12 @@ const Filter: React.FC = () => {
   const searchParams = useSearchParams()
 
   // Get and has queries
-  const queryRangeFrom = searchParams.get('price_gte')
-  const queryRangeTo = searchParams.get('price_lte')
+  const queryRangeFrom = searchParams.get('price_min')
+  const queryRangeTo = searchParams.get('price_max')
   const queryHit = searchParams.has('hit')
   const querySale = searchParams.has('sale')
   const queryNew = searchParams.has('new')
+  const queryPack = searchParams.has('pack')
 
   // setFilter
   const setFilter = useCallback((arr: any[]) => {

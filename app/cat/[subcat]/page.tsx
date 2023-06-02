@@ -18,30 +18,17 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
   const isMainCat: boolean = cat.parent === null
   
   // Get products
-  const uri = Object.entries(searchParams)
-  let newUri = uri.map(el => '&' + el.join('=')).join('')
-  const { count, products } = await getProducts(cat.id, newUri, limitProducts)
+  const uriParams = Object.entries(searchParams)
+  let uri = uriParams.map(el => '&' + el.join('=')).join('')
+  const { count, products } = await getProducts(cat.id, uri, limitProducts)
 
   // Get subcats
   const subcats = await getSubcats(cat.id)
-
-  // // Subcat parent
-  // let parentCat: CatType | null = null
-  // if (!isMainCat) {
-  //   parentCat = await getParentCat(cat.parentID)
-  // }
   
   // Breadcrumbs
   const crumbs: BreadCrumbsType[] = [
     { name: cat.name, slug: `/cat/${cat.slug}` },
   ]
-  // if (!isMainCat) {
-  //   const parentCatItem: BreadCrumbsType = {
-  //     name: parentCat!.name,
-  //     slug: `/cat/${parentCat!.slug}`
-  //   }
-  //   crumbs.unshift(parentCatItem)
-  // }
   
 
   return (
@@ -59,7 +46,7 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
 
           <Sort list={SortItems} />
 
-          <GoodList list={products} catID={cat.id} limit={limitProducts} />
+          <GoodList list={products} catID={cat.id} uri={uri} limit={limitProducts} />
 
           <Loadmore pages={limitProducts} all={count} />
         </div>
