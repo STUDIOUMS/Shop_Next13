@@ -39,6 +39,7 @@ a {color: var(--color-green);}
 a:hover {color: var(--color-green-hover);}
 .form-field {margin: 0 0 16px;}
 .btn-block {width: 100%;}
+.main_wrap {display: flex; flex-direction: column; min-height: 100vh;}
 .main_container {padding-top: 20px; padding-bottom: 40px; flex: 1;}
 .goods-row {margin-bottom: 20px;}
 .breadcrumb {margin-bottom: 24px;}
