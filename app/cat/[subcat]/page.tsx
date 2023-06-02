@@ -1,18 +1,19 @@
 import BreadCrumbs from "@/app/components/BreadCrumbs"
 import { SortItems } from "@/options/helpers"
-import { BreadCrumbsType, CatType } from "@/options/types"
+import { BreadCrumbsType, CatType, PackType } from "@/options/types"
 import Filter from "./components/Filter"
 import GoodList from "./components/GoodList"
 import Loadmore from "@/app/components/Loadmore"
 import Sort from "@/app/components/Sort/Sort"
 import SubCats from "./components/SubCats"
-import { getCat, getProducts, getSubcats } from "@/options/fetches"
+import { getCat, getPacks, getProducts, getSubcats } from "@/options/fetches"
 
 // number of visible products
 const limitProducts = 3
 
 async function SubCat({ params, searchParams }: { params: { subcat: string }, searchParams: any }) {
   const cat: CatType = await getCat(params.subcat)
+  const packs = await getPacks()
 
   // is Category main
   const isMainCat: boolean = cat.parent === null
@@ -39,7 +40,7 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
       
       <div className="row">
         <div className="col-12 col-lg-3">
-          <Filter />
+          <Filter packs={packs} />
         </div>
         <div className="col-12 col-lg-9">
           {isMainCat && <SubCats list={subcats} />}

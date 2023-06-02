@@ -4,10 +4,9 @@ import CheckField from "@/app/components/CheckField/CheckField"
 import Range from "@/app/components/Range/Range"
 import { setLoadFilter } from "@/app/store/appSlice"
 import { AppDispatch, RootState } from "@/app/store/store"
-import { url_packages } from "@/options/fetches"
 import { PackType } from "@/options/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import styles from './Filter.module.scss'
 
@@ -18,21 +17,19 @@ type IFilterField = {
   value: string
 }
 
-const Filter: React.FC = () => {
+interface IFilter {
+  packs: PackType[]
+}
+
+const Filter: React.FC<IFilter> = ({ packs }) => {
   const [priceFrom, setPriceFrom] = useState<string>('')
   const [priceTo, setPriceTo] = useState<string>('')
-  const [packs, setPacks] = useState<PackType[]>([])
+  const [chosenPacks, setChosenPacks] = useState<string>('')
   const [hit, setHit] = useState<boolean>(false)
   const [sale, setSale] = useState<boolean>(false)
   const [newF, setNewF] = useState<boolean>(false)
   const load = useSelector((state: RootState) => state.app.loadFilter)
   const dispatch = useDispatch<AppDispatch>()
-
-  useEffect(() => {
-    fetch(`${url_packages}`)
-      .then(response => response.json())
-      .then(data => setPacks(data.results))
-  }, [])
 
   // url params
   const router = useRouter()
@@ -58,23 +55,31 @@ const Filter: React.FC = () => {
     
     if (arr[4]) params.set('new', arr[4])
     if (!arr[4]) params.delete('new')
+    
+    if (arr[5]) params.set('pack', arr[5])
+    if (!arr[5]) params.delete('pack')
 
-    params.delete('_limit')
+    params.delete('limit')
 
-    if (arr[0].length) params.set('price_gte', arr[0])
-    if (arr[1].length) params.set('price_lte', arr[1])
+    if (arr[0].length) params.set('price_min', arr[0])
+    if (arr[1].length) params.set('price_max', arr[1])
 
-    if (!arr[0].length) params.delete('price_gte')
-    if (!arr[1].length) params.delete('price_lte')
+    if (!arr[0].length) params.delete('price_min')
+    if (!arr[1].length) params.delete('price_max')
 
     return params.toString()
   }, [searchParams])
 
+  // ChoosePack
+  const choosePackes = (val: string) => {
+    // console.log(val)
+  }
+
   // filterHandler
   const filterHandler = () => {
-    // const uri: string = setFilter([priceFrom, priceTo, hit, sale, newF])
-    // router.push(pathname + '?' + uri)
-    // dispatch(setLoadFilter(true))
+    const uri: string = setFilter([priceFrom, priceTo, hit, sale, newF])
+    router.push(pathname + '?' + uri)
+    dispatch(setLoadFilter(true))
   }
   
 
@@ -96,7 +101,7 @@ const Filter: React.FC = () => {
       <div className={styles.filterSection}>
         <div className={styles.filterName}>Упаковка</div>
         {packs.map(el => (
-          <CheckField key={el.id} handler={() => {}} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={false} />
+          <CheckField key={el.id} handler={() => choosePackes(el.name)} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={false} />
         ))}
       </div>
 

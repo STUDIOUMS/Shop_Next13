@@ -23,7 +23,7 @@ export async function getSubcats(id: number) {
   return data.results
 }
 
-// getProducts of category
+// GET PRODUCTS OF CERTAIN CATEGORY
 export async function getProducts(id: number, uri: string, limit: number) {
   const uriArray = uri.split('&')
 
@@ -35,16 +35,28 @@ export async function getProducts(id: number, uri: string, limit: number) {
   const currentLimit = uriArray.find(el => el.includes('limit'))
   const currentOrder = uriArray.find(el => el.includes('ordering'))
 
+  // Create filter params
+  const isFilterPriceMin = uriArray.some(el => el.includes('price_min'))
+  const isFilterPriceMax = uriArray.some(el => el.includes('price_max'))
+  const isFilterHit = uriArray.some(el => el.includes('hit'))
+  const isFilterNew = uriArray.some(el => el.includes('new'))
+  const filterPriceMinParam = isFilterPriceMin ? '&' + uriArray.find(el => el.includes('price_min')) : ''
+  const filterPriceMaxParam = isFilterPriceMax ? '&' + uriArray.find(el => el.includes('price_max')) : ''
+  const filterHitParam = isFilterHit ? '&' + uriArray.find(el => el.includes('hit')) : ''
+  const filterNewParam = isFilterNew ? '&' + uriArray.find(el => el.includes('new')) : ''
+  const filterParams = filterPriceMinParam + filterPriceMaxParam + filterHitParam + filterNewParam
+
   // Create params
   const uriLimit = isLimit ? `&${currentLimit}` : `&limit=${limit}`
   const uriOrder = isOrdering ? `&${currentOrder}` : `&ordering=-id`
-  const params = `${uriLimit}${uriOrder}`
+  const params = `${uriLimit}${uriOrder}${filterParams}`
   
   // fetch
   const response = await fetch(`${url_products}?categories=${id}${params}`, {
     cache: 'no-cache'
   })
   const data: ResponseType = await response.json()
+
   return { count: data.count, products: data.results }
 }
 
@@ -54,6 +66,13 @@ export async function getProduct(slug: string) {
   const response = await fetch(`${url_products}${slug}`, { cache: 'no-cache' })
   const data = await response.json()
   return data
+}
+
+// GET PACKS
+export async function getPacks() {
+  const response = await fetch(`${url_packages}`, { cache: 'no-cache' })
+  const data: ResponseType = await response.json()
+  return data.results
 }
 
 
