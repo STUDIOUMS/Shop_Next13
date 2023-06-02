@@ -1,6 +1,12 @@
 import { BreadCrumbsType } from "@/options/types"
 import BreadCrumbs from "../components/BreadCrumbs"
 
+// Metatags
+export const metadata = {
+  title: 'О компании',
+  description: 'О компании',
+}
+
 // Breadscrumbs
 const crumbs: BreadCrumbsType[] = [
   { name: "О компании", slug: "about" }

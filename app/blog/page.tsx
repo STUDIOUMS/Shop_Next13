@@ -4,15 +4,16 @@ import BreadCrumbs from "../components/BreadCrumbs"
 import Loadmore from "../components/Loadmore"
 import BlogList from "./components/BlogList"
 
-let crumbs: BreadCrumbsType[] = [
-  { name: "Блог", slug: "blog" }
-]
-
 // Metatags
 export const metadata = {
   title: 'Блог',
   description: 'Блог',
 }
+
+// Breadcrumbs
+const crumbs: BreadCrumbsType[] = [
+  { name: "Блог", slug: "blog" }
+]
 
 export default async function Blog({ searchParams }: { searchParams: any }) {
   const limitPosts = 3
