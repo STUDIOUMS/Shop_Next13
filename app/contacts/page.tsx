@@ -12,7 +12,7 @@ const crumbs: BreadCrumbsType[] = [
   { name: "Контакты", slug: "contacts" }
 ]
 
-export default async function Contacts() {
+export default function Page() {
   return (
     <div>
       <BreadCrumbs list={crumbs} />

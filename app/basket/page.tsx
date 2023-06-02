@@ -13,7 +13,7 @@ const crumbs: BreadCrumbsType[] = [
   { name: 'Корзина', slug: `/basket` },
 ]
 
-export default function Basket() {
+export default function Page() {
   return (
     <div>
       <BreadCrumbs list={crumbs} />
