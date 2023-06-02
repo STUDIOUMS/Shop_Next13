@@ -48,7 +48,9 @@ const Card: React.FC<ICard> = ({ el }) => {
                 {oldprice} <small>{set_currency}</small>
               </div>}
             </div>
-            <Packages goodID={el.id} handler={choosePack} packs={el.relatedPacks} />
+            <div className={styles.goodPack}>
+              <Packages goodID={el.id} handler={choosePack} packs={el.relatedPacks} />
+            </div>
           </div>
         </div>
         <div className={styles.goodBottom}>

@@ -36,15 +36,14 @@
     top: 10px;
   }
   &Icon {
-    border-radius: 50%;
+    border-radius: 4px;
     text-align: center;
     text-transform: uppercase;
     color: #fff;
-    font-size: 13px;
+    font-size: 14px;
     font-family: var(--font2);
-    line-height: 34px;
-    width: 34px;
-    height: 34px;
+    line-height: 16px;
+    padding: 4px 8px 3px;
     display: block;
     margin: 0 0 4px;
   }
@@ -54,6 +53,7 @@
   &Details {
     flex: 1; display: flex; flex-direction: column;
   }
+  &Pack {margin: 0 0 24px;}
   &Title {
     font-size: 16px;
     line-height: 18px;
@@ -97,7 +97,7 @@
     flex-direction: row; align-items: center;
     &Top {flex: 1; align-items: center; flex-direction: row;}
     &Image {
-      display: block; height: auto; min-width: 50px; max-width: 50px; margin: 0 16px 0 0;
+      display: block; height: auto; min-width: 120px; max-width: 120px; margin: 0 16px 0 0;
       img {max-height: none;}
     }
     h5 {margin: 0 0 8px;}
@@ -110,5 +110,6 @@
       line-height: 14px; margin: 0 4px 0 0;
     }
     &Bottom {max-width: 140px;}
+    &Pack {margin: 0;}
   }
 }

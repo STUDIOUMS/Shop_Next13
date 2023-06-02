@@ -32,7 +32,9 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
             {oldprice && <div className={styles.cardOldPrice}>{oldprice} <small>{set_currency}</small></div>}
           </div>
 
-          <Packages handler={choosePack} goodID={good.id} packs={packs} />
+          <div className={styles.cardPacks}>
+            <Packages handler={choosePack} goodID={good.id} packs={packs} />
+          </div>
 
           <div className={styles.cardItem}>
             <AddCart big={true} el={good} pack={currentPack} price={price} img={img} />
