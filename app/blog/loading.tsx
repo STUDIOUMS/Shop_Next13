@@ -1,5 +1,3 @@
-import styles from "./components/Blog.module.scss"
-
 export default function Loading() {
   return <div className="placeholder-glow">
     <div className="breadcrumb">
@@ -11,14 +9,23 @@ export default function Loading() {
       <span className="placeholder col-3"></span>
     </h1>
     
-    <div className={styles.blogItem}>
+    <div style={{marginBottom: '30px'}}>
       <h2><span className="placeholder col-12"></span></h2>
-      <div className={styles.blogDate}><span className="placeholder col-3"></span></div>
-      <div className={styles.blogShort}>
-        <span className="placeholder col-12"></span>
-        <span className="placeholder col-8"></span>
-        <span className="placeholder col-5"></span>
-      </div>
+      <p><span className="placeholder col-12"></span><br />
+      <span className="placeholder col-8"></span><br />
+      <span className="placeholder col-5"></span></p>
+    </div>
+    <div style={{marginBottom: '30px'}}>
+      <h2><span className="placeholder col-12"></span></h2>
+      <p><span className="placeholder col-12"></span><br />
+      <span className="placeholder col-8"></span><br />
+      <span className="placeholder col-5"></span></p>
+    </div>
+    <div style={{marginBottom: '30px'}}>
+      <h2><span className="placeholder col-12"></span></h2>
+      <p><span className="placeholder col-12"></span><br />
+      <span className="placeholder col-8"></span><br />
+      <span className="placeholder col-5"></span></p>
     </div>
 
   </div>
