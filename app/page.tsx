@@ -1,4 +1,4 @@
-import { getProducts, getProductsWidget, serverURL } from "@/options/fetches"
+import { serverURL } from "@/options/fetches"
 import styles from "./Home.module.scss"
 
 // Metatags
@@ -8,14 +8,12 @@ export const metadata = {
 }
 
 export default async function Home() {
-  const data = await getProductsWidget('hit', 3)
-
   return (
     <div>
       <h1>Home</h1>
       <div className={styles.homebanner}></div>
 
-      <div style={{margin: '20px 0'}}>
+      <div style={{margin: '0 0 20px'}}>
         <a href={serverURL} className="btn btn-outline-secondary" style={{marginRight: '5px'}} target="_blank">API</a>
         <a href={`${serverURL}/admin`} className="btn btn-outline-secondary" style={{marginRight: '5px'}} target="_blank">Admin</a>
         <a href={`${serverURL}/docs`} className="btn btn-outline-secondary" target="_blank">Swagger</a>
