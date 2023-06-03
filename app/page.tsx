@@ -1,4 +1,4 @@
-import { serverURL } from "@/options/fetches"
+import { getProducts, getProductsWidget, serverURL } from "@/options/fetches"
 import styles from "./Home.module.scss"
 
 // Metatags
@@ -7,7 +7,9 @@ export const metadata = {
   description: 'Главная',
 }
 
-export default function Home() {
+export default async function Home() {
+  const data = await getProductsWidget('hit', 3)
+
   return (
     <div>
       <h1>Home</h1>

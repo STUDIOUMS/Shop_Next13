@@ -61,6 +61,15 @@ export async function getProducts(id: number, uri: string, limit: number) {
 }
 
 
+// GET PRODUCTS FOR WIDJETS
+type productsWidjetParam = 'hit' | 'sale' | 'new'
+export async function getProductsWidget(param: productsWidjetParam, limit: number) {
+  const response = await fetch(`${url_products}?&limit=${limit}&${param}=true`)
+  const data: ResponseType = await response.json()
+  return data.results
+}
+
+
 // PRODUCT PAGE
 export async function getProduct(slug: string) {
   const response = await fetch(`${url_products}${slug}`, { cache: 'no-cache' })
