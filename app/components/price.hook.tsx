@@ -15,7 +15,7 @@ export const usePriceImg = (packs: RelatedPacksType[]): usePriceImgType => {
   const [price, setPrice] = useState<string>(packs.length ? packs[0].price : '')
   const [oldprice, setOldPrice] = useState<string>(packs.length ? packs[0].oldPrice : '')
   const [currentPackID, setCurrentPackID] = useState<number>(packs.length ? packs[0].id : 0)
-  const [currentPack, setCurrentPack] = useState<string>(packs[0].pack.name)
+  const [currentPack, setCurrentPack] = useState<string>(packs.length ? packs[0].pack.name : '')
 
   useEffect(() => {
     const findedPack = packs.find(el => el.id === currentPackID)
