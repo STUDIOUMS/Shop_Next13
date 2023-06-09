@@ -16,7 +16,6 @@ const CatPopup = () => {
   const btnClass = show ? "btn btn-outline-success catpopup-btn active" : "btn btn-outline-success catpopup-btn"
   const dropdownClass = show ? "catpopup opened" : "catpopup"
   
-  
   return (
     <div className={dropdownClass}>
       <button className={btnClass} onClick={() => setShow(!show)}>Каталог</button>
@@ -24,7 +23,7 @@ const CatPopup = () => {
       <div className="catpopup-header">Каталог</div>
         <div className="row">
           {cats.filter(el => el.parent === null).map(el => {
-            const subcats = cats.filter(subcat => subcat.parent === el.id)
+            const subcats = cats.filter(cat => cat.parent?.pk === el.id)
             return <CatPopupItem key={el.id} el={el} setShow={setShow} subcats={subcats} />
           })}
         </div>

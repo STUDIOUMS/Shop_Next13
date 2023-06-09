@@ -43,6 +43,11 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
   const crumbs: BreadCrumbsType[] = [
     { name: cat.name, slug: `/cat/${cat.slug}` },
   ]
+
+  if (cat.parent !== null) {
+    const parentCrumb = { name: cat.parent.name, slug: `/cat/${cat.parent.slug}` }
+    crumbs.unshift(parentCrumb)
+  }
   
 
   return (

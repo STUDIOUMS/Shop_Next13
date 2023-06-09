@@ -5,13 +5,19 @@ export type ResponseType = {
   results: any
 }
 
+export type CatTypeParent = {
+  pk: number
+  name: string
+  slug: string
+}
+
 export type CatType = {
   id: number
   slug: string
   name: string
   description: string
   img: string
-  parent: number
+  parent: CatTypeParent | null
 }
 
 export type RelatedAttrsType = {
