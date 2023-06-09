@@ -13,9 +13,9 @@ const Search: React.FC = () => {
 
   // debounceVal
   const debounceVal = debounce((text: string) => {
-    fetch(`${url_products}?q=${text}`)
+    fetch(`${url_products}?search=${text}`)
       .then(response => response.json())
-      .then(data => setResults(data))
+      .then(data => setResults(data.results))
   }, 500)
 
   // searchHandler
