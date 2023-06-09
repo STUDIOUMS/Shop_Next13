@@ -40,11 +40,13 @@ export async function getProducts(id: number, uri: string, limit: number) {
   const isFilterPriceMax = uriArray.some(el => el.includes('price_max'))
   const isFilterHit = uriArray.some(el => el.includes('hit'))
   const isFilterNew = uriArray.some(el => el.includes('new'))
+  const isFilterPack = uriArray.some(el => el.includes('pack'))
   const filterPriceMinParam = isFilterPriceMin ? '&' + uriArray.find(el => el.includes('price_min')) : ''
   const filterPriceMaxParam = isFilterPriceMax ? '&' + uriArray.find(el => el.includes('price_max')) : ''
   const filterHitParam = isFilterHit ? '&' + uriArray.find(el => el.includes('hit')) : ''
   const filterNewParam = isFilterNew ? '&' + uriArray.find(el => el.includes('new')) : ''
-  const filterParams = filterPriceMinParam + filterPriceMaxParam + filterHitParam + filterNewParam
+  const filterPackParam = isFilterPack ? '&' + uriArray.find(el => el.includes('pack')) : ''
+  const filterParams = filterPriceMinParam + filterPriceMaxParam + filterHitParam + filterNewParam +      filterPackParam
 
   // Create params
   const uriLimit = isLimit ? `&${currentLimit}` : `&limit=${limit}`

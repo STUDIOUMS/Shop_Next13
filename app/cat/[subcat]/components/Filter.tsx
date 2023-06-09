@@ -24,7 +24,7 @@ interface IFilter {
 const Filter: React.FC<IFilter> = ({ packs }) => {
   const [priceFrom, setPriceFrom] = useState<string>('')
   const [priceTo, setPriceTo] = useState<string>('')
-  const [chosenPacks, setChosenPacks] = useState<string>('')
+  const [chosenPacks, setChosenPacks] = useState<number[]>([])
   const [hit, setHit] = useState<boolean>(false)
   const [sale, setSale] = useState<boolean>(false)
   const [newF, setNewF] = useState<boolean>(false)
@@ -42,7 +42,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   const queryHit = searchParams.has('hit')
   const querySale = searchParams.has('sale')
   const queryNew = searchParams.has('new')
-  const queryPack = searchParams.has('pack')
+  const queryPack = searchParams.get('pack')?.split(',')
 
   // setFilter
   const setFilter = useCallback((arr: any[]) => {
@@ -71,14 +71,26 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   }, [searchParams])
 
   // ChoosePack
-  const choosePackes = (val: string) => {
-    // console.log(val)
+  const choosePackes = (id: number) => {
+    const packExist = chosenPacks.some(el => el === id)
+    if (!packExist) {
+      setChosenPacks(prev => [...prev, id].sort())
+    } else {
+      setChosenPacks(prev => prev.filter(el => el !== id))
+    }
   }
 
   // filterHandler
   const filterHandler = () => {
-    const uri: string = setFilter([priceFrom, priceTo, hit, sale, newF])
+    const packs = chosenPacks.join(',')
+    const uri: string = setFilter([priceFrom, priceTo, hit, sale, newF, packs])
     router.push(pathname + '?' + uri)
+    dispatch(setLoadFilter(true))
+  }
+
+  // resetFilter
+  const resetFilter = () => {
+    router.push(pathname)
     dispatch(setLoadFilter(true))
   }
   
@@ -100,14 +112,18 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
 
       <div className={styles.filterSection}>
         <div className={styles.filterName}>Упаковка</div>
-        {packs.map(el => (
-          <CheckField key={el.id} handler={() => choosePackes(el.name)} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={false} />
-        ))}
+        {packs.map(el => {
+          const checkedPack = queryPack?.some(i => Number(i) === el.id)
+          return <CheckField key={el.id} handler={() => choosePackes(el.id)} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={checkedPack} />
+        })}
       </div>
 
-      <button className="btn btn-block btn-success" onClick={filterHandler}>
+      <button className="btn btn-block btn-success mb-2" onClick={filterHandler}>
         Применить
         {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
+      </button>
+      <button className="btn btn-block btn-outline-secondary" onClick={resetFilter}>
+        Сбросить
       </button>
     </div>
   )

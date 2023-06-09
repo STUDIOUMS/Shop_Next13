@@ -26,8 +26,6 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
   const cat: CatType = await getCat(params.subcat)
   const packs = await getPacks()
 
-  console.log(cat)
-
   // is Category main
   const isMainCat: boolean = cat.parent === null
   
