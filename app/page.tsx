@@ -13,7 +13,7 @@ export default async function Home() {
       <h1>Home</h1>
       <div className={styles.homebanner}></div>
 
-      <div style={{margin: '20px 0'}}>
+      <div style={{margin: '20px 0 30px'}}>
         <a href={serverURL} className="btn btn-outline-secondary" style={{marginRight: '5px'}} target="_blank">API</a>
         <a href={`${serverURL}/admin`} className="btn btn-outline-secondary" style={{marginRight: '5px'}} target="_blank">Admin</a>
         <a href={`${serverURL}/docs`} className="btn btn-outline-secondary" target="_blank">Swagger</a>
