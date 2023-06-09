@@ -19,8 +19,6 @@ export default async function Home() {
         <a href={`${serverURL}/docs`} className="btn btn-outline-secondary" target="_blank">Swagger</a>
       </div>
 
-      <p>Update</p>
-
     </div>
   )
 }
