@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import styles from './CheckField.module.scss'
 
 interface ICheckField {
@@ -12,6 +13,15 @@ interface ICheckField {
 
 const CheckField: React.FC<ICheckField> = ({ handler, handCheck = false, name, title, type = 'checkbox', value, checked }) => {
   const className = (type === 'checkbox') ? styles.formCheck : styles.formRadio
+  const ref = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (handCheck) {
+      ref.current!.checked = false
+    }
+  }, [handCheck])
+
+  console.log(handCheck)
 
   // checkFunc
   const checkFunc = (e: any) => {
@@ -32,6 +42,7 @@ const CheckField: React.FC<ICheckField> = ({ handler, handCheck = false, name, t
           value={value}
           onChange={checkFunc}
           defaultChecked={checked}
+          ref={ref}
         />
         {title}
       </label>

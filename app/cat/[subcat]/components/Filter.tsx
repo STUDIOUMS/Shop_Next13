@@ -22,13 +22,6 @@ interface IFilter {
 }
 
 const Filter: React.FC<IFilter> = ({ packs }) => {
-  const [priceFrom, setPriceFrom] = useState<string>('')
-  const [priceTo, setPriceTo] = useState<string>('')
-  const [chosenPacks, setChosenPacks] = useState<number[]>([])
-  const [hit, setHit] = useState<boolean>(false)
-  const [sale, setSale] = useState<boolean>(false)
-  const [newF, setNewF] = useState<boolean>(false)
-  const load = useSelector((state: RootState) => state.app.loadFilter)
   const dispatch = useDispatch<AppDispatch>()
 
   // url params
@@ -43,6 +36,16 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   const querySale = searchParams.has('sale')
   const queryNew = searchParams.has('new')
   const queryPack = searchParams.get('pack')?.split(',')
+
+  // State
+  const [priceFrom, setPriceFrom] = useState<string>(queryRangeFrom || '')
+  const [priceTo, setPriceTo] = useState<string>(queryRangeTo || '')
+  const [chosenPacks, setChosenPacks] = useState<string[]>(queryPack || [])
+  const [hit, setHit] = useState<boolean>(queryHit)
+  const [sale, setSale] = useState<boolean>(querySale)
+  const [newF, setNewF] = useState<boolean>(queryNew)
+  const [resetAll, setResetAll] = useState<boolean>(false)
+  const load = useSelector((state: RootState) => state.app.loadFilter)
 
   // setFilter
   const setFilter = useCallback((arr: any[]) => {
@@ -72,11 +75,11 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
 
   // ChoosePack
   const choosePackes = (id: number) => {
-    const packExist = chosenPacks.some(el => el === id)
+    const packExist = chosenPacks.some(el => el === String(id))
     if (!packExist) {
-      setChosenPacks(prev => [...prev, id].sort())
+      setChosenPacks(prev => [...prev, String(id)].sort())
     } else {
-      setChosenPacks(prev => prev.filter(el => el !== id))
+      setChosenPacks(prev => prev.filter(el => el !== String(id)))
     }
   }
 
@@ -88,10 +91,11 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
     dispatch(setLoadFilter(true))
   }
 
-  // resetFilter
-  const resetFilter = () => {
+  // resetFilterFunc
+  const resetFilterFunc = () => {
     router.push(pathname)
     dispatch(setLoadFilter(true))
+    setResetAll(true)
   }
   
 
@@ -100,9 +104,9 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
       <div className={styles.filterTitle}>Фильтр</div>
       
       <div className={styles.filterSection}>
-        <CheckField handler={setHit} title="Хит" type="checkbox" value="hit" name="hit" checked={queryHit} handCheck={true} />
-        <CheckField handler={setSale} title="Скидка" type="checkbox" value="sale" name="sale" checked={querySale} handCheck={true} />
-        <CheckField handler={setNewF} title="Новинки" type="checkbox" value="new" name="new" checked={queryNew} handCheck={true} />
+        <CheckField handler={setHit} title="Хит" type="checkbox" value="hit" name="hit" checked={queryHit} handCheck={resetAll} />
+        <CheckField handler={setSale} title="Скидка" type="checkbox" value="sale" name="sale" checked={querySale} handCheck={resetAll} />
+        <CheckField handler={setNewF} title="Новинки" type="checkbox" value="new" name="new" checked={queryNew} handCheck={resetAll} />
       </div>
 
       <div className={styles.filterSection}>
@@ -114,7 +118,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
         <div className={styles.filterName}>Упаковка</div>
         {packs.map(el => {
           const checkedPack = queryPack?.some(i => Number(i) === el.id)
-          return <CheckField key={el.id} handler={() => choosePackes(el.id)} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={checkedPack} />
+          return <CheckField key={el.id} handler={() => choosePackes(el.id)} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={checkedPack} handCheck={resetAll} />
         })}
       </div>
 
@@ -122,7 +126,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
         Применить
         {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
       </button>
-      <button className="btn btn-block btn-outline-secondary" onClick={resetFilter}>
+      <button className="btn btn-block btn-outline-secondary" onClick={resetFilterFunc}>
         Сбросить
       </button>
     </div>
