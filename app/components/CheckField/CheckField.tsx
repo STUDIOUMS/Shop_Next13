@@ -21,8 +21,6 @@ const CheckField: React.FC<ICheckField> = ({ handler, handCheck = false, name, t
     }
   }, [handCheck])
 
-  console.log(handCheck)
-
   // checkFunc
   const checkFunc = (e: any) => {
     if (handCheck) {
