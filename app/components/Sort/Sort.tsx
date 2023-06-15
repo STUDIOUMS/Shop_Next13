@@ -24,16 +24,16 @@ const Sort: React.FC<ISort> = ({ list }) => {
   
   // Handle
   const sortQuery = searchParams.get('ordering') || ''
-  const valueQuery = sortQuery.length ? sortQuery : 'default'
+  const valueQuery = sortQuery.length ? sortQuery : 'default-value'
   
 
   // searchParams with a provided key/value pair
   const createQueryString = useCallback((name: string, val: string) => {
     const params = new URLSearchParams(searchParams)
-    let defulatSort = val.includes('default')
+    let defaultSort = val.includes('default-value')
     params.set(name, val)
 
-    if (defulatSort) {
+    if (defaultSort) {
       params.delete('ordering')
     }
 
@@ -52,7 +52,7 @@ const Sort: React.FC<ISort> = ({ list }) => {
     <div className={styles.sortbox}>
       <div className={styles.sortboxLeft}>
         <select className="form-select" onChange={sortHandler} defaultValue={valueQuery}>
-          <option value="default">Сортировать</option>
+          <option value="default-value">Сортировать</option>
           {list.map(el => <option key={el.value} value={el.value}>{el.name}</option>)}
         </select>
         {load && <div><span className={`spinner-border spinner-border-sm ${styles.sortboxSpinner}`}></span></div>}

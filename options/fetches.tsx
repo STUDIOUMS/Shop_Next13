@@ -51,7 +51,11 @@ export async function getProducts(id: number, uri: string, limit: number) {
   // Create params
   const uriLimit = isLimit ? `&${currentLimit}` : `&limit=${limit}`
   const uriOrder = isOrdering ? `&${currentOrder}` : `&ordering=-id`
-  const params = `${uriLimit}${uriOrder}${filterParams}`
+  const params = `${uriLimit}${uriOrder}`
+
+
+  console.log(filterParams)
+  
   
   // fetch
   const response = await fetch(`${url_products}?categories=${id}${params}`, {

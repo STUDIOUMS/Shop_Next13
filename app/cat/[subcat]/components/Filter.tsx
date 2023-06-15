@@ -62,6 +62,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
     if (arr[5]) params.set('pack', arr[5])
     if (!arr[5]) params.delete('pack')
 
+    params.delete('ordering')
     params.delete('limit')
 
     if (arr[0].length) params.set('price_min', arr[0])

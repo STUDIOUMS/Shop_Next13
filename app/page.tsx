@@ -1,4 +1,5 @@
 import { getProductsWidget, serverURL, url_products } from "@/options/fetches"
+import Advantages from "./components/Advantages/Advantages"
 import Banners from "./components/Banners/Banners"
 import Carousel from "./components/Carousel/Carousel"
 import styles from "./Home.module.scss"
@@ -25,10 +26,8 @@ export default async function Home() {
       <Carousel title="Скидки" list={sales} />
 
       <Carousel title="Хиты" list={hits} />
-      
-      <div className="pagetitle">Преимущества</div>
-      <p>3-4 колонки с иконкой, заголовком и текстом</p>
-      <hr />
+
+      <Advantages />
 
       <div className="pagetitle">Бренды</div>
       <p>слайдер c заглушками</p>
@@ -37,10 +36,6 @@ export default async function Home() {
       <div className="pagetitle">Блог</div>
       <p>показать 4 записи блога</p>
       <hr />
-
-
-
-
 
       <div style={{margin: '20px 0 30px'}}>
         <a href={serverURL} className="btn btn-outline-secondary" style={{marginRight: '5px'}} target="_blank">API</a>

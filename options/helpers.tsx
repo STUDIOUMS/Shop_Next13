@@ -27,8 +27,8 @@ export function createDate(dateString: string, time?: boolean) {
 
 // SortItems
 export const SortItems: SortItemType[] = [
-  { name: 'От дешевых', value: 'related_packs__price' },
-  { name: 'От дорогих', value: '-related_packs__price' },
+  { name: 'От дешевых', value: 'default_pack__price' },
+  { name: 'От дорогих', value: '-default_pack__price' },
   { name: 'По алфавиту [А-Я]', value: 'title' },
   { name: 'По алфавиту [Я-А]', value: '-title' }
 ]
