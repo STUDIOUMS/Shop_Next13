@@ -10,9 +10,10 @@ import styles from './Card.module.scss'
 
 interface ICard {
   el: ProductType
+  slide?: boolean
 }
 
-const Card: React.FC<ICard> = ({ el }) => {
+const Card: React.FC<ICard> = ({ el, slide }) => {
   const view = useSelector((state: RootState) => state.app.view)
   const classGrid = `col-12 col-sm-6 col-md-4 ${styles.goodGrid}`
   const classList = `col-12 ${styles.goodList}`
@@ -24,7 +25,7 @@ const Card: React.FC<ICard> = ({ el }) => {
   const isSale = el.relatedPacks.some(el => el.oldPrice !== null)
 
   return (
-    <div className={parentClass}>
+    <div className={!slide ? parentClass : ''}>
       <div className={styles.good}>
         <div className={styles.goodTop}>
           <div className={styles.goodImage}>

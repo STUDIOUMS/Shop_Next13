@@ -36,7 +36,7 @@ const Search: React.FC = () => {
   
   return (
     <div className={styles.searchbox}>
-      <input type="search" className="form-control" placeholder="Search..." onChange={e => searchHandler(e.target.value)} ref={inputRef} />
+      <input type="search" className="form-control" placeholder="Поиск..." onChange={e => searchHandler(e.target.value)} ref={inputRef} />
       
       {results.length > 0 &&
       <ul className={styles.searchboxDropdown}>

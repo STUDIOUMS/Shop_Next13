@@ -27,6 +27,8 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div className="col-12 col-md-6 col-lg-3">
+            <p>Социалки</p>
+            <p>Телефоны</p>
             <p>Lorem ipsum dolor sit amet, consectetur</p>
             <p>Lorem ipsum dolor sit amet, consectetur</p>
             <p>Lorem ipsum dolor sit amet, consectetur</p>

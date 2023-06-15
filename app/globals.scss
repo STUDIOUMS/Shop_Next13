@@ -44,12 +44,13 @@ a:hover {color: var(--color-green-hover);}
 .goods-row {margin-bottom: 20px;}
 .breadcrumb {margin-bottom: 24px;}
 
-h1, h3 {
+h1, h2, h3, .pagetitle {
   font-family: var(--font2);
   font-size: 28px;
   line-height: 32px;
   margin: 0 0 24px;
 }
+h2 {font-size: 24px; line-height: 28px;}
 h3 {font-size: 20px; line-height: 24px;}
 
 /* forms */
