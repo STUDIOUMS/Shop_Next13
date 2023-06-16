@@ -1,12 +1,13 @@
 import BreadCrumbs from "@/app/components/BreadCrumbs"
 import { SortItems } from "@/options/helpers"
 import { BreadCrumbsType, CatType } from "@/options/types"
-import Filter from "./components/Filter/Filter"
+
 import GoodList from "./components/GoodList"
 import Loadmore from "@/app/components/Loadmore"
 import Sort from "@/app/components/Sort/Sort"
 import SubCats from "./components/SubCats"
 import { getCat, getPacks, getProducts, getSubcats } from "@/options/fetches"
+import Filter from "@/app/components/Filter/Filter"
 
 
 // Metatags
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: { subcat: string } 
 
 
 // number of visible products
-const limitProducts = 3
+const limitProducts = 6
 
 
 async function SubCat({ params, searchParams }: { params: { subcat: string }, searchParams: any }) {
