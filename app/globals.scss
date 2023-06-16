@@ -13,6 +13,7 @@
   --color-text: #252525;
   --color-text2: #757575;
   --color-danger: #ff0000;
+  --swiper-navigation-size: 20px !important;
 }
 
 @mixin bf {
@@ -44,14 +45,35 @@ a:hover {color: var(--color-green-hover);}
 .goods-row {margin-bottom: 20px;}
 .breadcrumb {margin-bottom: 24px;}
 
+/* headers */
 h1, h2, h3, .pagetitle {
   font-family: var(--font2);
   font-size: 28px;
   line-height: 32px;
   margin: 0 0 24px;
+  a {color: inherit; text-decoration: none;}
+  a:hover {color: var(--color-green-hover);}
 }
 h2 {font-size: 24px; line-height: 28px;}
 h3 {font-size: 20px; line-height: 24px;}
+
+
+
+/* pagehead */
+.pagehead {
+  display: flex; margin: 0 0 24px; align-items: center; justify-content: space-between;
+  .pagetitle {margin: 0;}
+  &-btns {
+    display: flex; align-items: center;
+    .swiper-button-prev, .swiper-button-next {
+      position: relative; left: auto; right: auto; top: auto;
+      margin: 0;
+    }
+    .swiper-button-prev {margin: 0 20px 0 0;}
+  }
+}
+
+
 
 /* forms */
 .btn {
@@ -254,4 +276,56 @@ textarea.form-control {
 .footer {
   background: var(--color-light);
   padding: 40px 0;
+}
+
+
+/* swiper settings */
+.swiper {
+  &-pagination {
+    &-bullet {
+      background: var(--color-grey) !important;
+      opacity: 1 !important;
+      &-active {background: var(--color-green-hover) !important;}
+    }
+  }
+}
+
+
+/* carousel_body */
+.carousel_body {
+  margin-bottom: 50px;
+  position: relative;
+  .pagetitle {margin: 0 0 32px;}
+  .swiper {position: static;}
+  .swiper-pagination {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: auto !important;
+    margin: 15px 0 0;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: 0; margin: 0; width: 40px; height: 40px; color: var(--color-green-hover);
+    border-radius: 50%; background: var(--color-light);
+  }
+  .swiper-button-prev {left: auto; right: 60px;}
+  .swiper-button-next {right: 0;}
+}
+
+
+
+
+
+/* Responsive */
+@media screen and (max-width: 1020px) {
+  .pagetitle, .pagehead, .carousel_body .pagetitle {margin: 0 0 24px;}
+  .swiper-button-prev, .swiper-button-next {display: none !important;}
+}
+
+@media screen and (max-width: 750px) {
+  .catpopup-dropdown {padding: 15px;}
+  .catpopup-item {margin: 0 0 20px;}
+  .catpopup-item ul {display: none;}
+  .catpopup-title {margin: 0;}
 }

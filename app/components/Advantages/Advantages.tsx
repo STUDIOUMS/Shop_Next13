@@ -9,9 +9,6 @@ interface IAdvantages {
 }
 
 const Advantages = ({ title = 'Преимущества' }) => {
-
-  console.log(truck)
-  
   return (
     <div className={styles.advantages}>
       <div className="pagetitle">{title}</div>

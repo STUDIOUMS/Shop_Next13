@@ -1,0 +1,19 @@
+.bigbanner {
+  margin: 0 0 50px;
+  &Item {
+    background-image: url('./../../../assets/banner.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    height: 400px;
+    &:nth-child(even) {
+      background-image: url('./../../../assets/banner-sm.jpg');
+    }
+  }
+}
+
+
+@media screen and (max-width: 750px) {
+  .bigbannerItem {height: 260px;}
+}

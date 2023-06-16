@@ -1,8 +1,10 @@
-import { getProductsWidget, serverURL, url_products } from "@/options/fetches"
+import { getBlogs, getProductsWidget, serverURL, url_products } from "@/options/fetches"
 import Advantages from "./components/Advantages/Advantages"
 import Banners from "./components/Banners/Banners"
+import BigBanner from "./components/BigBanner/BigBanner"
+import BlogsWidjet from "./components/BlogsWidjet/BlogsWidjet"
+import Brands from "./components/Brands/Brands"
 import Carousel from "./components/Carousel/Carousel"
-import styles from "./Home.module.scss"
 
 // Metatags
 export const metadata = {
@@ -14,10 +16,19 @@ export default async function Home() {
   const novelties = await getProductsWidget('new', 10)
   const sales = await getProductsWidget('discount', 10)
   const hits = await getProductsWidget('hit', 10)
+  const blogs = await getBlogs(3, '')
+  
 
   return (
     <div>
-      <div className={styles.homebanner}></div>
+      
+      <div style={{margin: '20px 0 30px'}}>
+        <a href={serverURL} className="btn btn-outline-secondary" style={{marginRight: '5px'}} target="_blank">API</a>
+        <a href={`${serverURL}/admin`} className="btn btn-outline-secondary" style={{marginRight: '5px'}} target="_blank">Admin</a>
+        <a href={`${serverURL}/docs`} className="btn btn-outline-secondary" target="_blank">Swagger</a>
+      </div>
+
+      <BigBanner />
 
       <Carousel title="Новинки" list={novelties} />
 
@@ -29,19 +40,9 @@ export default async function Home() {
 
       <Advantages />
 
-      <div className="pagetitle">Бренды</div>
-      <p>слайдер c заглушками</p>
-      <hr />
+      <Brands />
 
-      <div className="pagetitle">Блог</div>
-      <p>показать 4 записи блога</p>
-      <hr />
-
-      <div style={{margin: '20px 0 30px'}}>
-        <a href={serverURL} className="btn btn-outline-secondary" style={{marginRight: '5px'}} target="_blank">API</a>
-        <a href={`${serverURL}/admin`} className="btn btn-outline-secondary" style={{marginRight: '5px'}} target="_blank">Admin</a>
-        <a href={`${serverURL}/docs`} className="btn btn-outline-secondary" target="_blank">Swagger</a>
-      </div>
+      <BlogsWidjet list={blogs.results} />
 
     </div>
   )
