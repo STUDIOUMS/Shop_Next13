@@ -7,7 +7,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import styles from './Carousel.module.scss'
 import { ProductType } from '@/options/types'
-import Card from '@/app/cat/[subcat]/components/Card'
+import Card from '@/app/cat/[subcat]/components/Card/Card'
 
 interface ICarousel {
   list: ProductType[]

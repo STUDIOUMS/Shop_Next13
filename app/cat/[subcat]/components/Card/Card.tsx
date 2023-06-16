@@ -4,6 +4,7 @@ import { usePriceImg } from "@/app/components/price.hook"
 import { RootState } from "@/app/store/store"
 import { set_currency } from "@/options/settings"
 import { ProductType } from "@/options/types"
+import Image from "next/image"
 import Link from "next/link"
 import { useSelector } from "react-redux"
 import styles from './Card.module.scss'
@@ -30,7 +31,7 @@ const Card: React.FC<ICard> = ({ el, slide }) => {
         <div className={styles.goodTop}>
           <div className={styles.goodImage}>
             <Link href={`/product/${el.slug}`}>
-              <img src={img} alt="" />
+              <Image src={img} alt="" height={120} width={140} />
             </Link>
           </div>
           <div className={styles.goodDetails}>

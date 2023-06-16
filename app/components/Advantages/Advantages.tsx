@@ -27,7 +27,7 @@ const Advantages = ({ title = 'Преимущества' }) => {
           <div className={styles.advantage}>
             <Image src={warehouse} alt="" height={50} />
             <div className={styles.advantageTitle}>В наличии на складе</div>
-            весь ассортимент продукции серии "Ника"
+            весь ассортимент продукции серии &ldquo;Ника&rdquo;
           </div>
         </div>
         <div className={`col-12 col-md-4 ${styles.advantageGrid}`}>

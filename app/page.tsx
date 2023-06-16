@@ -12,7 +12,7 @@ export const metadata = {
 
 export default async function Home() {
   const novelties = await getProductsWidget('new', 10)
-  const sales = await getProductsWidget('sale', 10)
+  const sales = await getProductsWidget('discount', 10)
   const hits = await getProductsWidget('hit', 10)
 
   return (

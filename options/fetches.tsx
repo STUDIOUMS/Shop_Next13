@@ -40,21 +40,25 @@ export async function getProducts(id: number, uri: string, limit: number) {
   const isFilterPriceMax = uriArray.some(el => el.includes('price_max'))
   const isFilterHit = uriArray.some(el => el.includes('hit'))
   const isFilterNew = uriArray.some(el => el.includes('new'))
+  const isFilterDiscount = uriArray.some(el => el.includes('discount'))
   const isFilterPack = uriArray.some(el => el.includes('pack'))
+
   const filterPriceMinParam = isFilterPriceMin ? '&' + uriArray.find(el => el.includes('price_min')) : ''
   const filterPriceMaxParam = isFilterPriceMax ? '&' + uriArray.find(el => el.includes('price_max')) : ''
-  const filterHitParam = isFilterHit ? '&' + uriArray.find(el => el.includes('hit')) : ''
-  const filterNewParam = isFilterNew ? '&' + uriArray.find(el => el.includes('new')) : ''
+  const filterHitParam = isFilterHit ? '&hit=true' : ''
+  const filterNewParam = isFilterNew ? '&new=true' : ''
+  const filterDiscountParam = isFilterDiscount ? '&discount=true' : ''
   const filterPackParam = isFilterPack ? '&' + uriArray.find(el => el.includes('pack')) : ''
-  const filterParams = filterPriceMinParam + filterPriceMaxParam + filterHitParam + filterNewParam +      filterPackParam
+
+  const filterParams = filterPriceMinParam + filterPriceMaxParam + filterHitParam + filterNewParam +      filterPackParam + filterDiscountParam
 
   // Create params
   const uriLimit = isLimit ? `&${currentLimit}` : `&limit=${limit}`
   const uriOrder = isOrdering ? `&${currentOrder}` : `&ordering=-id`
-  const params = `${uriLimit}${uriOrder}`
+  const params = `${uriLimit}${uriOrder}${filterParams}`
 
 
-  console.log(filterParams)
+  console.log(params)
   
   
   // fetch
@@ -68,7 +72,7 @@ export async function getProducts(id: number, uri: string, limit: number) {
 
 
 // GET PRODUCTS FOR WIDJETS
-type productsWidjetParam = 'hit' | 'sale' | 'new'
+type productsWidjetParam = 'hit' | 'discount' | 'new'
 export async function getProductsWidget(param: productsWidjetParam, limit: number) {
   const response = await fetch(`${url_products}?ordering=-id&limit=${limit}&${param}=true`)
   const data: ResponseType = await response.json()

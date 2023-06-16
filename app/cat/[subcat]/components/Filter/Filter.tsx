@@ -33,7 +33,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   const queryRangeFrom = searchParams.get('price_min')
   const queryRangeTo = searchParams.get('price_max')
   const queryHit = searchParams.has('hit')
-  const querySale = searchParams.has('sale')
+  const querySale = searchParams.has('discount')
   const queryNew = searchParams.has('new')
   const queryPack = searchParams.get('pack')?.split(',')
 
@@ -53,8 +53,8 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
     if (arr[2]) params.set('hit', arr[2])
     if (!arr[2]) params.delete('hit')
 
-    if (arr[3]) params.set('sale', arr[3])
-    if (!arr[3]) params.delete('sale')
+    if (arr[3]) params.set('discount', arr[3])
+    if (!arr[3]) params.delete('discount')
     
     if (arr[4]) params.set('new', arr[4])
     if (!arr[4]) params.delete('new')
@@ -106,7 +106,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
       
       <div className={styles.filterSection}>
         <CheckField handler={setHit} title="Хит" type="checkbox" value="hit" name="hit" checked={queryHit} handCheck={resetAll} />
-        <CheckField handler={setSale} title="Скидка" type="checkbox" value="sale" name="sale" checked={querySale} handCheck={resetAll} />
+        <CheckField handler={setSale} title="Скидка" type="checkbox" value="discount" name="discount" checked={querySale} handCheck={resetAll} />
         <CheckField handler={setNewF} title="Новинки" type="checkbox" value="new" name="new" checked={queryNew} handCheck={resetAll} />
       </div>
 

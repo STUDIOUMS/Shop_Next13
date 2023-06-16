@@ -2,7 +2,7 @@ import { setOrder } from "@/app/store/appSlice"
 import { AppDispatch } from "@/app/store/store"
 import { BasketType, ProductType } from "@/options/types"
 import { useDispatch } from "react-redux"
-import styles from "../cat/[subcat]/components/Card.module.scss"
+import styles from "../cat/[subcat]/components/Card/Card.module.scss"
 
 interface IAddCart {
   big?: boolean

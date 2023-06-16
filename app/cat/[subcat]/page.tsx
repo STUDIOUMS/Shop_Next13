@@ -1,7 +1,7 @@
 import BreadCrumbs from "@/app/components/BreadCrumbs"
 import { SortItems } from "@/options/helpers"
 import { BreadCrumbsType, CatType } from "@/options/types"
-import Filter from "./components/Filter"
+import Filter from "./components/Filter/Filter"
 import GoodList from "./components/GoodList"
 import Loadmore from "@/app/components/Loadmore"
 import Sort from "@/app/components/Sort/Sort"
