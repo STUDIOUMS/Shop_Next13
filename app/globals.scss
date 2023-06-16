@@ -223,7 +223,19 @@ textarea.form-control {
 
 /* catpopup */
 .catpopup {
-  &-btn {position: relative;}
+  &-btn {
+    position: relative;
+    &::after {
+      background: url(../assets/list.svg) center center / 30px no-repeat;
+      content: '';
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
   &-dropdown {
     background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.25); margin-top: 10px;
     border-radius: 8px; left: 12px; right: 12px; position: absolute !important;
@@ -318,7 +330,7 @@ textarea.form-control {
 
 
 /* Responsive */
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 992px) {
   .pagetitle, .pagehead, .carousel_body .pagetitle {margin: 0 0 24px;}
   .swiper-button-prev, .swiper-button-next {display: none !important;}
 }
@@ -328,4 +340,9 @@ textarea.form-control {
   .catpopup-item {margin: 0 0 20px;}
   .catpopup-item ul {display: none;}
   .catpopup-title {margin: 0;}
+  .catpopup-btn {
+    text-indent: -9999px; height: 40px; padding: 0; width: 40px;
+    &::after {display: block;}
+  }
+
 }
