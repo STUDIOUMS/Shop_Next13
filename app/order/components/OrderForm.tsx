@@ -131,6 +131,7 @@ const OrderForm: React.FC = () => {
               <h3>Оплата</h3>
               <CheckField handler={setPayment} title="Наличными курьеру" type="radio" value="Наличными курьеру" name="payment" checked={true} />
               <CheckField handler={setPayment} title="Оплата картой" type="radio" value="Оплата картой" name="payment" />
+              <CheckField handler={setPayment} title="Оплата по счету" type="radio" value="Оплата по счету" name="payment" />
             </div>
           </div>
         </div>

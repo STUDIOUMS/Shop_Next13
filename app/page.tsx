@@ -31,9 +31,11 @@ export default async function Home() {
 
       <Carousel title="Новинки" list={novelties} />
 
-      <Banners />
+      <Banners count={2} />
 
       <Carousel title="Скидки" list={sales} />
+
+      <Banners count={3} />
 
       <Carousel title="Хиты" list={hits} />
 

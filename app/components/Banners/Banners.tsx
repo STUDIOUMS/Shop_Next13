@@ -1,24 +1,25 @@
 import styles from './Banners.module.scss'
 
-const Banners: React.FC = () => {
+interface IBanners {
+  count?: number
+}
+
+const Banners: React.FC<IBanners> = ({ count = 2 }) => {
+  const list: any[] = []
+  const gridGap = 12 / count
+  
+  for (let i = 0; i < count; i++) {
+    list.push(i)
+  }
+
   return (
     <div className={styles.homebanners}>
       <div className="row">
-        <div className="col-12 col-md-6">
-          <a href="#" className={styles.homebanner}></a>
-        </div>
-        <div className="col-12 col-md-6">
-          <a href="#" className={styles.homebanner}></a>
-        </div>
-        <div className="col-12 col-md-4">
-          <a href="#" className={styles.homebanner}></a>
-        </div>
-        <div className="col-12 col-md-4">
-          <a href="#" className={styles.homebanner}></a>
-        </div>
-        <div className="col-12 col-md-4">
-          <a href="#" className={styles.homebanner}></a>
-        </div>
+        {list.map(el => {
+          return <div className={`col-12 col-md-${gridGap} ${styles.homebannerGrid}`} key={el}>
+            <a href="#" className={styles.homebanner}></a>
+          </div>
+        })}
       </div>
     </div>
   )

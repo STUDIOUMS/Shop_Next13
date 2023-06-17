@@ -116,7 +116,7 @@ export async function getBlogs(limit: number, uri: string) {
 
 export async function getBlogsWidjet(limit: number) {
   try {
-    const response = await fetch(`${url_blog}?ordering=-id&limit=${limit}`, {
+    const response = await fetch(`${url_blog}?limit=${limit}&ordering=-id`, {
       cache: 'no-cache'
     })
     const data: ResponseType = await response.json()
