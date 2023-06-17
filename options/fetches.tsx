@@ -109,8 +109,8 @@ export async function getBlogs(limit: number, uri: string) {
     })
     const data: ResponseType = await response.json()
     return data
-  } catch(e) {
-    //console.error(e)
+  } catch {
+    return { results: [], error: true }
   }
 }
 

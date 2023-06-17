@@ -3,6 +3,7 @@ export type ResponseType = {
   next: string
   previous: string
   results: any
+  error?: any
 }
 
 export type CatTypeParent = {

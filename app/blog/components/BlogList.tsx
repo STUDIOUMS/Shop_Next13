@@ -30,6 +30,7 @@ const BlogList: React.FC<IBlogList> = ({ list, limit }) => {
         setPosts(data.results)
         dispatch(setLoadPager(false))
       })
+      .catch(e => setPosts([]))
   }, [searchURI])
 
   return (
