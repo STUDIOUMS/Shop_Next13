@@ -18,7 +18,9 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   const load = useSelector((state: RootState) => state.app.loadFilter)
 
   // State
-  const [hit, setHit] = useState<string>('')
+  const [hit, setHit] = useState<boolean>(false)
+  const [discount, seDiscount] = useState<boolean>(false)
+  const [newf, setNewf] = useState<boolean>(false)
 
   // url params
   const router = useRouter()
@@ -26,55 +28,67 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   const searchParams = useSearchParams()
 
   // setFilter
-  const setFilter = useCallback(() => {
+  const setFilter = useCallback((arr: any[]) => {
     const params = new URLSearchParams(searchParams)
 
+    // removing sort and limit parameters
     params.delete('ordering')
     params.delete('limit')
 
-    //const isHit = params.has('hit')
+    // setting parameters
+    if (hit) params.set('hit', 'true')
+    if (discount) params.set('discount', 'true')
+    if (newf) params.set('new', 'true')
+
+
 
     return params.toString()
   }, [searchParams])
 
-
   // applyFilter
   const applyFilter = () => {
-    const uri: string = setFilter()
+    const uri: string = setFilter([hit, discount, newf])
     router.push(pathname + '?' + uri)
-  }
-
+  }  
   
   return (
-    <div className={styles.filter}>
-      <div className={styles.filterTitle}>Фильтр</div>
+    <>
+      <button className={styles.filterBtn}></button>
       
-      <div className={styles.filterSection}>
-        <CheckField handler={setHit} title="Хит" type="checkbox" value="hit" name="hit" checked={false} handCheck={false} />
-        <CheckField handler={() => {}} title="Скидка" type="checkbox" value="discount" name="discount" checked={false} handCheck={false} />
-        <CheckField handler={() => {}} title="Новинки" type="checkbox" value="new" name="new" checked={false} handCheck={false} />
-      </div>
+      <div className={styles.filter}>
+        <div className={styles.filterTitle}>Фильтр</div>
 
-      <div className={styles.filterSection}>
-        <div className={styles.filterName}>Цена</div>
-        <Range setPriceFrom={() => {}} setPriceTo={() => {}} from="0" to="0" />
-      </div>
+        {/* <h3>Hit {hit}</h3>
+        <h3>Sale {discount}</h3>
+        <h3>New {newf}</h3> */}
+        
+        <div className={styles.filterSection}>
+          <CheckField handler={setHit} title="Хит" type="checkbox" value="hit" name="hit" checked={false} handCheck={false} />
+          <CheckField handler={seDiscount} title="Скидка" type="checkbox" value="discount" name="discount" checked={false} handCheck={false} />
+          <CheckField handler={setNewf} title="Новинки" type="checkbox" value="new" name="new" checked={false} handCheck={false} />
+        </div>
 
-      <div className={styles.filterSection}>
-        <div className={styles.filterName}>Упаковка</div>
-        {packs.map(el => {
-          return <CheckField key={el.id} handler={() => {}} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={false} handCheck={false} />
-        })}
-      </div>
+        <div className={styles.filterSection}>
+          <div className={styles.filterName}>Цена</div>
+          <Range setPriceFrom={() => {}} setPriceTo={() => {}} from="0" to="0" />
+        </div>
 
-      <button className="btn btn-block btn-success mb-2" onClick={applyFilter}>
-        Применить
-        {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
-      </button>
-      <button className="btn btn-block btn-outline-secondary" onClick={() => {}}>
-        Сбросить
-      </button>
-    </div>
+        <div className={styles.filterSection}>
+          <div className={styles.filterName}>Упаковка</div>
+          {packs.map(el => {
+            return <CheckField key={el.id} handler={() => {}} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={false} handCheck={false} />
+          })}
+        </div>
+
+        <button className="btn btn-block btn-success mb-2" onClick={applyFilter}>
+          Применить
+          {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
+        </button>
+        <button className="btn btn-block btn-outline-secondary" onClick={() => {}}>
+          Сбросить
+        </button>
+      </div>
+    </>
   )
 }
 

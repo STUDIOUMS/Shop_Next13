@@ -11,9 +11,13 @@ export const url_blog = `${serverURL}/api/v1/blog/articles/`
 
 // get category
 export async function getCat(slug: string) {
-  const response = await fetch(`${url_cats}${slug}`, { cache: 'no-cache' })
-  const data = await response.json()
-  return data
+  try {
+    const response = await fetch(`${url_cats}${slug}`, { cache: 'no-cache' })
+    const data = await response.json()
+    return data
+  } catch {
+    return []
+  }
 }
 
 // get subcategories
@@ -70,9 +74,13 @@ export async function getProducts(id: number, uri: string, limit: number) {
 // GET PRODUCTS FOR WIDJETS
 type productsWidjetParam = 'hit' | 'discount' | 'new'
 export async function getProductsWidget(param: productsWidjetParam, limit: number) {
-  const response = await fetch(`${url_products}?ordering=-id&limit=${limit}&${param}=true`)
-  const data: ResponseType = await response.json()
-  return data.results
+  try {
+    const response = await fetch(`${url_products}?ordering=-id&limit=${limit}&${param}=true`)
+    const data: ResponseType = await response.json()
+    return data.results
+  } catch(e) {
+    return []
+  }
 }
 
 
@@ -95,12 +103,27 @@ export async function getPacks() {
 export async function getBlogs(limit: number, uri: string) {
   const isLimit = uri.includes('limit')
   const uri_limit = isLimit ? `&${uri}` : `&limit=${limit}`
-  
-  const response = await fetch(`${url_blog}?ordering=-id${uri_limit}`, {
-    cache: 'no-cache'
-  })
-  const data: ResponseType = await response.json()
-  return data
+  try {
+    const response = await fetch(`${url_blog}?ordering=-id${uri_limit}`, {
+      cache: 'no-cache'
+    })
+    const data: ResponseType = await response.json()
+    return data
+  } catch(e) {
+    //console.error(e)
+  }
+}
+
+export async function getBlogsWidjet(limit: number) {
+  try {
+    const response = await fetch(`${url_blog}?ordering=-id&limit=${limit}`, {
+      cache: 'no-cache'
+    })
+    const data: ResponseType = await response.json()
+    return { blogs: data.results }
+  } catch(e) {
+    return { errorBlogs: true, blogs: [] }
+  }
 }
 
 export async function getBlogPage(slug: number) {

@@ -1,4 +1,4 @@
-import { getBlogs, getProductsWidget, serverURL } from "@/options/fetches"
+import { getBlogsWidjet, getProductsWidget, serverURL } from "@/options/fetches"
 import Advantages from "./components/Advantages/Advantages"
 import Banners from "./components/Banners/Banners"
 import BigBanner from "./components/BigBanner/BigBanner"
@@ -16,8 +16,7 @@ export default async function Home() {
   const novelties = await getProductsWidget('new', 10)
   const sales = await getProductsWidget('discount', 10)
   const hits = await getProductsWidget('hit', 10)
-  const blogs = await getBlogs(3, '')
-  
+  const { blogs, errorBlogs } = await getBlogsWidjet(3)
 
   return (
     <div>
@@ -42,7 +41,7 @@ export default async function Home() {
 
       <Brands />
 
-      <BlogsWidjet list={blogs.results} />
+      <BlogsWidjet list={blogs} error={errorBlogs} />
 
     </div>
   )

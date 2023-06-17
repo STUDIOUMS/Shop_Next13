@@ -5,6 +5,25 @@
   position: sticky;
   top: 68px;
   margin: 0 0 20px;
+
+  &Btn {
+    background: var(--color-success) url(../../../assets/filter.svg) center center / 30px no-repeat;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    left: 10px;
+    bottom: 20px;
+    z-index: 100;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
   &Section {margin: 0 0 20px;}
   &Field {margin: 0 0 8px;}
   &Title {

@@ -11,6 +11,7 @@ const CatPopup = () => {
     fetch(`${url_cats}`)
       .then(response => response.json())
       .then(data => setCats(data.results))
+      .catch(e => setCats([]))
   }, [])
 
   const btnClass = show ? "btn btn-outline-success catpopup-btn active" : "btn btn-outline-success catpopup-btn"
