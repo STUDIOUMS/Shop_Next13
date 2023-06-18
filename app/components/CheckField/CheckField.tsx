@@ -1,3 +1,4 @@
+import { IfVoid } from '@reduxjs/toolkit/dist/tsHelpers'
 import { useEffect, useRef } from 'react'
 import styles from './CheckField.module.scss'
 
@@ -6,7 +7,7 @@ interface ICheckField {
   title: string
   type: 'checkbox' | 'radio'
   value: string
-  handler: (val: any) => void
+  handler: (check: boolean, val: string) => void
   handCheck?: boolean
   checked?: boolean
 }
@@ -23,11 +24,7 @@ const CheckField: React.FC<ICheckField> = ({ handler, handCheck = false, name, t
 
   // checkFunc
   const checkFunc = (e: any) => {
-    if (handCheck) {
-      handler(e.target.checked)
-    } else {
-      handler(e.target.value)
-    }
+    handler(e.target.checked, e.target.value)
   }
   
   return (
