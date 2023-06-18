@@ -117,7 +117,7 @@ const OrderForm: React.FC = () => {
           </div>
         </div>
 
-        <div className="row">
+        {/* <div className="row">
           <div className={`col-12 col-md-6 ${styles.orderFormGrid}`}>
             <div className={styles.orderFormSection}>
               <h3>Доставка</h3>
@@ -134,7 +134,7 @@ const OrderForm: React.FC = () => {
               <CheckField handler={setPayment} title="Оплата по счету" type="radio" value="Оплата по счету" name="payment" />
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={styles.orderFormGrid}>
           <div className={styles.orderFormSection}>
