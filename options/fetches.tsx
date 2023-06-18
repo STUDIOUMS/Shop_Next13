@@ -9,6 +9,17 @@ export const url_blog = `${serverURL}/api/v1/blog/articles/`
 
 // GET REQUESTS
 
+// get categories
+export async function getCats() {
+  try {
+    const response = await fetch(`${url_cats}`, { cache: 'no-cache' })
+    const data: ResponseType = await response.json()
+    return data.results
+  } catch {
+    return []
+  }
+}
+
 // get category
 export async function getCat(slug: string) {
   try {

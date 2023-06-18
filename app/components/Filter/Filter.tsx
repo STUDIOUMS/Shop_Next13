@@ -1,6 +1,7 @@
 'use client'
 
 import { AppDispatch, RootState } from '@/app/store/store'
+import { setLoadFilter, setLoadFilterReset } from '@/app/store/appSlice'
 import { PackType } from '@/options/types'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
@@ -16,19 +17,32 @@ interface IFilter {
 const Filter: React.FC<IFilter> = ({ packs }) => {
   const dispatch = useDispatch<AppDispatch>()
   const load = useSelector((state: RootState) => state.app.loadFilter)
-
-  // State
-  const [hit, setHit] = useState<string>('')
-  const [discount, setDiscount] = useState<string>('')
-  const [newf, setNewf] = useState<string>('')
-  const [priceFrom, setPriceFrom] = useState<string>('')
-  const [priceTo, setPriceTo] = useState<string>('')
-  const [chosenPacks, setChosenPacks] = useState<string[]>([])
+  const loadReset = useSelector((state: RootState) => state.app.loadFilterReset)
 
   // url params
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
+
+  // getting of existing params
+  const isHit = searchParams.has('hit') ? 'hit' : ''
+  const isDiscount = searchParams.has('discount') ? 'discount' : ''
+  const isNewf = searchParams.has('new') ? 'new' : ''
+  const isPriceFrom = searchParams.get('price_min') || ''
+  const isPriceTo = searchParams.get('price_max') || ''
+  const isPack = searchParams.get('pack')?.split(',') || []
+
+  // State
+  const [hit, setHit] = useState<string>(isHit)
+  const [discount, setDiscount] = useState<string>(isDiscount)
+  const [newf, setNewf] = useState<string>(isNewf)
+  const [priceFrom, setPriceFrom] = useState<string>(isPriceFrom)
+  const [priceTo, setPriceTo] = useState<string>(isPriceTo)
+  const [chosenPacks, setChosenPacks] = useState<string[]>(isPack)
+
+  // isReset
+  const isReset: boolean = (hit.length || discount.length || newf.length || priceFrom.length || priceTo.length || chosenPacks.length) ? false : true
+
 
   // setFilter
   const setFilter = useCallback((arr: any[]) => {
@@ -46,7 +60,6 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
     (arr[4]) ? params.set('price_max', arr[4]) : params.delete('price_max');
     (arr[5]) ? params.set('pack', arr[5]) : params.delete('pack');
 
-
     return params.toString()
   }, [searchParams])
 
@@ -55,6 +68,20 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   const applyFilter = () => {
     const uri: string = setFilter([hit, discount, newf, priceFrom, priceTo, chosenPacks.join(',')])
     router.push(pathname + '?' + uri)
+    dispatch(setLoadFilter(true))
+  }
+
+
+  // resetFilter
+  const resetFilter = () => {
+    setHit('')
+    setDiscount('')
+    setNewf('')
+    setPriceFrom('')
+    setPriceTo('')
+    setChosenPacks([])
+    router.push(pathname)
+    dispatch(setLoadFilterReset(true))
   }
 
 
@@ -118,8 +145,10 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
           Применить
           {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
         </button>
-        <button className="btn btn-block btn-outline-secondary" onClick={() => {}}>
+
+        <button className="btn btn-block btn-outline-secondary" onClick={resetFilter} disabled={isReset}>
           Сбросить
+          {loadReset && <span className="spinner-border spinner-border-sm ms-2"></span>}
         </button>
       </div>
     </>
