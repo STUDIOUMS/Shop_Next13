@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux"
 import { setOrders } from "../../store/appSlice"
 import { AppDispatch } from "../../store/store"
 import CatPopup from "./CatPopup"
+import styles from "./Header.module.scss"
 import Navbar from "./NavBar"
 import Search from "../Search/Search"
 import SmallCart from "./SmallCart"
@@ -25,15 +26,15 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className="header">
-        <div className="container">
+      <header className={styles.header}>
+        <div className={`container ${styles.headerContainer}`}>
           <Navbar />
-          <div className="header-address">Доставка с 8:00 до 23:00 &bull; {set_phone}</div>
+          <div className={styles.headerAdress}>Доставка с 8:00 до 23:00 &bull; {set_phone}</div>
         </div>
       </header>
-      <div className="header-mid">
-        <div className="container">
-          <Link href="/" className="header-logo">
+      <div className={styles.headerMid}>
+        <div className={`container ${styles.headerContainer}`}>
+          <Link href="/" className={styles.headerLogo}>
             <Image src={logo} alt="" width={50} height={50} />
           </Link>
           <CatPopup />

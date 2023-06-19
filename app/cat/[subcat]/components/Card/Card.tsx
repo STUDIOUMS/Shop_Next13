@@ -1,6 +1,7 @@
 import AddCart from "@/app/components/AddCart"
 import Packages from "@/app/components/Packages/Packages"
 import { usePriceImg } from "@/app/components/price.hook"
+import Tag from "@/app/components/Tag/Tag"
 import { RootState } from "@/app/store/store"
 import { set_currency } from "@/options/settings"
 import { ProductType } from "@/options/types"
@@ -38,9 +39,9 @@ const Card: React.FC<ICard> = ({ el, slide }) => {
             <div className={styles.goodTitle}>
               <Link href={`/product/${el.slug}`}>{el.title}</Link>
               <div className={styles.goodIcons}>
-                {el.hit && <span className={`${styles.goodIcon} ${styles.goodHit}`}>hit</span>}
-                {isSale && <span className={`${styles.goodIcon} ${styles.goodSale}`}>sale</span>}
-                {el.new && <span className={`${styles.goodIcon} ${styles.goodNew}`}>new</span>}
+                {el.hit && <Tag type='hit' />}
+                {isSale && <Tag type='sale' />}
+                {el.new && <Tag type='new' />}
               </div>
             </div>
             <div className={styles.goodPrice}>

@@ -65,7 +65,6 @@ export type ProductType = {
   art: string
   new: boolean
   hit: boolean
-  sale: boolean
   createdAt: Date
 }
 

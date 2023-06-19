@@ -8,7 +8,13 @@
     justify-content: center;
     min-height: 300px;
     margin: 0 0 20px;
+    position: relative;
     img {display: block; max-height: 260px;}
+    &Tag {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
   }
   &Item, &Packs {
     margin: 0 0 24px;
