@@ -16,11 +16,11 @@ const CheckField: React.FC<ICheckField> = ({ handler, handCheck = false, name, t
   const className = (type === 'checkbox') ? styles.formCheck : styles.formRadio
   const ref = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    if (handCheck) {
-      ref.current!.checked = false
-    }
-  }, [handCheck])
+  // useEffect(() => {
+  //   if (handCheck) {
+  //     ref.current!.checked = false
+  //   }
+  // }, [handCheck])
 
   // checkFunc
   const checkFunc = (e: any) => {

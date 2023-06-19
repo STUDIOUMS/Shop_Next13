@@ -25,23 +25,23 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   const searchParams = useSearchParams()
 
   // getting of existing params
-  const isHit = searchParams.has('hit') ? 'hit' : ''
-  const isDiscount = searchParams.has('discount') ? 'discount' : ''
-  const isNewf = searchParams.has('new') ? 'new' : ''
+  const isHit = searchParams.has('hit') ? true : false
+  const isDiscount = searchParams.has('discount') ? true : false
+  const isNewf = searchParams.has('new') ? true : false
   const isPriceFrom = searchParams.get('price_min') || ''
   const isPriceTo = searchParams.get('price_max') || ''
   const isPack = searchParams.get('pack')?.split(',') || []
 
   // State
-  const [hit, setHit] = useState<string>(isHit)
-  const [discount, setDiscount] = useState<string>(isDiscount)
-  const [newf, setNewf] = useState<string>(isNewf)
+  const [hit, setHit] = useState<boolean>(isHit)
+  const [discount, setDiscount] = useState<boolean>(isDiscount)
+  const [newf, setNewf] = useState<boolean>(isNewf)
   const [priceFrom, setPriceFrom] = useState<string>(isPriceFrom)
   const [priceTo, setPriceTo] = useState<string>(isPriceTo)
   const [chosenPacks, setChosenPacks] = useState<string[]>(isPack)
 
   // isReset
-  const isReset: boolean = (hit.length || discount.length || newf.length || priceFrom.length || priceTo.length || chosenPacks.length) ? false : true
+  const isReset: boolean = (hit || discount || newf || priceFrom.length || priceTo.length || chosenPacks.length) ? false : true
 
 
   // setFilter
@@ -74,9 +74,9 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
 
   // resetFilter
   const resetFilter = () => {
-    setHit('')
-    setDiscount('')
-    setNewf('')
+    setHit(false)
+    setDiscount(false)
+    setNewf(false)
     setPriceFrom('')
     setPriceTo('')
     setChosenPacks([])
@@ -87,15 +87,9 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
 
   // chooseFilterParam
   const chooseFilterParam = (check: any, val: string) => {
-    if (val === 'hit') {
-      (check) ? setHit(val) : setHit('')
-    }
-    if (val === 'discount') {
-      (check) ? setDiscount(val) : setDiscount('')
-    }
-    if (val === 'new') {
-      (check) ? setNewf(val) : setNewf('')
-    }
+    if (val === 'hit') setHit(!hit)
+    if (val === 'discount') setDiscount(!discount)
+    if (val === 'new') setNewf(!newf)
   }
   
 
@@ -124,20 +118,23 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
         Packs: {chosenPacks.join(',')}</p> */}
         
         <div className={styles.filterSection}>
-          <CheckField handler={chooseFilterParam} title="Хит" type="checkbox" value="hit" name="hit" checked={false} handCheck />
-          <CheckField handler={chooseFilterParam} title="Скидка" type="checkbox" value="discount" name="discount" checked={false} handCheck />
-          <CheckField handler={chooseFilterParam} title="Новинки" type="checkbox" value="new" name="new" checked={false} handCheck />
+          <CheckField handler={chooseFilterParam} title="Хит" type="checkbox" value="hit" name="hit" checked={hit} handCheck />
+
+          <CheckField handler={chooseFilterParam} title="Скидка" type="checkbox" value="discount" name="discount" checked={discount} handCheck />
+          
+          <CheckField handler={chooseFilterParam} title="Новинки" type="checkbox" value="new" name="new" checked={newf} handCheck />
         </div>
 
         <div className={styles.filterSection}>
           <div className={styles.filterName}>Цена</div>
-          <Range setPriceFrom={setPriceFrom} setPriceTo={setPriceTo} from="0" to="0" />
+          <Range setPriceFrom={setPriceFrom} setPriceTo={setPriceTo} from={priceFrom} to={priceTo} />
         </div>
 
         <div className={styles.filterSection}>
           <div className={styles.filterName}>Упаковка</div>
           {packs.map(el => {
-            return <CheckField key={el.id} handler={choosePackFunc} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={false} handCheck={false} />
+            const checkedPack = searchParams.get('pack')?.split(',').some(i => Number(i) === el.id)
+            return <CheckField key={el.id} handler={choosePackFunc} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={checkedPack} handCheck={false} />
           })}
         </div>
 
