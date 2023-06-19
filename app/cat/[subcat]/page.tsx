@@ -5,7 +5,7 @@ import { BreadCrumbsType, CatType } from "@/options/types"
 import GoodList from "./components/GoodList"
 import Loadmore from "@/app/components/Loadmore"
 import Sort from "@/app/components/Sort/Sort"
-import SubCats from "./components/SubCats"
+import SubCats from "./components/SubCats/SubCats"
 import { getCat, getPacks, getProducts, getSubcats } from "@/options/fetches"
 import Filter from "@/app/components/Filter/Filter"
 
