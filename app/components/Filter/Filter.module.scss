@@ -7,21 +7,19 @@
   margin: 0 0 20px;
 
   &Btn {
-    background: var(--color-success) url(../../../assets/filter.svg) center center / 30px no-repeat;
-    border: 0;
-    border-radius: 50%;
-    cursor: pointer;
-    display: block;
-    margin: 0;
-    padding: 0;
-    width: 50px;
-    height: 50px;
-    position: fixed;
-    left: 10px;
-    bottom: 20px;
-    z-index: 100;
-    appearance: none;
-    -webkit-appearance: none;
+    background: #151515 url('./../../../assets/filter.svg') center center / 24px no-repeat;
+    border: 0; border-radius: 14px; cursor: pointer;
+    margin: 0; padding: 0; width: 50px; height: 50px;
+    position: fixed; left: 10px; bottom: 30px; z-index: 100;
+    appearance: none; -webkit-appearance: none;
+    display: none;
+  }
+  &Close {
+    background: url('./../../../assets/close-white.svg') center center / 20px no-repeat;
+    border: 0; border-radius: 0; cursor: pointer; margin: -17px 0 0; padding: 0;
+    width: 34px; height: 34px; position: absolute; right: 10px; top: 50%;
+    appearance: none; -webkit-appearance: none;
+    display: none;
   }
 
   &Section {margin: 0 0 20px;}
@@ -49,5 +47,26 @@
     white-space: nowrap;
     padding: 8px 16px;
     z-index: 100;
+  }
+}
+
+
+@media screen and (max-width: 1020px) {
+  .filter {
+    background: #fff; border: 0; border-radius: 0;
+    padding: 0; top: 0; left: 0; bottom: 0; margin: 0;
+    display: flex; flex-direction: column; width: 100%;
+    position: fixed; z-index: 1000;
+    transition: all 200ms ease-in-out;
+    opacity: 0; visibility: hidden;
+    &.opened {opacity: 1; visibility: visible;}
+    &Btn {display: block;}
+    &Title {background: #353535; color: #fff; padding: 10px 20px; position: relative;}
+    &Close {display: block;}
+    &Body {padding: 20px; overflow: auto; flex: 1;}
+    &Footer {
+      background: #ededed;
+      display: flex; padding: 14px 20px;
+    }
   }
 }

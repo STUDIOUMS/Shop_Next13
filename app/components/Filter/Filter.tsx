@@ -40,6 +40,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   const [priceTo, setPriceTo] = useState<string>(isPriceTo)
   const [chosenPacks, setChosenPacks] = useState<string[]>(isPack)
   const [reset, setReset] = useState<boolean>(false)
+  const [mobileShow, setMobileShow] = useState<boolean>(false)
 
   // isReset
   const isReset: boolean = (hit || discount || newf || priceFrom.length || priceTo.length || chosenPacks.length) ? false : true
@@ -71,6 +72,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
     router.push(pathname + '?' + uri)
     setReset(false)
     dispatch(setLoadFilter(true))
+    mbCloseFilter()
   }
 
 
@@ -85,6 +87,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
     setPriceTo('')
     setChosenPacks([])
     setReset(true)
+    mbCloseFilter()
     
     if (uri.length) {
       router.push(pathname)
@@ -123,43 +126,66 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
     setPriceTo(val)
   }
 
+
+  // Mobile show filter
+  const mbShowFilter = () => {
+    setMobileShow(true)
+    document.body.style.height = '100%'
+    document.body.style.overflow = 'hidden'
+  }
+  // Mobile close filter
+  const mbCloseFilter = () => {
+    setMobileShow(false)
+    document.body.removeAttribute('style')
+  }
+
   return (
     <>
-      <button className={styles.filterBtn}></button>
+      <button className={styles.filterBtn} onClick={mbShowFilter}></button>
       
-      <div className={styles.filter}>
-        <div className={styles.filterTitle}>Фильтр</div>
+      <div className={`${styles.filter} ${mobileShow ? styles.opened : ''}`}>
 
-        <div className={styles.filterSection}>
-          <CheckField handler={chooseFilterParam} title="Хит" type="checkbox" value="hit" name="hit" checked={hit} reset={reset} />
-
-          <CheckField handler={chooseFilterParam} title="Скидка" type="checkbox" value="discount" name="discount" checked={discount} reset={reset} />
-          
-          <CheckField handler={chooseFilterParam} title="Новинки" type="checkbox" value="new" name="new" checked={newf} reset={reset} />
+        <div className={styles.filterTitle}>
+          Фильтр
+          <button className={styles.filterClose} onClick={mbCloseFilter}></button>
         </div>
 
-        <div className={styles.filterSection}>
-          <div className={styles.filterName}>Цена</div>
-          <Range handlerFrom={chooseFrom} handlerTo={chooseTo} from={priceFrom} to={priceTo} reset={reset} />
+        <div className={styles.filterBody}>
+
+          <div className={styles.filterSection}>
+            <CheckField handler={chooseFilterParam} title="Хит" type="checkbox" value="hit" name="hit" checked={hit} reset={reset} />
+
+            <CheckField handler={chooseFilterParam} title="Скидка" type="checkbox" value="discount" name="discount" checked={discount} reset={reset} />
+            
+            <CheckField handler={chooseFilterParam} title="Новинки" type="checkbox" value="new" name="new" checked={newf} reset={reset} />
+          </div>
+
+          <div className={styles.filterSection}>
+            <div className={styles.filterName}>Цена</div>
+            <Range handlerFrom={chooseFrom} handlerTo={chooseTo} from={priceFrom} to={priceTo} reset={reset} />
+          </div>
+
+          <div className={styles.filterSection}>
+            <div className={styles.filterName}>Упаковка</div>
+            {packs.map(el => {
+              const checkedPack = searchParams.get('pack')?.split(',').some(i => Number(i) === el.id)
+              return <CheckField key={el.id} handler={choosePackFunc} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={checkedPack} reset={reset} />
+            })}
+          </div>
+
         </div>
 
-        <div className={styles.filterSection}>
-          <div className={styles.filterName}>Упаковка</div>
-          {packs.map(el => {
-            const checkedPack = searchParams.get('pack')?.split(',').some(i => Number(i) === el.id)
-            return <CheckField key={el.id} handler={choosePackFunc} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={checkedPack} reset={reset} />
-          })}
+        <div className={styles.filterFooter}>
+          <button className="btn btn-block btn-success mb-0 mb-xl-2 me-2 me-xl-0" onClick={applyFilter}>
+            Применить
+            {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
+          </button>
+
+          <button className="btn btn-block btn-outline-secondary" onClick={resetFilter} disabled={isReset}>
+            Сбросить
+            {loadReset && <span className="spinner-border spinner-border-sm ms-2"></span>}
+          </button>
         </div>
-
-        <button className="btn btn-block btn-success mb-2" onClick={applyFilter}>
-          Применить
-          {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
-        </button>
-
-        <button className="btn btn-block btn-outline-secondary" onClick={resetFilter} disabled={isReset}>
-          Сбросить
-          {loadReset && <span className="spinner-border spinner-border-sm ms-2"></span>}
-        </button>
       </div>
     </>
   )
