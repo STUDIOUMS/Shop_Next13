@@ -5,7 +5,7 @@ import { setLoadSort } from "@/app/store/appSlice"
 import { AppDispatch, RootState } from "@/app/store/store"
 import { SortItemType } from "@/options/types";
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
-import { useCallback } from "react"
+import { useCallback, useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import styles from "./Sort.module.scss"
 
@@ -16,6 +16,7 @@ interface ISort {
 const Sort: React.FC<ISort> = ({ list }) => {
   const load = useSelector((state: RootState) => state.app.loadSort)
   const dispatch = useDispatch<AppDispatch>()
+  const ref = useRef<HTMLSelectElement>(null)
 
   // url params
   const searchParams = useSearchParams()
@@ -24,8 +25,15 @@ const Sort: React.FC<ISort> = ({ list }) => {
   
   // Handle
   const sortQuery = searchParams.get('ordering') || ''
-  const valueQuery = sortQuery.length ? sortQuery : 'default-value'
-  
+  const isOrder = searchParams.has('ordering')
+  const valueQuery = isOrder ? sortQuery : 'default-value'
+
+  useEffect(() => {
+    if (!isOrder) {
+      ref.current!.value = 'default-value'
+    }
+  }, [isOrder])
+
 
   // searchParams with a provided key/value pair
   const createQueryString = useCallback((name: string, val: string) => {
@@ -51,7 +59,7 @@ const Sort: React.FC<ISort> = ({ list }) => {
   return (
     <div className={styles.sortbox}>
       <div className={styles.sortboxLeft}>
-        <select className="form-select" onChange={sortHandler} defaultValue={valueQuery}>
+        <select className="form-select" onChange={sortHandler} defaultValue={valueQuery} ref={ref}>
           <option value="default-value">Сортировать</option>
           {list.map(el => <option key={el.value} value={el.value}>{el.name}</option>)}
         </select>

@@ -3,7 +3,7 @@
 import { AppDispatch, RootState } from '@/app/store/store'
 import { setLoadFilter, setLoadFilterReset } from '@/app/store/appSlice'
 import { PackType } from '@/options/types'
-import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+import { usePathname, useSearchParams, useRouter, ReadonlyURLSearchParams } from 'next/navigation'
 import { useCallback, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CheckField from '../CheckField/CheckField'
@@ -23,7 +23,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-
+  
   // getting of existing params
   const isHit = searchParams.has('hit') ? true : false
   const isDiscount = searchParams.has('discount') ? true : false
@@ -141,7 +141,9 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
 
   return (
     <>
-      <button className={styles.filterBtn} onClick={mbShowFilter}></button>
+      <button className={styles.filterBtn} onClick={mbShowFilter}>
+        {!isReset && <span className={styles.filterBtnActive}></span>}
+      </button>
       
       <div className={`${styles.filter} ${mobileShow ? styles.opened : ''}`}>
 
@@ -176,7 +178,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
         </div>
 
         <div className={styles.filterFooter}>
-          <button className="btn btn-block btn-success mb-0 mb-xl-2 me-2 me-xl-0" onClick={applyFilter}>
+          <button className="btn btn-block btn-success mb-0 mb-lg-2 me-2 me-lg-0" onClick={applyFilter}>
             Применить
             {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
           </button>
