@@ -2,19 +2,21 @@ import { useEffect, useRef } from 'react'
 import styles from './Range.module.scss'
 
 interface IRange {
-  setPriceFrom: (val:  string) => void
-  setPriceTo: (val:  string) => void
+  handlerFrom: (val:  string) => void
+  handlerTo: (val:  string) => void
   from: string
   to: string
   reset?: boolean
 }
 
-const Range: React.FC<IRange> = ({ from, to, reset, setPriceFrom, setPriceTo }) => {
+const Range: React.FC<IRange> = ({ from, to, reset, handlerFrom, handlerTo }) => {
   const ref = useRef<HTMLInputElement>(null)
+  const ref2 = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (reset) {
       ref.current!.value = ''
+      ref2.current!.value = ''
     }
   }, [reset])
 
@@ -24,7 +26,7 @@ const Range: React.FC<IRange> = ({ from, to, reset, setPriceFrom, setPriceTo }) 
         type="text"
         className="form-control"
         placeholder="От"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPriceFrom(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handlerFrom(e.target.value)}
         defaultValue={from}
         ref={ref}
       />
@@ -33,9 +35,9 @@ const Range: React.FC<IRange> = ({ from, to, reset, setPriceFrom, setPriceTo }) 
         type="text"
         className="form-control"
         placeholder="До"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPriceTo(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handlerTo(e.target.value)}
         defaultValue={to}
-        ref={ref}
+        ref={ref2}
       />
     </div>
   )

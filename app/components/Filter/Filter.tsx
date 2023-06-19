@@ -113,14 +113,22 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
     }
   }
 
+  // chooseRange
+  const chooseFrom = (val: string) => {
+    setReset(false)
+    setPriceFrom(val)
+  }
+  const chooseTo = (val: string) => {
+    setReset(false)
+    setPriceTo(val)
+  }
+
   return (
     <>
       <button className={styles.filterBtn}></button>
       
       <div className={styles.filter}>
         <div className={styles.filterTitle}>Фильтр</div>
-
-        {/* <p>Paks: {chosenPacks.join(',')}</p> */}
 
         <div className={styles.filterSection}>
           <CheckField handler={chooseFilterParam} title="Хит" type="checkbox" value="hit" name="hit" checked={hit} reset={reset} />
@@ -132,7 +140,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
 
         <div className={styles.filterSection}>
           <div className={styles.filterName}>Цена</div>
-          <Range setPriceFrom={setPriceFrom} setPriceTo={setPriceTo} from={priceFrom} to={priceTo} reset={reset} />
+          <Range handlerFrom={chooseFrom} handlerTo={chooseTo} from={priceFrom} to={priceTo} reset={reset} />
         </div>
 
         <div className={styles.filterSection}>
