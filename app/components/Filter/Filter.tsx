@@ -39,6 +39,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   const [priceFrom, setPriceFrom] = useState<string>(isPriceFrom)
   const [priceTo, setPriceTo] = useState<string>(isPriceTo)
   const [chosenPacks, setChosenPacks] = useState<string[]>(isPack)
+  const [reset, setReset] = useState<boolean>(false)
 
   // isReset
   const isReset: boolean = (hit || discount || newf || priceFrom.length || priceTo.length || chosenPacks.length) ? false : true
@@ -68,25 +69,33 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   const applyFilter = () => {
     const uri: string = setFilter([hit, discount, newf, priceFrom, priceTo, chosenPacks.join(',')])
     router.push(pathname + '?' + uri)
+    setReset(false)
     dispatch(setLoadFilter(true))
   }
 
 
   // resetFilter
   const resetFilter = () => {
+    const uri: string = searchParams.toString()
+
     setHit(false)
     setDiscount(false)
     setNewf(false)
     setPriceFrom('')
     setPriceTo('')
     setChosenPacks([])
-    router.push(pathname)
-    dispatch(setLoadFilterReset(true))
+    setReset(true)
+    
+    if (uri.length) {
+      router.push(pathname)
+      dispatch(setLoadFilterReset(true))
+    }
   }
 
 
   // chooseFilterParam
   const chooseFilterParam = (check: any, val: string) => {
+    setReset(false)
     if (val === 'hit') setHit(!hit)
     if (val === 'discount') setDiscount(!discount)
     if (val === 'new') setNewf(!newf)
@@ -96,13 +105,13 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
   // choosePackFunc
   const choosePackFunc = (check: boolean, id: string) => {
     const packExist = chosenPacks.some(el => el === id)
+    setReset(false)
     if (!packExist) {
       setChosenPacks(prev => [...prev, id].sort())
     } else {
       setChosenPacks(prev => prev.filter(el => el !== id))
     }
   }
-
 
   return (
     <>
@@ -111,30 +120,26 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
       <div className={styles.filter}>
         <div className={styles.filterTitle}>Фильтр</div>
 
-        {/* <p>Hit: {hit}<br />
-        Sale: {discount}<br />
-        New: {newf}<br />
-        Price: {priceFrom} - {priceTo}<br />
-        Packs: {chosenPacks.join(',')}</p> */}
-        
-        <div className={styles.filterSection}>
-          <CheckField handler={chooseFilterParam} title="Хит" type="checkbox" value="hit" name="hit" checked={hit} handCheck />
+        {/* <p>Paks: {chosenPacks.join(',')}</p> */}
 
-          <CheckField handler={chooseFilterParam} title="Скидка" type="checkbox" value="discount" name="discount" checked={discount} handCheck />
+        <div className={styles.filterSection}>
+          <CheckField handler={chooseFilterParam} title="Хит" type="checkbox" value="hit" name="hit" checked={hit} reset={reset} />
+
+          <CheckField handler={chooseFilterParam} title="Скидка" type="checkbox" value="discount" name="discount" checked={discount} reset={reset} />
           
-          <CheckField handler={chooseFilterParam} title="Новинки" type="checkbox" value="new" name="new" checked={newf} handCheck />
+          <CheckField handler={chooseFilterParam} title="Новинки" type="checkbox" value="new" name="new" checked={newf} reset={reset} />
         </div>
 
         <div className={styles.filterSection}>
           <div className={styles.filterName}>Цена</div>
-          <Range setPriceFrom={setPriceFrom} setPriceTo={setPriceTo} from={priceFrom} to={priceTo} />
+          <Range setPriceFrom={setPriceFrom} setPriceTo={setPriceTo} from={priceFrom} to={priceTo} reset={reset} />
         </div>
 
         <div className={styles.filterSection}>
           <div className={styles.filterName}>Упаковка</div>
           {packs.map(el => {
             const checkedPack = searchParams.get('pack')?.split(',').some(i => Number(i) === el.id)
-            return <CheckField key={el.id} handler={choosePackFunc} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={checkedPack} handCheck={false} />
+            return <CheckField key={el.id} handler={choosePackFunc} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={checkedPack} reset={reset} />
           })}
         </div>
 
