@@ -13,8 +13,13 @@ import SmallCart from "./SmallCart"
 import logo from "../../../assets/logo.svg"
 import Image from "next/image"
 import { set_phone } from "@/options/settings"
+import { CatType } from "@/options/types"
 
-const Header: React.FC = () => {
+interface IHeader {
+  cats: CatType[]
+}
+
+const Header: React.FC<IHeader> = ({ cats }) => {
   const dispatch = useDispatch<AppDispatch>()
   
   useEffect(() => {
@@ -37,7 +42,7 @@ const Header: React.FC = () => {
           <Link href="/" className={styles.headerLogo}>
             <Image src={logo} alt="" width={50} height={50} />
           </Link>
-          <CatPopup />
+          <CatPopup cats={cats} />
           <Search />
           <SmallCart />
         </div>

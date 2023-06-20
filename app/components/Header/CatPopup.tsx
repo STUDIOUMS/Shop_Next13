@@ -1,18 +1,13 @@
-import { url_cats } from "@/options/fetches"
 import { CatType } from "@/options/types"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import CatPopupItem from "./CatPopupItem"
 
-const CatPopup = () => {
-  const [cats, setCats] = useState<CatType[]>([])
+interface ICatPopup {
+  cats: CatType[]
+}
+
+const CatPopup: React.FC<ICatPopup> = ({ cats }) => {
   const [show, setShow] = useState<boolean>(false)
-  
-  useEffect(() => {
-    fetch(`${url_cats}`)
-      .then(response => response.json())
-      .then(data => setCats(data.results))
-      .catch(e => setCats([]))
-  }, [])
 
   const btnClass = show ? "btn btn-outline-success catpopup-btn active" : "btn btn-outline-success catpopup-btn"
   const dropdownClass = show ? "catpopup opened" : "catpopup"

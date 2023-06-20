@@ -16,7 +16,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en">
       <body>
         <Providers>
-          <Header />
+          <Header cats={cats} />
           <div className="container main_container">
             {children}
           </div>
