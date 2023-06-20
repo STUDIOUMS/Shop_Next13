@@ -26,7 +26,17 @@ const OrderForm: React.FC = () => {
   const [delivery, setDelivery] = useState<string>('Курьером')
   const [payment, setPayment] = useState<string>('Наличными курьеру')
   const orderList = useSelector((state: RootState) => state.app.orders)
-  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>()
+
+  // chooseDelivery
+  const chooseDelivery = (check: boolean, val: string) => {
+    setDelivery(val)
+  }
+  
+  // choosePayment
+  const choosePayment = (check: boolean, val: string) => {
+    setPayment(val)
+  }
   
   // onSubmitOrder
   const onSubmitOrder = async (data: any) => {
@@ -35,12 +45,8 @@ const OrderForm: React.FC = () => {
       orderID: `order-${Date.now()}`,
       list: orderList
     }
-    // const response = await fetch(`${url_orders}`, {
-    //   method: 'POST',
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(newOrder)
-    // })
     console.log(newOrder)
+    reset()
   }
 
   return (
@@ -117,24 +123,24 @@ const OrderForm: React.FC = () => {
           </div>
         </div>
 
-        {/* <div className="row">
+        <div className="row">
           <div className={`col-12 col-md-6 ${styles.orderFormGrid}`}>
             <div className={styles.orderFormSection}>
               <h3>Доставка</h3>
-              <CheckField handler={setDelivery} title="Курьером" type="radio" value="Курьером" name="delivery" checked={true} />
-              <CheckField handler={setDelivery} title="Самовывоз" type="radio" value="Самовывоз" name="delivery" />
-              <CheckField handler={setDelivery} title="Почтовая служба" type="radio" value="Почтовая служба" name="delivery" />
+              <CheckField handler={chooseDelivery} title="Курьером" type="radio" value="Курьером" name="delivery" checked={true} />
+              <CheckField handler={chooseDelivery} title="Самовывоз" type="radio" value="Самовывоз" name="delivery" />
+              <CheckField handler={chooseDelivery} title="Почтовая служба" type="radio" value="Почтовая служба" name="delivery" />
             </div>
           </div>
           <div className={`col-12 col-md-6 ${styles.orderFormGrid}`}>
             <div className={styles.orderFormSection}>
               <h3>Оплата</h3>
-              <CheckField handler={setPayment} title="Наличными курьеру" type="radio" value="Наличными курьеру" name="payment" checked={true} />
-              <CheckField handler={setPayment} title="Оплата картой" type="radio" value="Оплата картой" name="payment" />
-              <CheckField handler={setPayment} title="Оплата по счету" type="radio" value="Оплата по счету" name="payment" />
+              <CheckField handler={choosePayment} title="Наличными курьеру" type="radio" value="Наличными курьеру" name="payment" checked={true} />
+              <CheckField handler={choosePayment} title="Оплата картой" type="radio" value="Оплата картой" name="payment" />
+              <CheckField handler={choosePayment} title="Оплата по счету" type="radio" value="Оплата по счету" name="payment" />
             </div>
           </div>
-        </div> */}
+        </div>
 
         <div className={styles.orderFormGrid}>
           <div className={styles.orderFormSection}>
