@@ -6,7 +6,7 @@ import { usePriceImg } from "@/app/components/price.hook"
 import Tag from "@/app/components/Tag/Tag"
 import { set_currency } from "@/options/settings"
 import { ProductType } from "@/options/types"
-import Image from "next/image"
+import Gallery from "./Gallery"
 import styles from './ProductCard.module.scss'
 
 interface IProductCard {
@@ -24,7 +24,7 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
       <div className="row">
         <div className="col-12 col-md-5">
           <div className={styles.cardGallery}>
-            <Image src={img} alt="" width={240} height={240} />
+            <Gallery img={img} title={`${good.title}. Упаковка: ${currentPack}`} />
 
             {good.hit && <div className={styles.cardGalleryTag}><Tag type='hit' /></div>}
             {good.new && <div className={styles.cardGalleryTag}><Tag type='new' /></div>}
