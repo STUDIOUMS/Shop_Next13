@@ -14,11 +14,11 @@ export type CatTypeParent = {
 
 export type CatType = {
   id: number
+  parent: CatTypeParent | null
   slug: string
   name: string
   description: string
   img: string
-  parent: CatTypeParent | null
 }
 
 export type RelatedAttrsType = {
@@ -58,6 +58,7 @@ export type ProductType = {
   id: number
   relatedAttrs: RelatedAttrsType[]
   relatedPacks: RelatedPacksType[]
+  defaultPack: RelatedPacksType
   categories: ProductCatType[]
   slug: string
   title: string
@@ -86,8 +87,8 @@ export type NavItemType = {
 
 export type blogType = {
   id: number
-  slug: string
   title: string
+  slug: string
   short?: string
   description: string
   createdAt: string
