@@ -13,7 +13,7 @@ export default function Loading() {
       <span className="placeholder col-3"></span>
     </h1>
     <div className="row">
-      <div className="col-12 col-lg-3">
+      <div className="col-12 col-lg-3 d-none d-lg-block">
         <div className="placeholder col-12" style={{height: '400px'}}></div>
       </div>
       <div className="col-12 col-lg-9">
