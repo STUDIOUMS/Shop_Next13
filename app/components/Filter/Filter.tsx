@@ -3,7 +3,7 @@
 import { AppDispatch, RootState } from '@/app/store/store'
 import { setLoadFilter, setLoadFilterReset } from '@/app/store/appSlice'
 import { PackType } from '@/options/types'
-import { usePathname, useSearchParams, useRouter, ReadonlyURLSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CheckField from '../CheckField/CheckField'

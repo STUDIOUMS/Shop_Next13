@@ -14,9 +14,6 @@ interface ICarousel {
 }
 
 const Carousel: React.FC<ICarousel> = ({ list, title }) => {
-
-  console.log(list.length)
-  
   
   if (!list.length) {
     return null

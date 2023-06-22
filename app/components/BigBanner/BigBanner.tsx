@@ -23,14 +23,14 @@ const BigBanner: React.FC = () => {
         pagination
         loop
       >
-        <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
-        <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
-        <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
-        <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
-        <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
-        <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
-        <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
-        <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
+        <SwiperSlide className={`${styles.bigbannerItem} ${styles.bigbannerItem1}`}></SwiperSlide>
+        <SwiperSlide className={`${styles.bigbannerItem} ${styles.bigbannerItem2}`}></SwiperSlide>
+        <SwiperSlide className={`${styles.bigbannerItem} ${styles.bigbannerItem3}`}></SwiperSlide>
+        <SwiperSlide className={`${styles.bigbannerItem} ${styles.bigbannerItem4}`}></SwiperSlide>
+        <SwiperSlide className={`${styles.bigbannerItem} ${styles.bigbannerItem5}`}></SwiperSlide>
+        <SwiperSlide className={`${styles.bigbannerItem} ${styles.bigbannerItem6}`}></SwiperSlide>
+        <SwiperSlide className={`${styles.bigbannerItem} ${styles.bigbannerItem7}`}></SwiperSlide>
+        <SwiperSlide className={`${styles.bigbannerItem} ${styles.bigbannerItem8}`}></SwiperSlide>
       </Swiper>
     </div>
   )
