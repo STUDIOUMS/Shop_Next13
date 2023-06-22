@@ -86,7 +86,7 @@ export async function getProducts(id: number, uri: string, limit: number) {
 type productsWidjetParam = 'hit' | 'discount' | 'new'
 export async function getProductsWidget(param: productsWidjetParam, limit: number) {
   try {
-    const response = await fetch(`${url_products}?ordering=-id&limit=${limit}&${param}=true`)
+    const response = await fetch(`${url_products}?ordering=-id&${param}=true&limit=${limit}`)
     const data: ResponseType = await response.json()
     return data.results
   } catch(e) {
