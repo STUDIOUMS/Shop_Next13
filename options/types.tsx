@@ -1,9 +1,13 @@
+export type ErrorResponseType = {
+  results: any[]
+  error: boolean
+}
+
 export type ResponseType = {
   count: number
   next: string
   previous: string
-  results: any
-  error?: any
+  results: any[]
 }
 
 export type CatTypeParent = {

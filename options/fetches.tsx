@@ -1,4 +1,4 @@
-import { ResponseType } from "./types"
+import { ErrorResponseType, ResponseType } from "./types"
 
 // Variables
 export const serverURL = 'https://qwertynext.com'
@@ -114,15 +114,11 @@ export async function getPacks() {
 export async function getBlogs(limit: number, uri: string) {
   const isLimit = uri.includes('limit')
   const uri_limit = isLimit ? `&${uri}` : `&limit=${limit}`
-  try {
-    const response = await fetch(`${url_blog}?ordering=-id${uri_limit}`, {
-      cache: 'no-cache'
-    })
-    const data: ResponseType = await response.json()
-    return data
-  } catch {
-    return { results: [], error: true }
-  }
+  const response = await fetch(`${url_blog}?ordering=-id${uri_limit}`, {
+    cache: 'no-cache'
+  })
+  const data: ResponseType = await response.json()
+  return data
 }
 
 export async function getBlogsWidjet(limit: number) {

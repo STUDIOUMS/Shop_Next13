@@ -25,6 +25,15 @@ export function createDate(dateString: string, time?: boolean) {
   return `${day} ${month} ${year}${time ? timeString : ''}`
 }
 
+// createArray
+export const createArray = (num: number): any[] => {
+  const output: any[] = []
+  for (let i = 0; i < num; i++) {
+    output.push(i)
+  }
+  return output
+}
+
 // SortItems
 export const SortItems: SortItemType[] = [
   { name: 'От дешевых', value: 'price' },
