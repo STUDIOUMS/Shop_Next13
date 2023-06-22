@@ -31,7 +31,7 @@ export default function Loading() {
 
         <div className="row">
           {list.map(el => (
-            <div className="col-12 col-sm-6 col-md-4">
+            <div key={el} className="col-12 col-sm-6 col-md-4">
               <div className="placeholder col-12 mb-3" style={{height: '260px'}}></div>
             </div>
           ))}

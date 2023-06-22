@@ -13,7 +13,7 @@ export default function Loading() {
       <span className="placeholder col-3"></span>
     </h1>
     {list.map(el => (
-      <div style={{marginBottom: '30px'}}>
+      <div key={el} style={{marginBottom: '30px'}}>
         <h2><span className="placeholder col-12"></span></h2>
         <p><span className="placeholder col-12"></span><br />
         <span className="placeholder col-8"></span><br />
