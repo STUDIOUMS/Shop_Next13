@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/navigation'
-import 'swiper/css/pagination'
+import 'swiper/css/effect-fade'
 import styles from './BigBanner.module.scss'
 
 const BigBanner: React.FC = () => {
@@ -13,13 +13,19 @@ const BigBanner: React.FC = () => {
     <div className={styles.bigbanner}>
       <Swiper
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
-        autoplay={{delay: 3000}}
+        autoplay={{
+          delay: 3000
+        }}
         effect="fade"
         spaceBetween={0}
         slidesPerView={1}
         navigation
         pagination
+        loop
       >
+        <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
+        <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
+        <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
         <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
         <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
         <SwiperSlide className={styles.bigbannerItem}></SwiperSlide>
