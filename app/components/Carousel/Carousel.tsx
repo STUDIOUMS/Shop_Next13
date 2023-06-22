@@ -11,10 +11,12 @@ import Card from '@/app/cat/[subcat]/components/Card/Card'
 interface ICarousel {
   list: ProductType[]
   title: string
-  view?: number
 }
 
-const Carousel: React.FC<ICarousel> = ({ list, title, view = 4 }) => {
+const Carousel: React.FC<ICarousel> = ({ list, title }) => {
+
+  console.log(list.length)
+  
   
   if (!list.length) {
     return null
