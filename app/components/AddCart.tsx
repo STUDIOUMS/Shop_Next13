@@ -1,4 +1,4 @@
-import { setOrder } from "@/app/store/appSlice"
+import { setOrder, setToast } from "@/app/store/appSlice"
 import { AppDispatch } from "@/app/store/store"
 import { BasketType, ProductType } from "@/options/types"
 import { useDispatch } from "react-redux"
@@ -26,10 +26,16 @@ const AddCart: React.FC<IAddCart> = ({ big, el, img, pack, price }) => {
     pack
   }
 
+  // addCartHandler
+  const addCartHandler = () => {
+    dispatch(setOrder(order))
+    dispatch(setToast(`Товар, ${el.title} - ${pack}, добавлен в корзину`))
+  }
+
   return (
     <button
       className={`btn ${!big ? "btn-sm" : ""} btn-success ${styles.btnCart}`}
-      onClick={() => dispatch(setOrder(order))}
+      onClick={addCartHandler}
     >
       <span>В корзину</span>
     </button>

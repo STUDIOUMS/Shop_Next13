@@ -10,6 +10,8 @@ export interface appState {
   loadFilterReset: boolean
   loadSort: boolean
   loadPager: boolean
+  toast: boolean
+  toastText: string
 }
 
 const initialState: appState = {
@@ -18,7 +20,9 @@ const initialState: appState = {
   loadFilter: false,
   loadFilterReset: false,
   loadSort: false,
-  loadPager: false
+  loadPager: false,
+  toast: false,
+  toastText: ''
 }
 
 export const appSlice = createSlice({
@@ -93,11 +97,25 @@ export const appSlice = createSlice({
       currentOrder!.total = String(Number(currentOrder!.price) * Number(count))
       localStorage.removeItem('orders')
       localStorage.setItem('orders', JSON.stringify(state.orders))
+    },
+
+    // setToast
+    setToast: (state, action) => {
+      state.toast = true
+      state.toastText = action.payload
+    },
+
+    // closeToast
+    closeToast: (state) => {
+      state.toast = false
+      state.toastText = ''
     }
+
+
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setView, setLoadFilter, setLoadSort, setLoadPager, setOrder, changeCountOrder, setOrders, removeOrder, setLoadFilterReset } = appSlice.actions
+export const { setView, setLoadFilter, setLoadSort, setLoadPager, setOrder, changeCountOrder, setOrders, removeOrder, setLoadFilterReset, setToast, closeToast } = appSlice.actions
 
 export default appSlice.reducer
