@@ -2,6 +2,7 @@ import { changeCountOrder, removeOrder } from "@/app/store/appSlice"
 import { AppDispatch } from "@/app/store/store"
 import { set_currency } from "@/options/settings"
 import { BasketType } from "@/options/types"
+import Image from "next/image"
 import Link from "next/link"
 import { useDispatch } from "react-redux"
 import styles from "./Basket.module.scss"
@@ -18,9 +19,9 @@ const BasketRow: React.FC<IBasketRow> = ({ order }) => {
       <div className="row align-items-center">
         <div className={`col-12 col-md-6 ${styles.basketDesc}`}>
           <div className="row align-items-center">
-            <div className="col-3">
+            <div className={`col-3 ${styles.basketRowImg}`}>
             <Link href={`/product/${order.slug}`}>
-              <img src={order.img} alt="" />
+              <Image src={order.img} alt="" width={70} height={70} />
             </Link>
             </div>
             <div className="col-9">
