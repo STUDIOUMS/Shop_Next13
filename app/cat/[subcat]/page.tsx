@@ -8,6 +8,7 @@ import Sort from "@/app/components/Sort/Sort"
 import SubCats from "./components/SubCats/SubCats"
 import { getCat, getPacks, getProducts, getSubcats } from "@/options/fetches"
 import Filter from "@/app/components/Filter/Filter"
+import ChosenFilter from "@/app/components/ChosenFilter"
 
 
 // Metatags
@@ -63,6 +64,8 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
           {isMainCat && <SubCats list={subcats} />}
 
           <Sort list={SortItems} />
+
+          <ChosenFilter />
 
           <GoodList list={products} catID={cat.id} uri={uri} limit={limitProducts} />
 
