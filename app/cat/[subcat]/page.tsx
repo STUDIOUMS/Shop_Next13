@@ -8,7 +8,7 @@ import Sort from "@/app/components/Sort/Sort"
 import SubCats from "./components/SubCats/SubCats"
 import { getCat, getPacks, getProducts, getSubcats } from "@/options/fetches"
 import Filter from "@/app/components/Filter/Filter"
-import ChosenFilter from "@/app/components/ChosenFilter"
+import ChosenFilter from "@/app/components/ChosenFilter/ChosenFilter"
 
 
 // Metatags
