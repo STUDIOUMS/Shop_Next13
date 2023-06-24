@@ -1,14 +1,17 @@
 'use client'
 
-import { url_packages } from "@/options/fetches"
 import { set_currency } from "@/options/settings"
-import { PackType, ResponseType } from "@/options/types"
+import { PackType } from "@/options/types"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import styles from './ChosenFilter.module.scss'
 
-const ChosenFilter: React.FC = () => {
-  const [packs, setPacks] = useState<string>('')
+interface IChosenFilter {
+  packs: PackType[]
+}
+
+const ChosenFilter: React.FC<IChosenFilter> = ({ packs }) => {
+  const [packString, setPackString] = useState<string>('')
   const searchParams = useSearchParams()
   const isHit = searchParams.has('hit')
   const isDiscount = searchParams.has('discount')
@@ -20,16 +23,11 @@ const ChosenFilter: React.FC = () => {
   const isPack = searchParams.has('pack')
   const packParams = searchParams.get('pack')?.split(',')
   
-
   useEffect(() => {
-    fetch(`${url_packages}`)
-      .then(response => response.json())
-      .then((data: ResponseType) => {
-        let arr = data.results.filter((el: PackType) => packParams?.includes(el.id.toString()))
-        let output: string = arr.map((el: PackType) => el.name).join(', ')
-        setPacks(output)
-      })
-  }, [packParams])
+    let arr = packs.filter((el: PackType) => packParams?.includes(el.id.toString()))
+    let output: string = arr.map((el: PackType) => el.name).join(', ')
+    setPackString(output)
+  }, [searchParams])
 
   const output: string[] = []
   if (isHit) output.push('Хит')
@@ -37,7 +35,7 @@ const ChosenFilter: React.FC = () => {
   if (isNew) output.push('Новинки')
   if (isPriceMin) output.push(`От: ${priceMin} ${set_currency}`)
   if (isPriceMax) output.push(`До: ${priceMax} ${set_currency}`)
-  if (isPack) output.push(`Упаковка: ${packs}`)
+  if (isPack) output.push(`Упаковка: ${packString}`)
 
   if (!output.length) {
     return null

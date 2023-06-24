@@ -65,7 +65,7 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
 
           <Sort list={SortItems} />
 
-          <ChosenFilter />
+          <ChosenFilter packs={packs} />
 
           <GoodList list={products} catID={cat.id} uri={uri} limit={limitProducts} />
 
