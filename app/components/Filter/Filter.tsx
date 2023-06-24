@@ -164,7 +164,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
           </div>
 
           <div className={styles.filterSection}>
-            <div className={styles.filterName}>Цена (${set_currency})</div>
+            <div className={styles.filterName}>Цена ({set_currency})</div>
             <Range handlerFrom={chooseFrom} handlerTo={chooseTo} from={priceFrom} to={priceTo} reset={reset} />
           </div>
 
