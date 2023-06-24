@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import CheckField from '../CheckField/CheckField'
 import Range from '../Range/Range'
 import styles from './Filter.module.scss'
+import { set_currency } from '@/options/settings'
 
 interface IFilter {
   packs: PackType[]
@@ -163,7 +164,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
           </div>
 
           <div className={styles.filterSection}>
-            <div className={styles.filterName}>Цена</div>
+            <div className={styles.filterName}>Цена (${set_currency})</div>
             <Range handlerFrom={chooseFrom} handlerTo={chooseTo} from={priceFrom} to={priceTo} reset={reset} />
           </div>
 

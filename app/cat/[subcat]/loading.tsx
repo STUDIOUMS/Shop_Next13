@@ -17,7 +17,7 @@ export default function Loading() {
         <div className="placeholder col-12" style={{height: '400px'}}></div>
       </div>
       <div className="col-12 col-lg-9">
-        <div className="row mb-3">
+        <div className="row mb-4">
           <div className="col-4">
             <div className="placeholder col-12" style={{height: '70px'}}></div>
           </div>
@@ -26,6 +26,14 @@ export default function Loading() {
           </div>
           <div className="col-4">
             <div className="placeholder col-12" style={{height: '70px'}}></div>
+          </div>
+        </div>
+
+        <div className="d-block d-lg-flex justify-content-between mb-3">
+          <div className="placeholder col-3" style={{height: '30px'}}></div>
+          <div className="d-none d-lg-flex">
+            <div className="placeholder me-2" style={{width: '30px', height: '30px'}}></div>
+            <div className="placeholder" style={{width: '30px', height: '30px'}}></div>
           </div>
         </div>
 
