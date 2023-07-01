@@ -1,11 +1,13 @@
 'use client'
 
 import AddCart from "@/app/components/AddCart"
+import QuickOrderModal from "@/app/components/Modals/QuickOrderModal"
 import Packages from "@/app/components/Packages/Packages"
 import { usePriceImg } from "@/app/components/price.hook"
 import Tag from "@/app/components/Tag/Tag"
 import { set_currency } from "@/options/settings"
 import { ProductType } from "@/options/types"
+import { useState } from "react"
 import Gallery from "./Gallery"
 import styles from './ProductCard.module.scss'
 
@@ -14,6 +16,7 @@ interface IProductCard {
 }
 
 const ProductCard: React.FC<IProductCard> = ({ good }) => {
+  const [quickModal, setQuickModal] = useState<boolean>(false)
   const packs = good.relatedPacks
   const { choosePack, img, price, oldprice, currentPack } = usePriceImg(packs)
 
@@ -46,13 +49,14 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
 
           <div className={styles.cardItem}>
             <AddCart big={true} el={good} pack={currentPack} price={price} img={img} />
-            <button className="btn btn-outline-secondary ms-2">Быстрый заказ</button>
+            <button className="btn btn-outline-secondary ms-2" onClick={() => setQuickModal(true)}>Быстрый заказ</button>
           </div>
 
           <p>Какой-то текст или информация о доставке</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias adipisci eius necessitatibus, est unde consequuntur!</p>
         </div>
       </div>
+      <QuickOrderModal show={quickModal} func={() => setQuickModal(false)} />
     </div>
   )
 }

@@ -5,7 +5,10 @@
   width: 38px;
   padding: 0;
   &::before {
-    background: url("../../../assets/cart.svg") center / 20px no-repeat;
+    background-image: url("../../../assets/cart.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 20px;
     content: '';
     display: block;
     position: absolute;
