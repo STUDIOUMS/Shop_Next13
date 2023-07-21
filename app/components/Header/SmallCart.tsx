@@ -10,9 +10,14 @@ const SmallCart: React.FC = () => {
   }, 0)
 
   return (
-    <Link href="/basket" className={`btn ${styles.btnCart}`}>
-      {count > 0 && <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{count}</span>}
-    </Link>
+    <>
+    {orders.length ?
+      <Link href="/basket" className={`btn ${styles.btnCart}`}>
+        {count > 0 && <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{count}</span>}
+      </Link> :
+      <span className={`btn ${styles.btnCart} ${styles.btnCartDisabled}`}></span>
+    }
+    </>
   )
 }
 

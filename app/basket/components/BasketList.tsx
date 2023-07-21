@@ -24,7 +24,12 @@ const BasketList = () => {
         <BasketTotal orders={orders} />
         <Link href="/order" className="btn btn-success">Оформить заказ</Link>
         
-      </> : <p>Корзина пуста</p>}
+      </> : 
+      <>
+        <div className="alert alert-secondary">Ваша корзина пуста</div>
+        <Link href={"/"} className="btn btn-success">Веурнться на главную</Link>
+      </>
+      }
     </div>
   );
 };

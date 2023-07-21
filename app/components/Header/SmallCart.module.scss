@@ -4,6 +4,7 @@
   height: 38px;
   width: 38px;
   padding: 0;
+  border: 0 !important;
   &::before {
     background-image: url("../../../assets/cart.svg");
     background-position: center center;
@@ -19,5 +20,9 @@
   }
   &:hover {
     background: var(--color-light);
+  }
+  &Disabled {
+    background: var(--color-light) !important;
+    cursor: default;
   }
 }
