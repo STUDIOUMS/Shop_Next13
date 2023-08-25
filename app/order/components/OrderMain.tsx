@@ -2,13 +2,11 @@
 
 import { RootState } from "@/app/store/store"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import React, { useEffect } from "react"
 import { useSelector } from "react-redux"
 import OrderCart from "./OrderCart"
 import OrderForm from "./OrderForm"
 
-const OrderMain: React.FC = () => {
+const OrderMain_old: React.FC = () => {
   const orders = useSelector((state: RootState) => state.app.orders)
 
   return (
@@ -33,4 +31,4 @@ const OrderMain: React.FC = () => {
   )
 }
 
-export default OrderMain
+export default OrderMain_old
