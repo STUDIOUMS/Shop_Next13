@@ -1,11 +1,11 @@
-import { ErrorResponseType, ResponseType } from "./types"
+import { ResponseType } from "./types"
 
 // Variables
-export const serverURL = 'https://qwertynext.com'
-export const url_cats = `${serverURL}/api/v1/catalog/categories/`
-export const url_products = `${serverURL}/api/v1/catalog/products/`
-export const url_packages = `${serverURL}/api/v1/catalog/packs/`
-export const url_blog = `${serverURL}/api/v1/blog/articles/`
+export const serverURL = process.env.SERVER_API
+export const url_cats = `${serverURL}/catalog/categories/`
+export const url_products = `${serverURL}/catalog/products/`
+export const url_packages = `${serverURL}/catalog/packs/`
+export const url_blog = `${serverURL}/blog/articles/`
 
 // GET REQUESTS
 
