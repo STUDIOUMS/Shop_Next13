@@ -1,7 +1,7 @@
 import { ResponseType } from "./types"
 
 // Variables
-export const serverURL = process.env.SERVER_API
+export const serverURL = 'https://qwertynext.com/api/v1'
 export const url_cats = `${serverURL}/catalog/categories/`
 export const url_products = `${serverURL}/catalog/products/`
 export const url_packages = `${serverURL}/catalog/packs/`
