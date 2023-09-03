@@ -25,8 +25,8 @@ export default async function Blog({ searchParams }: { searchParams: any }) {
     <div>
       <BreadCrumbs list={crumbs} />
       <h1>Блог</h1>
-      <BlogList list={data?.results} limit={limitPosts} />
-      <Loadmore pages={limitPosts} all={data?.count} />
+      <BlogList list={data?.results!} limit={limitPosts} />
+      <Loadmore pages={limitPosts} all={data?.count!} />
       {/* {data.error && <div className="alert alert-danger">Ошибка сервера</div>} */}
     </div>
   )
