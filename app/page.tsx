@@ -1,4 +1,4 @@
-import { getBlogsWidjet, getProductsWidget, serverURL } from "@/options/fetches"
+import { getBlogsWidjet, getProductsWidget } from "@/options/fetches"
 import Advantages from "./components/Advantages/Advantages"
 import Banners from "./components/Banners/Banners"
 import BigBanner from "./components/BigBanner/BigBanner"
