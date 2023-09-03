@@ -1,11 +1,11 @@
+import { serverURL } from "./settings"
 import { ResponseType } from "./types"
 
 // Variables
-export const apiURL = 'https://qwertynext.com/api/v1'
-export const url_cats = `${apiURL}/catalog/categories/`
-export const url_products = `${apiURL}/catalog/products/`
-export const url_packages = `${apiURL}/catalog/packs/`
-export const url_blog = `${apiURL}/blog/articles/`
+export const url_cats = `${serverURL}/catalog/categories/`
+export const url_products = `${serverURL}/catalog/products/`
+export const url_packages = `${serverURL}/catalog/packs/`
+export const url_blog = `${serverURL}/blog/articles/`
 
 // GET REQUESTS
 
