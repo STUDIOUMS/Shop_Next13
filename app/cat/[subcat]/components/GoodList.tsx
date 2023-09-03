@@ -16,7 +16,7 @@ interface IGoodList {
 }
 
 const GoodList: React.FC<IGoodList> = ({ catID, limit, list, uri }) => {
-  const [products, setProducts] = useState<ProductType[]>(list)
+  const [listProducts, setListProducts] = useState<ProductType[]>(list)
   const load = useSelector((state: RootState) => state.app.loadSort)
   const load2 = useSelector((state: RootState) => state.app.loadFilter)
   const loadReset = useSelector((state: RootState) => state.app.loadFilterReset)
@@ -26,7 +26,7 @@ const GoodList: React.FC<IGoodList> = ({ catID, limit, list, uri }) => {
   useEffect(() => {
     const getData = async () => {
       const { products } = await getProducts(catID, uri, limit)
-      setProducts(products)
+      setListProducts(products)
       dispatch(setLoadFilter(false))
       dispatch(setLoadFilterReset(false))
       dispatch(setLoadSort(false))
@@ -38,9 +38,9 @@ const GoodList: React.FC<IGoodList> = ({ catID, limit, list, uri }) => {
   return (
     <div className="goods-row">
       <div className="row">
-        {products.map(el => <Card key={el.id} el={el} />)}
+        {listProducts.map(el => <Card key={el.id} el={el} />)}
       </div>
-      {products.length === 0 && <p>В данной категории нет товаров</p>}
+      {listProducts.length === 0 && <p>В данной категории нет товаров</p>}
     </div>
   )
 }

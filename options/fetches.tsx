@@ -83,9 +83,9 @@ export async function getProducts(id: number, uri: string, limit: number) {
     const response = await fetch(`${url_products}?categories=${id}${params}`, {
       cache: 'no-cache'
     })
-    const data = await response.json()
+    const data: ResponseType = await response.json()
 
-    return { count: data.count, products: data.results }
+    return { count: data.count, products: data.results } as any
   } catch(e) {
     console.log(e)
   }
