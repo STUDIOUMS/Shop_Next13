@@ -58,14 +58,14 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
       
       <div className="row">
         <div className="col-12 col-lg-3">
-          <Filter packs={packs} />
+          <Filter packs={packs!} />
         </div>
         <div className="col-12 col-lg-9">
-          {isMainCat && <SubCats list={subcats} />}
+          {isMainCat && <SubCats list={subcats!} />}
 
           <Sort list={SortItems} />
 
-          <ChosenFilter packs={packs} />
+          <ChosenFilter packs={packs!} />
 
           <GoodList list={products} catID={cat.id} uri={uri} limit={limitProducts} />
 
