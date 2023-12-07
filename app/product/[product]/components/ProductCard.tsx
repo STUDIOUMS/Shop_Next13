@@ -31,6 +31,16 @@ const Image = styled.div`
   @media screen and (max-width: 750px) { min-height: 200px; img {max-height: 180px;} }
 `
 const ImageTags = styled.div`position: absolute; right: 15px; top: 15px;`
+const WrapPacks = styled.div`margin: 0 0 var(--gap);`
+const WrapBtns = styled.div`
+  display: flex;
+  * { margin: 0 calc(var(--gap) / 2) 0 0; }
+`
+const Code = styled.div`
+  color: var(--color-text2);
+  margin: 0 0 var(--gap);
+  b { color: var(--color-text); }
+`
 
 
 const ProductCard: React.FC<IProductCard> = ({ good }) => {
@@ -42,7 +52,7 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
 
   return (
     <SCRegistry>
-      <div className="grid grid-2 section">
+      <div className="grid grid-2 grid-mb-1 section">
         <div>
           <Image>
             <Gallery img={img} title={`${good.title}. Упаковка: ${currentPack}`} />
@@ -55,18 +65,18 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
         </div>
 
         <div>
-          <p>Код товара: {good.art}</p>
+          <Code>Код товара: <b>{good.art}</b></Code>
           
           <PriceBox price={price} oldprice={oldprice} size="large" />
 
-          <div>
+          <WrapPacks>
             <Packages handler={choosePack} goodID={good.id} packs={packs} />
-          </div>
+          </WrapPacks>
 
-          <div>
+          <WrapBtns>
             <AddCart big={true} el={good} pack={currentPack} price={price} img={img} />
             <Btn title="Быстрый заказ" handler={() => setQuickModal(true)} />
-          </div>
+          </WrapBtns>
 
           <p>Какой-то текст или информация о доставке</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias adipisci eius necessitatibus, est unde consequuntur!</p>

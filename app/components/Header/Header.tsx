@@ -10,7 +10,7 @@ import styles from "./Header.module.scss"
 import Navbar from "./NavBar"
 import Search from "../Search/Search"
 import SmallCart from "./SmallCart"
-import logo from "../../../assets/logo.svg"
+import logo from "@/assets/logo.webp"
 import Image from "next/image"
 import { set_phone } from "@/options/settings"
 import { CatType } from "@/options/types"
@@ -46,7 +46,7 @@ const Header: React.FC<IHeader> = ({ cats }) => {
       <div className={styles.headerMid}>
         <div className={`container ${styles.headerContainer}`}>
           <Link href="/" className={styles.headerLogo}>
-            <Image src={logo} alt="" width={50} height={50} />
+            <Image src={logo.src} alt="" width={50} height={50} style={{objectFit: 'contain'}} />
           </Link>
           <CatPopup cats={cats} />
           <Search />

@@ -69,7 +69,7 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
           <Loadmore pages={limitProducts} all={count} />
         </div>
 
-        <div className="catpage-description">
+        <div className="catpage-description section">
           <h3>Seo description</h3>
           <div dangerouslySetInnerHTML={{__html: cat.description}}></div>
         </div>

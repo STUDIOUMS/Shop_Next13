@@ -5,6 +5,7 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/app/store/store"
 import { setLoadPager } from "@/app/store/appSlice"
+import Btn from "./UI/Btn"
 
 interface ILoadmore {
   pages: number
@@ -44,11 +45,8 @@ const Loadmore: React.FC<ILoadmore> = ({ all, pages }) => {
   }
 
   return (
-    <div className="text-center mb-4">
-      <button className="btn btn-outline-success" onClick={loadmoreHandler}>
-        Показать еще
-        {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
-      </button>
+    <div className="text-center">
+      <Btn title={`Показать еще${load ? ' ...' : ''}`} handler={loadmoreHandler} />
     </div>
   )
 }

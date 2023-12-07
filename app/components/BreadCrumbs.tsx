@@ -16,6 +16,9 @@ const List = styled.ul`
   font-family: var(--font2);
   margin-bottom: var(--gap);
   padding: 0;
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
 `
 const Item = styled.li`
   list-style: none;

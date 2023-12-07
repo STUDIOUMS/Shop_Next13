@@ -2,33 +2,32 @@ import { CatType } from "@/options/types"
 import { useState } from "react"
 import CatPopupItem from "./CatPopupItem"
 import Btn from "../UI/Btn"
+import SCRegistry from "@/options/registry"
+import { Overlay, Popup, PopupHeader, Wrap } from "./CatPopupStyles"
 
 interface ICatPopup {
   cats: CatType[]
 }
 
-// Styles
-
 
 const CatPopup: React.FC<ICatPopup> = ({ cats }) => {
   const [show, setShow] = useState<boolean>(false)
-
-  const dropdownClass = show ? "catpopup opened" : "catpopup"
-  
   return (
-    <div className={dropdownClass}>
-      <Btn title="Каталог" handler={() => setShow(!show)} />
-      <div className="catpopup-dropdown">
-      <div className="catpopup-header">Каталог</div>
-        <div className="grid grid-3">
-          {cats.filter(el => el.parent === null).map(el => {
-            const subcats = cats.filter(cat => cat.parent?.pk === el.id)
-            return <CatPopupItem key={el.id} el={el} setShow={setShow} subcats={subcats} />
-          })}
-        </div>
-      </div>
-      <div className="catpopup-overlay" onClick={() => setShow(false)}></div>
-    </div>
+    <SCRegistry>
+      <Wrap $show={show}>
+        <Btn title="Каталог" handler={() => setShow(!show)} />
+        <Popup>
+          <PopupHeader>Каталог</PopupHeader>
+          <div className="grid grid-3 grid-mb-1">
+            {cats.filter(el => el.parent === null).map(el => {
+              const subcats = cats.filter(cat => cat.parent?.pk === el.id)
+              return <CatPopupItem key={el.id} el={el} setShow={setShow} subcats={subcats} />
+            })}
+          </div>
+        </Popup>
+        <Overlay onClick={() => setShow(false)} />
+      </Wrap>
+    </SCRegistry>
   )
 }
 

@@ -14,12 +14,32 @@ const crumbs: BreadCrumbsType[] = [
 
 export default function Page() {
   return (
-    <div>
+    <div className="section">
       <BreadCrumbs list={crumbs} />
       <h1>О компании</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa culpa natus alias impedit itaque unde fugit vel quasi, totam veritatis voluptates reiciendis incidunt, soluta eveniet commodi minus cupiditate dolore aliquam, nulla officiis officia corporis. Doloribus dolorum necessitatibus officia, natus numquam dignissimos. Nobis ducimus nulla minus enim, accusamus, necessitatibus accusantium tenetur.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque temporibus esse voluptatum ea quibusdam beatae aspernatur recusandae minus, quam earum.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit dolor labore debitis aperiam eligendi officia soluta reprehenderit explicabo accusantium, quas dignissimos possimus sed temporibus architecto fugit similique enim illo? Autem dolor dicta asperiores ad alias, earum ipsam sapiente debitis quidem?</p>
+      <p>Компания ООО «АЛЬБА» является лицензированным российским производителем и поставщиком профессиональных моющих и чистящих средств «HIGO», гигиенических косметических средств, антисептических бытовых средств. Производство находится в городе Тюмени, работаем на рынке потребителя более 6 лет.</p>
+      <p>Основное направление нашего производства - это изготовление профессиональных моющих и дезинфицирующих средств для промышленного, профессионального и бытового клининга. Также в линейку нашей продукции входят гигиенические косметические средства.</p>
+      <p>ООО «АЛЬБА» имеет свидетельство о государственной регистрации, сертификат соответствия, подтверждающие высокое качество производимой продукции и отвечающей требования ГОСТ, согласно разработанным техническим условиям.</p>
+      <p>Компания «АЛЬБА» в нынешних условиях импортозамещения своевременно подхватывает тенденции рынка, наше производство конкурентоспособно и удовлетворяет спросу российского потребителя. Динамично осваиваем маркетплейсы.</p>
+      <p><b>Преимущества нашей компании:</b></p>
+      <ul>
+        <li>Бесплатная доставка до склада, либо до терминала транспортной компании;</li>
+        <li>Весь ассортимент продукции серии "Higo" «Альба», в наличии на складе;</li>
+        <li>Бесплатное предоставление: каталогов, сертификатов,</li>
+        <li>Помощь в выборе бытовой химии для конкретного предприятия;</li>
+        <li>Кратчайшие сроки поставки товаров (1-2 дня).</li>
+      </ul>
+      <p><b>В каталоге продукции производимой ООО «АЛЬБА»</b></p>
+      <ul>
+        <li>шампунь и гель для душа для использования в гостиницах, хостелах, санаториях;</li>
+        <li>мыло разного назначения: крем-мыло, мыло-пенка, с дезинфицирующим и антибактериальным эффектом, хозяйственное и детское мыло;</li>
+        <li>чистящие средства для туалета, ванной комнаты, кухни (щелочные и кислотные);</li>
+        <li>антизасоры для труб;</li>
+        <li>антисептики;</li>
+        <li>средства для мытья посуды, в том числе для посудомоечных машин;</li>
+        <li>средства для профессионального и бытового клининга: мытья окон, пола и пр. поверхностей.</li>
+      </ul>
+      <p>Приглашаем Вас к взаимовыгодному сотрудничеству!</p>
     </div>
   )
 }

@@ -14,6 +14,9 @@ const TabItem = styled.li`
   list-style: none;
   margin: 0 4px 0 0;
   &:last-child {margin: 0;}
+  @media screen and (max-width: 750px) {
+    button { padding-left: 10px !important; padding-right: 10px !important; }
+  }
 `
 
 const ProductTab: React.FC<IProductTab> = ({ active, name, setKey, val }) => {
