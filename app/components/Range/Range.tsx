@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import FormInput from '../UI/FormInput'
 import styles from './Range.module.scss'
 
 interface IRange {
@@ -22,7 +23,10 @@ const Range: React.FC<IRange> = ({ from, to, reset, handlerFrom, handlerTo }) =>
 
   return (
     <div className={styles.rangebox}>
-      <input
+      <FormInput handler={handlerFrom} placeholder="От" expand defVal={from} />
+      <span className={styles.rangeboxDivider}></span>
+      <FormInput handler={handlerTo} placeholder="До" expand defVal={to} />
+      {/* <input
         type="text"
         className="form-control"
         placeholder="От"
@@ -38,7 +42,7 @@ const Range: React.FC<IRange> = ({ from, to, reset, handlerFrom, handlerTo }) =>
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => handlerTo(e.target.value)}
         defaultValue={to}
         ref={ref2}
-      />
+      /> */}
     </div>
   )
 }

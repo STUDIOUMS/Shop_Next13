@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import Btn from "@/app/components/UI/Btn"
+import { styled } from "styled-components"
 
 interface IProductTab {
   active: string
@@ -9,12 +10,17 @@ interface IProductTab {
   val: string
 }
 
-const ProductTab: React.FC<IProductTab> = ({ active, name, setKey, val }) => {
+const TabItem = styled.li`
+  list-style: none;
+  margin: 0 4px 0 0;
+  &:last-child {margin: 0;}
+`
 
+const ProductTab: React.FC<IProductTab> = ({ active, name, setKey, val }) => {
   return (
-    <li>
-      <button className={`btn btn-sm ${active === val ? "btn-success" : "btn-outline-success"}`} onClick={() => setKey(val)}>{name}</button>
-    </li>
+    <TabItem>
+      <Btn title={name} color={active === val ? 'green' : 'white'} handler={() => setKey(val)} />
+    </TabItem>
   )
 }
 

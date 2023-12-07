@@ -10,6 +10,7 @@ import CheckField from '../CheckField/CheckField'
 import Range from '../Range/Range'
 import styles from './Filter.module.scss'
 import { set_currency } from '@/options/settings'
+import Btn from '../UI/Btn'
 
 interface IFilter {
   packs: PackType[]
@@ -188,6 +189,8 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
             Сбросить
             {loadReset && <span className="spinner-border spinner-border-sm ms-2"></span>}
           </button>
+          {/* <Btn title='Применить' handler={applyFilter} color='green' expand load={load} />
+          <Btn title='Сбросить' handler={resetFilter} expand load={loadReset} /> */}
         </div>
       </div>
     </>

@@ -2,48 +2,29 @@
 .header {
   padding: 8px 0;
   &Mid {
-    background: #fff; padding: 4px 0; position: sticky; top: 0; z-index: 1000;
-    border-bottom: 1px solid #ededed;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-light);
+    border-top: 1px solid var(--color-light);
+    padding: 4px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin: 0 0 var(--gap);
   }
   &Container {display: flex; align-items: center; position: relative; justify-content: space-between;}
   &Logo {
     margin: 0 30px 0 0;
     img {display: block;}
   }
-  &Address {font-size: 14px; line-height: 18px; margin-left: auto;}
-}
-
-
-/* navmenu */
-.navmenu {
-  &Ul {display: flex; align-items: center; margin: 0; padding: 0;}
-  li {list-style: none; margin: 0 2px 0 0; font-size: 14px; line-height: 16px;}
-  li a {
-    background: #fff; border-radius: 6px; color: #000;
-    display: block; text-decoration: none; padding: 8px 12px;
-    &.active {background: var(--color-green); color: #fff;}
+  &AddressBox {
+    font-size: 16px;
+    font-family: var(--font2);
+    margin-left: auto;
+    margin-right: var(--gap);
   }
 }
 
 
 @media screen and (max-width: 992px) {
   .headerLogo {margin-right: 16px;}
-  .navmenuUl {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.55);
-    display: block;
-    left: 10px;
-    position: absolute;
-    margin-top: 10px;
-    padding: 10px;
-    z-index: 1100;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 200ms ease-in-out;
-    &.opened {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
 }

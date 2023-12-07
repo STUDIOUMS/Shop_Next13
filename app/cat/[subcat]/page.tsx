@@ -5,7 +5,7 @@ import { BreadCrumbsType, CatType } from "@/options/types"
 import GoodList from "./components/GoodList"
 import Loadmore from "@/app/components/Loadmore"
 import Sort from "@/app/components/Sort/Sort"
-import SubCats from "./components/SubCats/SubCats"
+import SubCats from "./components/SubCats"
 import { getCat, getPacks, getProducts, getSubcats } from "@/options/fetches"
 import Filter from "@/app/components/Filter/Filter"
 import ChosenFilter from "@/app/components/ChosenFilter/ChosenFilter"
@@ -56,27 +56,25 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
 
       <h1>{cat.name}</h1>
       
-      <div className="row">
-        <div className="col-12 col-lg-3">
+      <div className="grid grid-4 catpage">
+        <div className="catpage-left">
           <Filter packs={packs!} />
         </div>
-        <div className="col-12 col-lg-9">
+
+        <div className="catpage-right">
           {isMainCat && <SubCats list={subcats!} />}
-
           <Sort list={SortItems} />
-
           <ChosenFilter packs={packs!} />
-
           <GoodList list={products} catID={cat.id} uri={uri} limit={limitProducts} />
-
           <Loadmore pages={limitProducts} all={count} />
+        </div>
+
+        <div className="catpage-description">
+          <h3>Seo description</h3>
+          <div dangerouslySetInnerHTML={{__html: cat.description}}></div>
         </div>
       </div>
       
-      <div className="mt-3 pb-3">
-        <h3>Seo description</h3>
-        <div dangerouslySetInnerHTML={{__html: cat.description}}></div>
-      </div>
     </div>
   )
 }

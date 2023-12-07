@@ -15,20 +15,20 @@ const Footer: React.FC<IFooter> = ({ cats }) => {
   return (
     <footer className={styles.footer}>
       <div className="container">
-        <div className="row">
-          <div className="col-12 col-md-6 col-lg-3">
+        <div className="grid grid-4">
+          <div>
             <div className="header-logo">
               <Image src={logo} alt="" width={50} height={50} />
             </div>
             &copy; 2023 site.com
           </div>
-          <div className="col-12 col-md-6 col-lg-3">
+          <div>
             <div className={styles.footerTitle}>Меню</div>
             <ul>
               {navItems.map(el => <li key={el.id}><Link href={el.path}>{el.title}</Link></li>)}
             </ul>
           </div>
-          <div className="col-12 col-md-6 col-lg-3">
+          <div>
             <div className={styles.footerTitle}>Категории</div>
             <ul>
               {cats.filter(el => el.parent === null).map(el => (
@@ -36,7 +36,7 @@ const Footer: React.FC<IFooter> = ({ cats }) => {
               ))}
             </ul>
           </div>
-          <div className="col-12 col-md-6 col-lg-3">
+          <div>
             <div className={styles.footerTitle}>Социальные сети</div>
             <div className={styles.socials}>
               <a href="/" className={`${styles.socialsItem} ${styles.socialsItemTwitter}`}></a>

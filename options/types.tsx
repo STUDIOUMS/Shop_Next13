@@ -1,3 +1,5 @@
+export type ViewType = 'grid' | 'list'
+
 export type ErrorResponseType = {
   results: any[]
   error: boolean

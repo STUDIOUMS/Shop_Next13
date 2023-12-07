@@ -17,11 +17,8 @@ interface IGoodList {
 
 const GoodList: React.FC<IGoodList> = ({ catID, limit, list, uri }) => {
   const [listProducts, setListProducts] = useState<ProductType[]>(list)
-  const load = useSelector((state: RootState) => state.app.loadSort)
-  const load2 = useSelector((state: RootState) => state.app.loadFilter)
-  const loadReset = useSelector((state: RootState) => state.app.loadFilterReset)
-  const load3 = useSelector((state: RootState) => state.app.loadPager)
   const dispatch = useDispatch<AppDispatch>()
+  const view = useSelector((state: RootState) => state.app.view)
   
   useEffect(() => {
     const getData = async () => {
@@ -36,8 +33,8 @@ const GoodList: React.FC<IGoodList> = ({ catID, limit, list, uri }) => {
   }, [uri])
   
   return (
-    <div className="goods-row">
-      <div className="row">
+    <div>
+      <div className={`grid grid-${view === 'list' ? '1' : '4'} goodlist`}>
         {listProducts.map(el => <Card key={el.id} el={el} />)}
       </div>
       {listProducts.length === 0 && <p>В данной категории нет товаров</p>}

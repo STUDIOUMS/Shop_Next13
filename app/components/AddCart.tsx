@@ -3,6 +3,7 @@ import { AppDispatch } from "@/app/store/store"
 import { BasketType, ProductType } from "@/options/types"
 import { useDispatch } from "react-redux"
 import styles from "../cat/[subcat]/components/Card/Card.module.scss"
+import Btn from "./UI/Btn"
 
 interface IAddCart {
   big?: boolean
@@ -33,12 +34,11 @@ const AddCart: React.FC<IAddCart> = ({ big, el, img, pack, price }) => {
   }
 
   return (
-    <button
-      className={`btn ${!big ? "btn-sm" : ""} btn-success ${styles.btnCart}`}
-      onClick={addCartHandler}
-    >
-      <span>В корзину</span>
-    </button>
+    <Btn
+      title="В корзину"
+      color="green"
+      handler={addCartHandler}
+    />
   )
 }
 

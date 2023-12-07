@@ -6,6 +6,7 @@ import { ProductType } from "@/options/types"
 import { useRef, useState } from "react"
 import styles from "./Search.module.scss"
 import SearchItem from "./SearchItem"
+import FormInput from "../UI/FormInput"
 
 const Search: React.FC = () => {
   const [results, setResults] = useState<ProductType[]>([])
@@ -36,7 +37,7 @@ const Search: React.FC = () => {
   
   return (
     <div className={styles.searchbox}>
-      <input type="search" className="form-control" placeholder="Поиск..." onChange={e => searchHandler(e.target.value)} ref={inputRef} />
+      <FormInput type="search" expand handler={() => {}} />
       
       {results.length > 0 &&
       <ul className={styles.searchboxDropdown}>

@@ -7,6 +7,7 @@ import BasketHead from "./BasketHead"
 import BasketRow from "./BasketRow"
 import BasketTotal from "./BasketTotal"
 import styles from "./../components/Basket.module.scss"
+import Btn from "@/app/components/UI/Btn"
 
 const BasketList = () => {
   const orders = useSelector((state: RootState) => state.app.orders)
@@ -22,12 +23,12 @@ const BasketList = () => {
         </div>
         
         <BasketTotal orders={orders} />
-        <Link href="/order" className="btn btn-success">Оформить заказ</Link>
+        <Btn title="Оформить заказ" color="green" to="/order" />
         
       </> : 
       <>
         <div className="alert alert-secondary">Ваша корзина пуста</div>
-        <Link href={"/"} className="btn btn-success">Веурнться на главную</Link>
+        <Btn title="Вернуться на главную" to="/" />
       </>
       }
     </div>

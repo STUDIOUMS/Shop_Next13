@@ -1,6 +1,5 @@
 import { blogType } from '@/options/types'
 import Link from 'next/link'
-import styles from './BlogsWidjet.module.scss'
 import BlogsWidjetItem from './BlogsWidjetItem'
 
 interface IBlogsWidjet {
@@ -11,11 +10,11 @@ interface IBlogsWidjet {
 
 const BlogsWidjet: React.FC<IBlogsWidjet> = ({ error, list, title = 'Блог' }) => {
   return (
-    <div className={styles.BlogsWidjet}>
+    <div className="section">
       <div className="pagetitle">
         <Link href="/blog">{title}</Link>
       </div>
-      <div className="row">
+      <div className="grid grid-3">
         {list.map(el => <BlogsWidjetItem key={el.id} el={el} />)}
       </div>
       {error && <div className="alert alert-danger">Ошибка сервера</div>}

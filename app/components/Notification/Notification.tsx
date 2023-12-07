@@ -2,7 +2,6 @@
 
 import { closeToast } from "@/app/store/appSlice"
 import { AppDispatch, RootState } from "@/app/store/store"
-import { Toast, ToastContainer } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 
 const Notification: React.FC = () => {
@@ -17,7 +16,7 @@ const Notification: React.FC = () => {
 
   return (
     <div>
-      <ToastContainer className="position-fixed pe-3 pb-3" position="bottom-end">
+      {/* <ToastContainer className="position-fixed pe-3 pb-3" position="bottom-end">
         <Toast show={show} onClose={closeToastHandler} autohide delay={3000}>
           <Toast.Header>
             <strong className="me-auto">Bootstrap</strong>
@@ -25,7 +24,7 @@ const Notification: React.FC = () => {
           </Toast.Header>
           <Toast.Body>{text}</Toast.Body>
         </Toast>
-      </ToastContainer>
+      </ToastContainer> */}
     </div>
   )
 }
