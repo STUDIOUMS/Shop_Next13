@@ -1,14 +1,14 @@
 'use client'
 
 import CheckField from "@/app/components/CheckField/CheckField"
-import FormField from "@/app/components/FormField"
 import { useForm } from "react-hook-form"
-import Link from "next/link"
 import styles from "./Order.module.scss"
 import { useState } from "react"
 import { OrderType } from "@/options/types"
 import { useSelector } from "react-redux"
 import { RootState } from "@/app/store/store"
+import FormInput from "@/app/components/UI/FormInput"
+import Btn from "@/app/components/UI/Btn"
 
 type FormValues = {
   name: string
@@ -58,15 +58,15 @@ const OrderForm: React.FC = () => {
             <h3>Личные данные</h3>
             <div className="row">
               <div className="col-12 col-md-4">
-                <FormField
+                {/* <FormField
                   place="Ваше ФИО"
                   type="text"
                   func={register("name", {required: errorText, maxLength: 80})}
                   error={errors.name && errors.name?.message}
-                />
+                /> */}
               </div>
               <div className="col-12 col-md-4">
-                <FormField
+                {/* <FormField
                   place="E-mail"
                   type="email"
                   func={register("email", {required: errorText, pattern: {
@@ -74,15 +74,15 @@ const OrderForm: React.FC = () => {
                     message: 'Некорректный e-mail'
                   }})}
                   error={errors.email && errors.email?.message}
-                />
+                /> */}
               </div>
               <div className="col-12 col-md-4">
-                <FormField
+                {/* <FormField
                   place="Ваш телефон"
                   type="tel"
                   func={register("phone", {required: errorText})}
                   error={errors.phone && errors.phone?.message}
-                />
+                /> */}
               </div>
             </div>
           </div>
@@ -93,31 +93,31 @@ const OrderForm: React.FC = () => {
             <h3>Адрес</h3>
             <div className="row">
               <div className="col-12 col-md-6">
-                <FormField
+                {/* <FormField
                   place="Город"
                   type="text"
                   label="Город"
                   func={register("city", {required: errorText})}
                   error={errors.city && errors.city?.message}
-                />
+                /> */}
               </div>
               <div className="col-6 col-md-3">
-                <FormField
+                {/* <FormField
                   place="Улица"
                   type="text"
                   label="Улица"
                   func={register("street", {required: errorText})}
                   error={errors.street && errors.street?.message}
-                />
+                /> */}
               </div>
               <div className="col-6 col-md-3">
-                <FormField
+                {/* <FormField
                   place="Дом, Квартира"
                   type="tel"
                   label="Дом, Квартира"
                   func={register("address", {required: errorText})}
                   error={errors.address && errors.address?.message}
-                />
+                /> */}
               </div>
             </div>
           </div>
@@ -144,13 +144,14 @@ const OrderForm: React.FC = () => {
 
         <div className={styles.orderFormGrid}>
           <div className={styles.orderFormSection}>
-            <FormField place="Примечание к заказу" type="area" label="Примечание к заказу" func={register("addition")} />
+            {/* <FormInput placeholder="Примечание к заказу" type="area" valid={register("addition")} /> */}
+            <FormInput placeholder="Примечание к заказу" expand type="area" handler={() => {}} />
           </div>
         </div>
         
         <div className={styles.orderFormFooter}>
-          <Link href="/basket" className={`btn btn-outline-success ${styles.orderFormBtn}`}>Вернуться в корзину</Link>
-          <button className={`btn btn-success ${styles.orderFormBtn}`}>Оформить заказ</button>
+          <Btn to="/basket" title="Вернуться в корзину" />
+          <Btn title="Оформить заказ" color="green" />
         </div>
       </form>
     </div>
