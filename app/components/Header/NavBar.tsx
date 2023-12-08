@@ -28,11 +28,42 @@ const NavList = styled.ul<{ $show: boolean }>`
     transition: all 200ms ease-in-out;
   }
 `
+const Children = styled.ul`
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  margin: 0;
+  padding: var(--pb);
+  position: absolute;
+  transition: all 200ms ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  li {
+    list-style: none;
+    margin: 0 0 8px;
+    &:last-child { margin: 0; }
+  }
+  @media screen and (max-width: 992px) {
+    background: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 8px 0 8px var(--gap);
+    position: relative;
+    transition: none;
+    opacity: 1;
+    visibility: visible;
+  }
+`
 const NavItem = styled.li`
   list-style: none;
   margin: 0;
   font-family: var(--font2);
-  font-size: 16px;
+  font-size: 14px;
+  position: relative;
+  &:hover ${Children} {
+    opacity: 1;
+    visibility: visible;
+  }
 `
 const NavA = styled(Link)<{ $active: boolean }>`
   background: var(--color-${(props) => props.$active ? 'light' : 'white'});
@@ -47,6 +78,7 @@ const NavA = styled(Link)<{ $active: boolean }>`
   }
 `
 
+
 const Navbar: React.FC = () => {
   const pathname = usePathname()
   const [opened, setOpened] = useState<boolean>(false)
@@ -60,8 +92,14 @@ const Navbar: React.FC = () => {
         <NavList $show={opened}>
           {navItems.map(item => {
             const activeItem = pathname === item.path
+            const isChild = !!item.children
             return <NavItem key={item.id}>
               <NavA href={item.path} $active={activeItem} onClick={() => setOpened(false)}>{item.title}</NavA>
+              {isChild &&
+                <Children>
+                  {item.children!.map(child => <li key={child.id}><Link href={child.path}>{child.title}</Link></li>)}
+                </Children>
+              }
           </NavItem>
           })}
         </NavList>

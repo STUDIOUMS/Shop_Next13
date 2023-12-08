@@ -89,6 +89,7 @@ export type NavItemType = {
   id: number
   title: string
   path: string
+  children?: NavItemType[]
 }
 
 export type blogType = {

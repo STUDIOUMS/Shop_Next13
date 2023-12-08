@@ -48,5 +48,17 @@ export const navItems: NavItemType[] = [
   { id: 2, title: "Блог", path: "/blog" },
   { id: 3, title: "О компании", path: "/about" },
   { id: 4, title: "Доставка и оплата", path: "/delivery" },
-  { id: 5, title: "Контакты", path: "/contacts" },
+  {
+    id: 5,
+    title: "Для партнеров",
+    path: "/partners",
+    children: [
+      { id: 9, title: "Документы", path: "/" },
+      { id: 10, title: "Условия", path: "/" },
+      { id: 11, title: "Сертификаты", path: "/" }
+    ]
+  },
+  { id: 6, title: "Вакансии", path: "/vacancies" },
+  { id: 7, title: "Прайс", path: "/price" },
+  { id: 8, title: "Контакты", path: "/contacts" }
 ]

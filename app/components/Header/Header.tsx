@@ -1,25 +1,55 @@
 'use client'
 
-import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { setOrders } from "../../store/appSlice"
 import { AppDispatch } from "../../store/store"
 import CatPopup from "../CatPopup/CatPopup"
-import styles from "./Header.module.scss"
+import Link from "next/link"
 import Navbar from "./NavBar"
 import Search from "../Search/Search"
 import SmallCart from "./SmallCart"
 import logo from "@/assets/logo.webp"
 import Image from "next/image"
-import { set_phone } from "@/options/settings"
 import { CatType } from "@/options/types"
 import FeedbackModal from "../Modals/FeedbackModal"
 import Btn from "../UI/Btn"
+import { styled } from "styled-components"
 
 interface IHeader {
   cats: CatType[]
 }
+
+
+// Styles
+const HeaderTop = styled.header`
+  padding: 8px 0;
+  z-index: 1010;
+`
+const HeaderLogo = styled.header`
+  margin: 0 30px 0 0;
+  img {display: block;}
+  @media screen and (max-width: 992px) {
+    margin-right: 16px;
+  }
+`
+const HeaderContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+`
+const HeaderMiddle = styled.header`
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-light);
+  border-top: 1px solid var(--color-light);
+  padding: 4px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin: 0 0 var(--gap);
+`
+
 
 const Header: React.FC<IHeader> = ({ cats }) => {
   const dispatch = useDispatch<AppDispatch>()
@@ -34,25 +64,26 @@ const Header: React.FC<IHeader> = ({ cats }) => {
 
   return (
     <>
-      <header className={styles.header}>
-        <div className={`container ${styles.headerContainer}`}>
+      <HeaderTop>
+        <HeaderContainer className="container">
           <Navbar />
-          <div className={styles.headerAddressBox}>
-            Время работы с 8:00 до 23:00 | {set_phone}
-          </div>
           <Btn title="Обратная связь" size="small" handler={() => setShowModal(true)} />
-        </div>
-      </header>
-      <div className={styles.headerMid}>
-        <div className={`container ${styles.headerContainer}`}>
-          <Link href="/" className={styles.headerLogo}>
-            <Image src={logo.src} alt="" width={50} height={50} style={{objectFit: 'contain'}} />
-          </Link>
+        </HeaderContainer>
+      </HeaderTop>
+
+      <HeaderMiddle>
+        <HeaderContainer className="container">
+          <HeaderLogo>
+            <Link href="/">
+              <Image src={logo.src} alt="" width={50} height={50} style={{objectFit: 'contain'}} />
+            </Link>
+          </HeaderLogo>
           <CatPopup cats={cats} />
           <Search />
           <SmallCart />
-        </div>
-      </div>
+        </HeaderContainer>
+      </HeaderMiddle>
+
       <FeedbackModal show={showModal} func={() => setShowModal(false)} />
     </>
   )
