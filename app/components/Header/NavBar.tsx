@@ -84,27 +84,25 @@ const Navbar: React.FC = () => {
   const [opened, setOpened] = useState<boolean>(false)
   
   return (
-    <SCRegistry>
-      <nav>
-        <button className={`btn-nav ${opened ? "active": ""}`} onClick={() => setOpened(!opened)}>
-          <span></span>
-        </button>
-        <NavList $show={opened}>
-          {navItems.map(item => {
-            const activeItem = pathname === item.path
-            const isChild = !!item.children
-            return <NavItem key={item.id}>
-              <NavA href={item.path} $active={activeItem} onClick={() => setOpened(false)}>{item.title}</NavA>
-              {isChild &&
-                <Children>
-                  {item.children!.map(child => <li key={child.id}><Link href={child.path}>{child.title}</Link></li>)}
-                </Children>
-              }
-          </NavItem>
-          })}
-        </NavList>
-      </nav>
-    </SCRegistry>
+    <nav>
+      <button className={`btn-nav ${opened ? "active": ""}`} onClick={() => setOpened(!opened)}>
+        <span></span>
+      </button>
+      <NavList $show={opened}>
+        {navItems.map(item => {
+          const activeItem = pathname === item.path
+          const isChild = !!item.children
+          return <NavItem key={item.id}>
+            <NavA href={item.path} $active={activeItem} onClick={() => setOpened(false)}>{item.title}</NavA>
+            {isChild &&
+              <Children>
+                {item.children!.map(child => <li key={child.id}><Link href={child.path}>{child.title}</Link></li>)}
+              </Children>
+            }
+        </NavItem>
+        })}
+      </NavList>
+    </nav>
   )
 }
 

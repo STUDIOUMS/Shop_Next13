@@ -15,6 +15,7 @@ import { CatType } from "@/options/types"
 import FeedbackModal from "../Modals/FeedbackModal"
 import Btn from "../UI/Btn"
 import { styled } from "styled-components"
+import SCRegistry from "@/options/registry"
 
 interface IHeader {
   cats: CatType[]
@@ -63,7 +64,7 @@ const Header: React.FC<IHeader> = ({ cats }) => {
   }, [dispatch])
 
   return (
-    <>
+    <SCRegistry>
       <HeaderTop>
         <HeaderContainer className="container">
           <Navbar />
@@ -85,7 +86,7 @@ const Header: React.FC<IHeader> = ({ cats }) => {
       </HeaderMiddle>
 
       <FeedbackModal show={showModal} func={() => setShowModal(false)} />
-    </>
+    </SCRegistry>
   )
 }
 
