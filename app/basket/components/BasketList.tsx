@@ -12,7 +12,7 @@ const BasketList = () => {
   const orders = useSelector((state: RootState) => state.app.orders)
 
   return (
-    <div>
+    <div className="section">
       {orders.length ?
       <>
         <div>

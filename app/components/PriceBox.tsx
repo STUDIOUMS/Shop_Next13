@@ -11,11 +11,11 @@ interface IPriceBox {
 
 // Styles
 export const Price = styled.div<{ $size: PriceSizeType }>`
-  color: var(--color-text2);
+  color: var(--color-text);
   font-size: ${({ $size }) => $size === 'large' ? '24px' : '18px'};
   font-weight: ${({ $size }) => $size === 'large' ? '700' : '500'};
-  margin: 0 0 var(--gap);
   small {
+    color: var(--color-text2);
     font-size: ${({ $size }) => $size === 'large' ? '16px' : '14px'};
     font-weight: 400;
   }
