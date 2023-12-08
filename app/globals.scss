@@ -1,5 +1,3 @@
-//@import "~bootstrap/scss/bootstrap";
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 
 :root {
@@ -51,9 +49,9 @@ img {max-width: 100%;}
 a {color: var(--color-green); text-decoration: none;}
 a:hover {color: var(--color-green-hover); text-decoration: underline;}
 .goods-row { margin-bottom: var(--pb); }
-.breadcrumb { margin-bottom: 24px; }
 .section { margin: 0 0 var(--section); }
 .text-center { text-align: center; }
+.text-right { text-align: right; }
 
 /* headers */
 h1, h2, h3, .pagetitle {
@@ -197,19 +195,21 @@ h3 {font-size: 20px; line-height: 24px;}
 
 
 /* Responsive */
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1000px) {
   .pagetitle, .pagehead, .carousel_body .pagetitle {margin: 0 0 24px;}
   .swiper-button-prev, .swiper-button-next {display: none !important;}
+
+  /* grid */
+  .grid {
+    @for $i from 1 through 6 {
+      &-tb-#{$i} { grid-template-columns: repeat($i, 1fr); }
+    }
+  }
 }
 
 @media screen and (max-width: 750px) {
-  .catpopup-dropdown {padding: 15px;}
-  .catpopup-item {margin: 0 0 20px;}
-  .catpopup-item ul {display: none;}
-  .catpopup-title {margin: 0;}
-  .catpopup-btn {
-    text-indent: -9999px; height: 40px; padding: 0; width: 40px;
-    &::after {display: block;}
+  :root {
+    --gap: 16px;
   }
 
   /* grid */

@@ -123,3 +123,6 @@ export type OrderType = {
   img: string
   pack: string
 }
+
+export type DeliveryType = 'courier' | 'pickup'
+export type PaymentType = 'acquiring' | 'bill'

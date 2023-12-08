@@ -1,30 +1,29 @@
 'use client'
 
+import Btn from "@/app/components/UI/Btn"
 import { RootState } from "@/app/store/store"
-import Link from "next/link"
 import { useSelector } from "react-redux"
 import OrderCart from "./OrderCart"
 import OrderForm from "./OrderForm"
+import { OrderWrap } from "./OrderStyles"
 
 const OrderMain_old: React.FC = () => {
   const orders = useSelector((state: RootState) => state.app.orders)
 
   return (
-    <div>
-      {(orders.length > 0) ?
-        <>
-          <div className="row">
-            <div className="col-12 col-lg-8 order-2 order-lg-1">
-              <OrderForm />
-            </div>
-            <div className="col-12 col-lg-4 order-1 order-lg-2">
-              <OrderCart />
-            </div>
+    <div className="section">
+      {(orders.length > 0)
+        ? <OrderWrap className="grid grid-4 grid-tb-1">
+          <div>
+            <OrderForm />
           </div>
-        </> :
-        <>
+          <div>
+            <OrderCart />
+          </div>
+        </OrderWrap>
+        : <>
           <div className="alert alert-secondary">Ваша корзина пуста</div>
-          <Link href={"/"} className="btn btn-success">Веурнться на главную</Link>
+          <Btn to="/" title="Веурнться на главную" />
         </>
       }
     </div>

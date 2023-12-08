@@ -1,5 +1,5 @@
 import { set_currency } from "@/options/settings"
-import { BasketType, OrderType } from "@/options/types"
+import { BasketType } from "@/options/types"
 import styles from "./Order.module.scss"
 
 interface IOrderCartItem {

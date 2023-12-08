@@ -81,4 +81,5 @@ export const BasketTotalDiv = styled.div`
   font-size: 22px;
   b { color: var(--color-text); font-size: 32px; }
   margin: 32px 0;
+  text-align: right;
 `

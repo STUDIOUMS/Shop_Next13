@@ -22,7 +22,10 @@ const BasketList = () => {
         </div>
         
         <BasketTotal orders={orders} />
-        <Btn title="Оформить заказ" color="green" to="/order" />
+
+        <div className="text-right">
+          <Btn title="Оформить заказ" color="green" to="/order" />
+        </div>
         
       </> : 
       <>
