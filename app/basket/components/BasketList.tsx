@@ -6,7 +6,6 @@ import { useSelector } from "react-redux"
 import BasketHead from "./BasketHead"
 import BasketRow from "./BasketRow"
 import BasketTotal from "./BasketTotal"
-import styles from "./../components/Basket.module.scss"
 import Btn from "@/app/components/UI/Btn"
 
 const BasketList = () => {
@@ -16,7 +15,7 @@ const BasketList = () => {
     <div>
       {orders.length ?
       <>
-        <div className={styles.basket}>
+        <div>
           <BasketHead />
           {orders.map(el => <BasketRow key={el.id} order={el} />)}
           {!orders.length && <p>Loading...</p>}

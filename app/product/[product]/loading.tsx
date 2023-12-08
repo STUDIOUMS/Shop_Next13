@@ -1,48 +1,28 @@
+import { Skelet } from "@/app/components/Skelet";
+
 export default function Loading() {
-  return <div className="placeholder-glow">
-    <div className="breadcrumb">
-      <span className="placeholder col-2"></span>
-      <span className="placeholder col-2"></span>
-      <span className="placeholder col-2"></span>
-    </div>
-    <h1>
-      <span className="placeholder col-3"></span>
-    </h1>
-    <div className="row">
-      <div className="col-12 col-md-5">
-        <span className="placeholder col-12 mb-3" style={{height: '300px'}}></span>
+  return <div>
+    <Skelet />
+    <Skelet $size="h1" />
+    <div className="grid grid-2 grid-mb-1 section">
+      <div>
+        <Skelet style={{height: '300px'}} />
       </div>
-      <div className="col-12 col-md-7">
-        <div className="mb-2">
-          <div className="placeholder col-4" style={{height: '10px'}}></div>
-        </div>
-        <div className="mb-2">
-          <div className="placeholder col-6" style={{height: '20px'}}></div>
-        </div>
-        <div className="mb-2">
-          <div className="placeholder col-3" style={{height: '10px'}}></div>
-        </div>
-        <div className="mb-2">
-          <div className="placeholder col-1 me-2" style={{height: '30px'}}></div>
-          <div className="placeholder col-1 me-2" style={{height: '30px'}}></div>
-          <div className="placeholder col-1" style={{height: '30px'}}></div>
-        </div>
-        <div className="mb-3">
-          <div className="placeholder col-2 me-2" style={{height: '35px'}}></div>
-          <div className="placeholder col-2" style={{height: '35px'}}></div>
-        </div>
-        <div className="placeholder col-12"></div>
-        <div className="placeholder col-12"></div>
-        <div className="placeholder col-12"></div>
+      <div>
+        <p><Skelet $size="line" /></p>
+        <p><Skelet /></p>
+        <p><Skelet $size="line" /></p>
+        <p><Skelet /></p>
+        <p><Skelet $size="button" /></p>
+        <p><Skelet $size="line" /></p>
+        <p><Skelet $size="line" /></p>
+        <p><Skelet $size="line" /></p>
       </div>
     </div>
-    <div className="mb-3">
-      <div className="placeholder col-2 me-2" style={{height: '30px'}}></div>
-      <div className="placeholder col-2 me-2" style={{height: '30px'}}></div>
-      <div className="placeholder col-2" style={{height: '30px'}}></div>
-    </div>
-    <div className="placeholder col-12"></div>
-    <div className="placeholder col-12"></div>
-    <div className="placeholder col-12"></div>
+    <p><Skelet $size="button" /></p>
+    <p><Skelet $size="line" /></p>
+    <p><Skelet $size="line" /></p>
+    <p><Skelet $size="line" /></p>
+    <p><Skelet $size="line" /></p>
   </div>
 }

@@ -1,50 +1,40 @@
+import { Skelet } from "@/app/components/Skelet"
 import { createArray } from "@/options/helpers"
 
 export default function Loading() {
-  const list = createArray(6)
+  const list = createArray(8)
 
   return <div className="placeholder-glow">
-    <div className="breadcrumb">
-      <span className="placeholder col-2"></span>
-      <span className="placeholder col-2"></span>
-      <span className="placeholder col-2"></span>
-    </div>
-    <h1>
-      <span className="placeholder col-3"></span>
-    </h1>
-    <div className="row">
-      <div className="col-12 col-lg-3 d-none d-lg-block">
-        <div className="placeholder col-12" style={{height: '400px'}}></div>
+    <Skelet />
+    <Skelet $size="h1" />
+    <div className="grid grid-4 catpage">
+      <div className="catpage-left">
+        <Skelet style={{height: '400px'}} />
       </div>
-      <div className="col-12 col-lg-9">
-        <div className="row mb-4">
-          <div className="col-4">
-            <div className="placeholder col-12" style={{height: '70px'}}></div>
+      
+      <div className="catpage-right">
+        <div className="grid grid-3 goodlist">
+          <div>
+            <Skelet style={{height: '70px'}} />
           </div>
-          <div className="col-4">
-            <div className="placeholder col-12" style={{height: '70px'}}></div>
+          <div>
+            <Skelet style={{height: '70px'}} />
           </div>
-          <div className="col-4">
-            <div className="placeholder col-12" style={{height: '70px'}}></div>
-          </div>
-        </div>
-
-        <div className="d-block d-lg-flex justify-content-between mb-3">
-          <div className="placeholder col-3" style={{height: '30px'}}></div>
-          <div className="d-none d-lg-flex">
-            <div className="placeholder me-2" style={{width: '30px', height: '30px'}}></div>
-            <div className="placeholder" style={{width: '30px', height: '30px'}}></div>
+          <div>
+            <Skelet style={{height: '70px'}} />
           </div>
         </div>
 
-        <div className="row">
+        <div className="grid grid-4 goodlist">
           {list.map(el => (
-            <div key={el} className="col-12 col-sm-6 col-md-4">
-              <div className="placeholder col-12 mb-3" style={{height: '260px'}}></div>
+            <div key={el}>
+              <Skelet style={{height: '260px'}} />
             </div>
           ))}
         </div>
       </div>
+
+      <div className="catpage-description section"></div>
     </div>
   </div>
 }

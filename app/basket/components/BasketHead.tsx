@@ -1,8 +1,6 @@
-import styles from "./Basket.module.scss"
-
 const BasketHead: React.FC = () => {
   return (
-    <div className={styles.basketHead}>
+    <div>
       <div className="row">
         <div className="col-12 col-md-6">Название товара</div>
         <div className="col-12 col-md-6">
