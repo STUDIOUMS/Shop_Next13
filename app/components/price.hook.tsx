@@ -1,5 +1,4 @@
 import { RelatedPacksType } from "@/options/types"
-import { strict } from "assert"
 import { useEffect, useState } from "react"
 
 interface usePriceImgType {
@@ -24,7 +23,7 @@ export const usePriceImg = (packs: RelatedPacksType[]): usePriceImgType => {
     if (findedPack?.oldPrice) {
       setOldPrice(findedPack.oldPrice)
     }
-  }, [currentPackID])
+  }, [currentPackID, packs])
 
   // choosePack
   const choosePack = (id: number, name: string) => {

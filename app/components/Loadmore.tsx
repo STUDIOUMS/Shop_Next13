@@ -27,7 +27,7 @@ const Loadmore: React.FC<ILoadmore> = ({ all, pages }) => {
     const limit = limitExists ? Number(limitExists) + pages : pages * 2
     params.set('limit', limit.toString())
     return params.toString()
-  }, [searchParams])
+  }, [searchParams, pages])
 
   // loadmoreHandler
   const loadmoreHandler = () => {

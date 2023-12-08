@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setView } from '@/app/store/appSlice'
 import { AppDispatch, RootState } from '@/app/store/store'
@@ -15,7 +15,7 @@ const View: React.FC = () => {
   useEffect(() => {
     const viewStotage = localStorage.getItem('view')
     if (viewStotage) dispatch(setView(viewStotage))
-  }, [])
+  }, [dispatch])
 
   // Active classes
   const gridActive = (active === 'grid') ? styles.viewboxBtnActive : ''

@@ -1,5 +1,4 @@
-import { useState } from "react";
-import FormField from "../FormField"
+import { useState } from "react"
 
 interface IQuickOrderModal {
   show: boolean
