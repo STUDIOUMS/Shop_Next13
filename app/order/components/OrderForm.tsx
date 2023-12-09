@@ -9,6 +9,7 @@ import { RootState } from "@/app/store/store"
 import FormInput from "@/app/components/UI/FormInput"
 import Btn from "@/app/components/UI/Btn"
 import { OrderFooter, OrderFormWrap, OrderSection } from "./OrderStyles"
+import { errorText } from "@/options/settings"
 
 type FormValues = {
   name: string
@@ -19,8 +20,6 @@ type FormValues = {
   address: string
   addition: string
 }
-
-const errorText: string = 'Обязательное поле'
 
 const OrderForm: React.FC = () => {
   const [delivery, setDelivery] = useState<DeliveryType | string>('courier')
@@ -147,7 +146,7 @@ const OrderForm: React.FC = () => {
           
           <OrderFooter className="order-footer">
             <Btn to="/basket" title="Вернуться в корзину" />
-            <Btn title="Оформить заказ" color="success" />
+            <Btn title="Оформить заказ" color="success" type="submit" />
           </OrderFooter>
         </OrderFormWrap>
       </form>

@@ -30,6 +30,7 @@ export const Popup = styled.div`
 `
 export const Overlay = styled.div`
   background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(10px);
   position: fixed;
   left: 0;
   top: 0;

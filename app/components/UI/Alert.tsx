@@ -1,3 +1,4 @@
+import SCRegistry from "@/options/registry"
 import { styled } from "styled-components"
 
 type AlertColorType = "danger" | "success" | "light"
@@ -22,9 +23,11 @@ const AlertBox = styled.div<{ $color: AlertColorType }>`
 
 const Alert: React.FC<IAlert> = ({ children, color = "light" }) => {
   return (
-    <AlertBox $color={color}>
-      {children}
-    </AlertBox>
+    <SCRegistry>
+      <AlertBox $color={color}>
+        {children}
+      </AlertBox>
+    </SCRegistry>
   )
 }
 

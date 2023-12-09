@@ -1,0 +1,74 @@
+import { useForm } from 'react-hook-form'
+import Btn from '../UI/Btn'
+import FormInput from '../UI/FormInput'
+import FormLine from '../UI/FormLine'
+import Modal from './Modal'
+import { errorText } from "@/options/settings"
+
+type FeedBackFormValues = {
+  name: string
+  email: string
+  phone: string
+  message: string
+}
+
+const FeedbackModal: React.FC = () => {
+  const { handleSubmit, register, formState: { errors } } = useForm<FeedBackFormValues>()
+
+  // sendMessage
+  const sendMessage = (data: any) => {
+    console.log(data)
+  }
+
+  return (
+    <Modal btnName="Обратная связь" id="feedback-modal" btnSize="small">
+      <form onSubmit={handleSubmit(sendMessage)} autoCorrect="false">
+        <FormLine label="Ваше имя *">
+          <FormInput
+            placeholder="Ваше имя"
+            expand
+            valid={register("name", { required: errorText })}
+            error={errors.name && errors.name?.message}
+          />
+        </FormLine>
+
+        <FormLine label="Ваш E-mail *">
+          <FormInput
+            placeholder="mail@mail.com"
+            expand
+            type="email"
+            valid={register("email", {
+              required: errorText, pattern: {
+                value: /^\S+@\S+$/i,
+                message: 'Некорректный e-mail'
+              }
+            })}
+            error={errors.email && errors.email?.message}
+          />
+        </FormLine>
+
+        <FormLine label="Ваш телефон">
+          <FormInput
+            placeholder="+ 7 (123) 45-67-89"
+            expand
+            type="tel"
+            valid={register("phone")}
+          />
+        </FormLine>
+
+        <FormLine label="Сообщение">
+          <FormInput
+            placeholder="Сообщение"
+            expand
+            type="area"
+            valid={register("message")}
+          />
+        </FormLine>
+
+        <Btn title="Оправить" type="submit" />
+      </form>
+    </Modal>
+  )
+}
+
+export default FeedbackModal

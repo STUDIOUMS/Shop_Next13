@@ -1,7 +1,6 @@
 'use client'
 
 import AddCart from "@/app/components/AddCart"
-import QuickOrderModal from "@/app/components/Modals/QuickOrderModal"
 import Packages from "@/app/components/Packages/Packages"
 import { usePriceImg } from "@/app/components/price.hook"
 import PriceBox from "@/app/components/PriceBox"
@@ -44,7 +43,6 @@ const Code = styled.div`
 
 
 const ProductCard: React.FC<IProductCard> = ({ good }) => {
-  const [quickModal, setQuickModal] = useState<boolean>(false)
   const packs = good.relatedPacks
   const { choosePack, img, price, oldprice, currentPack } = usePriceImg(packs)
 
@@ -75,15 +73,13 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
 
           <WrapBtns>
             <AddCart big={true} el={good} pack={currentPack} price={price} img={img} />
-            <Btn title="Быстрый заказ" handler={() => setQuickModal(true)} />
+            <Btn title="Быстрый заказ" handler={() => {}} />
           </WrapBtns>
 
           <p>Какой-то текст или информация о доставке</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias adipisci eius necessitatibus, est unde consequuntur!</p>
         </div>
       </div>
-
-      <QuickOrderModal show={quickModal} func={() => setQuickModal(false)} />
     </SCRegistry>
   )
 }

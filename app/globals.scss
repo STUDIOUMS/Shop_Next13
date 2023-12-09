@@ -47,6 +47,7 @@ body {
 [class*="col-"] {padding-left: 10px; padding-right: 10px;}
 .row-sm > [class*="col-"] {padding-left: 4px; padding-right: 4px;}
 img {max-width: 100%;}
+button { outline: none; }
 a {color: var(--color-success); text-decoration: none;}
 a:hover {color: var(--color-success-hover); text-decoration: underline;}
 .goods-row { margin-bottom: var(--pb); }
@@ -166,6 +167,14 @@ h3 {font-size: 20px; line-height: 24px;}
       &-active {background: var(--color-success-hover) !important;}
     }
   }
+}
+
+
+/* fancybox */
+.fancybox__backdrop {
+  background: rgba(0,0,0,0.65) !important;
+  opacity: 1 !important;
+  backdrop-filter: blur(10px);
 }
 
 

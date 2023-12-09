@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { setOrders } from "../../store/appSlice"
 import { AppDispatch } from "../../store/store"
@@ -12,11 +12,9 @@ import SmallCart from "./SmallCart"
 import logo from "@/assets/logo.webp"
 import Image from "next/image"
 import { CatType } from "@/options/types"
-import FeedbackModal from "../Modals/FeedbackModal"
-import Btn from "../UI/Btn"
 import { styled } from "styled-components"
 import SCRegistry from "@/options/registry"
-import Fancybox from "../Fancybox"
+import FeedbackModal from "../Modal/FeedbackModal"
 
 interface IHeader {
   cats: CatType[]
@@ -54,7 +52,6 @@ const HeaderMiddle = styled.header`
 
 const Header: React.FC<IHeader> = ({ cats }) => {
   const dispatch = useDispatch<AppDispatch>()
-  const [showModal, setShowModal] = useState<boolean>(false)
   
   useEffect(() => {
     const storageOrders = localStorage.getItem('orders')
@@ -68,7 +65,7 @@ const Header: React.FC<IHeader> = ({ cats }) => {
       <HeaderTop>
         <HeaderContainer className="container">
           <Navbar />
-          <Btn title="Обратная связь" size="small" />
+          <FeedbackModal />
         </HeaderContainer>
       </HeaderTop>
 
@@ -84,8 +81,6 @@ const Header: React.FC<IHeader> = ({ cats }) => {
           <SmallCart />
         </HeaderContainer>
       </HeaderMiddle>
-
-      <FeedbackModal show={showModal} func={() => setShowModal(false)} />
     </SCRegistry>
   )
 }

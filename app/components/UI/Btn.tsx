@@ -4,8 +4,8 @@ import SCRegistry from "@/options/registry"
 import Link from "next/link"
 import styled, { css } from "styled-components"
 
-type BtnSizeType = 'small' | 'medium' | 'large'
-type BtnColorType = 'success' | 'danger' | 'white'
+export type BtnSizeType = 'small' | 'medium' | 'large'
+export type BtnColorType = 'success' | 'danger' | 'white'
 
 interface IBtn {
   color?: BtnColorType
@@ -15,6 +15,8 @@ interface IBtn {
   size?: BtnSizeType
   title: string
   to?: string
+  fancy?: string
+  type?: "button" | "reset" | "submit"
 }
 
 // Styles
@@ -47,11 +49,20 @@ const LinkButton = styled(Link)<{ $size: BtnSizeType, $color: BtnColorType, $exp
   ${btnStyles}
 `
 
-const Btn: React.FC<IBtn> = ({ expand = false, handler, title, to, size = 'medium', color = 'white', load = false }) => {
+const Btn: React.FC<IBtn> = ({ expand = false, handler, title, to, size = 'medium', color = 'white', load = false, fancy, type = "button" }) => {
   return <SCRegistry>
     {
-      (!!to) ? <LinkButton href={to!} $size={size} $color={color} $expand={expand}>{title}</LinkButton>
-        : <Button $size={size} $color={color} $expand={expand} onClick={handler}>
+      (!!to) ? <LinkButton href={to!} $size={size} $color={color} $expand={expand}>{title}</LinkButton> :
+        
+        <Button
+          $size={size}
+          $color={color}
+          $expand={expand}
+          onClick={handler}
+          data-fancybox={fancy}
+          data-src={fancy}
+          type={type}
+        >
           {title}
           {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
         </Button>
