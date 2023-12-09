@@ -15,7 +15,6 @@ interface IBtn {
   size?: BtnSizeType
   title: string
   to?: string
-  fancy?: string
   type?: "button" | "reset" | "submit"
 }
 
@@ -49,7 +48,7 @@ const LinkButton = styled(Link)<{ $size: BtnSizeType, $color: BtnColorType, $exp
   ${btnStyles}
 `
 
-const Btn: React.FC<IBtn> = ({ expand = false, handler, title, to, size = 'medium', color = 'white', load = false, fancy, type = "button" }) => {
+const Btn: React.FC<IBtn> = ({ expand = false, handler, title, to, size = 'medium', color = 'white', load = false, type = "button" }) => {
   return <SCRegistry>
     {
       (!!to) ? <LinkButton href={to!} $size={size} $color={color} $expand={expand}>{title}</LinkButton> :
@@ -59,8 +58,6 @@ const Btn: React.FC<IBtn> = ({ expand = false, handler, title, to, size = 'mediu
           $color={color}
           $expand={expand}
           onClick={handler}
-          data-fancybox={fancy}
-          data-src={fancy}
           type={type}
         >
           {title}

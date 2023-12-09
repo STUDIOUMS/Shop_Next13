@@ -1,26 +1,47 @@
-import { styled } from "styled-components"
-import Fancybox from "../Fancybox"
-import Btn, { BtnColorType, BtnSizeType } from "../UI/Btn"
+import { css, styled } from "styled-components"
 import close from "@/assets/close.svg"
+import { useEffect } from "react"
 
 interface IModal {
   children: React.ReactNode
-  id: string
-  btnName: string
-  btnSize?: BtnSizeType
-  btnColor?: BtnColorType
-  title?: string
+  show: boolean
+  handler: React.Dispatch<React.SetStateAction<boolean>>
+  title: string
 }
 
 // Styles
+const positionStyles = `bottom: 0; left: 0; right: 0; top: 0;`
+const animateStyles = css<{ $show: boolean }>`
+  opacity: ${({ $show }) => $show ? '1' : '0'};
+  transition: all 200ms ease-in-out;
+  visibility: ${({ $show }) => $show ? 'visible' : 'hidden'};
+`
 const ModalWin = styled.div`
   background: var(--color-white);
   border-radius: var(--radius);
-  display: none;
   max-width: 420px;
   padding: var(--gap);
   position: relative;
   width: 100%;
+  z-index: 10;
+`
+const ModalOverlay = styled.div`
+  ${positionStyles}
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(10px);
+  position: absolute;
+`
+const ModalWrapper = styled.div<{ $show: boolean }>`
+  ${positionStyles}
+  ${animateStyles}
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 2000;
+  ${ModalWin}, ${ModalOverlay} {
+    ${animateStyles}
+  }
 `
 const ModalTitle = styled.div`
   font-size: 24px;
@@ -40,20 +61,21 @@ const ModalClose = styled.button`
   width: 24px;
 `
 
-const Modal: React.FC<IModal> = ({ btnName, btnColor, btnSize, children, id, title = btnName }) => {
+const Modal: React.FC<IModal> = ({ children, handler, show, title }) => {
+  useEffect(() => {
+    if (show) document.body.classList.add('overflow')
+    else document.body.classList.remove('overflow')
+  }, [show])
+  
   return (
-    <Fancybox options={{
-      closeButton: false,
-      dragToClose: false,
-      autoFocus: false
-    }}>
-      <Btn title={btnName} color={btnColor} size={btnSize} fancy={`#${id}`} />
-      <ModalWin id={id}>
+    <ModalWrapper $show={show}>
+      <ModalWin>
         <ModalTitle>{title}</ModalTitle>
         {children}
-        <ModalClose data-fancybox-close />
+        <ModalClose onClick={() => handler(false)} />
       </ModalWin>
-    </Fancybox>
+      <ModalOverlay onClick={() => handler(false)} />
+    </ModalWrapper>
   )
 }
 

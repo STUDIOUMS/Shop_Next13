@@ -18,7 +18,7 @@ const Label = styled.label`
 const FormLine: React.FC<IFormLine> = ({ children, label }) => {
   return (
     <Line>
-      {label && <Label area-aria-label={label}>{label}</Label>}
+      {label && <Label>{label}</Label>}
       {children}
     </Line>
   )

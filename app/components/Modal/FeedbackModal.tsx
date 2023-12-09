@@ -12,7 +12,12 @@ type FeedBackFormValues = {
   message: string
 }
 
-const FeedbackModal: React.FC = () => {
+interface IFeedbackModal {
+  show: boolean
+  handler: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const FeedbackModal: React.FC<IFeedbackModal> = ({ handler, show }) => {
   const { handleSubmit, register, formState: { errors } } = useForm<FeedBackFormValues>()
 
   // sendMessage
@@ -21,7 +26,7 @@ const FeedbackModal: React.FC = () => {
   }
 
   return (
-    <Modal btnName="Обратная связь" id="feedback-modal" btnSize="small">
+    <Modal title="Обратная связь" show={show} handler={handler}>
       <form onSubmit={handleSubmit(sendMessage)} autoCorrect="false">
         <FormLine label="Ваше имя *">
           <FormInput

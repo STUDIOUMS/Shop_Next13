@@ -1,13 +1,15 @@
 'use client'
 
 import AddCart from "@/app/components/AddCart"
+import Modal from "@/app/components/Modal/Modal"
 import Packages from "@/app/components/Packages/Packages"
 import { usePriceImg } from "@/app/components/price.hook"
 import PriceBox from "@/app/components/PriceBox"
 import Tag from "@/app/components/Tag/Tag"
 import Btn from "@/app/components/UI/Btn"
+import FormInput from "@/app/components/UI/FormInput"
+import FormLine from "@/app/components/UI/FormLine"
 import SCRegistry from "@/options/registry"
-import { set_currency } from "@/options/settings"
 import { ProductType } from "@/options/types"
 import { useState } from "react"
 import { styled } from "styled-components"
@@ -44,6 +46,7 @@ const Code = styled.div`
 
 const ProductCard: React.FC<IProductCard> = ({ good }) => {
   const packs = good.relatedPacks
+  const [quickModal, setQuickModal] = useState<boolean>(false)
   const { choosePack, img, price, oldprice, currentPack } = usePriceImg(packs)
 
   const isSale = good.relatedPacks.some(el => el.oldPrice !== null)
@@ -73,13 +76,20 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
 
           <WrapBtns>
             <AddCart big={true} el={good} pack={currentPack} price={price} img={img} />
-            <Btn title="Быстрый заказ" handler={() => {}} />
+            <Btn title="Быстрый заказ" handler={() => setQuickModal(true)} />
           </WrapBtns>
 
           <p>Какой-то текст или информация о доставке</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias adipisci eius necessitatibus, est unde consequuntur!</p>
         </div>
       </div>
+
+      <Modal title="Быстрый заказ" show={quickModal} handler={setQuickModal}>
+        <FormLine label="Номер телефона">
+          <FormInput placeholder="+ 7 (123) 456-78-90" expand />
+        </FormLine>
+        <Btn type="submit" title="Отправить" expand color="success" />
+      </Modal>
     </SCRegistry>
   )
 }

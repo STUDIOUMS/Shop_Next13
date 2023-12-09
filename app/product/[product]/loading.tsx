@@ -9,20 +9,18 @@ export default function Loading() {
         <Skelet style={{height: '300px'}} />
       </div>
       <div>
-        <p><Skelet $size="line" /></p>
-        <p><Skelet /></p>
-        <p><Skelet $size="line" /></p>
-        <p><Skelet /></p>
-        <p><Skelet $size="button" /></p>
-        <p><Skelet $size="line" /></p>
-        <p><Skelet $size="line" /></p>
-        <p><Skelet $size="line" /></p>
+        <Skelet $size="line" />
+        <Skelet />
+        <Skelet $size="line" />
+        <Skelet $size="button" />
+        <Skelet $size="line" />
+        <Skelet $size="line" />
+        <Skelet $size="line" />
       </div>
     </div>
-    <p><Skelet $size="button" /></p>
-    <p><Skelet $size="line" /></p>
-    <p><Skelet $size="line" /></p>
-    <p><Skelet $size="line" /></p>
-    <p><Skelet $size="line" /></p>
+    <Skelet $size="button" />
+    <Skelet $size="line" />
+    <Skelet $size="line" />
+    <Skelet $size="line" />
   </div>
 }

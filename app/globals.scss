@@ -41,6 +41,10 @@ body {
   min-height: 100vh;
   font-size: 14px;
   line-height: 20px;
+  &.overflow {
+    overflow: hidden;
+    height: 100vh;
+  }
 }
 .row {margin-left: -10px; margin-right: -10px;}
 .row-sm {margin-left: -4px; margin-right: -4px;}

@@ -34,8 +34,10 @@ const Area = styled.textarea<{ $error?: boolean, $expand?: boolean }>`
   height: 90px;
   resize: none;
 `
-const ErrorText = styled.div`
+const ErrorText = styled.span`
   color: var(--color-danger);
+  font-size: 12px;
+  line-height: 16px;
   margin: 4px 0 0;
 `
 
