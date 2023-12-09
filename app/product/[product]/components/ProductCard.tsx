@@ -1,14 +1,12 @@
 'use client'
 
 import AddCart from "@/app/components/AddCart"
-import Modal from "@/app/components/Modal/Modal"
+import QuickModal from "@/app/components/Modal/QuickModal"
 import Packages from "@/app/components/Packages/Packages"
 import { usePriceImg } from "@/app/components/price.hook"
 import PriceBox from "@/app/components/PriceBox"
 import Tag from "@/app/components/Tag/Tag"
 import Btn from "@/app/components/UI/Btn"
-import FormInput from "@/app/components/UI/FormInput"
-import FormLine from "@/app/components/UI/FormLine"
 import SCRegistry from "@/options/registry"
 import { ProductType } from "@/options/types"
 import { useState } from "react"
@@ -84,12 +82,7 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
         </div>
       </div>
 
-      <Modal title="Быстрый заказ" show={quickModal} handler={setQuickModal}>
-        <FormLine label="Номер телефона">
-          <FormInput placeholder="+ 7 (123) 456-78-90" expand />
-        </FormLine>
-        <Btn type="submit" title="Отправить" expand color="success" />
-      </Modal>
+      <QuickModal show={quickModal} handler={setQuickModal} productId={good.id} />
     </SCRegistry>
   )
 }
