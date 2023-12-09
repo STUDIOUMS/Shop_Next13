@@ -48,6 +48,7 @@ const OrderForm: React.FC = () => {
     console.log(newOrder)
     reset()
   }
+  
 
   return (
     <div>
@@ -58,22 +59,35 @@ const OrderForm: React.FC = () => {
             <h3>Личные данные</h3>
             <div className="grid grid-3 grid-mb-1">
               <div>
-                <FormInput placeholder="Ваше ФИО" expand handler={() => {}} />
+                <FormInput
+                  placeholder="Ваше ФИО"
+                  expand
+                  valid={register("name", { required: errorText })}
+                  error={errors.name && errors.name?.message}
+                />
               </div>
               <div>
-                <FormInput type="email" placeholder="E-mail" expand handler={() => {}} />
-                {/* <FormField
-                  place="E-mail"
+                <FormInput
                   type="email"
-                  func={register("email", {required: errorText, pattern: {
-                    value: /^\S+@\S+$/i,
-                    message: 'Некорректный e-mail'
-                  }})}
+                  placeholder="E-mail"
+                  expand
+                  valid={
+                    register("email", {required: errorText, pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: 'Некорректный e-mail'
+                    }})
+                  }
                   error={errors.email && errors.email?.message}
-                /> */}
+                />
               </div>
               <div>
-                <FormInput type="tel" placeholder="Ваш телефон" expand handler={() => {}} />
+                <FormInput
+                  type="tel"
+                  placeholder="Ваш телефон"
+                  expand
+                  valid={register("phone", { required: errorText })}
+                  error={errors.phone && errors.phone?.message}
+                />
               </div>
             </div>
           </OrderSection>
@@ -82,13 +96,28 @@ const OrderForm: React.FC = () => {
             <h3>Адрес</h3>
             <div className="grid grid-3 grid-mb-1">
               <div>
-                <FormInput placeholder="Город" expand handler={() => {}} />
+                <FormInput
+                  placeholder="Город"
+                  expand
+                  valid={register("city", { required: errorText })}
+                  error={errors.city && errors.city?.message}
+                />
               </div>
               <div>
-                <FormInput placeholder="Улица" expand handler={() => {}} />
+                <FormInput
+                  placeholder="Улица"
+                  expand
+                  valid={register("street", { required: errorText })}
+                  error={errors.street && errors.street?.message}
+                />
               </div>
               <div>
-                <FormInput placeholder="Дом, Квартира" expand handler={() => {}} />
+                <FormInput
+                  placeholder="Дом, Квартира"
+                  expand
+                  valid={register("address", { required: errorText })}
+                  error={errors.address && errors.address?.message}
+                />
               </div>
             </div>
           </OrderSection>
@@ -108,12 +137,17 @@ const OrderForm: React.FC = () => {
           </OrderSection>
 
           <OrderSection className="order-additional">
-            <FormInput placeholder="Примечание к заказу" expand type="area" handler={() => {}} />
+            <FormInput
+              placeholder="Примечание к заказу"
+              expand
+              type="area"
+              valid={register("addition")}
+            />
           </OrderSection>
           
           <OrderFooter className="order-footer">
             <Btn to="/basket" title="Вернуться в корзину" />
-            <Btn title="Оформить заказ" color="green" />
+            <Btn title="Оформить заказ" color="success" />
           </OrderFooter>
         </OrderFormWrap>
       </form>

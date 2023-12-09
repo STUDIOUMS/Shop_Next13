@@ -7,6 +7,7 @@ import BasketHead from "./BasketHead"
 import BasketRow from "./BasketRow"
 import BasketTotal from "./BasketTotal"
 import Btn from "@/app/components/UI/Btn"
+import Alert from "@/app/components/UI/Alert"
 
 const BasketList = () => {
   const orders = useSelector((state: RootState) => state.app.orders)
@@ -24,12 +25,12 @@ const BasketList = () => {
         <BasketTotal orders={orders} />
 
         <div className="text-right">
-          <Btn title="Оформить заказ" color="green" to="/order" />
+          <Btn title="Оформить заказ" color="success" to="/order" />
         </div>
         
       </> : 
       <>
-        <div className="alert alert-secondary">Ваша корзина пуста</div>
+        <Alert color="danger">Ваша корзина пуста</Alert>
         <Btn title="Вернуться на главную" to="/" />
       </>
       }

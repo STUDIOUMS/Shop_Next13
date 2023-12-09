@@ -5,8 +5,10 @@ interface IFormInput {
   placeholder?: string
   type?: 'text' | 'email' | 'search' | 'tel' | 'password' | 'area'
   expand?: boolean
-  handler: (val: string) => void
+  handler?: (val: string) => void
   defVal?: string
+  valid?: any
+  error?: string
 }
 
 const InputStyles = css<{ $error?: boolean, $expand?: boolean }>`
@@ -32,24 +34,33 @@ const Area = styled.textarea<{ $error?: boolean, $expand?: boolean }>`
   height: 90px;
   resize: none;
 `
+const ErrorText = styled.div`
+  color: var(--color-danger);
+  margin: 4px 0 0;
+`
 
-const FormInput: React.FC<IFormInput> = ({ defVal, expand = false, handler, type = 'text', placeholder }) => {
+const FormInput: React.FC<IFormInput> = ({ defVal, expand = false, handler, type = 'text', placeholder, valid, error }) => {
   return <SCRegistry>
     {(type === 'area')
       ? <Area
         placeholder={placeholder}
         $expand={expand}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handler(e.target.value)}
+        $error={!!error}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handler!(e.target.value)}
         defaultValue={defVal}
+        {...valid}
       />
       : <Input
         type={type}
         placeholder={placeholder}
         $expand={expand}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handler(e.target.value)}
+        $error={!!error}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handler!(e.target.value)}
         defaultValue={defVal}
+        {...valid}
       />
     }
+    {!!error && <ErrorText>{error}</ErrorText>}
   </SCRegistry>
 }
 

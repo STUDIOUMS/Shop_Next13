@@ -22,7 +22,7 @@ const TabItem = styled.li`
 const ProductTab: React.FC<IProductTab> = ({ active, name, setKey, val }) => {
   return (
     <TabItem>
-      <Btn title={name} color={active === val ? 'green' : 'white'} handler={() => setKey(val)} />
+      <Btn title={name} color={active === val ? 'success' : 'white'} handler={() => setKey(val)} />
     </TabItem>
   )
 }

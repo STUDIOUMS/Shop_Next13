@@ -189,7 +189,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
             Сбросить
             {loadReset && <span className="spinner-border spinner-border-sm ms-2"></span>}
           </button>
-          {/* <Btn title='Применить' handler={applyFilter} color='green' expand load={load} />
+          {/* <Btn title='Применить' handler={applyFilter} color='success' expand load={load} />
           <Btn title='Сбросить' handler={resetFilter} expand load={loadReset} /> */}
         </div>
       </div>

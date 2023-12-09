@@ -29,7 +29,7 @@ const CartBtn = styled.button`
   }
 `
 const Badge = styled.div`
-  background: var(--color-green);
+  background: var(--color-success);
   border-radius: 18px;
   color: var(--color-white);
   font-size: 12px;

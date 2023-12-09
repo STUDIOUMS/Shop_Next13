@@ -51,6 +51,6 @@ export const ItemTitle = styled.div`
     color: inherit;
     display: block;
     transition: all 200ms ease-in-out;
-    &:hover {color: var(--color-green-hover);}
+    &:hover {color: var(--color-success-hover);}
   }
 `

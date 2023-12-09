@@ -36,7 +36,7 @@ const AddCart: React.FC<IAddCart> = ({ big, el, img, pack, price }) => {
   return (
     <Btn
       title="В корзину"
-      color="green"
+      color="success"
       handler={addCartHandler}
     />
   )

@@ -33,11 +33,13 @@ const Children = styled.ul`
   border-radius: var(--radius);
   box-shadow: 0 2px 8px rgba(0,0,0,0.25);
   margin: 0;
-  padding: var(--pb);
+  padding: var(--gap);
+  min-width: 200px;
   position: absolute;
   transition: all 200ms ease-in-out;
   opacity: 0;
   visibility: hidden;
+  z-index: 1100;
   li {
     list-style: none;
     margin: 0 0 8px;
@@ -47,6 +49,7 @@ const Children = styled.ul`
     background: 0;
     border-radius: 0;
     box-shadow: none;
+    min-width: none;
     padding: 8px 0 8px var(--gap);
     position: relative;
     transition: none;
@@ -58,7 +61,7 @@ const NavItem = styled.li`
   list-style: none;
   margin: 0;
   font-family: var(--font2);
-  font-size: 14px;
+  font-size: 16px;
   position: relative;
   &:hover ${Children} {
     opacity: 1;

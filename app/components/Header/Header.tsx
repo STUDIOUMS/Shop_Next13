@@ -16,6 +16,7 @@ import FeedbackModal from "../Modals/FeedbackModal"
 import Btn from "../UI/Btn"
 import { styled } from "styled-components"
 import SCRegistry from "@/options/registry"
+import Fancybox from "../Fancybox"
 
 interface IHeader {
   cats: CatType[]
@@ -25,7 +26,6 @@ interface IHeader {
 // Styles
 const HeaderTop = styled.header`
   padding: 8px 0;
-  z-index: 1010;
 `
 const HeaderLogo = styled.header`
   margin: 0 30px 0 0;
@@ -68,7 +68,7 @@ const Header: React.FC<IHeader> = ({ cats }) => {
       <HeaderTop>
         <HeaderContainer className="container">
           <Navbar />
-          <Btn title="Обратная связь" size="small" handler={() => setShowModal(true)} />
+          <Btn title="Обратная связь" size="small" />
         </HeaderContainer>
       </HeaderTop>
 

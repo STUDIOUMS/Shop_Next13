@@ -33,8 +33,8 @@
       opacity: 0.5;
     }
     &Active {
-      background: var(--color-lightgreen) !important;
-      border-color: var(--color-green);
+      background: var(--color-success-light) !important;
+      border-color: var(--color-success);
       &::after {opacity: 1;}
     }
   }

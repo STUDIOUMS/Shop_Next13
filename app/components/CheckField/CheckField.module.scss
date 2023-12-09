@@ -9,8 +9,8 @@
   appearance: none;
   -webkit-appearance: none;
   &:checked {
-    background-color: var(--color-green);
-    border-color: var(--color-green);
+    background-color: var(--color-success);
+    border-color: var(--color-success);
   }
 }
 
@@ -25,8 +25,8 @@
   appearance: none;
   -webkit-appearance: none;
   &:checked {
-    background-color: var(--color-green);
-    border-color: var(--color-green);
+    background-color: var(--color-success);
+    border-color: var(--color-success);
   }
 }
 

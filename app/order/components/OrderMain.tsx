@@ -1,5 +1,6 @@
 'use client'
 
+import Alert from "@/app/components/UI/Alert"
 import Btn from "@/app/components/UI/Btn"
 import { RootState } from "@/app/store/store"
 import { useSelector } from "react-redux"
@@ -22,7 +23,7 @@ const OrderMain_old: React.FC = () => {
           </div>
         </OrderWrap>
         : <>
-          <div className="alert alert-secondary">Ваша корзина пуста</div>
+          <Alert>Ваша корзина пуста</Alert>
           <Btn to="/" title="Веурнться на главную" />
         </>
       }

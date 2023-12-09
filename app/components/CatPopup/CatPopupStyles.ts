@@ -10,7 +10,7 @@ export const Popup = styled.div`
   right: 12px;
   position: absolute !important;
   padding: var(--gap);
-  z-index: 1000;
+  z-index: 1100;
   ul {
     margin: 0 0 0 50px; padding: 0;
     li {
@@ -24,7 +24,7 @@ export const Popup = styled.div`
     li:last-child {margin: 0;}
     li a {
       color: var(--color-text2); text-decoration: none;
-      &:hover {color: var(--color-green-hover);}
+      &:hover {color: var(--color-success-hover);}
     }
   }
 `
@@ -58,7 +58,7 @@ export const PopupTitle = styled.div`
   font-size: 18px;
   line-height: 20px;
   a { color: inherit; text-decoration: none; display: flex; align-items: center; }
-  a:hover { color: var(--color-green-hover); }
+  a:hover { color: var(--color-success-hover); }
   img {
     display: block; margin: 0 10px 0 0; min-width: 40px; max-width: 40px;
     img {display: block;}

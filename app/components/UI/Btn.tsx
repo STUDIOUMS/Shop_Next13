@@ -5,7 +5,7 @@ import Link from "next/link"
 import styled, { css } from "styled-components"
 
 type BtnSizeType = 'small' | 'medium' | 'large'
-type BtnColorType = 'green' | 'danger' | 'white'
+type BtnColorType = 'success' | 'danger' | 'white'
 
 interface IBtn {
   color?: BtnColorType
