@@ -22,7 +22,7 @@ export default async function Blog({ searchParams }: { searchParams: any }) {
   const data = await getBlogs(limitPosts, newUri)
   
   return (
-    <div>
+    <div className="section">
       <BreadCrumbs list={crumbs} />
       <h1>Блог</h1>
       <BlogList list={data?.results!} limit={limitPosts} />

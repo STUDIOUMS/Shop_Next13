@@ -1,23 +1,20 @@
 import { createArray } from "@/options/helpers"
+import { Skelet } from "../components/Skelet"
 
 export default function Loading() {
   const list = createArray(3)
 
-  return <div className="placeholder-glow">
-    <div className="breadcrumb">
-      <span className="placeholder col-2"></span>
-      <span className="placeholder col-2"></span>
-      <span className="placeholder col-2"></span>
-    </div>
+  return <div className="section">
+    <Skelet />
     <h1>
-      <span className="placeholder col-3"></span>
+      <Skelet $size="h1" />
     </h1>
     {list.map(el => (
       <div key={el} style={{marginBottom: '30px'}}>
-        <h2><span className="placeholder col-12"></span></h2>
-        <p><span className="placeholder col-12"></span><br />
-        <span className="placeholder col-8"></span><br />
-        <span className="placeholder col-5"></span></p>
+        <Skelet $size="line" />
+        <Skelet />
+        <Skelet />
+        <Skelet />
       </div>
     ))}
   </div>

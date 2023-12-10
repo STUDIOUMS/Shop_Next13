@@ -130,7 +130,7 @@ export async function getPacks() {
 
 
 // BLOG
-export async function getBlogs(limit: number, uri: string) {
+export async function getBlogs(limit: number, uri: string): Promise<ResponseType> {
   try {
     const isLimit = uri.includes('limit')
     const uri_limit = isLimit ? `&${uri}` : `&limit=${limit}`
@@ -140,7 +140,7 @@ export async function getBlogs(limit: number, uri: string) {
     const data: ResponseType = await response.json()
     return data
   } catch(e) {
-    console.log(e)
+    throw new Error('Server error')
   }
 }
 

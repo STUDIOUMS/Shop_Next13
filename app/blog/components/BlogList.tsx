@@ -8,7 +8,6 @@ import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import BlogItem from "./BlogItem"
-import styles from "./Blog.module.scss"
 
 interface IBlogList {
   list: blogType[]
@@ -34,7 +33,7 @@ const BlogList: React.FC<IBlogList> = ({ list, limit }) => {
   }, [searchURI])
 
   return (
-    <div className={styles.blogList}>
+    <div className="section">
       {posts.map(post => <BlogItem key={post.id} post={post} />)}
     </div>
   )
