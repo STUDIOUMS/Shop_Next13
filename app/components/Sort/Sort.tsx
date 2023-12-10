@@ -2,11 +2,10 @@
 
 import View from "@/app/components/View/View"
 import { setLoadSort } from "@/app/store/appSlice"
-import { AppDispatch, RootState } from "@/app/store/store"
-import { SortItemType } from "@/options/types";
+import { useAppDispatch, useAppSelector } from "@/app/store/hooks"
+import { SortItemType } from "@/options/types"
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import { useCallback, useEffect, useRef } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import styles from "./Sort.module.scss"
 
 interface ISort {
@@ -14,8 +13,8 @@ interface ISort {
 }
 
 const Sort: React.FC<ISort> = ({ list }) => {
-  const load = useSelector((state: RootState) => state.app.loadSort)
-  const dispatch = useDispatch<AppDispatch>()
+  const load = useAppSelector(state => state.app.loadSort)
+  const dispatch = useAppDispatch()
   const ref = useRef<HTMLSelectElement>(null)
 
   // url params

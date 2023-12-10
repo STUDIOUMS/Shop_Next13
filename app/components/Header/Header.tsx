@@ -1,9 +1,8 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useAppDispatch } from "@/app/store/hooks"
 import { setOrders } from "../../store/appSlice"
-import { AppDispatch } from "../../store/store"
 import CatPopup from "../CatPopup/CatPopup"
 import Link from "next/link"
 import Navbar from "./NavBar"
@@ -52,7 +51,7 @@ const HeaderMiddle = styled.header`
 
 
 const Header: React.FC<IHeader> = ({ cats }) => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const [feedBack, setFeedBack] = useState<boolean>(false)
   
   useEffect(() => {

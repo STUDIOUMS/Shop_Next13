@@ -1,16 +1,14 @@
 'use client'
 
-import { RootState } from "@/app/store/store"
-import Link from "next/link"
-import { useSelector } from "react-redux"
 import BasketHead from "./BasketHead"
 import BasketRow from "./BasketRow"
 import BasketTotal from "./BasketTotal"
 import Btn from "@/app/components/UI/Btn"
 import Alert from "@/app/components/UI/Alert"
+import { useAppSelector } from "@/app/store/hooks"
 
 const BasketList = () => {
-  const orders = useSelector((state: RootState) => state.app.orders)
+  const orders = useAppSelector(state => state.app.orders)
 
   return (
     <div className="section">

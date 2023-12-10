@@ -1,8 +1,6 @@
 import { setOrder, setToast } from "@/app/store/appSlice"
-import { AppDispatch } from "@/app/store/store"
 import { BasketType, ProductType } from "@/options/types"
-import { useDispatch } from "react-redux"
-import styles from "../cat/[subcat]/components/Card/Card.module.scss"
+import { useAppDispatch } from "../store/hooks"
 import Btn from "./UI/Btn"
 
 interface IAddCart {
@@ -14,7 +12,7 @@ interface IAddCart {
 }
 
 const AddCart: React.FC<IAddCart> = ({ big, el, img, pack, price }) => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
 
   const order: BasketType = {
     id: String(el.id) + '-' + pack,

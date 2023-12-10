@@ -1,16 +1,15 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { setView } from '@/app/store/appSlice'
-import { AppDispatch, RootState } from '@/app/store/store'
 import styles from './View.module.scss'
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks'
 
 type ViewType = 'grid' | 'list' | string
 
 const View: React.FC = () => {
-  const active = useSelector((state: RootState) => state.app.view)
-  const dispatch = useDispatch<AppDispatch>()
+  const active = useAppSelector(state => state.app.view)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     const viewStotage = localStorage.getItem('view')

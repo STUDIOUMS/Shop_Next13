@@ -1,10 +1,9 @@
 import PriceBox from "@/app/components/PriceBox"
 import { changeCountOrder, removeOrder } from "@/app/store/appSlice"
-import { AppDispatch } from "@/app/store/store"
+import { useAppDispatch } from "@/app/store/hooks"
 import { BasketType } from "@/options/types"
 import Image from "next/image"
 import Link from "next/link"
-import { useDispatch } from "react-redux"
 import { BasketItem, BasketItemText, Delete, MobileTitle } from "./BasketStyles"
 
 interface IBasketRow {
@@ -12,7 +11,7 @@ interface IBasketRow {
 }
 
 const BasketRow: React.FC<IBasketRow> = ({ order }) => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   
   return (
     <BasketItem>

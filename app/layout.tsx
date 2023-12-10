@@ -4,7 +4,7 @@ import Providers from './store/Providers'
 import Footer from './components/Footer/Footer'
 import { getCats } from '@/options/fetches'
 import ScrollToTop from './components/ScrollToTop'
-import Notification from './components/Notification/Notification'
+import Toast from './components/UI/Toast'
 
 export const metadata = {
   title: 'Create Next App',
@@ -24,7 +24,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           </div>
           <Footer cats={cats} />
           <ScrollToTop />
-          <Notification />
+          <Toast />
         </Providers>
       </body>
     </html>

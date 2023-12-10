@@ -1,7 +1,7 @@
 'use client'
 
 import { BasketType } from '@/options/types'
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface appState {
   orders: BasketType[]
@@ -10,8 +10,7 @@ export interface appState {
   loadFilterReset: boolean
   loadSort: boolean
   loadPager: boolean
-  toast: boolean
-  toastText: string
+  toast: string
 }
 
 const initialState: appState = {
@@ -21,8 +20,7 @@ const initialState: appState = {
   loadFilterReset: false,
   loadSort: false,
   loadPager: false,
-  toast: false,
-  toastText: ''
+  toast: ''
 }
 
 export const appSlice = createSlice({
@@ -100,22 +98,15 @@ export const appSlice = createSlice({
     },
 
     // setToast
-    setToast: (state, action) => {
-      state.toast = true
-      state.toastText = action.payload
+    setToast: (state, action: PayloadAction<string>) => {
+      state.toast = action.payload
     },
-
-    // closeToast
-    closeToast: (state) => {
-      state.toast = false
-      state.toastText = ''
-    }
 
 
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setView, setLoadFilter, setLoadSort, setLoadPager, setOrder, changeCountOrder, setOrders, removeOrder, setLoadFilterReset, setToast, closeToast } = appSlice.actions
+export const { setView, setLoadFilter, setLoadSort, setLoadPager, setOrder, changeCountOrder, setOrders, removeOrder, setLoadFilterReset, setToast } = appSlice.actions
 
 export default appSlice.reducer

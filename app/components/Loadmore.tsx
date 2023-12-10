@@ -2,10 +2,9 @@
 
 import { useCallback } from "react"
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
-import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, RootState } from "@/app/store/store"
 import { setLoadPager } from "@/app/store/appSlice"
 import Btn from "./UI/Btn"
+import { useAppDispatch, useAppSelector } from "../store/hooks"
 
 interface ILoadmore {
   pages: number
@@ -13,8 +12,8 @@ interface ILoadmore {
 }
 
 const Loadmore: React.FC<ILoadmore> = ({ all, pages }) => {
-  const load = useSelector((state: RootState) => state.app.loadPager)
-  const dispatch = useDispatch<AppDispatch>()
+  const load = useAppSelector(state => state.app.loadPager)
+  const dispatch = useAppDispatch()
   
   const searchParams = useSearchParams()
   const router = useRouter()
