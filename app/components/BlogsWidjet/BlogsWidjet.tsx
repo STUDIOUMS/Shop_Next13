@@ -1,5 +1,8 @@
+'use client'
+
 import { blogType } from '@/options/types'
 import Link from 'next/link'
+import Alert from '../UI/Alert'
 import BlogsWidjetItem from './BlogsWidjetItem'
 
 interface IBlogsWidjet {
@@ -14,10 +17,10 @@ const BlogsWidjet: React.FC<IBlogsWidjet> = ({ error, list, title = 'Блог' }
       <div className="pagetitle">
         <Link href="/blog">{title}</Link>
       </div>
-      <div className="grid grid-3">
+      <div className="grid grid-3 grid-mb-1">
         {list.map(el => <BlogsWidjetItem key={el.id} el={el} />)}
       </div>
-      {error && <div className="alert alert-danger">Ошибка сервера</div>}
+      {error && <Alert color="danger">Ошибка сервера</Alert>}
     </div>
   )
 }

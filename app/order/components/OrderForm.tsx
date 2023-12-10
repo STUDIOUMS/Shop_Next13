@@ -10,6 +10,7 @@ import FormInput from "@/app/components/UI/FormInput"
 import Btn from "@/app/components/UI/Btn"
 import { OrderFooter, OrderFormWrap, OrderSection } from "./OrderStyles"
 import { errorText } from "@/options/settings"
+import Alert from "@/app/components/UI/Alert"
 
 type FormValues = {
   name: string
@@ -125,7 +126,10 @@ const OrderForm: React.FC = () => {
             <h3>Доставка</h3>
             <CheckField handler={chooseDelivery} title="Курьером" type="radio" value="courier" name="delivery" checked={true} />
             <CheckField handler={chooseDelivery} title="Самовывоз" type="radio" value="pickup" name="delivery" />
-            {delivery === 'pickup' && <p>Адрес</p>}
+            {delivery === 'pickup' && <Alert color="success">
+              <b>Адрес:</b> г.Тюмень, ул. Коммунистическая, 70, корп. 3, стр. 6<br />
+              <b>Время доставки:</b> Время...
+            </Alert>}
           </OrderSection>
           
           <OrderSection className="order-payment">

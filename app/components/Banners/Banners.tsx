@@ -11,6 +11,9 @@ interface IBanners {
 // Styles
 const Grid = styled.div`
   margin: 0 0 var(--section);
+  @media screen and (max-width: 750px) {
+    grid-template-columns: 1fr;
+  }
 `
 const Banner = styled.a`
   background-position: center center;
@@ -20,7 +23,6 @@ const Banner = styled.a`
   display: flex;
   align-items: flex-end;
   height: 200px;
-  margin: 0 0 20px;
   padding: 14px 20px;
   position: relative;
   text-decoration: none;

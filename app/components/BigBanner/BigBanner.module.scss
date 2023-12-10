@@ -28,7 +28,7 @@
   .bigbanner {
     border-top: 1px solid #ededed;
     border-bottom: 1px solid #ededed;
-    box-shadow: 0; margin: 0 -12px 40px;
+    box-shadow: 0; margin: 0 calc(var(--gap) * -1) 40px;
   }
   .bigbannerItem {border-radius: 0;}
 }

@@ -19,6 +19,7 @@ const AlertBox = styled.div<{ $color: AlertColorType }>`
   border-radius: var(--radius);
   margin: 0 0 var(--gap);
   padding: var(--pb) var(--gap);
+  &:last-child { margin: 0; }
 `
 
 const Alert: React.FC<IAlert> = ({ children, color = "light" }) => {

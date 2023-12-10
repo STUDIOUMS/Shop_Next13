@@ -37,6 +37,7 @@ const ModalWrapper = styled.div<{ $show: boolean }>`
   align-items: center;
   display: flex;
   justify-content: center;
+  padding: var(--gap);
   position: fixed;
   z-index: 2000;
   ${ModalWin}, ${ModalOverlay} {

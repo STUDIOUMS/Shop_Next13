@@ -1,44 +1,56 @@
-import styles from './Advantages.module.scss'
-import truck from './../../../assets/truck.svg'
-import warehouse from './../../../assets/warehouse.svg'
-import manager from './../../../assets/manager.svg'
+'use client'
+
+import truck from '@/assets/truck.svg'
+import warehouse from '@/assets/warehouse.svg'
+import manager from '@/assets/manager.svg'
 import Image from 'next/image'
 import styled from 'styled-components'
+import SCRegistry from '@/options/registry'
 
 interface IAdvantages {
   title?: string
 }
 
 // Styles
+const Wrap = styled.div``
+const Item = styled.div`
+  border: 1px solid var(--color-light);
+  border-radius: var(--radius);
+  padding: var(--gap);
+  text-align: center;
+  img {margin-bottom: 20px;}
+`
+const Title = styled.div`
+  font-weight: 600;
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 22px;
+`
 
-const Advantages = ({ title = 'Преимущества' }) => {
+const Advantages: React.FC<IAdvantages> = ({ title = 'Преимущества' }) => {
   return (
-    <div className={styles.advantages}>
-      <div className="pagetitle">{title}</div>
-      <div className="grid grid-3">
-        <div className={styles.advantageGrid}>
-          <div className={styles.advantage}>
+    <SCRegistry>
+      <Wrap className="section">
+        <div className="pagetitle">{title}</div>
+        <div className="grid grid-3 grid-mb-1">
+          <Item>
             <Image src={truck} alt="" height={50} />
-            <div className={styles.advantageTitle}>Бесплатная доставка</div>
+            <Title>Бесплатная доставка</Title>
             до вашего склада или терминала ТК
-          </div>
-        </div>
-        <div className={styles.advantageGrid}>
-          <div className={styles.advantage}>
+          </Item>
+          <Item>
             <Image src={warehouse} alt="" height={50} />
-            <div className={styles.advantageTitle}>В наличии на складе</div>
+            <Title>В наличии на складе</Title>
             весь ассортимент продукции серии &ldquo;Ника&rdquo;
-          </div>
-        </div>
-        <div className={styles.advantageGrid}>
-          <div className={styles.advantage}>
+          </Item>
+          <Item>
             <Image src={manager} alt="" height={50} />
-            <div className={styles.advantageTitle}>Выделенный менеджер</div>
+            <Title>Выделенный менеджер</Title>
             Помощь в выборе средств для конкретного предприятия
-          </div>
+          </Item>
         </div>
-      </div>
-    </div>
+      </Wrap>
+    </SCRegistry>
   )
 }
 
