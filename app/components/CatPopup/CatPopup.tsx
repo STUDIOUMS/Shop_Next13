@@ -2,27 +2,29 @@ import { CatType } from "@/options/types"
 import { useState } from "react"
 import CatPopupItem from "./CatPopupItem"
 import Btn from "../UI/Btn"
-import SCRegistry from "@/options/registry"
 import { Overlay, Popup, PopupHeader, Wrap } from "./CatPopupStyles"
+import Alert from "../UI/Alert"
 
 interface ICatPopup {
   cats: CatType[]
+  isError: boolean
 }
 
-
-const CatPopup: React.FC<ICatPopup> = ({ cats }) => {
+const CatPopup: React.FC<ICatPopup> = ({ cats, isError }) => {
   const [show, setShow] = useState<boolean>(false)
+
   return (
     <Wrap $show={show}>
       <Btn title="Каталог" handler={() => setShow(!show)} />
       <Popup>
         <PopupHeader>Каталог</PopupHeader>
         <div className="grid grid-3 grid-mb-1">
-          {cats.filter(el => el.parent === null).map(el => {
-            const subcats = cats.filter(cat => cat.parent?.pk === el.id)
+          {!isError && cats.filter(el => el.parent === null).map(el => {
+            const subcats: CatType[] = cats.filter(cat => cat.parent?.pk === el.id)
             return <CatPopupItem key={el.id} el={el} setShow={setShow} subcats={subcats} />
           })}
         </div>
+        {isError && <Alert color="danger">Server error</Alert>}
       </Popup>
       <Overlay onClick={() => setShow(false)} />
     </Wrap>

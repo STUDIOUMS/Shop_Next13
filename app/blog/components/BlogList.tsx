@@ -1,40 +1,20 @@
 'use client'
 
-import { setLoadPager } from "@/app/store/appSlice"
-import { AppDispatch } from "@/app/store/store"
-import { url_blog } from "@/options/api"
+import Loadmore from "@/app/components/Loadmore"
 import { blogType } from "@/options/types"
-import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
 import BlogItem from "./BlogItem"
 
 interface IBlogList {
-  list: blogType[]
+  all: number
   limit: number
+  list: blogType[]
 }
 
-const BlogList: React.FC<IBlogList> = ({ list, limit }) => {
-  const [posts, setPosts] = useState<blogType[]>(list)
-  const dispatch = useDispatch<AppDispatch>()
-  const searchParams = useSearchParams()
-  const searchURI = searchParams.toString()
-  const isLimit = searchURI.includes('limit=')
-  const defaultLimit = isLimit ? `&${searchURI}` : `&limit=${limit}`
-
-  useEffect(() => {
-    fetch(`${url_blog}?ordering=-id${defaultLimit}`)
-      .then(response => response.json())
-      .then(data => {
-        setPosts(data.results)
-        dispatch(setLoadPager(false))
-      })
-      .catch(e => setPosts([]))
-  }, [searchURI])
-
+const BlogList: React.FC<IBlogList> = ({ all, limit, list }) => {
   return (
     <div className="section">
-      {posts.map(post => <BlogItem key={post.id} post={post} />)}
+      {list.map(post => <BlogItem key={post.id} post={post} />)}
+      <Loadmore all={all} pages={limit} />
     </div>
   )
 }

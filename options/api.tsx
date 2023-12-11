@@ -1,5 +1,5 @@
 import { serverURL } from "./settings"
-import { blogType, ResponseType, ServerResponseType } from "./types"
+import { blogType, CatType, ResponseErrorType, ResponseType } from "./types"
 
 // Variables
 export const url_cats = `${serverURL}/catalog/categories/`
@@ -10,14 +10,13 @@ export const url_blog = `${serverURL}/blog/articles/`
 // GET REQUESTS
 
 // get categories
-export async function getCats() {
+export async function getCats(): Promise<ResponseType<CatType>> {
   try {
     const response = await fetch(`${url_cats}`, { cache: 'no-cache' })
-    const data = await response.json()
-    return data.results
+    const data: ResponseType<CatType> = await response.json()
+    return data
   } catch(e) {
-    console.log(e)
-    return []
+    return { error: true }
   }
 }
 
@@ -130,18 +129,18 @@ export async function getPacks() {
 
 
 // BLOG
-export async function getBlogs(limit: number, uri: string): Promise<ResponseType<blogType>> {
+export async function getBlogs(limit: number, uri: string): Promise<ResponseType<blogType> | ResponseErrorType> {
   try {
     const isLimit = uri.includes('limit')
     const uri_limit = isLimit ? `&${uri}` : `&limit=${limit}`
     const response = await fetch(`${url_blog}?ordering=-id${uri_limit}`, {
       cache: 'no-cache'
     })
-    const data: ServerResponseType<blogType> = await response.json()
+    const data: ResponseType<blogType> = await response.json()
     return data
   } catch(e) {
-    //throw new Error('Server error')
-    return { results: [], detail: "Not found." }
+    console.log(e)
+    return { error: true }
   }
 }
 

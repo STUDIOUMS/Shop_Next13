@@ -15,11 +15,6 @@ import { styled } from "styled-components"
 import FeedbackModal from "../Modal/FeedbackModal"
 import Btn from "../UI/Btn"
 
-interface IHeader {
-  cats: CatType[]
-}
-
-
 // Styles
 const HeaderTop = styled.div`
   padding: 8px 0;
@@ -48,8 +43,12 @@ const HeaderMiddle = styled.header`
   margin: 0 0 var(--gap);
 `
 
+interface IHeader {
+  cats: CatType[],
+  isError: boolean
+}
 
-const Header: React.FC<IHeader> = ({ cats }) => {
+const Header: React.FC<IHeader> = ({ cats, isError }) => {
   const dispatch = useAppDispatch()
   const [feedBack, setFeedBack] = useState<boolean>(false)
   
@@ -76,7 +75,7 @@ const Header: React.FC<IHeader> = ({ cats }) => {
               <Image src={logo.src} alt="" width={50} height={50} style={{objectFit: 'contain'}} />
             </Link>
           </HeaderLogo>
-          <CatPopup cats={cats} />
+          <CatPopup cats={cats} isError={isError} />
           <Search />
           <SmallCart />
         </HeaderContainer>

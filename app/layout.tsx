@@ -14,17 +14,18 @@ export const metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const cats = await getCats()
+  const isError = !cats.results
 
   return (
     <html lang="en">
       <body>
         <SCRegistry>
           <Providers>
-            <Header cats={cats} />
+            <Header cats={cats.results!} isError={isError} />
             <div className="container main_container">
               {children}
             </div>
-            <Footer cats={cats} />
+            <Footer cats={cats.results!} isError={isError} />
             <ScrollToTop />
             <Toast />
           </Providers>

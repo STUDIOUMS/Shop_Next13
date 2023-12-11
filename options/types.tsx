@@ -1,13 +1,15 @@
 export type ViewType = 'grid' | 'list'
 
-export interface ServerResponseType<T> {
+export type ResponseType<T> = {
   count?: number
   next?: string
   previous?: string
-  results: T[]
+  results?: T[]
+  error?: boolean
 }
-export interface ResponseType<T> extends ServerResponseType<T> {
-  detail?: 'Not found.'
+
+export type ResponseErrorType = {
+  error?: boolean
 }
 
 export type CatTypeParent = {

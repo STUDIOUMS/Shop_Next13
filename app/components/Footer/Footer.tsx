@@ -4,14 +4,9 @@ import logo from "@/assets/logo.webp"
 import Image from "next/image"
 import { navItems } from "@/options/helpers"
 import Link from "next/link"
-import { CatType } from "@/options/types"
 import { styled } from "styled-components"
 import Socials from "../Socials"
-import SCRegistry from "@/options/registry"
-
-interface IFooter {
-  cats: CatType[]
-}
+import { CatType } from "@/options/types"
 
 // Styles
 const FooterBox = styled.footer`
@@ -29,7 +24,12 @@ const FooterTitle = styled.div`
   margin: 0 0 var(--gap);
 `
 
-const Footer: React.FC<IFooter> = ({ cats }) => {
+interface IFooter {
+  cats: CatType[]
+  isError: boolean
+}
+
+const Footer: React.FC<IFooter> = ({ cats, isError }) => {
   return (
     <FooterBox>
       <div className="container">
@@ -49,7 +49,7 @@ const Footer: React.FC<IFooter> = ({ cats }) => {
           <div>
             <FooterTitle>Категории</FooterTitle>
             <ul>
-              {cats.filter(el => el.parent === null).map(el => (
+              {!isError && cats.filter(el => el.parent === null).map(el => (
                 <li key={el.id}><Link href={`/cat/${el.slug}`}>{el.name}</Link></li>
               ))}
             </ul>
