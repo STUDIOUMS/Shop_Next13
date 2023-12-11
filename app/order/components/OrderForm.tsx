@@ -11,6 +11,7 @@ import Btn from "@/app/components/UI/Btn"
 import { OrderFooter, OrderFormWrap, OrderSection } from "./OrderStyles"
 import { errorText } from "@/options/settings"
 import Alert from "@/app/components/UI/Alert"
+import FormLine from "@/app/components/UI/FormLine"
 
 type FormValues = {
   name: string
@@ -20,6 +21,8 @@ type FormValues = {
   street: string
   address: string
   addition: string
+  inn?: string
+  company?: string
 }
 
 const OrderForm: React.FC = () => {
@@ -134,9 +137,29 @@ const OrderForm: React.FC = () => {
           
           <OrderSection className="order-payment">
             <h3>Оплата</h3>
-            <CheckField handler={choosePayment} title="Эквайринг" type="radio" value="acquiring" name="payment" checked={true} />
+            <CheckField handler={choosePayment} title="Оплатить онлайн" type="radio" value="acquiring" name="payment" checked={true} />
             <CheckField handler={choosePayment} title="Оплата по счету" type="radio" value="bill" name="payment" />
-            {payment === 'bill' && <p>Карта или файл с данными</p>}
+
+            {payment === 'bill' &&
+              <div className="pt-2">
+                <FormLine>
+                  <FormInput
+                    placeholder="ИНН"
+                    expand
+                    valid={register("inn", { required: errorText })}
+                    error={errors.inn && errors.inn.message}
+                  />
+                </FormLine>
+                <FormLine>
+                  <FormInput
+                    placeholder="Название организации"
+                    expand
+                    valid={register("company", { required: errorText })}
+                    error={errors.company && errors.company.message}
+                  />
+                </FormLine>
+              </div>
+            }
           </OrderSection>
 
           <OrderSection className="order-additional">

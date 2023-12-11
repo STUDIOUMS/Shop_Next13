@@ -7,7 +7,8 @@ interface IFormLine {
 
 // Styles
 const Line = styled.div`
-  margin: 0 0 var(--gap);
+  margin: 0 0 var(--pb);
+  &:last-child { margin: 0; }
 `
 const Label = styled.label`
   display: block;
