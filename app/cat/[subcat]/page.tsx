@@ -6,7 +6,7 @@ import GoodList from "./components/GoodList"
 import Loadmore from "@/app/components/Loadmore"
 import Sort from "@/app/components/Sort/Sort"
 import SubCats from "./components/SubCats"
-import { getCat, getPacks, getProducts, getSubcats } from "@/options/fetches"
+import { getCat, getPacks, getProducts, getSubcats } from "@/options/api"
 import Filter from "@/app/components/Filter/Filter"
 import ChosenFilter from "@/app/components/ChosenFilter/ChosenFilter"
 

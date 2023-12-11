@@ -2,7 +2,7 @@
 
 import { setLoadPager } from "@/app/store/appSlice"
 import { AppDispatch } from "@/app/store/store"
-import { url_blog } from "@/options/fetches"
+import { url_blog } from "@/options/api"
 import { blogType } from "@/options/types"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"

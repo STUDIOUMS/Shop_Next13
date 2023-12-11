@@ -5,7 +5,7 @@ import Card from "./Card/Card"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/app/store/store"
 import { setLoadSort, setLoadFilter, setLoadPager, setLoadFilterReset } from "@/app/store/appSlice"
-import { getProducts } from "@/options/fetches"
+import { getProducts } from "@/options/api"
 import { ProductType } from "@/options/types"
 
 interface IGoodList {

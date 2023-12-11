@@ -1,5 +1,5 @@
 import BreadCrumbs from "@/app/components/BreadCrumbs"
-import { getBlogPage } from "@/options/fetches"
+import { getBlogPage } from "@/options/api"
 import { createDate } from "@/options/helpers"
 import { blogType, BreadCrumbsType } from "@/options/types"
 

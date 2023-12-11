@@ -1,5 +1,5 @@
 import { serverURL } from "./settings"
-import { ResponseType } from "./types"
+import { blogType, ResponseType, ServerResponseType } from "./types"
 
 // Variables
 export const url_cats = `${serverURL}/catalog/categories/`
@@ -13,7 +13,7 @@ export const url_blog = `${serverURL}/blog/articles/`
 export async function getCats() {
   try {
     const response = await fetch(`${url_cats}`, { cache: 'no-cache' })
-    const data: ResponseType = await response.json()
+    const data = await response.json()
     return data.results
   } catch(e) {
     console.log(e)
@@ -37,7 +37,7 @@ export async function getCat(slug: string) {
 export async function getSubcats(id: number) {
   try {
     const response = await fetch(`${url_cats}/?parent=${id}`, { cache: 'no-cache' })
-    const data: ResponseType = await response.json()
+    const data = await response.json()
     return data.results
   } catch(e) {
     console.log(e)
@@ -83,7 +83,7 @@ export async function getProducts(id: number, uri: string, limit: number) {
     const response = await fetch(`${url_products}?categories=${id}${params}`, {
       cache: 'no-cache'
     })
-    const data: ResponseType = await response.json()
+    const data = await response.json()
 
     return { count: data.count, products: data.results } as any
   } catch(e) {
@@ -97,7 +97,7 @@ type productsWidjetParam = 'hit' | 'discount' | 'new'
 export async function getProductsWidget(param: productsWidjetParam, limit: number) {
   try {
     const response = await fetch(`${url_products}?ordering=-id&${param}=true&limit=${limit}`)
-    const data: ResponseType = await response.json()
+    const data = await response.json()
     return data.results
   } catch(e) {
     console.log(e)
@@ -121,7 +121,7 @@ export async function getProduct(slug: string) {
 export async function getPacks() {
   try {
     const response = await fetch(`${url_packages}`, { cache: 'no-cache' })
-    const data: ResponseType = await response.json()
+    const data = await response.json()
     return data.results
   } catch(e) {
     console.log(e)
@@ -130,17 +130,18 @@ export async function getPacks() {
 
 
 // BLOG
-export async function getBlogs(limit: number, uri: string): Promise<ResponseType> {
+export async function getBlogs(limit: number, uri: string): Promise<ResponseType<blogType>> {
   try {
     const isLimit = uri.includes('limit')
     const uri_limit = isLimit ? `&${uri}` : `&limit=${limit}`
     const response = await fetch(`${url_blog}?ordering=-id${uri_limit}`, {
       cache: 'no-cache'
     })
-    const data: ResponseType = await response.json()
+    const data: ServerResponseType<blogType> = await response.json()
     return data
   } catch(e) {
-    throw new Error('Server error')
+    //throw new Error('Server error')
+    return { results: [], detail: "Not found." }
   }
 }
 
@@ -149,10 +150,10 @@ export async function getBlogsWidjet(limit: number) {
     const response = await fetch(`${url_blog}?limit=${limit}&ordering=-id`, {
       cache: 'no-cache'
     })
-    const data: ResponseType = await response.json()
+    const data = await response.json()
     return { blogs: data.results }
   } catch(e) {
-    return { errorBlogs: true, blogs: [] }
+    return { error: true, blogs: [] }
   }
 }
 

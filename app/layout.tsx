@@ -2,7 +2,7 @@ import './globals.scss'
 import Header from './components/Header/Header'
 import Providers from './store/Providers'
 import Footer from './components/Footer/Footer'
-import { getCats } from '@/options/fetches'
+import { getCats } from '@/options/api'
 import ScrollToTop from './components/ScrollToTop'
 import Toast from './components/UI/Toast'
 import SCRegistry from '@/options/registry'
@@ -17,8 +17,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
-      <SCRegistry>
-        <body>
+      <body>
+        <SCRegistry>
           <Providers>
             <Header cats={cats} />
             <div className="container main_container">
@@ -28,8 +28,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <ScrollToTop />
             <Toast />
           </Providers>
-        </body>
-      </SCRegistry>
+        </SCRegistry>
+      </body>
     </html>
   )
 }

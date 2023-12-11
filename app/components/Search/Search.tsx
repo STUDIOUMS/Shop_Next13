@@ -1,6 +1,6 @@
 'use client'
 
-import { url_products } from "@/options/fetches"
+import { url_products } from "@/options/api"
 import { debounce } from "@/options/helpers"
 import { ProductType } from "@/options/types"
 import { useRef, useState } from "react"

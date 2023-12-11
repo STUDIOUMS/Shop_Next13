@@ -1,4 +1,5 @@
-import SCRegistry from "@/options/registry"
+'use client'
+
 import { styled } from "styled-components"
 
 type AlertColorType = "danger" | "success" | "light"
