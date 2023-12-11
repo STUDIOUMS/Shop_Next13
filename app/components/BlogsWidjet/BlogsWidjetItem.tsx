@@ -25,16 +25,14 @@ const Title = styled.div`
 
 const BlogsWidjetItem: React.FC<BlogsWidjetItem> = ({ el }) => {
   return (
-    <SCRegistry>
-      <Item>
-        <Content>
-          <Title>
-            <Link href={`/blog/${el.slug}`}>{el.title}</Link>
-          </Title>
-          <div dangerouslySetInnerHTML={{__html: el.short!}}></div>
-        </Content>
-      </Item>
-    </SCRegistry>
+    <Item>
+      <Content>
+        <Title>
+          <Link href={`/blog/${el.slug}`}>{el.title}</Link>
+        </Title>
+        <div dangerouslySetInnerHTML={{__html: el.short!}}></div>
+      </Content>
+    </Item>
   )
 }
 

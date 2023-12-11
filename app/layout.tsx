@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer'
 import { getCats } from '@/options/fetches'
 import ScrollToTop from './components/ScrollToTop'
 import Toast from './components/UI/Toast'
+import SCRegistry from '@/options/registry'
 
 export const metadata = {
   title: 'Create Next App',
@@ -16,17 +17,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
-      <body>
-        <Providers>
-          <Header cats={cats} />
-          <div className="container main_container">
-            {children}
-          </div>
-          <Footer cats={cats} />
-          <ScrollToTop />
-          <Toast />
-        </Providers>
-      </body>
+      <SCRegistry>
+        <body>
+          <Providers>
+            <Header cats={cats} />
+            <div className="container main_container">
+              {children}
+            </div>
+            <Footer cats={cats} />
+            <ScrollToTop />
+            <Toast />
+          </Providers>
+        </body>
+      </SCRegistry>
     </html>
   )
 }

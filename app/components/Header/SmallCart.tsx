@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux"
 import { RootState } from "@/app/store/store"
-import SCRegistry from "@/options/registry"
 import styled from "styled-components"
 import cart from "@/assets/cart.svg"
 import { useRouter } from "next/navigation"
@@ -53,11 +52,9 @@ const SmallCart: React.FC = () => {
   }, 0)
 
   return (
-    <SCRegistry>
-      <CartBtn disabled={!orders.length} onClick={() => push('/basket')}>
-        {count > 0 && <Badge>{count}</Badge>}
-      </CartBtn>
-    </SCRegistry>
+    <CartBtn disabled={!orders.length} onClick={() => push('/basket')}>
+      {count > 0 && <Badge>{count}</Badge>}
+    </CartBtn>
   )
 }
 

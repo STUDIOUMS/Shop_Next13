@@ -31,39 +31,37 @@ const FooterTitle = styled.div`
 
 const Footer: React.FC<IFooter> = ({ cats }) => {
   return (
-    <SCRegistry>
-      <FooterBox>
-        <div className="container">
-          <div className="grid grid-4 grid-mb-1">
-            <div>
-              <div className="header-logo">
-                <Image src={logo.src} alt="" width={50} height={50} style={{objectFit: 'contain'}} />
-              </div>
-              &copy; 2023 site.com
+    <FooterBox>
+      <div className="container">
+        <div className="grid grid-4 grid-mb-1">
+          <div>
+            <div className="header-logo">
+              <Image src={logo.src} alt="" width={50} height={50} style={{objectFit: 'contain'}} />
             </div>
-            <div>
-              <FooterTitle>Меню</FooterTitle>
-              <ul>
-                {navItems.map(el => <li key={el.id}><Link href={el.path}>{el.title}</Link></li>)}
-              </ul>
-            </div>
-            <div>
-              <FooterTitle>Категории</FooterTitle>
-              <ul>
-                {cats.filter(el => el.parent === null).map(el => (
-                  <li key={el.id}><Link href={`/cat/${el.slug}`}>{el.name}</Link></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <FooterTitle>Контакты</FooterTitle>
-              <Socials />
-              <p>+7 (999) 999-99-99</p>
-            </div>
+            &copy; 2023 site.com
+          </div>
+          <div>
+            <FooterTitle>Меню</FooterTitle>
+            <ul>
+              {navItems.map(el => <li key={el.id}><Link href={el.path}>{el.title}</Link></li>)}
+            </ul>
+          </div>
+          <div>
+            <FooterTitle>Категории</FooterTitle>
+            <ul>
+              {cats.filter(el => el.parent === null).map(el => (
+                <li key={el.id}><Link href={`/cat/${el.slug}`}>{el.name}</Link></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <FooterTitle>Контакты</FooterTitle>
+            <Socials />
+            <p>+7 (999) 999-99-99</p>
           </div>
         </div>
-      </FooterBox>
-    </SCRegistry>
+      </div>
+    </FooterBox>
   )
 }
 

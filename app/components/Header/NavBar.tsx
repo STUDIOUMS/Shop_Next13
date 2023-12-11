@@ -1,7 +1,6 @@
 'use client'
 
 import { navItems } from "@/options/helpers"
-import SCRegistry from "@/options/registry"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"

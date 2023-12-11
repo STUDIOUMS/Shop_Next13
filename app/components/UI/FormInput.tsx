@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components"
-import SCRegistry from "@/options/registry"
 
 interface IFormInput {
   placeholder?: string
@@ -42,7 +41,7 @@ const ErrorText = styled.span`
 `
 
 const FormInput: React.FC<IFormInput> = ({ defVal, expand = false, handler, type = 'text', placeholder, valid, error }) => {
-  return <SCRegistry>
+  return <>
     {(type === 'area')
       ? <Area
         placeholder={placeholder}
@@ -63,7 +62,7 @@ const FormInput: React.FC<IFormInput> = ({ defVal, expand = false, handler, type
       />
     }
     {!!error && <ErrorText>{error}</ErrorText>}
-  </SCRegistry>
+  </>
 }
 
 export default FormInput

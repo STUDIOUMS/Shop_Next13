@@ -7,7 +7,6 @@ import { usePriceImg } from "@/app/components/price.hook"
 import PriceBox from "@/app/components/PriceBox"
 import Tag from "@/app/components/Tag/Tag"
 import Btn from "@/app/components/UI/Btn"
-import SCRegistry from "@/options/registry"
 import { ProductType } from "@/options/types"
 import { useState } from "react"
 import { styled } from "styled-components"
@@ -50,7 +49,7 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
   const isSale = good.relatedPacks.some(el => el.oldPrice !== null)
 
   return (
-    <SCRegistry>
+    <>
       <div className="grid grid-2 grid-mb-1 section">
         <div>
           <Image>
@@ -83,7 +82,7 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
       </div>
 
       <QuickModal show={quickModal} handler={setQuickModal} productId={good.id} />
-    </SCRegistry>
+    </>
   )
 }
 

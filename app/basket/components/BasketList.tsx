@@ -28,7 +28,7 @@ const BasketList = () => {
         
       </> : 
       <>
-        <Alert color="danger">Ваша корзина пуста</Alert>
+        <Alert>Ваша корзина пуста</Alert>
         <Btn title="Вернуться на главную" to="/" />
       </>
       }

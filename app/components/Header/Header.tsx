@@ -12,7 +12,6 @@ import logo from "@/assets/logo.webp"
 import Image from "next/image"
 import { CatType } from "@/options/types"
 import { styled } from "styled-components"
-import SCRegistry from "@/options/registry"
 import FeedbackModal from "../Modal/FeedbackModal"
 import Btn from "../UI/Btn"
 
@@ -62,7 +61,7 @@ const Header: React.FC<IHeader> = ({ cats }) => {
   }, [dispatch])
 
   return (
-    <SCRegistry>
+    <>
       <HeaderTop>
         <HeaderContainer className="container">
           <Navbar />
@@ -84,7 +83,7 @@ const Header: React.FC<IHeader> = ({ cats }) => {
       </HeaderMiddle>
 
       <FeedbackModal show={feedBack} handler={setFeedBack} />
-    </SCRegistry>
+    </>
   )
 }
 

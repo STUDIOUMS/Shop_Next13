@@ -1,5 +1,4 @@
 import { createDate } from "@/options/helpers"
-import SCRegistry from "@/options/registry"
 import { blogType } from "@/options/types"
 import Link from "next/link"
 import { styled } from "styled-components"
@@ -30,13 +29,11 @@ const BlogItem: React.FC<IBlogItem> = ({ post }) => {
   const date = createDate(post.createdAt)
 
   return (
-    <SCRegistry>
-      <Item>
-        <h2><Link href={`/blog/${post.slug}`}>{post.title}</Link></h2>
-        <ItemDate>{date}</ItemDate>
-        <div>{post.short}</div>
-      </Item>
-    </SCRegistry>
+    <Item>
+      <h2><Link href={`/blog/${post.slug}`}>{post.title}</Link></h2>
+      <ItemDate>{date}</ItemDate>
+      <div>{post.short}</div>
+    </Item>
   )
 }
 

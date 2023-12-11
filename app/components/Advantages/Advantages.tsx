@@ -29,28 +29,26 @@ const Title = styled.div`
 
 const Advantages: React.FC<IAdvantages> = ({ title = 'Преимущества' }) => {
   return (
-    <SCRegistry>
-      <Wrap className="section">
-        <div className="pagetitle">{title}</div>
-        <div className="grid grid-3 grid-mb-1">
-          <Item>
-            <Image src={truck} alt="" height={50} />
-            <Title>Бесплатная доставка</Title>
-            до вашего склада или терминала ТК
-          </Item>
-          <Item>
-            <Image src={warehouse} alt="" height={50} />
-            <Title>В наличии на складе</Title>
-            весь ассортимент продукции серии &ldquo;Ника&rdquo;
-          </Item>
-          <Item>
-            <Image src={manager} alt="" height={50} />
-            <Title>Выделенный менеджер</Title>
-            Помощь в выборе средств для конкретного предприятия
-          </Item>
-        </div>
-      </Wrap>
-    </SCRegistry>
+    <Wrap className="section">
+      <div className="pagetitle">{title}</div>
+      <div className="grid grid-3 grid-mb-1">
+        <Item>
+          <Image src={truck} alt="" height={50} />
+          <Title>Бесплатная доставка</Title>
+          до вашего склада или терминала ТК
+        </Item>
+        <Item>
+          <Image src={warehouse} alt="" height={50} />
+          <Title>В наличии на складе</Title>
+          весь ассортимент продукции серии &ldquo;Ника&rdquo;
+        </Item>
+        <Item>
+          <Image src={manager} alt="" height={50} />
+          <Title>Выделенный менеджер</Title>
+          Помощь в выборе средств для конкретного предприятия
+        </Item>
+      </div>
+    </Wrap>
   )
 }
 

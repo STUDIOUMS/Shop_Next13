@@ -24,11 +24,9 @@ const AlertBox = styled.div<{ $color: AlertColorType }>`
 
 const Alert: React.FC<IAlert> = ({ children, color = "light" }) => {
   return (
-    <SCRegistry>
-      <AlertBox $color={color}>
-        {children}
-      </AlertBox>
-    </SCRegistry>
+    <AlertBox $color={color}>
+      {children}
+    </AlertBox>
   )
 }
 

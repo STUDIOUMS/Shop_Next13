@@ -4,7 +4,6 @@ import { useState } from "react"
 import { RelatedAttrsType } from "@/options/types"
 import ProductTab from "./ProductTab"
 import { styled } from "styled-components"
-import SCRegistry from "@/options/registry"
 
 type tabsType = 'desc' | 'features' | 'reviews'
 
@@ -45,34 +44,32 @@ const ProductTabs: React.FC<IProductTabs> = ({ description, features }) => {
   const [key, setKey] = useState<tabsType>('desc')
 
   return (
-    <SCRegistry>
-      <div className="section">
-        <Tabs>
-          {tabs.map(tab => (
-            <ProductTab key={tab.id} active={key} name={tab.name} val={tab.val} setKey={setKey} />
+    <div className="section">
+      <Tabs>
+        {tabs.map(tab => (
+          <ProductTab key={tab.id} active={key} name={tab.name} val={tab.val} setKey={setKey} />
+        ))}
+      </Tabs>
+
+      <TabsPane $active={key === 'desc'}>
+        <div dangerouslySetInnerHTML={{__html: description}}></div>
+      </TabsPane>
+
+      <TabsPane $active={key === 'features'}>
+        <Features>
+          {features.map(el => (
+            <li key={el.id}>
+              <FeaturesKey>{el.attribute.name}</FeaturesKey>
+              <FeaturesVal>{el.value}</FeaturesVal>
+            </li>
           ))}
-        </Tabs>
+        </Features>
+      </TabsPane>
 
-        <TabsPane $active={key === 'desc'}>
-          <div dangerouslySetInnerHTML={{__html: description}}></div>
-        </TabsPane>
-
-        <TabsPane $active={key === 'features'}>
-          <Features>
-            {features.map(el => (
-              <li key={el.id}>
-                <FeaturesKey>{el.attribute.name}</FeaturesKey>
-                <FeaturesVal>{el.value}</FeaturesVal>
-              </li>
-            ))}
-          </Features>
-        </TabsPane>
-
-        <TabsPane $active={key === 'reviews'}>
-          <h3>Отзывы</h3>
-        </TabsPane>
-      </div>
-    </SCRegistry>
+      <TabsPane $active={key === 'reviews'}>
+        <h3>Отзывы</h3>
+      </TabsPane>
+    </div>
   )
 }
 

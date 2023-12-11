@@ -1,6 +1,5 @@
 'use client'
 
-import SCRegistry from "@/options/registry"
 import Link from "next/link"
 import styled, { css } from "styled-components"
 
@@ -49,7 +48,7 @@ const LinkButton = styled(Link)<{ $size: BtnSizeType, $color: BtnColorType, $exp
 `
 
 const Btn: React.FC<IBtn> = ({ expand = false, handler, title, to, size = 'medium', color = 'white', load = false, type = "button" }) => {
-  return <SCRegistry>
+  return <>
     {
       (!!to) ? <LinkButton href={to!} $size={size} $color={color} $expand={expand}>{title}</LinkButton> :
         
@@ -64,7 +63,7 @@ const Btn: React.FC<IBtn> = ({ expand = false, handler, title, to, size = 'mediu
           {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
         </Button>
     }
-  </SCRegistry>
+  </>
 }
 
 export default Btn

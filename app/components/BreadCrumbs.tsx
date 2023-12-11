@@ -1,6 +1,5 @@
 'use client'
 
-import SCRegistry from "@/options/registry"
 import { BreadCrumbsType } from "@/options/types"
 import Link from "next/link"
 import styled from "styled-components"
@@ -27,24 +26,22 @@ const Item = styled.li`
 
 const BreadCrumbs: React.FC<IBreadCrumbs> = ({ list }) => {
   return (
-    <SCRegistry>
-      <List>
-        <Item>
-          <Link href="/">Главная</Link>
-        </Item>
-        {list.map((el, index, array) => {
-          if (index !== (array.length - 1)) {
-            return <Item key={el.slug}>
-              <Link href={el.slug}>{el.name}</Link>
-            </Item>
-          } else {
-            return <Item key={el.slug}>
-              <span>{el.name}</span>
-            </Item>
-          }
-        })}
-      </List>
-    </SCRegistry>
+    <List>
+      <Item>
+        <Link href="/">Главная</Link>
+      </Item>
+      {list.map((el, index, array) => {
+        if (index !== (array.length - 1)) {
+          return <Item key={el.slug}>
+            <Link href={el.slug}>{el.name}</Link>
+          </Item>
+        } else {
+          return <Item key={el.slug}>
+            <span>{el.name}</span>
+          </Item>
+        }
+      })}
+    </List>
   )
 }
 

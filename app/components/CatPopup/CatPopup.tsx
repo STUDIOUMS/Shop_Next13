@@ -13,21 +13,19 @@ interface ICatPopup {
 const CatPopup: React.FC<ICatPopup> = ({ cats }) => {
   const [show, setShow] = useState<boolean>(false)
   return (
-    <SCRegistry>
-      <Wrap $show={show}>
-        <Btn title="Каталог" handler={() => setShow(!show)} />
-        <Popup>
-          <PopupHeader>Каталог</PopupHeader>
-          <div className="grid grid-3 grid-mb-1">
-            {cats.filter(el => el.parent === null).map(el => {
-              const subcats = cats.filter(cat => cat.parent?.pk === el.id)
-              return <CatPopupItem key={el.id} el={el} setShow={setShow} subcats={subcats} />
-            })}
-          </div>
-        </Popup>
-        <Overlay onClick={() => setShow(false)} />
-      </Wrap>
-    </SCRegistry>
+    <Wrap $show={show}>
+      <Btn title="Каталог" handler={() => setShow(!show)} />
+      <Popup>
+        <PopupHeader>Каталог</PopupHeader>
+        <div className="grid grid-3 grid-mb-1">
+          {cats.filter(el => el.parent === null).map(el => {
+            const subcats = cats.filter(cat => cat.parent?.pk === el.id)
+            return <CatPopupItem key={el.id} el={el} setShow={setShow} subcats={subcats} />
+          })}
+        </div>
+      </Popup>
+      <Overlay onClick={() => setShow(false)} />
+    </Wrap>
   )
 }
 
