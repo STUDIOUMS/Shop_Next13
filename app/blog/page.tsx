@@ -27,7 +27,7 @@ export default async function Blog({ searchParams }: { searchParams: any }) {
     <div className="section">
       <BreadCrumbs list={crumbs} />
       <h1>Блог</h1>
-      {isSuccess && <BlogList limit={limitPosts} list={data.results} all={data.count} />}
+      {isSuccess && <BlogList limit={limitPosts} list={data.results!} all={data.count!} />}
       {isError && <Alert color="danger">Server error</Alert>}
     </div>
   )

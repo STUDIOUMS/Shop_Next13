@@ -129,7 +129,7 @@ export async function getPacks() {
 
 
 // BLOG
-export async function getBlogs(limit: number, uri: string): Promise<ResponseType<blogType> | ResponseErrorType> {
+export async function getBlogs(limit: number, uri: string): Promise<ResponseType<blogType>> {
   try {
     const isLimit = uri.includes('limit')
     const uri_limit = isLimit ? `&${uri}` : `&limit=${limit}`

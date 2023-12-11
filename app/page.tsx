@@ -16,7 +16,7 @@ export default async function Home() {
   const novelties = await getProductsWidget('new', 10)
   const sales = await getProductsWidget('discount', 10)
   const hits = await getProductsWidget('hit', 10)
-  const { blogs, errorBlogs } = await getBlogsWidjet(3)
+  //const { blogs, errorBlogs } = await getBlogsWidjet(3)
 
   return (
     <div>
@@ -43,7 +43,7 @@ export default async function Home() {
 
       <Brands />
 
-      <BlogsWidjet list={blogs} error={errorBlogs} />
+      {/* <BlogsWidjet list={blogs} error={errorBlogs} /> */}
 
     </div>
   )
