@@ -4,81 +4,7 @@ import { navItems } from "@/options/helpers"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
-import styled from "styled-components"
-
-// Styles
-const NavList = styled.ul<{ $show: boolean }>`
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  @media screen and (max-width: 992px) {
-    background: var(--color-white);
-    border-radius: var(--radius);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.55);
-    display: block;
-    left: 10px;
-    position: absolute;
-    margin-top: 10px;
-    padding: var(--pb);
-    z-index: 1100;
-    opacity: ${({ $show }) => $show ? '1' : '0'};
-    visibility: ${({ $show }) => $show ? 'visisble' : 'hidden'};
-    transition: all 200ms ease-in-out;
-  }
-`
-const Children = styled.ul`
-  background: var(--color-white);
-  border-radius: var(--radius);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-  margin: 0;
-  padding: var(--gap);
-  min-width: 200px;
-  position: absolute;
-  transition: all 200ms ease-in-out;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 1100;
-  li {
-    list-style: none;
-    margin: 0 0 8px;
-    &:last-child { margin: 0; }
-  }
-  @media screen and (max-width: 992px) {
-    background: 0;
-    border-radius: 0;
-    box-shadow: none;
-    min-width: none;
-    padding: 8px 0 8px var(--gap);
-    position: relative;
-    transition: none;
-    opacity: 1;
-    visibility: visible;
-  }
-`
-const NavItem = styled.li`
-  list-style: none;
-  margin: 0;
-  font-family: var(--font2);
-  font-size: 16px;
-  position: relative;
-  &:hover ${Children} {
-    opacity: 1;
-    visibility: visible;
-  }
-`
-const NavA = styled(Link)<{ $active: boolean }>`
-  background: var(--color-${(props) => props.$active ? 'light' : 'white'});
-  border-radius: var(--radius);
-  color: var(--color-text);
-  display: block;
-  text-decoration: none;
-  padding: 6px 12px;
-  &:hover {
-    color: var(--color-text);
-    text-decoration: none;
-  }
-`
+import { BtnNav, ChildrenUl, NavA, NavItem, NavList } from "./HeaderStyles"
 
 
 const Navbar: React.FC = () => {
@@ -87,9 +13,9 @@ const Navbar: React.FC = () => {
   
   return (
     <nav>
-      <button className={`btn-nav ${opened ? "active": ""}`} onClick={() => setOpened(!opened)}>
+      <BtnNav $active={opened} onClick={() => setOpened(!opened)}>
         <span></span>
-      </button>
+      </BtnNav>
       <NavList $show={opened}>
         {navItems.map(item => {
           const activeItem = pathname === item.path
@@ -97,9 +23,9 @@ const Navbar: React.FC = () => {
           return <NavItem key={item.id}>
             <NavA href={item.path} $active={activeItem} onClick={() => setOpened(false)}>{item.title}</NavA>
             {isChild &&
-              <Children>
+              <ChildrenUl>
                 {item.children!.map(child => <li key={child.id}><Link href={child.path}>{child.title}</Link></li>)}
-              </Children>
+              </ChildrenUl>
             }
         </NavItem>
         })}

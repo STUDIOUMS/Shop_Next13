@@ -6,7 +6,29 @@ import { useAppDispatch, useAppSelector } from "@/app/store/hooks"
 import { SortItemType } from "@/options/types"
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import { useCallback, useEffect, useRef } from "react"
-import styles from "./Sort.module.scss"
+import { styled } from "styled-components"
+import { InputStyles } from "../UI/FormInput"
+import select from "@/assets/select.svg"
+
+// Styles
+const SortBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 var(--gap);
+`
+const SortBoxLeft = styled.div`
+  display: flex;
+  align-items: center;
+`
+export const SelectBox = styled.select<{ $error?: boolean, $expand?: boolean }>`
+  ${InputStyles}
+  background: url(${select.src}) calc(100% - 10px) center / 18px no-repeat;
+  cursor: pointer;
+  margin-right: var(--pb);
+  padding-right: 32px;
+  -webkit-appearance: none;
+`
 
 interface ISort {
   list: SortItemType[]
@@ -56,16 +78,16 @@ const Sort: React.FC<ISort> = ({ list }) => {
   }
 
   return (
-    <div className={styles.sortbox}>
-      <div className={styles.sortboxLeft}>
-        <select className="form-select" onChange={sortHandler} defaultValue={valueQuery} ref={ref}>
+    <SortBox>
+      <SortBoxLeft>
+        <SelectBox onChange={sortHandler} defaultValue={valueQuery} ref={ref}>
           <option value="default-value">Сортировать</option>
           {list.map(el => <option key={el.value} value={el.value}>{el.name}</option>)}
-        </select>
-        {load && <div><span className={`spinner-border spinner-border-sm ${styles.sortboxSpinner}`}></span></div>}
-      </div>
+        </SelectBox>
+        {load && <div>Loading...</div>}
+      </SortBoxLeft>
       <View />
-    </div>
+    </SortBox>
   )
 }
 

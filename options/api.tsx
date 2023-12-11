@@ -1,5 +1,5 @@
 import { serverURL } from "./settings"
-import { blogType, CatType, ResponseErrorType, ResponseType } from "./types"
+import { blogType, CatType, ProductType, ResponseType } from "./types"
 
 // Variables
 export const url_cats = `${serverURL}/catalog/categories/`
@@ -93,14 +93,14 @@ export async function getProducts(id: number, uri: string, limit: number) {
 
 // GET PRODUCTS FOR WIDJETS
 type productsWidjetParam = 'hit' | 'discount' | 'new'
-export async function getProductsWidget(param: productsWidjetParam, limit: number) {
+export async function getProductsWidget(param: productsWidjetParam, limit: number): Promise<ResponseType<ProductType>> {
   try {
     const response = await fetch(`${url_products}?ordering=-id&${param}=true&limit=${limit}`)
-    const data = await response.json()
-    return data.results
+    const data: ResponseType<ProductType> = await response.json()
+    return data
   } catch(e) {
     console.log(e)
-    return []
+    return { error: true }
   }
 }
 

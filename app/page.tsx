@@ -16,7 +16,7 @@ export default async function Home() {
   const novelties = await getProductsWidget('new', 10)
   const sales = await getProductsWidget('discount', 10)
   const hits = await getProductsWidget('hit', 10)
-  //const { blogs, errorBlogs } = await getBlogsWidjet(3)
+  const { blogs, error } = await getBlogsWidjet(3)
 
   return (
     <div>
@@ -29,21 +29,21 @@ export default async function Home() {
 
       <BigBanner />
 
-      <Carousel title="Новинки" list={novelties} />
+      <Carousel title="Новинки" list={novelties.results!} error={!novelties.results} />
 
       <Banners count={1} />
 
-      <Carousel title="Скидки" list={sales} />
+      <Carousel title="Скидки" list={sales.results!} error={!sales.results} />
 
       <Banners count={2} />
 
-      <Carousel title="Хиты" list={hits} />
+      <Carousel title="Хиты" list={hits.results!} error={!hits.results} />
 
       <Advantages />
 
       <Brands />
 
-      {/* <BlogsWidjet list={blogs} error={errorBlogs} /> */}
+      <BlogsWidjet list={blogs} error={error} />
 
     </div>
   )

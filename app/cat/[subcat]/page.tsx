@@ -56,7 +56,7 @@ async function SubCat({ params, searchParams }: { params: { subcat: string }, se
 
       <h1>{cat.name}</h1>
       
-      <div className="grid grid-4 catpage">
+      <div className="grid grid-4 grid-tb-1 catpage">
         <div className="catpage-left">
           <Filter packs={packs!} />
         </div>

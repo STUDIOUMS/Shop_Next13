@@ -7,17 +7,20 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { ProductType } from '@/options/types'
 import Card from '@/app/cat/[subcat]/components/Card/Card'
+import Alert from '../UI/Alert'
 
 interface ICarousel {
+  error: boolean
   list: ProductType[]
   title: string
 }
 
-const Carousel: React.FC<ICarousel> = ({ list, title }) => {
+const Carousel: React.FC<ICarousel> = ({ error, list, title }) => {
   
-  if (!list.length) {
-    return null
+  if (error) {
+    return <Alert color="danger">Server error</Alert>
   }
+
 
   return (
     <div className="carousel_body">

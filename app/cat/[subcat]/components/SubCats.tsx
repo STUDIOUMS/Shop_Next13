@@ -40,7 +40,7 @@ const Item = styled(Link)`
 const SubCats: React.FC<ISubCats> = ({ list }) => {
   return (
     <SCRegistry>
-      <List className="grid grid-3">
+      <List className="grid grid-4 grid-tb-3">
         {list.map(el => (
           <div key={el.id}>
             <Item href={`/cat/${el.slug}`}>

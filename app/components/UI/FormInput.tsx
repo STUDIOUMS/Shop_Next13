@@ -10,7 +10,7 @@ interface IFormInput {
   error?: string
 }
 
-const InputStyles = css<{ $error?: boolean, $expand?: boolean }>`
+export const InputStyles = css<{ $error?: boolean, $expand?: boolean }>`
   background: var(--color-white);
   border: 1px solid var(--color-${({ $error }) => $error ? 'danger' : 'light'});
   border-radius: var(--radius);

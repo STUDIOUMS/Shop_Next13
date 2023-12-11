@@ -17,9 +17,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const isError = !cats.results
 
   return (
-    <html lang="en">
-      <body>
-        <SCRegistry>
+    <SCRegistry>
+      <html lang="en">
+        <body>
           <Providers>
             <Header cats={cats.results!} isError={isError} />
             <div className="container main_container">
@@ -29,8 +29,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <ScrollToTop />
             <Toast />
           </Providers>
-        </SCRegistry>
-      </body>
-    </html>
+        </body>
+      </html>
+    </SCRegistry>
   )
 }

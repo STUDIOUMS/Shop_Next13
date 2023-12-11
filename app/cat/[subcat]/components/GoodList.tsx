@@ -34,7 +34,7 @@ const GoodList: React.FC<IGoodList> = ({ catID, limit, list, uri }) => {
   
   return (
     <div>
-      <div className={`grid grid-${view === 'list' ? '1' : '4'} goodlist`}>
+      <div className={`grid grid-${view === 'list' ? '1' : '4'} grid-tb-${view === 'list' ? '1' : '3'} grid-mb-1 goodlist`}>
         {listProducts.map(el => <Card key={el.id} el={el} />)}
       </div>
       {listProducts.length === 0 && <p>В данной категории нет товаров</p>}
