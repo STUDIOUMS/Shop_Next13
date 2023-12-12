@@ -167,3 +167,15 @@ export async function getBlogPage(slug: number) {
     console.log(e)
   }
 }
+
+// Product
+export async function getSearch(search: string): Promise<ResponseType<ProductType>> {
+  try {
+    const response = await fetch(`${url_products}?search=${search}`)
+    const data = await response.json()
+    return data
+  } catch(e) {
+    console.log(e)
+    return { error: true }
+  }
+}

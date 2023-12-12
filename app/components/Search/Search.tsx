@@ -1,49 +1,39 @@
 'use client'
 
-import { url_products } from "@/options/api"
-import { debounce } from "@/options/helpers"
-import { ProductType } from "@/options/types"
-import { useRef, useState } from "react"
-import styles from "./Search.module.scss"
-import SearchItem from "./SearchItem"
+import { useState } from "react"
 import FormInput from "../UI/FormInput"
+import { styled } from "styled-components"
+import { useRouter, useSearchParams, redirect } from "next/navigation"
+
+// Styles
+const SearchBox = styled.div`
+  flex: 1;
+  margin: 0 var(--gap);
+  position: relative;
+`
 
 const Search: React.FC = () => {
-  const [results, setResults] = useState<ProductType[]>([])
-  const inputRef = useRef<HTMLInputElement>(null)
-
-  // debounceVal
-  const debounceVal = debounce((text: string) => {
-    fetch(`${url_products}?search=${text}`)
-      .then(response => response.json())
-      .then(data => setResults(data.results))
-  }, 500)
+  const [val, setVal] = useState<string>('')
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const params = new URLSearchParams(searchParams)
 
   // searchHandler
-  const searchHandler = (val: string) => {
-    if (val.length) {
-      debounceVal(val)
-    } else {
-      closeDropdown()
+  const searchHandler = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (val.length > 0) {
+      params.set('s', val)
+      router.push('/search?' + params.toString())
     }
   }
 
-  // closeDropdown
-  const closeDropdown = () => {
-    setResults([])
-    inputRef.current!.value = ''
-  }
-  
   
   return (
-    <div className={styles.searchbox}>
-      <FormInput type="search" placeholder="Поиск по сайту..." expand handler={() => {}} />
-      
-      {results.length > 0 &&
-      <ul className={styles.searchboxDropdown}>
-        {results.map(el => <SearchItem key={el.id} el={el} close={closeDropdown} />)}
-      </ul>}
-    </div>
+    <SearchBox>
+      <form onSubmit={searchHandler}>
+        <FormInput type="search" placeholder="Поиск по сайту..." expand handler={setVal} val={val} />
+      </form>
+    </SearchBox>
   )
 }
 
