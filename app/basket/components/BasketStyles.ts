@@ -40,14 +40,15 @@ export const BasketItem = styled.div`
     &.top { display: none; }
   }
   @media screen and (max-width: 540px) {
-    grid-template-columns: 60px 1fr;
+    align-items: normal;
+    grid-template-columns: 80px 1fr 1fr;
+    grid-row-gap: 24px;
     grid-template-areas:
-      "b1 b2"
-      ". b3"
-      ". b4"
-      ". b5"
+      "b1 b2 b2"
+      "b3 b4 b5"
     ;
-    h3 { font-size: 18px; }
+    h3 { font-size: 16px; line-height: 20px; }
+    small { display: block; }
   }
 `
 export const BasketItemText = styled.div`
