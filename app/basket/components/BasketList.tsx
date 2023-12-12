@@ -23,13 +23,13 @@ const BasketList = () => {
         <BasketTotal orders={orders} />
 
         <div className="text-right">
-          <Btn title="Оформить заказ" color="success" to="/order" />
+          <Btn title="Оформить заказ" color="success" to="/order" className="mb-expand" />
         </div>
         
       </> : 
       <>
         <Alert>Ваша корзина пуста</Alert>
-        <Btn title="Вернуться на главную" to="/" />
+        <Btn title="Вернуться на главную" to="/" className="mb-expand" />
       </>
       }
     </div>

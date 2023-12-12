@@ -19,6 +19,7 @@ interface IBtn {
   type?: "button" | "reset" | "submit"
   disabled?: boolean
   icon?: BtnIconType
+  className?: string
 }
 
 // Styles
@@ -67,10 +68,10 @@ const LinkButton = styled(Link)<{ $size: BtnSizeType, $color: BtnColorType, $exp
   ${btnStyles}
 `
 
-const Btn: React.FC<IBtn> = ({ expand = false, disabled, handler, title, to, size = 'medium', color = 'white', load = false, type = "button", icon = false }) => {
+const Btn: React.FC<IBtn> = ({ expand = false, disabled, handler, title, to, size = 'medium', color = 'white', load = false, type = "button", icon = false, className }) => {
   return <>
     {
-      (!!to) ? <LinkButton href={to!} $size={size} $color={color} $expand={expand}>{title}</LinkButton> :
+      (!!to) ? <LinkButton className={className} href={to!} $size={size} $color={color} $expand={expand}>{title}</LinkButton> :
         
         <Button
           $size={size}
@@ -80,6 +81,7 @@ const Btn: React.FC<IBtn> = ({ expand = false, disabled, handler, title, to, siz
           type={type}
           disabled={disabled}
           $icon={icon}
+          className={className}
         >
           {title}
           {load && <span className="spinner-border spinner-border-sm ms-2"></span>}

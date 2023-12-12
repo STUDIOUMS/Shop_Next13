@@ -8,11 +8,8 @@ export const OrderWrap = styled.div`
     &:nth-child(2) { grid-area: o2; }
   }
   @media screen and (max-width: 1000px) {
-    grid-template-areas: none;
-    &>div {
-      &:nth-child(1) { grid-area: auto; }
-      &:nth-child(2) { grid-area: auto; }
-    }
+    grid-template-column: "1fr";
+    grid-template-areas: "o2" "o1";
   }
 `
 export const OrderFormWrap = styled.div`
@@ -43,4 +40,10 @@ export const OrderSection = styled.div`
 export const OrderFooter = styled.div`
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+    * { width: 100%; }
+    *:nth-child(1) { order: 2; }
+    *:nth-child(2) { order: 1; margin: 0 0 var(--pb); }
+  }
 `
