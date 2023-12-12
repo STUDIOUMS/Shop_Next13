@@ -4,7 +4,7 @@ import { createArray } from "@/options/helpers"
 export default function Loading() {
   const list = createArray(8)
 
-  return <div className="placeholder-glow">
+  return <div>
     <Skelet />
     <Skelet $size="h1" />
     <div className="grid grid-4 grid-tb-1 catpage">
@@ -25,7 +25,7 @@ export default function Loading() {
           </div>
         </div>
 
-        <div className="grid grid-4 goodlist">
+        <div className="grid grid-4 grid-mb-1 goodlist">
           {list.map(el => (
             <div key={el}>
               <Skelet style={{height: '260px'}} />

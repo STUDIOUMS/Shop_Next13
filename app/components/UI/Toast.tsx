@@ -29,6 +29,10 @@ const ToastPopup = styled.div<{ $show: boolean }>`
   ${props => props.$show && `
     animation: showToast 300ms 1 forwards;
   `}
+
+  @media screen and (max-width: 720px) {
+    bottom: 30px;
+  }
 `
 
 const Toast: React.FC = () => {

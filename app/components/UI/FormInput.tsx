@@ -6,6 +6,7 @@ interface IFormInput {
   expand?: boolean
   handler?: (val: string) => void
   defVal?: string
+  val?: string
   valid?: any
   error?: string
 }
@@ -40,7 +41,7 @@ const ErrorText = styled.span`
   margin: 4px 0 0;
 `
 
-const FormInput: React.FC<IFormInput> = ({ defVal, expand = false, handler, type = 'text', placeholder, valid, error }) => {
+const FormInput: React.FC<IFormInput> = ({ defVal, expand = false, handler, type = 'text', placeholder, valid, error, val }) => {
   return <>
     {(type === 'area')
       ? <Area
@@ -49,6 +50,7 @@ const FormInput: React.FC<IFormInput> = ({ defVal, expand = false, handler, type
         $error={!!error}
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handler!(e.target.value)}
         defaultValue={defVal}
+        value={val}
         {...valid}
       />
       : <Input
@@ -58,6 +60,7 @@ const FormInput: React.FC<IFormInput> = ({ defVal, expand = false, handler, type
         $error={!!error}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => handler!(e.target.value)}
         defaultValue={defVal}
+        value={val}
         {...valid}
       />
     }

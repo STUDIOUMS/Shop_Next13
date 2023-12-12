@@ -15,6 +15,7 @@ interface IBtn {
   title: string
   to?: string
   type?: "button" | "reset" | "submit"
+  disabled?: boolean
 }
 
 // Styles
@@ -39,6 +40,10 @@ const btnStyles = css<{ $size: BtnSizeType, $color: BtnColorType, $expand: boole
     background: var(--color-${({ $color }) => $color}-hover);
     text-decoration: none;
   }
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
 `
 const Button = styled.button<{ $size: BtnSizeType, $color: BtnColorType, $expand: boolean }>`
   ${btnStyles}
@@ -47,7 +52,7 @@ const LinkButton = styled(Link)<{ $size: BtnSizeType, $color: BtnColorType, $exp
   ${btnStyles}
 `
 
-const Btn: React.FC<IBtn> = ({ expand = false, handler, title, to, size = 'medium', color = 'white', load = false, type = "button" }) => {
+const Btn: React.FC<IBtn> = ({ expand = false, disabled, handler, title, to, size = 'medium', color = 'white', load = false, type = "button" }) => {
   return <>
     {
       (!!to) ? <LinkButton href={to!} $size={size} $color={color} $expand={expand}>{title}</LinkButton> :
@@ -58,6 +63,7 @@ const Btn: React.FC<IBtn> = ({ expand = false, handler, title, to, size = 'mediu
           $expand={expand}
           onClick={handler}
           type={type}
+          disabled={disabled}
         >
           {title}
           {load && <span className="spinner-border spinner-border-sm ms-2"></span>}

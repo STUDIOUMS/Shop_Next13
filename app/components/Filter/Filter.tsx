@@ -8,9 +8,10 @@ import { useCallback, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CheckField from '../CheckField/CheckField'
 import Range from '../Range/Range'
-import styles from './Filter.module.scss'
 import { set_currency } from '@/options/settings'
 import Btn from '../UI/Btn'
+import { FilterBody, FilterBox, FilterClose, FilterFooter, FilterShow, FilterTitle } from './FilterStyles'
+import FilterItem from './FilterItem'
 
 interface IFilter {
   packs: PackType[]
@@ -118,16 +119,6 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
     }
   }
 
-  // chooseRange
-  const chooseFrom = (val: string) => {
-    setReset(false)
-    setPriceFrom(val)
-  }
-  const chooseTo = (val: string) => {
-    setReset(false)
-    setPriceTo(val)
-  }
-
 
   // Mobile show filter
   const mbShowFilter = () => {
@@ -143,56 +134,43 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
 
   return (
     <>
-      <button className={styles.filterBtn} onClick={mbShowFilter}>
-        {!isReset && <span className={styles.filterBtnActive}></span>}
-      </button>
+      <FilterShow onClick={mbShowFilter}>
+        {!isReset && <span></span>}
+      </FilterShow>
       
-      <div className={`${styles.filter} ${mobileShow ? styles.opened : ''}`}>
+      <FilterBox $show={mobileShow}>
 
-        <div className={styles.filterTitle}>
+        <FilterTitle>
           Фильтр
-          <button className={styles.filterClose} onClick={mbCloseFilter}></button>
-        </div>
+          <FilterClose onClick={mbCloseFilter} />
+        </FilterTitle>
 
-        <div className={styles.filterBody}>
+        <FilterBody>
 
-          <div className={styles.filterSection}>
+          <FilterItem>
             <CheckField handler={chooseFilterParam} title="Хит" type="checkbox" value="hit" name="hit" checked={hit} reset={reset} />
-
             <CheckField handler={chooseFilterParam} title="Скидка" type="checkbox" value="discount" name="discount" checked={discount} reset={reset} />
-            
             <CheckField handler={chooseFilterParam} title="Новинки" type="checkbox" value="new" name="new" checked={newf} reset={reset} />
-          </div>
+          </FilterItem>
 
-          <div className={styles.filterSection}>
-            <div className={styles.filterName}>Цена ({set_currency})</div>
-            <Range handlerFrom={chooseFrom} handlerTo={chooseTo} from={priceFrom} to={priceTo} reset={reset} />
-          </div>
+          <FilterItem title={`Цена (${set_currency})`}>
+            <Range handlerFrom={setPriceFrom} handlerTo={setPriceTo} from={priceFrom} to={priceTo} />
+          </FilterItem>
 
-          <div className={styles.filterSection}>
-            <div className={styles.filterName}>Упаковка</div>
+          <FilterItem title="Упаковка">
             {packs.map(el => {
               const checkedPack = searchParams.get('pack')?.split(',').some(i => Number(i) === el.id)
               return <CheckField key={el.id} handler={choosePackFunc} title={el.name} type="checkbox" value={String(el.id)} name="pack" checked={checkedPack} reset={reset} />
             })}
-          </div>
+          </FilterItem>
 
-        </div>
+        </FilterBody>
 
-        <div className={styles.filterFooter}>
-          <button className="btn btn-block btn-success mb-0 mb-lg-2 me-2 me-lg-0" onClick={applyFilter}>
-            Применить
-            {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
-          </button>
-
-          <button className="btn btn-block btn-outline-secondary" onClick={resetFilter} disabled={isReset}>
-            Сбросить
-            {loadReset && <span className="spinner-border spinner-border-sm ms-2"></span>}
-          </button>
-          {/* <Btn title='Применить' handler={applyFilter} color='success' expand load={load} />
-          <Btn title='Сбросить' handler={resetFilter} expand load={loadReset} /> */}
-        </div>
-      </div>
+        <FilterFooter className="grid grid-2">
+          <Btn title="Применить" handler={applyFilter} color='success' expand load={load} />
+          <Btn title='Сбросить' handler={resetFilter} expand load={loadReset} disabled={isReset} />
+        </FilterFooter>
+      </FilterBox>
     </>
   )
 }
