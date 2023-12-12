@@ -15,7 +15,7 @@ const CatPopup: React.FC<ICatPopup> = ({ cats, isError }) => {
 
   return (
     <Wrap $show={show}>
-      <Btn title="Каталог" handler={() => setShow(!show)} />
+      <Btn title="Каталог" handler={() => setShow(!show)} icon="cat" />
       <Popup>
         <PopupHeader>Каталог</PopupHeader>
         <div className="grid grid-3 grid-mb-1">

@@ -37,7 +37,7 @@ const Search: React.FC = () => {
   
   return (
     <div className={styles.searchbox}>
-      <FormInput type="search" expand handler={() => {}} />
+      <FormInput type="search" placeholder="Поиск по сайту..." expand handler={() => {}} />
       
       {results.length > 0 &&
       <ul className={styles.searchboxDropdown}>

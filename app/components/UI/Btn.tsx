@@ -2,9 +2,11 @@
 
 import Link from "next/link"
 import styled, { css } from "styled-components"
+import cat from "@/assets/list.svg"
 
 export type BtnSizeType = 'small' | 'medium' | 'large'
 export type BtnColorType = 'success' | 'danger' | 'white'
+export type BtnIconType = "cat" | boolean
 
 interface IBtn {
   color?: BtnColorType
@@ -16,10 +18,11 @@ interface IBtn {
   to?: string
   type?: "button" | "reset" | "submit"
   disabled?: boolean
+  icon?: BtnIconType
 }
 
 // Styles
-const btnStyles = css<{ $size: BtnSizeType, $color: BtnColorType, $expand: boolean }>`
+const btnStyles = css<{ $size: BtnSizeType, $color: BtnColorType, $expand: boolean, $icon?: BtnIconType }>`
   background: var(--color-${({ $color }) => $color});
   border: 1px solid ${({ $color }) => $color === 'white' ? 'var(--color-light)' : 'transparent'};
   border-radius: var(--radius);
@@ -37,22 +40,34 @@ const btnStyles = css<{ $size: BtnSizeType, $color: BtnColorType, $expand: boole
   width: ${({ $expand }) => $expand ? '100%;' : 'auto'};
   &:hover {
     color: ${({ $color }) => $color === 'white' ? 'var(--color-text)' : 'var(--color-white)'};
-    background: var(--color-${({ $color }) => $color}-hover);
+    background-color: var(--color-${({ $color }) => $color}-hover);
     text-decoration: none;
   }
   &:disabled {
     cursor: default;
     opacity: 0.5;
   }
+  @media screen and (max-width: 720px) {
+    ${({ $icon }) => $icon === 'cat' && `
+      background-image: url(${cat.src});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 24px;
+      text-indent: -9999px;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+    `}
+  }
 `
-const Button = styled.button<{ $size: BtnSizeType, $color: BtnColorType, $expand: boolean }>`
+const Button = styled.button<{ $size: BtnSizeType, $color: BtnColorType, $expand: boolean, $icon?: BtnIconType }>`
   ${btnStyles}
 `
-const LinkButton = styled(Link)<{ $size: BtnSizeType, $color: BtnColorType, $expand: boolean }>`
+const LinkButton = styled(Link)<{ $size: BtnSizeType, $color: BtnColorType, $expand: boolean, $icon?: BtnIconType }>`
   ${btnStyles}
 `
 
-const Btn: React.FC<IBtn> = ({ expand = false, disabled, handler, title, to, size = 'medium', color = 'white', load = false, type = "button" }) => {
+const Btn: React.FC<IBtn> = ({ expand = false, disabled, handler, title, to, size = 'medium', color = 'white', load = false, type = "button", icon = false }) => {
   return <>
     {
       (!!to) ? <LinkButton href={to!} $size={size} $color={color} $expand={expand}>{title}</LinkButton> :
@@ -64,6 +79,7 @@ const Btn: React.FC<IBtn> = ({ expand = false, disabled, handler, title, to, siz
           onClick={handler}
           type={type}
           disabled={disabled}
+          $icon={icon}
         >
           {title}
           {load && <span className="spinner-border spinner-border-sm ms-2"></span>}
