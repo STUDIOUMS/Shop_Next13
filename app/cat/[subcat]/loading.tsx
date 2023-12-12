@@ -1,4 +1,4 @@
-import { Skelet } from "@/app/components/Skelet"
+import { Skelet } from "@/app/components/UI/Skelet"
 import { createArray } from "@/options/helpers"
 
 export default function Loading() {
@@ -28,7 +28,7 @@ export default function Loading() {
         <div className="grid grid-4 grid-mb-1 goodlist">
           {list.map(el => (
             <div key={el}>
-              <Skelet style={{height: '260px'}} />
+              <Skelet style={{height: '260px'}} $margin="none" />
             </div>
           ))}
         </div>

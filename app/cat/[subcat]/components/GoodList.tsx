@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Card from "./Card/Card"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/app/store/store"
-import { setLoadSort, setLoadFilter, setLoadPager, setLoadFilterReset } from "@/app/store/appSlice"
+import { setLoadSort, setLoadFilter, setLoadPager } from "@/app/store/appSlice"
 import { getProducts } from "@/options/api"
 import { ProductType } from "@/options/types"
 
@@ -25,7 +25,6 @@ const GoodList: React.FC<IGoodList> = ({ catID, limit, list, uri }) => {
       const { products } = await getProducts(catID, uri, limit)
       setListProducts(products)
       dispatch(setLoadFilter(false))
-      dispatch(setLoadFilterReset(false))
       dispatch(setLoadSort(false))
       dispatch(setLoadPager(false))
     }

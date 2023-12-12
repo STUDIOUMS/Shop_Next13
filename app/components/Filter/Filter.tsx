@@ -1,7 +1,7 @@
 'use client'
 
 import { AppDispatch, RootState } from '@/app/store/store'
-import { setLoadFilter, setLoadFilterReset } from '@/app/store/appSlice'
+import { setLoadFilter } from '@/app/store/appSlice'
 import { PackType } from '@/options/types'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
@@ -12,6 +12,7 @@ import { set_currency } from '@/options/settings'
 import Btn from '../UI/Btn'
 import { FilterBody, FilterBox, FilterClose, FilterFooter, FilterShow, FilterTitle } from './FilterStyles'
 import FilterItem from './FilterItem'
+import Spinner from '../UI/Spinner'
 
 interface IFilter {
   packs: PackType[]
@@ -20,7 +21,6 @@ interface IFilter {
 const Filter: React.FC<IFilter> = ({ packs }) => {
   const dispatch = useDispatch<AppDispatch>()
   const load = useSelector((state: RootState) => state.app.loadFilter)
-  const loadReset = useSelector((state: RootState) => state.app.loadFilterReset)
 
   // url params
   const router = useRouter()
@@ -94,7 +94,7 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
     
     if (uri.length) {
       router.push(pathname)
-      dispatch(setLoadFilterReset(true))
+      dispatch(setLoadFilter(true))
     }
   }
 
@@ -167,9 +167,11 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
         </FilterBody>
 
         <FilterFooter className="grid grid-2">
-          <Btn title="Применить" handler={applyFilter} color='success' expand load={load} />
-          <Btn title='Сбросить' handler={resetFilter} expand load={loadReset} disabled={isReset} />
+          <Btn title="Применить" handler={applyFilter} color='success' expand />
+          <Btn title='Сбросить' handler={resetFilter} expand disabled={isReset} />
         </FilterFooter>
+
+        {load && <Spinner />}
       </FilterBox>
     </>
   )

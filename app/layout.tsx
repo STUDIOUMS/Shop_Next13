@@ -21,11 +21,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <html lang="en">
         <body>
           <Providers>
-            <Header cats={cats.results!} isError={isError} />
-            <div className="container main_container">
-              {children}
+            <div className="app">
+              <Header cats={cats.results!} isError={isError} />
+              <div className="container main_container">
+                {children}
+              </div>
+              <Footer cats={cats.results!} isError={isError} />
             </div>
-            <Footer cats={cats.results!} isError={isError} />
             <ScrollToTop />
             <Toast />
           </Providers>

@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: { subcat: string } 
 
 
 // number of visible products
-const limitProducts = 6
+const limitProducts = 8
 
 
 async function SubCat({ params, searchParams }: { params: { subcat: string }, searchParams: any }) {

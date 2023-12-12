@@ -7,7 +7,6 @@ export interface appState {
   orders: BasketType[]
   view: 'grid' | 'list'
   loadFilter: boolean
-  loadFilterReset: boolean
   loadSort: boolean
   loadPager: boolean
   toast: string
@@ -17,7 +16,6 @@ const initialState: appState = {
   orders: [],
   view: 'grid',
   loadFilter: false,
-  loadFilterReset: false,
   loadSort: false,
   loadPager: false,
   toast: ''
@@ -37,9 +35,6 @@ export const appSlice = createSlice({
     // setLoad
     setLoadFilter: (state, action) => {
       state.loadFilter = action.payload
-    },
-    setLoadFilterReset: (state, action) => {
-      state.loadFilterReset = action.payload
     },
     setLoadSort: (state, action) => {
       state.loadSort = action.payload
@@ -107,6 +102,6 @@ export const appSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setView, setLoadFilter, setLoadSort, setLoadPager, setOrder, changeCountOrder, setOrders, removeOrder, setLoadFilterReset, setToast } = appSlice.actions
+export const { setView, setLoadFilter, setLoadSort, setLoadPager, setOrder, changeCountOrder, setOrders, removeOrder, setToast } = appSlice.actions
 
 export default appSlice.reducer

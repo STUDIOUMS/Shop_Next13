@@ -5,11 +5,21 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import { setLoadPager } from "@/app/store/appSlice"
 import Btn from "./UI/Btn"
 import { useAppDispatch, useAppSelector } from "../store/hooks"
+import Spinner from "./UI/Spinner"
+import { styled } from "styled-components"
 
 interface ILoadmore {
   pages: number
   all: number
 }
+
+// Styles
+const Wrap = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  &>*:nth-child(2) { margin-left: var(--pb); }
+`
 
 const Loadmore: React.FC<ILoadmore> = ({ all, pages }) => {
   const load = useAppSelector(state => state.app.loadPager)
@@ -44,9 +54,10 @@ const Loadmore: React.FC<ILoadmore> = ({ all, pages }) => {
   }
 
   return (
-    <div className="text-center">
-      <Btn title={`Показать еще${load ? ' ...' : ''}`} handler={loadmoreHandler} />
-    </div>
+    <Wrap>
+      <Btn title="Показать еще" handler={loadmoreHandler} />
+      {load && <Spinner size="small" />}
+    </Wrap>
   )
 }
 

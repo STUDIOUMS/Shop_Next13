@@ -9,6 +9,7 @@ import { useCallback, useEffect, useRef } from "react"
 import { styled } from "styled-components"
 import { InputStyles } from "../UI/FormInput"
 import select from "@/assets/select.svg"
+import Spinner from "../UI/Spinner"
 
 // Styles
 const SortBox = styled.div`
@@ -84,7 +85,7 @@ const Sort: React.FC<ISort> = ({ list }) => {
           <option value="default-value">Сортировать</option>
           {list.map(el => <option key={el.value} value={el.value}>{el.name}</option>)}
         </SelectBox>
-        {load && <div>Loading...</div>}
+        {load && <Spinner size="small" />}
       </SortBoxLeft>
       <View />
     </SortBox>
