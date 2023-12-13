@@ -24,7 +24,7 @@ const OrderMain_old: React.FC = () => {
         </OrderWrap>
         : <>
           <Alert>Ваша корзина пуста</Alert>
-          <Btn to="/" title="Веурнться на главную" />
+          <Btn to="/" title="Веурнться на главную" className="mb-expand" />
         </>
       }
     </div>
