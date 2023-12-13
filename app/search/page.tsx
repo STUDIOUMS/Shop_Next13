@@ -21,7 +21,7 @@ async function SearchPage({ searchParams }: { searchParams: any }) {
   return (
     <div className="section">
       <BreadCrumbs list={crumbs} />
-      <h1>Результаты поиска по запросу - "{searchParams.s}"</h1>
+      <h1>Результаты поиска по запросу - &quot;{searchParams.s}&quot;</h1>
       
       <pre>
         {JSON.stringify(search, null, 2)}
@@ -29,7 +29,7 @@ async function SearchPage({ searchParams }: { searchParams: any }) {
 
       {!search.results?.length && <>
         <Alert>
-          По вашему запросу <b>"{searchParams.s}"</b> ничего не найдено.
+          По вашему запросу <b>&quot;{searchParams.s}&quot;</b> ничего не найдено.
           Попробуйте изменить поисковый запрос.
         </Alert>
         <Btn to="/" title="Вернуться на главную" className="mb-expand" />
