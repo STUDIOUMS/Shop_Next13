@@ -24,11 +24,11 @@ export const InputStyles = css<{ $error?: boolean, $expand?: boolean }>`
   width: ${({ $expand }) => $expand ? '100%' : 'auto'};
   &:focus { border-color: var(--color-text2); }
 `
-const Input = styled.input<{ $error?: boolean, $expand?: boolean }>`
+export const Input = styled.input<{ $error?: boolean, $expand?: boolean }>`
   ${InputStyles}
   height: 42px;
 `
-const Area = styled.textarea<{ $error?: boolean, $expand?: boolean }>`
+export const Area = styled.textarea<{ $error?: boolean, $expand?: boolean }>`
   ${InputStyles}
   display: block;
   height: 90px;

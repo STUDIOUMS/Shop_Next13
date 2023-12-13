@@ -33,7 +33,7 @@ const btnStyles = css<{ $size: BtnSizeType, $color: BtnColorType, $expand: boole
   font-family: var(--font);
   font-size: ${props => (props.$size === 'large') ? '18px' : (props.$size === 'small') ? '12px' : '14px'};
   line-height: ${props => (props.$size === 'large') ? '22px' : (props.$size === 'small') ? '16px' : '18px'};
-  padding: ${props => (props.$size === 'large') ? '14px 30px' : (props.$size === 'small') ? '6px 16px' : '11px 24px'};
+  padding: ${props => (props.$size === 'large') ? '14px 30px' : (props.$size === 'small') ? '6px 12px' : '11px 24px'};
   outline: none;
   text-align: center;
   text-decoration: none;
