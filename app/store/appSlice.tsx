@@ -83,7 +83,7 @@ export const appSlice = createSlice({
     },
 
     // changeCountOrder
-    changeCountOrder: (state, action) => {
+    changeCountOrder: (state, action: PayloadAction<{ id: string, count: number }>) => {
       const { id, count } = action.payload
       let currentOrder = state.orders.find(el => el.id === id)
       currentOrder!.count = count

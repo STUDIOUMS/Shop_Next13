@@ -1,5 +1,6 @@
 import PriceBox from "@/app/components/PriceBox"
-import { changeCountOrder, removeOrder } from "@/app/store/appSlice"
+import Counter from "@/app/components/UI/Counter"
+import { removeOrder } from "@/app/store/appSlice"
 import { useAppDispatch } from "@/app/store/hooks"
 import { BasketType } from "@/options/types"
 import Image from "next/image"
@@ -12,7 +13,7 @@ interface IBasketRow {
 
 const BasketRow: React.FC<IBasketRow> = ({ order }) => {
   const dispatch = useAppDispatch()
-  
+
   return (
     <BasketItem>
       <div>
@@ -31,13 +32,7 @@ const BasketRow: React.FC<IBasketRow> = ({ order }) => {
       </div>
       <div>
         <MobileTitle>Кол-во</MobileTitle>
-        <input
-          type="number"
-          defaultValue={order.count}
-          min={1}
-          style={{width: '70px'}}
-          onChange={e => dispatch(changeCountOrder({ count: Number(e.target.value), id: order.id }))}
-        />
+        <Counter productId={order.id} val={order.count!} />
       </div>
       <div>
         <MobileTitle>Стоимость</MobileTitle>
