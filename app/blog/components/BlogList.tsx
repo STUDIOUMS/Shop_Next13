@@ -1,8 +1,9 @@
 'use client'
 
+import BlogsWidjetItem, { Item } from "@/app/components/BlogsWidjet/BlogsWidjetItem"
 import Loadmore from "@/app/components/Loadmore"
 import { blogType } from "@/options/types"
-import BlogItem from "./BlogItem"
+import { styled } from "styled-components"
 
 interface IBlogList {
   all: number
@@ -10,12 +11,16 @@ interface IBlogList {
   list: blogType[]
 }
 
+const List = styled.div`
+  ${Item} { margin: 0 0 var(--gap); }
+`
+
 const BlogList: React.FC<IBlogList> = ({ all, limit, list }) => {
   return (
-    <div className="section">
-      {list.map(post => <BlogItem key={post.id} post={post} />)}
+    <List className="section">
+      {list.map(post => <BlogsWidjetItem key={post.id} el={post} />)}
       <Loadmore all={all} pages={limit} />
-    </div>
+    </List>
   )
 }
 

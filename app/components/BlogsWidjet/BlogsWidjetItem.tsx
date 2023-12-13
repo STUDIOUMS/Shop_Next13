@@ -1,5 +1,6 @@
 'use client'
 
+import { createDate } from '@/options/helpers';
 import SCRegistry from '@/options/registry';
 import { blogType } from '@/options/types'
 import Link from 'next/link'
@@ -9,29 +10,38 @@ interface BlogsWidjetItem {
   el: blogType
 }
 
-const Item = styled.div`
-  border: 1px solid var(--color-light);
-  border-radius: 10px;
-`
-const Content = styled.div`
+export const Item = styled.div`
+  background: var(--color-extralight);
+  border-radius: var(--radius);
+  padding: var(--pb);
   color: var(--color-text2);
-  padding: 15px;
 `
-const Title = styled.div`
+export const Title = styled.div`
   font-size: 18px;
+  font-weight: 500;
   line-height: 20px;
+  margin: 0 0 10px;
+  a {
+    color: var(--color-text);
+    &:hover { color: var(--color-success); }
+  }
+`
+export const Date = styled.div`
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
   margin: 0 0 10px;
 `
 
 const BlogsWidjetItem: React.FC<BlogsWidjetItem> = ({ el }) => {
+  const date = createDate(el.createdAt)
   return (
     <Item>
-      <Content>
-        <Title>
-          <Link href={`/blog/${el.slug}`}>{el.title}</Link>
-        </Title>
-        <div dangerouslySetInnerHTML={{__html: el.short!}}></div>
-      </Content>
+      <Title>
+        <Link href={`/blog/${el.slug}`}>{el.title}</Link>
+      </Title>
+      <Date>{date}</Date>
+      <div dangerouslySetInnerHTML={{__html: el.short!}}></div>
     </Item>
   )
 }

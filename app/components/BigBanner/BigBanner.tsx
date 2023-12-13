@@ -10,7 +10,7 @@ import styles from './BigBanner.module.scss'
 
 const BigBanner: React.FC = () => {
   return (
-    <div className={styles.bigbanner}>
+    <div className="section">
       <Swiper
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
         autoplay={{
