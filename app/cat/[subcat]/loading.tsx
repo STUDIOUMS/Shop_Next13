@@ -25,7 +25,7 @@ export default function Loading() {
           </div>
         </div>
 
-        <div className="grid grid-4 grid-mb-1 goodlist">
+        <div className="grid grid-4 grid-tb-3 grid-mb-1 goodlist">
           {list.map(el => (
             <div key={el}>
               <Skelet style={{height: '260px'}} $margin="none" />
