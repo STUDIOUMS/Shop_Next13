@@ -53,6 +53,7 @@ export const FilterBody = styled.div`
 `
 export const FilterFooter = styled.div`
   grid-column-gap: 8px;
+  position: relative;
   @media screen and (max-width: 992px) {
     padding: var(--pb);
   }
@@ -97,4 +98,15 @@ export const FilterClose = styled.button`
   @media screen and (max-width: 992px) {
     display: block;
   }
+`
+export const FilterLoad = styled.div`
+  align-items: center;
+  background: rgba(255,255,255,0.85);
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  bottom: 0;
 `

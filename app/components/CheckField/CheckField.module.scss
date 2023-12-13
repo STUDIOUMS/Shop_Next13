@@ -40,5 +40,8 @@
   .formCheck, input[type="radio"] {
     position: absolute; left: 0; top: 0; margin: 0; padding: 0;
   }
-  &Line {margin: 0 0 10px;}
+  &Line {
+    margin: 0 0 10px;
+    &:last-child { margin: 0; }
+  }
 }

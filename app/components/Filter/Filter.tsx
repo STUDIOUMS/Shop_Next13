@@ -10,7 +10,7 @@ import CheckField from '../CheckField/CheckField'
 import Range from '../Range/Range'
 import { set_currency } from '@/options/settings'
 import Btn from '../UI/Btn'
-import { FilterBody, FilterBox, FilterClose, FilterFooter, FilterShow, FilterTitle } from './FilterStyles'
+import { FilterBody, FilterBox, FilterClose, FilterFooter, FilterLoad, FilterShow, FilterTitle } from './FilterStyles'
 import FilterItem from './FilterItem'
 import Spinner from '../UI/Spinner'
 
@@ -169,9 +169,8 @@ const Filter: React.FC<IFilter> = ({ packs }) => {
         <FilterFooter className="grid grid-2">
           <Btn title="Применить" handler={applyFilter} color='success' expand />
           <Btn title='Сбросить' handler={resetFilter} expand disabled={isReset} />
+          {load && <FilterLoad><Spinner /></FilterLoad>}
         </FilterFooter>
-
-        {load && <Spinner />}
       </FilterBox>
     </>
   )
