@@ -12,6 +12,7 @@ interface ICounter {
 
 // Styles
 const size: number = 38
+
 const CounterBox = styled.div`
   display: inline-block;
   position: relative;
