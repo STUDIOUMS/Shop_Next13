@@ -18,7 +18,7 @@ const CounterBox = styled.div`
   position: relative;
   padding: 0 30px;
 `
-const CounterInput = styled.input.attrs({ type: "text" })`
+const CounterInput = styled.input.attrs({ type: "number", min: 1 })`
   background: 0;
   border: 1px solid var(--color-light);
   border-radius: var(--radius);
@@ -29,7 +29,13 @@ const CounterInput = styled.input.attrs({ type: "text" })`
   outline: none;
   padding: 0;
   text-align: center;
-  width: 44px;
+  width: 44px;\
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `
 const CounterButton = css`
   background: var(--color-light);
@@ -87,7 +93,6 @@ const Counter: React.FC<ICounter> = ({ productId, val }) => {
       <CounterMin onClick={minHandler} />
       <CounterInput
         value={counter}
-        defaultValue={counter}
         onChange={changeHandler}
       />
       <CounterPlus onClick={plusHandler}  />
