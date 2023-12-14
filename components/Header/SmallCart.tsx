@@ -52,7 +52,7 @@ const SmallCart: React.FC = () => {
   }, 0)
 
   return (
-    <CartBtn disabled={!orders.length} onClick={() => push('/basket')}>
+    <CartBtn aria-label="Перейти в корзину" disabled={!orders.length} onClick={() => push('/basket')}>
       {count > 0 && <Badge>{count}</Badge>}
     </CartBtn>
   )

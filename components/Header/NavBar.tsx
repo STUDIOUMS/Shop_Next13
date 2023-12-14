@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
   
   return (
     <nav>
-      <BtnNav $active={opened} onClick={() => setOpened(!opened)}>
+      <BtnNav aria-label="Основное меню" $active={opened} onClick={() => setOpened(!opened)}>
         <span></span>
       </BtnNav>
       <NavList $show={opened}>

@@ -50,7 +50,7 @@ const Search: React.FC = () => {
     <SearchBox>
       <form onSubmit={searchHandler}>
         <FormInput type="search" placeholder="Поиск..." expand handler={setVal} val={val} />
-        <SearchBoxBtn type="submit" />
+        <SearchBoxBtn type="submit" aria-label="Искать на сайте" />
       </form>
     </SearchBox>
   )
