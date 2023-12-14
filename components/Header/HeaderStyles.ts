@@ -73,6 +73,9 @@ export const NavA = styled(Link)<{ $active: boolean }>`
     color: var(--color-text);
     text-decoration: none;
   }
+  @media screen and (max-width: 992px) {
+    padding: 10px 12px;
+  }
 `
 export const BtnNav = styled.button<{ $active: boolean }>`
   background: 0;
