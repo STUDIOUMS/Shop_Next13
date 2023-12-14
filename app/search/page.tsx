@@ -1,9 +1,9 @@
 import { getSearch } from "@/options/api"
 import { BreadCrumbsType } from "@/options/types"
-import Card from "../cat/[subcat]/components/Card/Card"
-import BreadCrumbs from "../components/BreadCrumbs"
-import Alert from "../components/UI/Alert"
-import Btn from "../components/UI/Btn"
+import Card from "@/components/Card/Card"
+import BreadCrumbs from "@/components/BreadCrumbs"
+import Alert from "@/components/UI/Alert"
+import Btn from "@/components/UI/Btn"
 
 // Metatags
 export const metadata = {

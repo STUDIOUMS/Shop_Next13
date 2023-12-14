@@ -1,8 +1,8 @@
 'use client'
 
-import Alert from "@/app/components/UI/Alert"
-import Btn from "@/app/components/UI/Btn"
-import { RootState } from "@/app/store/store"
+import Alert from "@/components/UI/Alert"
+import Btn from "@/components/UI/Btn"
+import { RootState } from "@/store/store"
 import { useSelector } from "react-redux"
 import OrderCart from "./OrderCart"
 import OrderForm from "./OrderForm"

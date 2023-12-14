@@ -1,4 +1,4 @@
-import BreadCrumbs from "@/app/components/BreadCrumbs"
+import BreadCrumbs from "@/components/BreadCrumbs"
 import { BreadCrumbsType, ProductType } from "@/options/types"
 import ProductTabs from "./components/ProductTabs"
 import ProductCard from "./components/ProductCard"

@@ -1,10 +1,10 @@
 import './globals.scss'
-import Header from './components/Header/Header'
-import Providers from './store/Providers'
-import Footer from './components/Footer/Footer'
+import Header from '@/components/Header/Header'
+import Providers from '@/store/Providers'
+import Footer from '@/components/Footer/Footer'
 import { getCats } from '@/options/api'
-import ScrollToTop from './components/ScrollToTop'
-import Toast from './components/UI/Toast'
+import ScrollToTop from '@/components/ScrollToTop'
+import Toast from '@/components/UI/Toast'
 import SCRegistry from '@/options/registry'
 
 export const metadata = {

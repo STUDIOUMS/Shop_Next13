@@ -1,6 +1,6 @@
 "use client"
 
-import Btn from "@/app/components/UI/Btn"
+import Btn from "@/components/UI/Btn"
 import { styled } from "styled-components"
 
 interface IProductTab {

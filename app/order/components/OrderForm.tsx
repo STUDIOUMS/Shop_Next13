@@ -1,17 +1,17 @@
 'use client'
 
-import CheckField from "@/app/components/CheckField/CheckField"
+import CheckField from "@/components/CheckField/CheckField"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { DeliveryType, OrderType, PaymentType } from "@/options/types"
 import { useSelector } from "react-redux"
-import { RootState } from "@/app/store/store"
-import FormInput from "@/app/components/UI/FormInput"
-import Btn from "@/app/components/UI/Btn"
+import { RootState } from "@/store/store"
+import FormInput from "@/components/UI/FormInput"
+import Btn from "@/components/UI/Btn"
 import { OrderFooter, OrderFormWrap, OrderSection } from "./OrderStyles"
 import { errorText } from "@/options/settings"
-import Alert from "@/app/components/UI/Alert"
-import FormLine from "@/app/components/UI/FormLine"
+import Alert from "@/components/UI/Alert"
+import FormLine from "@/components/UI/FormLine"
 
 type FormValues = {
   name: string

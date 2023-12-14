@@ -1,10 +1,10 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import Card from "./Card/Card"
+import Card from "@/components/Card/Card"
 import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, RootState } from "@/app/store/store"
-import { setLoadSort, setLoadFilter, setLoadPager } from "@/app/store/appSlice"
+import { AppDispatch, RootState } from "@/store/store"
+import { setLoadSort, setLoadFilter, setLoadPager } from "@/store/appSlice"
 import { getProducts } from "@/options/api"
 import { ProductType } from "@/options/types"
 

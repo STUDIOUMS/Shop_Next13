@@ -1,14 +1,14 @@
-import BreadCrumbs from "@/app/components/BreadCrumbs"
+import BreadCrumbs from "@/components/BreadCrumbs"
 import { SortItems } from "@/options/helpers"
 import { BreadCrumbsType, CatType } from "@/options/types"
 
 import GoodList from "./components/GoodList"
-import Loadmore from "@/app/components/Loadmore"
-import Sort from "@/app/components/Sort/Sort"
+import Loadmore from "@/components/Loadmore"
+import Sort from "@/components/Sort/Sort"
 import SubCats from "./components/SubCats"
 import { getCat, getPacks, getProducts, getSubcats } from "@/options/api"
-import Filter from "@/app/components/Filter/Filter"
-import ChosenFilter from "@/app/components/ChosenFilter/ChosenFilter"
+import Filter from "@/components/Filter/Filter"
+import ChosenFilter from "@/components/ChosenFilter/ChosenFilter"
 
 
 // Metatags

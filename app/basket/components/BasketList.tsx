@@ -3,9 +3,9 @@
 import BasketHead from "./BasketHead"
 import BasketRow from "./BasketRow"
 import BasketTotal from "./BasketTotal"
-import Btn from "@/app/components/UI/Btn"
-import Alert from "@/app/components/UI/Alert"
-import { useAppSelector } from "@/app/store/hooks"
+import Btn from "@/components/UI/Btn"
+import Alert from "@/components/UI/Alert"
+import { useAppSelector } from "@/store/hooks"
 
 const BasketList = () => {
   const orders = useAppSelector(state => state.app.orders)

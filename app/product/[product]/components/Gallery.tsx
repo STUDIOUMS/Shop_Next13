@@ -1,6 +1,6 @@
 import Image from "next/image"
 import "@fancyapps/ui/dist/fancybox/fancybox.css"
-import Fancybox from "@/app/components/Fancybox"
+import Fancybox from "@/components/Fancybox"
 
 interface IGallery {
   img: string

@@ -1,5 +1,5 @@
 import { BreadCrumbsType } from "@/options/types"
-import BreadCrumbs from "../components/BreadCrumbs"
+import BreadCrumbs from "@/components/BreadCrumbs"
 
 // Metatags
 export const metadata = {

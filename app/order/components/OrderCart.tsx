@@ -1,6 +1,6 @@
 'use client'
 
-import { RootState } from "@/app/store/store"
+import { RootState } from "@/store/store"
 import { set_currency } from "@/options/settings"
 import { useSelector } from "react-redux"
 import { styled } from "styled-components"

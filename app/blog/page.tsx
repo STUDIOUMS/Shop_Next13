@@ -1,9 +1,8 @@
 import { getBlogs } from "@/options/api"
 import { BreadCrumbsType } from "@/options/types"
-import BreadCrumbs from "../components/BreadCrumbs"
-import Alert from "../components/UI/Alert"
-import { Skelet } from "../components/UI/Skelet"
-import BlogList from "./components/BlogList"
+import BreadCrumbs from "@/components/BreadCrumbs"
+import Alert from "@/components/UI/Alert"
+import BlogList from "@/components/BlogList"
 
 // Metatags
 export const metadata = {
