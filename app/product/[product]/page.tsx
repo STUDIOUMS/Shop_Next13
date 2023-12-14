@@ -3,13 +3,14 @@ import { BreadCrumbsType, ProductType } from "@/options/types"
 import ProductTabs from "./components/ProductTabs"
 import ProductCard from "./components/ProductCard"
 import { getProduct } from "@/options/api"
+import Alert from "@/ui/Alert"
 
 
 // Metatags
 export async function generateMetadata({ params }: { params: { product: string } }) {
   const product: ProductType = await getProduct(params.product)
   return {
-    title: product.title
+    title: product ? product.title : 'Not found'
   }
 }
 
@@ -19,11 +20,14 @@ async function ProductPage({ params }: { params: { product: string } }) {
 
   // Breadcrumbs
   let crumbs: BreadCrumbsType[] = []
-  product.categories.forEach(el => {
-    crumbs.push({ name: el.name, slug: `/cat/${el.slug}` })
-  })
-  crumbs.push({ name: product.title, slug: `/product/${product.slug}` })
-  
+  if (product) {
+    product.categories.forEach(el => {
+      crumbs.push({ name: el.name, slug: `/cat/${el.slug}` })
+    })
+    crumbs.push({ name: product.title, slug: `/product/${product.slug}` })
+  }
+
+  if (!product) return <Alert color="danger">Server error</Alert>
 
   return (
     <div>

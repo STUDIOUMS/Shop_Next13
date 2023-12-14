@@ -2,7 +2,7 @@
 
 import { blogType } from '@/options/types'
 import Link from 'next/link'
-import Alert from '../UI/Alert'
+import Alert from '../../ui/Alert'
 import BlogsWidjetItem from './BlogsWidjetItem'
 
 interface IBlogsWidjet {

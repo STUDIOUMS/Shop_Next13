@@ -9,10 +9,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import CheckField from '../CheckField/CheckField'
 import Range from '../Range/Range'
 import { set_currency } from '@/options/settings'
-import Btn from '../UI/Btn'
+import Btn from '../../ui/Btn'
 import { FilterBody, FilterBox, FilterClose, FilterFooter, FilterLoad, FilterShow, FilterTitle } from './FilterStyles'
 import FilterItem from './FilterItem'
-import Spinner from '../UI/Spinner'
+import Spinner from '../../ui/Spinner'
 
 interface IFilter {
   packs: PackType[]

@@ -7,7 +7,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { ProductType } from '@/options/types'
 import Card from '@/components/Card/Card'
-import Alert from '../UI/Alert'
+import Alert from '../../ui/Alert'
 
 interface ICarousel {
   error: boolean

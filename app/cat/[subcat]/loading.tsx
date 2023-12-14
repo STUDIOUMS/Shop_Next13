@@ -1,4 +1,4 @@
-import { Skelet } from "@/components/UI/Skelet"
+import { Skelet } from "@/ui/Skelet"
 import { createArray } from "@/options/helpers"
 
 export default function Loading() {

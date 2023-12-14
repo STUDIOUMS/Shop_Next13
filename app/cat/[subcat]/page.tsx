@@ -1,21 +1,21 @@
 import BreadCrumbs from "@/components/BreadCrumbs"
 import { SortItems } from "@/options/helpers"
 import { BreadCrumbsType, CatType } from "@/options/types"
-
 import GoodList from "./components/GoodList"
 import Loadmore from "@/components/Loadmore"
 import Sort from "@/components/Sort/Sort"
-import SubCats from "./components/SubCats"
+import SubCats from "../../../components/SubCats"
 import { getCat, getPacks, getProducts, getSubcats } from "@/options/api"
 import Filter from "@/components/Filter/Filter"
 import ChosenFilter from "@/components/ChosenFilter/ChosenFilter"
+import Alert from "@/ui/Alert"
 
 
 // Metatags
 export async function generateMetadata({ params }: { params: { subcat: string } }) {
   const cat: CatType = await getCat(params.subcat)
   return {
-    title: cat.name
+    title: cat ? cat.name : 'Not found'
   }
 }
 
@@ -27,6 +27,8 @@ const limitProducts = 8
 async function SubCat({ params, searchParams }: { params: { subcat: string }, searchParams: any }) {
   const cat: CatType = await getCat(params.subcat)
   const packs = await getPacks()
+
+  if (!cat || !packs) return <Alert color="danger">Server error</Alert>
 
   // is Category main
   const isMainCat: boolean = cat.parent === null

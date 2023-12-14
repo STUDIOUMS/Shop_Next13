@@ -12,8 +12,8 @@ import logo from "@/assets/logo.webp"
 import Image from "next/image"
 import { CatType } from "@/options/types"
 import { styled } from "styled-components"
-import FeedbackModal from "../Modal/FeedbackModal"
-import Btn from "../UI/Btn"
+import FeedbackModal from "../Modals/FeedbackModal"
+import Btn from "../../ui/Btn"
 
 // Styles
 const HeaderTop = styled.div`

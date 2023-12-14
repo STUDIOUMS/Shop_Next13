@@ -1,15 +1,15 @@
 'use client'
 
-import View from "@/components/View/View"
+import View from "@/ui/View/View"
 import { setLoadSort } from "@/store/appSlice"
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { SortItemType } from "@/options/types"
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import { useCallback, useEffect, useRef } from "react"
 import { styled } from "styled-components"
-import { InputStyles } from "../UI/FormInput"
+import { InputStyles } from "../../ui/FormInput"
 import select from "@/assets/select.svg"
-import Spinner from "../UI/Spinner"
+import Spinner from "../../ui/Spinner"
 
 // Styles
 const SortBox = styled.div`

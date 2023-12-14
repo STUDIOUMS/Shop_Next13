@@ -1,4 +1,4 @@
-import FormInput from '../UI/FormInput'
+import FormInput from '../../ui/FormInput'
 import styles from './Range.module.scss'
 
 interface IRange {

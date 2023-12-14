@@ -7,6 +7,7 @@ import { AppDispatch, RootState } from "@/store/store"
 import { setLoadSort, setLoadFilter, setLoadPager } from "@/store/appSlice"
 import { getProducts } from "@/options/api"
 import { ProductType } from "@/options/types"
+import Alert from "@/ui/Alert"
 
 interface IGoodList {
   list: ProductType[]
@@ -36,7 +37,7 @@ const GoodList: React.FC<IGoodList> = ({ catID, limit, list, uri }) => {
       <div className={`grid grid-${view === 'list' ? '1' : '4'} grid-tb-${view === 'list' ? '1' : '3'} grid-mb-1 goodlist`}>
         {listProducts.map(el => <Card key={el.id} el={el} />)}
       </div>
-      {listProducts.length === 0 && <p>В данной категории нет товаров</p>}
+      {listProducts.length === 0 && <Alert>В данной категории нет товаров</Alert>}
     </div>
   )
 }

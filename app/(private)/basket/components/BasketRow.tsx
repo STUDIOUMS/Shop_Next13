@@ -1,5 +1,5 @@
 import PriceBox from "@/components/PriceBox"
-import Counter from "@/components/UI/Counter"
+import Counter from "@/ui/Counter"
 import { removeOrder } from "@/store/appSlice"
 import { useAppDispatch } from "@/store/hooks"
 import { BasketType } from "@/options/types"

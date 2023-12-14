@@ -1,9 +1,9 @@
 import { errorText } from "@/options/settings"
 import { useForm } from "react-hook-form"
-import Btn from "../UI/Btn"
-import FormInput from "../UI/FormInput"
-import FormLine from "../UI/FormLine"
-import Modal from "./Modal"
+import Btn from "../../ui/Btn"
+import FormInput from "../../ui/FormInput"
+import FormLine from "../../ui/FormLine"
+import Modal from "../../ui/Modal"
 
 type FormStateType = {
   phone: string

@@ -1,12 +1,12 @@
 'use client'
 
 import AddCart from "@/components/AddCart"
-import QuickModal from "@/components/Modal/QuickModal"
+import QuickModal from "@/components/Modals/QuickModal"
 import Packages from "@/components/Packages/Packages"
 import { usePriceImg } from "@/components/price.hook"
 import PriceBox from "@/components/PriceBox"
-import Tag from "@/components/Tag/Tag"
-import Btn from "@/components/UI/Btn"
+import Tag from "@/ui/Tag"
+import Btn from "@/ui/Btn"
 import { ProductType } from "@/options/types"
 import { useState } from "react"
 import { styled } from "styled-components"

@@ -3,8 +3,8 @@
 import BasketHead from "./BasketHead"
 import BasketRow from "./BasketRow"
 import BasketTotal from "./BasketTotal"
-import Btn from "@/components/UI/Btn"
-import Alert from "@/components/UI/Alert"
+import Btn from "@/ui/Btn"
+import Alert from "@/ui/Alert"
 import { useAppSelector } from "@/store/hooks"
 
 const BasketList = () => {

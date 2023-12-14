@@ -6,12 +6,12 @@ import { useState } from "react"
 import { DeliveryType, OrderType, PaymentType } from "@/options/types"
 import { useSelector } from "react-redux"
 import { RootState } from "@/store/store"
-import FormInput from "@/components/UI/FormInput"
-import Btn from "@/components/UI/Btn"
+import FormInput from "@/ui/FormInput"
+import Btn from "@/ui/Btn"
 import { OrderFooter, OrderFormWrap, OrderSection } from "./OrderStyles"
 import { errorText } from "@/options/settings"
-import Alert from "@/components/UI/Alert"
-import FormLine from "@/components/UI/FormLine"
+import Alert from "@/ui/Alert"
+import FormLine from "@/ui/FormLine"
 
 type FormValues = {
   name: string

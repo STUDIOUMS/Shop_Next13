@@ -1,4 +1,4 @@
-import Btn from '@/components/UI/Btn'
+import Btn from '@/ui/Btn'
  
 export default function NotFound() {
   return (

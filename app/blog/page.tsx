@@ -1,7 +1,7 @@
 import { getBlogs } from "@/options/api"
 import { BreadCrumbsType } from "@/options/types"
 import BreadCrumbs from "@/components/BreadCrumbs"
-import Alert from "@/components/UI/Alert"
+import Alert from "@/ui/Alert"
 import BlogList from "@/components/BlogList"
 
 // Metatags

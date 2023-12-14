@@ -4,7 +4,7 @@ import Providers from '@/store/Providers'
 import Footer from '@/components/Footer/Footer'
 import { getCats } from '@/options/api'
 import ScrollToTop from '@/components/ScrollToTop'
-import Toast from '@/components/UI/Toast'
+import Toast from '@/ui/Toast'
 import SCRegistry from '@/options/registry'
 
 export const metadata = {
