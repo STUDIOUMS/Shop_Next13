@@ -33,7 +33,7 @@ const Carousel: React.FC<ICarousel> = ({ error, list, title }) => {
         navigation
         pagination
         breakpoints={{
-          400: { slidesPerView: 2 },
+          540: { slidesPerView: 2 },
           750: { slidesPerView: 3 },
           1020: { slidesPerView: 4 }
         }}
