@@ -4,11 +4,29 @@ import { set_currency } from "@/options/settings"
 import { PackType } from "@/options/types"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
-import styles from './ChosenFilter.module.scss'
+import { styled } from "styled-components"
 
 interface IChosenFilter {
   packs: PackType[]
 }
+
+// Styles
+const ChosenList = styled.div`
+  margin: 0 0 var(--pb);
+`
+const ChosenTitle = styled.div`
+  margin: 0 0 var(--pb);
+`
+const ChosenItem = styled.div`
+  background: var(--color-light);
+  border-radius: 32px;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  margin: 0 5px 5px 0;
+  padding: 6px 12px;
+`
 
 const ChosenFilter: React.FC<IChosenFilter> = ({ packs }) => {
   const [packString, setPackString] = useState<string>('')
@@ -27,7 +45,7 @@ const ChosenFilter: React.FC<IChosenFilter> = ({ packs }) => {
     let arr = packs.filter((el: PackType) => packParams?.includes(el.id.toString()))
     let output: string = arr.map((el: PackType) => el.name).join(', ')
     setPackString(output)
-  }, [searchParams])
+  }, [searchParams, packParams, packs])
 
   const output: string[] = []
   if (isHit) output.push('Хит')
@@ -42,12 +60,12 @@ const ChosenFilter: React.FC<IChosenFilter> = ({ packs }) => {
   }
   
   return (
-    <div className={styles.chosenFilter}>
-      <div className={styles.chosenFilterTitle}>Выбранные параметры:</div>
+    <ChosenList>
+      <ChosenTitle>Выбранные параметры:</ChosenTitle>
       {output.map((el, index) => (
-        <div key={index} className={styles.chosenFilterItem}>{el}</div>
+        <ChosenItem key={index}>{el}</ChosenItem>
       ))}
-    </div>
+    </ChosenList>
   )
 }
 
