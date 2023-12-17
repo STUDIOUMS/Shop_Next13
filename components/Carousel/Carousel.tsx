@@ -8,6 +8,7 @@ import 'swiper/css/pagination'
 import { ProductType } from '@/options/types'
 import Card from '@/components/Card/Card'
 import Alert from '../../ui/Alert'
+import { SwiperEvents } from 'swiper/types'
 
 interface ICarousel {
   error: boolean
@@ -37,6 +38,7 @@ const Carousel: React.FC<ICarousel> = ({ error, list, title }) => {
           750: { slidesPerView: 3 },
           1020: { slidesPerView: 4 }
         }}
+        onBeforeInit={(swiper) => console.log(swiper)}
       >
         {list.map(el => (
           <SwiperSlide key={el.id}>

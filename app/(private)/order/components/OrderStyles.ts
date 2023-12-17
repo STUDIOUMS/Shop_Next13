@@ -2,7 +2,7 @@ import { styled } from "styled-components"
 
 export const OrderWrap = styled.div`
   grid-column-gap: var(--gap);
-  grid-template-areas: "o1 o1 o1 o2";
+  grid-template-areas: "o1 o1 o2";
   &>div {
     &:nth-child(1) { grid-area: o1; }
     &:nth-child(2) { grid-area: o2; }
@@ -46,4 +46,11 @@ export const OrderFooter = styled.div`
     *:nth-child(1) { order: 2; }
     *:nth-child(2) { order: 1; margin: 0 0 var(--pb); }
   }
+`
+export const ChooseType = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: var(--pb);
+  grid-row-gap: var(--pb);
+  margin: 0 0 var(--gap);
 `

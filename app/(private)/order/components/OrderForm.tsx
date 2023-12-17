@@ -8,11 +8,13 @@ import { useSelector } from "react-redux"
 import { RootState } from "@/store/store"
 import FormInput from "@/ui/FormInput"
 import Btn from "@/ui/Btn"
-import { OrderFooter, OrderFormWrap, OrderSection } from "./OrderStyles"
+import { ChooseType, OrderFooter, OrderFormWrap, OrderSection } from "./OrderStyles"
 import { errorText } from "@/options/settings"
 import Alert from "@/ui/Alert"
 import FormLine from "@/ui/FormLine"
+import ChooseTypeItem from "./ChooseTypeItem"
 
+export type FaceType = 'individual' | 'legal'
 type FormValues = {
   name: string
   email?: string
@@ -26,6 +28,7 @@ type FormValues = {
 }
 
 const OrderForm: React.FC = () => {
+  const [type, setType] = useState<FaceType>('individual')
   const [delivery, setDelivery] = useState<DeliveryType | string>('courier')
   const [payment, setPayment] = useState<PaymentType | string>('acquiring')
   const orderList = useSelector((state: RootState) => state.app.orders)
@@ -56,6 +59,11 @@ const OrderForm: React.FC = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmitOrder)} autoCorrect="false">
+
+        <ChooseType>
+          <ChooseTypeItem title="Физическое лицо" handler={setType} value="individual" current={type} />
+          <ChooseTypeItem title="Юридическое лицо" handler={setType} value="legal" current={type} />
+        </ChooseType>
 
         <OrderFormWrap className="grid grid-2 grid-mb-1">
           <OrderSection className="order-personal">
@@ -140,7 +148,7 @@ const OrderForm: React.FC = () => {
             <CheckField handler={choosePayment} title="Оплатить онлайн" type="radio" value="acquiring" name="payment" checked={true} />
             <CheckField handler={choosePayment} title="Оплата по счету" type="radio" value="bill" name="payment" />
 
-            {payment === 'bill' &&
+            {type === 'legal' &&
               <div className="pt-2">
                 <FormLine>
                   <FormInput

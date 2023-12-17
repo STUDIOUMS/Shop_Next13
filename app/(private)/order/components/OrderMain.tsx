@@ -14,7 +14,7 @@ const OrderMain_old: React.FC = () => {
   return (
     <div className="section">
       {(orders.length > 0)
-        ? <OrderWrap className="grid grid-4 grid-tb-1">
+        ? <OrderWrap className="grid grid-3 grid-tb-1">
           <div>
             <OrderForm />
           </div>
