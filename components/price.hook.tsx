@@ -7,6 +7,7 @@ interface usePriceImgType {
   oldprice?: string
   choosePack: (id: number, name: string) => void
   currentPack: string
+  currentPackID: number
 }
 
 export const usePriceImg = (packs: RelatedPacksType[]): usePriceImgType => {
@@ -32,6 +33,6 @@ export const usePriceImg = (packs: RelatedPacksType[]): usePriceImgType => {
   }
 
   return {
-    img, price, oldprice, choosePack, currentPack
+    img, price, oldprice, choosePack, currentPack, currentPackID
   }
 }

@@ -1,26 +1,32 @@
 import React from 'react'
-import styles from './Package.module.scss'
+import { styled } from 'styled-components'
 
 interface IPackage {
-  index: number
+  active: boolean
   title: string
   value: number
-  name: number
   handler: (id: number, name: string) => void
 }
 
-const Package: React.FC<IPackage> = ({ index, name, title, value, handler }) => {
+// Styles
+const PackBtn = styled.button<{ $active: boolean }>`
+  background: var(--color-${props => props.$active ? 'success-light' : 'white'});
+  border: 1px solid var(--color-${props => props.$active ? 'success' : 'light'});
+  border-radius: var(--radius);
+  color: var(--color-text);
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 4px 8px;
+  margin: 0 4px 0 0;
+  min-width: 40px;
+  text-align: center;
+`
+
+const Package: React.FC<IPackage> = ({ active, title, value, handler }) => {
   return (
-    <label className={styles.package}>
-      <input
-        type="radio"
-        name={`packname-${name}`}
-        value={`pack-${title}`}
-        onChange={() => handler(value, title)}
-        defaultChecked={index === 0}
-      />
-      <span>{title}</span>
-    </label>
+    <PackBtn $active={active} onClick={() => handler(value, title)}>{title}</PackBtn>
   )
 }
 

@@ -20,7 +20,7 @@ interface ICard {
 const Card: React.FC<ICard> = ({ el, slide }) => {
   const view = useSelector((state: RootState) => state.app.view)
 
-  const { choosePack, img, price, oldprice, currentPack } = usePriceImg(el.relatedPacks)
+  const { choosePack, img, price, oldprice, currentPack, currentPackID } = usePriceImg(el.relatedPacks)
 
   // isSale
   const isSale = el.relatedPacks.some(el => el.oldPrice !== null)
@@ -44,7 +44,7 @@ const Card: React.FC<ICard> = ({ el, slide }) => {
             {el.new && <Tag type='new' />}
           </ItemIcons>
           <ItemPacks>
-            <Packages goodID={el.id} handler={choosePack} packs={el.relatedPacks} />
+            <Packages currentPackID={currentPackID} handler={choosePack} packs={el.relatedPacks} />
           </ItemPacks>
         </div>
       </ItemDetails>

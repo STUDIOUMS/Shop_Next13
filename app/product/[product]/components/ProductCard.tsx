@@ -44,7 +44,7 @@ const Code = styled.div`
 const ProductCard: React.FC<IProductCard> = ({ good }) => {
   const packs = good.relatedPacks
   const [quickModal, setQuickModal] = useState<boolean>(false)
-  const { choosePack, img, price, oldprice, currentPack } = usePriceImg(packs)
+  const { choosePack, img, price, oldprice, currentPack, currentPackID } = usePriceImg(packs)
 
   const isSale = good.relatedPacks.some(el => el.oldPrice !== null)
 
@@ -68,7 +68,7 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
           <PriceBox price={price} oldprice={oldprice} size="large" />
 
           <WrapPacks>
-            <Packages handler={choosePack} goodID={good.id} packs={packs} />
+            <Packages currentPackID={currentPackID} handler={choosePack} packs={packs} />
           </WrapPacks>
 
           <WrapBtns>

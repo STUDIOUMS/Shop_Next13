@@ -1,31 +1,44 @@
 import { RelatedPacksType } from '@/options/types'
+import { styled } from 'styled-components'
 import Package from './Package'
-import styles from './Package.module.scss'
 
 interface IPackages {
+  currentPackID: number
   handler: (id: number, name: string) => void
-  title?: string
   packs: RelatedPacksType[]
-  goodID: number
+  title?: string
 }
 
-const Packages: React.FC<IPackages> = ({ goodID, handler, packs, title = 'Фасовка' }) => {
+// Styles
+const PacksList = styled.div`
+  display: inline-block;
+  position: relative;
+  margin: 0 4px 0 0;
+  &:last-child {margin: 0;}
+`
+const PacksListTitle = styled.div`
+  margin: 0 0 8px;
+`
+const PacksListRow = styled.div`
+  display: flex;
+`
+
+const Packages: React.FC<IPackages> = ({ currentPackID, handler, packs, title = 'Фасовка' }) => {
   return (
-    <div className={styles.packages}>
-      <div className={styles.packagesTitle}>{title}:</div>
-      <div className={styles.packagesRow}>
-        {packs.map((el, index) => (
+    <PacksList>
+      <PacksListTitle>{title}:</PacksListTitle>
+      <PacksListRow>
+        {packs.map((el) => (
           <Package
             key={el.id}
-            index={index}
+            active={currentPackID === el.id}
             title={el.pack.name}
             value={el.id}
             handler={handler}
-            name={goodID}
           />
         ))}
-      </div>
-    </div>
+      </PacksListRow>
+    </PacksList>
   )
 }
 
