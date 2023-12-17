@@ -15,7 +15,7 @@ import FormLine from "@/ui/FormLine"
 
 type FormValues = {
   name: string
-  email: string
+  email?: string
   phone: string
   city: string
   street: string
@@ -75,7 +75,7 @@ const OrderForm: React.FC = () => {
                   placeholder="E-mail"
                   expand
                   valid={
-                    register("email", {required: errorText, pattern: {
+                    register("email", {pattern: {
                       value: /^\S+@\S+$/i,
                       message: 'Некорректный e-mail'
                     }})
