@@ -8,7 +8,7 @@ import OrderCartItem from "./OrderCartItem"
 
 // Styles
 const OrderCartBox = styled.div`
-  border: 1px solid var(--color-success-hover);
+  border: 1px solid var(--color-light);
   border-radius: 8px;
   padding: 12px;
   position: sticky;

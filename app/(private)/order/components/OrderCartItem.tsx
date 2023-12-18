@@ -8,7 +8,7 @@ interface IOrderCartItem {
 
 // Styles
 const Item = styled.div`
-  background: var(--color-light);
+  background: var(--color-extralight);
   border-radius: 4px;
   display: flex;
   margin: 0 0 8px;

@@ -1,3 +1,4 @@
+import CheckField, { LabelBox, Radio } from "@/components/CheckField"
 import React from "react"
 import { styled } from "styled-components"
 import { FaceType } from "./OrderForm"
@@ -10,23 +11,31 @@ interface IChooseTypeItem {
 }
 
 // Styles
-const Item = styled.button.attrs({ type: "button" })<{ $active: boolean }>`
-  background: var(--color-${({ $active }) => $active ? 'success-light' : 'extralight'});
+const Item = styled.div<{ $active: boolean }>`
+  background: var(--color-${({ $active }) => $active ? 'extralight' : 'white'});
   border: 1px solid var(--color-${({ $active }) => $active ? 'success' : 'light'});
   border-radius: var(--radius);
   cursor: pointer;
   display: block;
-  font-size: 18px;
+  font-size: 16px;
   font-family: var(--font2);
-  font-weight: 600;
-  padding: var(--pb);
-  text-align: center;
+  ${LabelBox} {
+    display: block; padding: var(--pb); padding-left: 44px;
+    ${Radio} { top: 50%; margin-top: -10px; left: var(--pb); }
+  }
 `
 
 const ChooseTypeItem: React.FC<IChooseTypeItem> = ({ current, handler, title, value }) => {
   return (
-    <Item onClick={() => handler(value)} $active={current === value}>
-      {title}
+    <Item $active={current === value}>
+      <CheckField
+        handler={() => handler(value)}
+        title={title}
+        type="radio"
+        name="facetype"
+        value={value}
+        checked={current === value}
+      />
     </Item>
   )
 }

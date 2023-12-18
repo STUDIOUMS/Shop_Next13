@@ -15,8 +15,8 @@ export const OrderWrap = styled.div`
 export const OrderFormWrap = styled.div`
   grid-template-areas:
     "personal personal"
-    "address address"
     "deliver payment"
+    "address address"
     "additional additional"
     "footer footer"
   ;

@@ -1,6 +1,6 @@
 'use client'
 
-import CheckField from "@/components/CheckField/CheckField"
+import CheckField from "@/components/CheckField"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { DeliveryType, OrderType, PaymentType } from "@/options/types"
@@ -28,11 +28,15 @@ type FormValues = {
 }
 
 const OrderForm: React.FC = () => {
-  const [type, setType] = useState<FaceType>('individual')
+  const [faceType, setFaceType] = useState<FaceType>('individual')
   const [delivery, setDelivery] = useState<DeliveryType | string>('courier')
   const [payment, setPayment] = useState<PaymentType | string>('acquiring')
   const orderList = useSelector((state: RootState) => state.app.orders)
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>()
+
+  // TEMP
+  const [order, setOrder] = useState<OrderType>()
+  // TEMP
 
   // chooseDelivery
   const chooseDelivery = (check: boolean, val: string) => {
@@ -48,10 +52,9 @@ const OrderForm: React.FC = () => {
   const onSubmitOrder = async (data: any) => {
     const newOrder: OrderType = {
       ...data, delivery, payment, status: 'waiting',
-      orderID: `order-${Date.now()}`,
       list: orderList
     }
-    console.log(newOrder)
+    setOrder(newOrder)
     reset()
   }
   
@@ -61,14 +64,14 @@ const OrderForm: React.FC = () => {
       <form onSubmit={handleSubmit(onSubmitOrder)} autoCorrect="false">
 
         <ChooseType>
-          <ChooseTypeItem title="Физическое лицо" handler={setType} value="individual" current={type} />
-          <ChooseTypeItem title="Юридическое лицо" handler={setType} value="legal" current={type} />
+          <ChooseTypeItem title="Физическое лицо" handler={setFaceType} value="individual" current={faceType} />
+          <ChooseTypeItem title="Юридическое лицо" handler={setFaceType} value="legal" current={faceType} />
         </ChooseType>
 
         <OrderFormWrap className="grid grid-2 grid-mb-1">
           <OrderSection className="order-personal">
             <h3>Личные данные</h3>
-            <div className="grid grid-3 grid-mb-1">
+            <div className="grid grid-2 grid-mb-1">
               <div>
                 <FormInput
                   placeholder="Ваше ФИО"
@@ -100,10 +103,40 @@ const OrderForm: React.FC = () => {
                   error={errors.phone && errors.phone?.message}
                 />
               </div>
+              {faceType === 'legal' &&
+                <>
+                  <div>
+                    <FormInput
+                      placeholder="ИНН организации"
+                      expand
+                      valid={register("inn", { required: errorText })}
+                      error={errors.inn && errors.inn.message}
+                    />
+                  </div>
+                  <div>
+                    <FormInput
+                      placeholder="Название организации"
+                      expand
+                      valid={register("company", { required: errorText })}
+                      error={errors.company && errors.company.message}
+                    />
+                  </div>
+                </>
+              }
             </div>
           </OrderSection>
           
-          <OrderSection className="order-address">
+          <OrderSection className="order-deliver">
+            <h3>Доставка</h3>
+            <CheckField handler={chooseDelivery} title="Курьером" type="radio" value="courier" name="delivery" checked={true} />
+            <CheckField handler={chooseDelivery} title="Самовывоз" type="radio" value="pickup" name="delivery" />
+            {delivery === 'pickup' && <Alert color="success">
+              <b>Адрес:</b> г.Тюмень, ул. Коммунистическая, 70, корп. 3, стр. 6<br />
+              <b>Время доставки:</b> Время...
+            </Alert>}
+          </OrderSection>
+
+          {delivery === 'courier' && <OrderSection className="order-address">
             <h3>Адрес</h3>
             <div className="grid grid-3 grid-mb-1">
               <div>
@@ -131,42 +164,15 @@ const OrderForm: React.FC = () => {
                 />
               </div>
             </div>
-          </OrderSection>
-        
-          <OrderSection className="order-deliver">
-            <h3>Доставка</h3>
-            <CheckField handler={chooseDelivery} title="Курьером" type="radio" value="courier" name="delivery" checked={true} />
-            <CheckField handler={chooseDelivery} title="Самовывоз" type="radio" value="pickup" name="delivery" />
-            {delivery === 'pickup' && <Alert color="success">
-              <b>Адрес:</b> г.Тюмень, ул. Коммунистическая, 70, корп. 3, стр. 6<br />
-              <b>Время доставки:</b> Время...
-            </Alert>}
-          </OrderSection>
+          </OrderSection>}
           
           <OrderSection className="order-payment">
             <h3>Оплата</h3>
-            <CheckField handler={choosePayment} title="Оплатить онлайн" type="radio" value="acquiring" name="payment" checked={true} />
-            <CheckField handler={choosePayment} title="Оплата по счету" type="radio" value="bill" name="payment" />
-
-            {type === 'legal' &&
-              <div className="pt-2">
-                <FormLine>
-                  <FormInput
-                    placeholder="ИНН"
-                    expand
-                    valid={register("inn", { required: errorText })}
-                    error={errors.inn && errors.inn.message}
-                  />
-                </FormLine>
-                <FormLine>
-                  <FormInput
-                    placeholder="Название организации"
-                    expand
-                    valid={register("company", { required: errorText })}
-                    error={errors.company && errors.company.message}
-                  />
-                </FormLine>
-              </div>
+            {faceType === "individual" && 
+              <CheckField handler={choosePayment} title="Оплатить онлайн" type="radio" value="acquiring" name="payment" checked={true} />
+            }
+            {faceType === "legal" && 
+              <CheckField handler={choosePayment} title="Оплата по счету" type="radio" value="bill" name="payment" checked={true} />
             }
           </OrderSection>
 
@@ -185,6 +191,10 @@ const OrderForm: React.FC = () => {
           </OrderFooter>
         </OrderFormWrap>
       </form>
+
+      <pre>
+        {JSON.stringify(order, null, 2)}
+      </pre>
     </div>
   )
 }
