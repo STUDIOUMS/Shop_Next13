@@ -38,7 +38,7 @@ const Carousel: React.FC<ICarousel> = ({ error, list, title }) => {
           750: { slidesPerView: 3 },
           1020: { slidesPerView: 4 }
         }}
-        onBeforeInit={(swiper) => console.log(swiper)}
+        // onBeforeInit={(swiper) => console.log(swiper)}
       >
         {list.map(el => (
           <SwiperSlide key={el.id}>
