@@ -1,6 +1,6 @@
 'use client'
 
-import CheckField from "@/components/CheckField"
+import CheckField, { ValueType } from "@/components/CheckField"
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
 import { DeliveryType, OrderType, PaymentType } from "@/options/types"
@@ -12,6 +12,7 @@ import { ChooseType, OrderFooter, OrderFormWrap, OrderSection } from "./OrderSty
 import { errorText } from "@/options/settings"
 import Alert from "@/ui/Alert"
 import ChooseTypeItem from "./ChooseTypeItem"
+import { useRouter } from "next/navigation"
 
 export type FaceType = 'individual' | 'legal'
 type FormValues = {
@@ -28,10 +29,11 @@ type FormValues = {
 
 const OrderForm: React.FC = () => {
   const [faceType, setFaceType] = useState<FaceType>('individual')
-  const [delivery, setDelivery] = useState<DeliveryType | string>('courier')
-  const [payment, setPayment] = useState<PaymentType | string>('')
+  const [delivery, setDelivery] = useState<DeliveryType>('courier')
+  const [payment, setPayment] = useState<PaymentType>('acquiring')
   const orderList = useSelector((state: RootState) => state.app.orders)
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>()
+  const router = useRouter()
 
   useEffect(() => {
     if (faceType === 'legal') setPayment('bill')
@@ -40,16 +42,12 @@ const OrderForm: React.FC = () => {
   // TEMP
   const [order, setOrder] = useState<OrderType>()
   // TEMP
-
-  // chooseDelivery
-  const chooseDelivery = (check: boolean, val: string) => {
-    setDelivery(val)
-  }
   
-  // choosePayment
-  const choosePayment = (check: boolean, val: string) => {
-    setPayment(val)
-  }
+
+  // chooseDelivery / choosePayment
+  const chooseDelivery = (check: boolean, val: ValueType<DeliveryType>) => setDelivery(val)
+  const choosePayment = (check: boolean, val: ValueType<PaymentType>) => setPayment(val)
+
   
   // onSubmitOrder
   const onSubmitOrder = async (data: any) => {
@@ -59,6 +57,9 @@ const OrderForm: React.FC = () => {
     }
     setOrder(newOrder)
     reset()
+    if (payment === 'acquiring') {
+      router.push('/blog')
+    }
   }
   
 
@@ -171,10 +172,10 @@ const OrderForm: React.FC = () => {
           
           <OrderSection className="order-payment">
             <h3>Оплата</h3>
-            {faceType === "individual" && 
+            {faceType === 'individual' && 
               <CheckField handler={choosePayment} title="Оплатить онлайн" type="radio" value="acquiring" name="payment-acquiring" checked={true} />
             }
-            {faceType === "legal" && 
+            {faceType === 'legal' && 
               <CheckField handler={choosePayment} title="Оплата по счету" type="radio" value="bill" name="payment-bill" checked={true} />
             }
           </OrderSection>

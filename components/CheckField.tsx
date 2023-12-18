@@ -2,13 +2,17 @@ import { useEffect, useRef } from 'react'
 import { styled } from 'styled-components'
 import check from "@/assets/check.svg"
 import radio from "@/assets/radio.svg"
+import { PaymentType } from '@/options/types'
+
+
+export type ValueType<T> = T
 
 interface ICheckField {
   name?: string
   title: string
   type: 'checkbox' | 'radio'
   value: string
-  handler: (check: boolean, val: string) => void
+  handler: (check: boolean, val: ValueType<string | any>) => void
   reset?: boolean
   checked?: boolean
 }
