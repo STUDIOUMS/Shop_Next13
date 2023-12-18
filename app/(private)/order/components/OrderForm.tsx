@@ -2,7 +2,7 @@
 
 import CheckField from "@/components/CheckField"
 import { useForm } from "react-hook-form"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { DeliveryType, OrderType, PaymentType } from "@/options/types"
 import { useSelector } from "react-redux"
 import { RootState } from "@/store/store"
@@ -11,7 +11,6 @@ import Btn from "@/ui/Btn"
 import { ChooseType, OrderFooter, OrderFormWrap, OrderSection } from "./OrderStyles"
 import { errorText } from "@/options/settings"
 import Alert from "@/ui/Alert"
-import FormLine from "@/ui/FormLine"
 import ChooseTypeItem from "./ChooseTypeItem"
 
 export type FaceType = 'individual' | 'legal'
@@ -30,9 +29,13 @@ type FormValues = {
 const OrderForm: React.FC = () => {
   const [faceType, setFaceType] = useState<FaceType>('individual')
   const [delivery, setDelivery] = useState<DeliveryType | string>('courier')
-  const [payment, setPayment] = useState<PaymentType | string>('acquiring')
+  const [payment, setPayment] = useState<PaymentType | string>('')
   const orderList = useSelector((state: RootState) => state.app.orders)
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>()
+
+  useEffect(() => {
+    if (faceType === 'legal') setPayment('bill')
+  }, [faceType])
 
   // TEMP
   const [order, setOrder] = useState<OrderType>()
@@ -169,10 +172,10 @@ const OrderForm: React.FC = () => {
           <OrderSection className="order-payment">
             <h3>Оплата</h3>
             {faceType === "individual" && 
-              <CheckField handler={choosePayment} title="Оплатить онлайн" type="radio" value="acquiring" name="payment" checked={true} />
+              <CheckField handler={choosePayment} title="Оплатить онлайн" type="radio" value="acquiring" name="payment-acquiring" checked={true} />
             }
             {faceType === "legal" && 
-              <CheckField handler={choosePayment} title="Оплата по счету" type="radio" value="bill" name="payment" checked={true} />
+              <CheckField handler={choosePayment} title="Оплата по счету" type="radio" value="bill" name="payment-bill" checked={true} />
             }
           </OrderSection>
 
