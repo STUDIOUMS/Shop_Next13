@@ -176,7 +176,7 @@ const OrderForm: React.FC = () => {
               <CheckField handler={choosePayment} title="Оплатить онлайн" type="radio" value="acquiring" name="payment-acquiring" checked={true} />
             }
             {faceType === 'legal' && 
-              <CheckField handler={choosePayment} title="Оплата по счету" type="radio" value="bill" name="payment-bill" checked={true} />
+              <CheckField handler={choosePayment} title="Оплата по счету с НДС" type="radio" value="bill" name="payment-bill" checked={true} />
             }
           </OrderSection>
 

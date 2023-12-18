@@ -16,7 +16,7 @@ export const NavList = styled.ul<{ $show: boolean }>`
     position: absolute;
     margin-top: 10px;
     padding: var(--pb);
-    z-index: 1100;
+    ${({ $show }) => $show && 'z-index: 1100;'}
     opacity: ${({ $show }) => $show ? '1' : '0'};
     visibility: ${({ $show }) => $show ? 'visisble' : 'hidden'};
     transition: all 200ms ease-in-out;
