@@ -21,7 +21,13 @@ const List = styled.ul`
 `
 const Item = styled.li`
   list-style: none;
-  margin: 0 20px 0 0;
+  margin: 0 10px 0 0;
+  &::after {
+    color: var(--color-text2);
+    content: '/';
+    margin-left: 10px;
+  }
+  &:last-child::after { content: none; }
 `
 
 const BreadCrumbs: React.FC<IBreadCrumbs> = ({ list }) => {

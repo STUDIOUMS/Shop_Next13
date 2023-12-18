@@ -36,7 +36,10 @@ export const ItemImage = styled.div<{ $view: ViewType }>`
   `};
 `
 export const ItemIcons = styled.div<{ $view: ViewType }>`
-  ${({ $view }) => $view === 'list' ? 'display: flex;' : `position: absolute; right: 10px; top: 10px;`}
+  ${({ $view }) => $view === 'list' ? `
+    display: flex;
+    * { margin: 0 4px 0 0; }
+  ` : `position: absolute; right: 10px; top: 10px;`}
 `
 export const ItemTitle = styled.div`
   font-size: 16px;
