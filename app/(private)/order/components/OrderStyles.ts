@@ -54,3 +54,12 @@ export const ChooseType = styled.div`
   grid-row-gap: var(--pb);
   margin: 0 0 var(--gap);
 `
+export const PayImages = styled.div`
+  display: flex;
+  align-items: center;
+  img {
+    display: block;
+    height: 44px;
+    margin: 0 10px 0 0;
+  }
+`

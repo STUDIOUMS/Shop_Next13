@@ -8,11 +8,14 @@ import { useSelector } from "react-redux"
 import { RootState } from "@/store/store"
 import FormInput from "@/ui/FormInput"
 import Btn from "@/ui/Btn"
-import { ChooseType, OrderFooter, OrderFormWrap, OrderSection } from "./OrderStyles"
+import { ChooseType, OrderFooter, OrderFormWrap, OrderSection, PayImages } from "./OrderStyles"
 import { errorText } from "@/options/settings"
 import Alert from "@/ui/Alert"
 import ChooseTypeItem from "./ChooseTypeItem"
 import { useRouter } from "next/navigation"
+import visa from "@/assets/visa.svg"
+import mastercard from "@/assets/mastercard.svg"
+
 
 export type FaceType = 'individual' | 'legal'
 type FormValues = {
@@ -172,11 +175,29 @@ const OrderForm: React.FC = () => {
           
           <OrderSection className="order-payment">
             <h3>Оплата</h3>
-            {faceType === 'individual' && 
-              <CheckField handler={choosePayment} title="Оплатить онлайн" type="radio" value="acquiring" name="payment-acquiring" checked={true} />
-            }
+            {faceType === 'individual' && <>
+              <CheckField
+                handler={choosePayment}
+                title="Оплатить онлайн"
+                type="radio"
+                value="acquiring"
+                name="payment-acquiring"
+                checked={true}
+              />
+              <PayImages>
+                <img src={visa.src} alt="" />
+                <img src={mastercard.src} alt="" />
+              </PayImages>
+            </>}
             {faceType === 'legal' && 
-              <CheckField handler={choosePayment} title="Оплата по счету с НДС" type="radio" value="bill" name="payment-bill" checked={true} />
+              <CheckField
+                handler={choosePayment}
+                title="Оплата по счету с НДС"
+                type="radio"
+                value="bill"
+                name="payment-bill"
+                checked={true}
+              />
             }
           </OrderSection>
 
