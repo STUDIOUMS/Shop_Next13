@@ -1,10 +1,15 @@
 'use client'
 
-import { RootState } from "@/store/store"
 import { set_currency } from "@/options/settings"
-import { useSelector } from "react-redux"
 import { styled } from "styled-components"
 import OrderCartItem from "./OrderCartItem"
+import { OrderType } from "@/options/types"
+
+interface IOrderCart {
+  delivery: number
+  orders: OrderType[]
+  total: number
+}
 
 // Styles
 const OrderCartBox = styled.div`
@@ -16,22 +21,29 @@ const OrderCartBox = styled.div`
   margin: 0 0 var(--pb);
 `
 const OrderCartTotal = styled.div`
-  text-align: right;
-  font-size: 18px;
+  color: var(--color-text2);
+  font-size: 16px;
   line-height: 20px;
-  small {font-size: 14px; margin-left: 4px;}
+  text-align: right;
+  b { color: var(--color-text); }
+`
+const OrderCartLine = styled.div<{ $big?: boolean }>`
+  ${props => props.$big && `
+    border-top: 1px solid var(--color-light);
+    padding-top: 6px;
+  `}
+  margin: 0 0 6px;
+  b { font-size: 18px; }
 `
 
-const OrderCart: React.FC = () => {
-  const orders = useSelector((state: RootState) => state.app.orders)
-  const totalPrice = orders.reduce((prev, el) => Number(el.total) + prev, 0)
-
+const OrderCart: React.FC<IOrderCart> = ({ delivery, orders, total }) => {
   return (
     <OrderCartBox>
       {orders.map(el => <OrderCartItem key={el.id} el={el} />)}
       <OrderCartTotal>
-        Итого: <b>{totalPrice}</b>
-        <small>{set_currency}</small>
+        <OrderCartLine>Стоимость: <b>{total}</b> <small>{set_currency}</small></OrderCartLine>
+        <OrderCartLine>Доставка: <b>{delivery}</b> <small>{set_currency}</small></OrderCartLine>
+        <OrderCartLine $big={true}>Итого с доставкой: <b>{total + delivery}</b> <small>{set_currency}</small></OrderCartLine>
       </OrderCartTotal>
     </OrderCartBox>
   )

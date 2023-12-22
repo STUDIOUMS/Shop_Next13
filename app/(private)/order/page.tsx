@@ -1,6 +1,6 @@
 import { BreadCrumbsType } from "@/options/types"
 import BreadCrumbs from "@/components/BreadCrumbs"
-import OrderMain from "./components/OrderMain"
+import OrderForm from "./components/OrderForm"
 
 // Metatags
 export const metadata = {
@@ -19,7 +19,7 @@ function OrderPage() {
     <div>
       <BreadCrumbs list={crumbs} />
       <h1>Оформление заказа</h1>
-      <OrderMain />
+      <OrderForm />
     </div>
   )
 }
