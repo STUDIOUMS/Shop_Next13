@@ -39,6 +39,7 @@ const OrderForm: React.FC = () => {
   const router = useRouter()
 
   useEffect(() => {
+    if (faceType === 'individual') setPayment('acquiring')
     if (faceType === 'legal') setPayment('bill')
   }, [faceType])
 
