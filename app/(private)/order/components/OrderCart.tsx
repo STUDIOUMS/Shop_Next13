@@ -22,8 +22,8 @@ const OrderCartBox = styled.div`
 `
 const OrderCartTotal = styled.div`
   color: var(--color-text2);
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 22px;
   text-align: right;
   b { color: var(--color-text); }
 `
@@ -33,7 +33,7 @@ const OrderCartLine = styled.div<{ $big?: boolean }>`
     padding-top: 6px;
   `}
   margin: 0 0 6px;
-  b { font-size: 18px; }
+  b { font-size: ${props => props.$big ? '20px' : '16px'}; }
 `
 
 const OrderCart: React.FC<IOrderCart> = ({ delivery, orders, total }) => {
@@ -41,9 +41,9 @@ const OrderCart: React.FC<IOrderCart> = ({ delivery, orders, total }) => {
     <OrderCartBox>
       {orders.map(el => <OrderCartItem key={el.id} el={el} />)}
       <OrderCartTotal>
-        <OrderCartLine>Стоимость: <b>{total}</b> <small>{set_currency}</small></OrderCartLine>
+        <OrderCartLine>Товары: <b>{total}</b> <small>{set_currency}</small></OrderCartLine>
         <OrderCartLine>Доставка: <b>{delivery}</b> <small>{set_currency}</small></OrderCartLine>
-        <OrderCartLine $big={true}>Итого с доставкой: <b>{total + delivery}</b> <small>{set_currency}</small></OrderCartLine>
+        <OrderCartLine $big={true}>Итого: <b>{total + delivery}</b> <small>{set_currency}</small></OrderCartLine>
       </OrderCartTotal>
     </OrderCartBox>
   )

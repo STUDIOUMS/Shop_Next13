@@ -88,7 +88,8 @@ const OrderForm: React.FC = () => {
               <ChooseTypeItem title="Юридическое лицо" handler={setFaceType} value="legal" current={faceType} />
             </ChooseType>
 
-            <OrderFormWrap className="grid grid-2 grid-mb-1">
+
+            <OrderFormWrap className="grid grid-2 grid-mb-1" $address={delivery === 'courier'}>
               <OrderSection className="order-personal">
                 <h3>Личные данные</h3>
                 <div className="grid grid-2 grid-mb-1">
@@ -145,6 +146,7 @@ const OrderForm: React.FC = () => {
                   }
                 </div>
               </OrderSection>
+
               
               <OrderSection className="order-deliver">
                 <h3>Доставка</h3>
@@ -155,6 +157,7 @@ const OrderForm: React.FC = () => {
                   <b>Время доставки:</b> Время...
                 </Alert>}
               </OrderSection>
+
 
               {delivery === 'courier' && <OrderSection className="order-address">
                 <h3>Адрес</h3>
@@ -185,6 +188,7 @@ const OrderForm: React.FC = () => {
                   </div>
                 </div>
               </OrderSection>}
+
               
               <OrderSection className="order-payment">
                 <h3>Оплата</h3>
@@ -214,6 +218,7 @@ const OrderForm: React.FC = () => {
                 }
               </OrderSection>
 
+
               <OrderSection className="order-additional">
                 <FormInput
                   placeholder="Примечание к заказу"
@@ -222,6 +227,7 @@ const OrderForm: React.FC = () => {
                   valid={register("addition")}
                 />
               </OrderSection>
+              
               
               <OrderFooter className="order-footer">
                 <Btn to="/basket" title="Вернуться в корзину" />

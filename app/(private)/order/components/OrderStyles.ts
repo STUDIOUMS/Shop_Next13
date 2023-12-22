@@ -12,11 +12,11 @@ export const OrderWrap = styled.div`
     grid-template-areas: "o2" "o1";
   }
 `
-export const OrderFormWrap = styled.div`
+export const OrderFormWrap = styled.div<{ $address: boolean }>`
   grid-template-areas:
     "personal personal"
     "deliver payment"
-    "address address"
+    ${props => props.$address && `"address address"`}
     "additional additional"
     "footer footer"
   ;
