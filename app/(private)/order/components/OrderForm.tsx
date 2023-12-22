@@ -60,9 +60,9 @@ const OrderForm: React.FC = () => {
     }
     setOrder(newOrder)
     reset()
-    if (payment === 'acquiring') {
-      router.push('/blog')
-    }
+    // if (payment === 'acquiring') {
+    //   router.push('/blog')
+    // }
   }
   
 
