@@ -3,14 +3,16 @@
 import { styled } from "styled-components"
 
 type AlertColorType = "danger" | "success" | "light"
+type AlertAlignType = "left" | "center" | "right"
 
 interface IAlert {
+  align?: AlertAlignType
   children: React.ReactNode
   color?: AlertColorType
 }
 
 // Styles
-const AlertBox = styled.div<{ $color: AlertColorType }>`
+const AlertBox = styled.div<{ $align: AlertAlignType, $color: AlertColorType }>`
   background: ${props => 
     props.$color === 'danger' ? 'var(--color-danger-light)' :
     props.$color === 'success' ? 'var(--color-success-light)' :
@@ -20,13 +22,14 @@ const AlertBox = styled.div<{ $color: AlertColorType }>`
   border-radius: var(--radius);
   margin: 0 0 var(--gap);
   padding: var(--pb) var(--gap);
+  text-align: ${props => props.$align};
   &:last-child { margin: 0; }
   h3 { margin: 0 0 8px; }
 `
 
-const Alert: React.FC<IAlert> = ({ children, color = "light" }) => {
+const Alert: React.FC<IAlert> = ({ align = 'left', children, color = "light" }) => {
   return (
-    <AlertBox $color={color}>
+    <AlertBox $align={align} $color={color}>
       {children}
     </AlertBox>
   )

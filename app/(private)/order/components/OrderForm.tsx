@@ -3,7 +3,7 @@
 import CheckField, { ValueType } from "@/components/CheckField"
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
-import { CreatedOrderType, DeliveryType, FaceType, PaymentType } from "@/options/types"
+import { CreatedOrderType, DeliveryType, FaceType, FormOrderValues, PaymentType } from "@/options/types"
 import { useSelector } from "react-redux"
 import { RootState } from "@/store/store"
 import FormInput from "@/ui/FormInput"
@@ -16,22 +16,11 @@ import visa from "@/assets/visa.svg"
 import mastercard from "@/assets/mastercard.svg"
 import OrderCart from "./OrderCart"
 import OrderSuccess from "./OrderSuccess"
+import { cleanOrders } from "@/store/appSlice"
+import { useAppDispatch } from "@/store/hooks"
 
 // Courier price
 const courierPrice: number = 500
-
-// Types
-type FormValues = {
-  name: string
-  email?: string
-  phone: string
-  city: string
-  street: string
-  address: string
-  addition: string
-  inn?: string
-  company?: string
-}
 
 const OrderForm: React.FC = () => {
   const [faceType, setFaceType] = useState<FaceType>('individual')
@@ -40,7 +29,8 @@ const OrderForm: React.FC = () => {
   const [payment, setPayment] = useState<PaymentType>('acquiring')
   const orderList = useSelector((state: RootState) => state.app.orders)
   const totalPrice = orderList.reduce((prev, el) => Number(el.total) + prev, 0)
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>()
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormOrderValues>()
+  const dispatch = useAppDispatch()
 
 
   useEffect(() => {
@@ -73,8 +63,10 @@ const OrderForm: React.FC = () => {
       total: deliveryPrice + totalPrice,
       list: orderList
     }
+    //dispatch(cleanOrders())
     setOrder(newOrder)
     reset()
+    window.scrollTo(0, 0)
   }
   
 
@@ -243,8 +235,9 @@ const OrderForm: React.FC = () => {
             <OrderCart delivery={deliveryPrice} orders={orderList} total={totalPrice} />
           </div>
           
-        </OrderWrap>
-        : <OrderSuccess number="1283930" order={order} />
+        </OrderWrap> :
+        
+        <OrderSuccess number="1283930" order={order} />
       }
     </div>
   )

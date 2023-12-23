@@ -136,6 +136,8 @@ export type CreatedOrderType = {
   address?: string
   delivery: DeliveryType
   payment: PaymentType
+  inn?: number
+  company?: string
   status: 'waiting' | 'canceled' | 'processed' | 'done'
   price: number
   deliveryPrice: number
@@ -145,3 +147,15 @@ export type CreatedOrderType = {
 
 export type DeliveryType = 'courier' | 'pickup'
 export type PaymentType = 'acquiring' | 'bill'
+
+export type FormOrderValues = {
+  name: string
+  email?: string
+  phone: string
+  city: string
+  street: string
+  address: string
+  addition: string
+  inn?: string
+  company?: string
+}

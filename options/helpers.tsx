@@ -1,16 +1,5 @@
 import { NavItemType, SortItemType } from "./types"
 
-// Debounce
-export function debounce(cb: any, delay: number) {
-  let timeout: any
-  return function(...args: any) {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => {
-      cb(...args)
-    }, delay)
-  }
-}
-
 // createDate
 export function createDate(dateString: string, time?: boolean) {
   const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октбярь', 'Ноябрь', 'Декабрь']

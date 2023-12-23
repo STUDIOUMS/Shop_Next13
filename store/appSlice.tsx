@@ -82,6 +82,12 @@ export const appSlice = createSlice({
       }
     },
 
+    // cleanOrders
+    cleanOrders: (state) => {
+      state.orders = []
+      localStorage.removeItem('orders')
+    },
+
     // changeCountOrder
     changeCountOrder: (state, action: PayloadAction<{ id: string, count: number }>) => {
       const { id, count } = action.payload
@@ -102,6 +108,6 @@ export const appSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setView, setLoadFilter, setLoadSort, setLoadPager, setOrder, changeCountOrder, setOrders, removeOrder, setToast } = appSlice.actions
+export const { setView, setLoadFilter, setLoadSort, setLoadPager, setOrder, changeCountOrder, setOrders, removeOrder, setToast, cleanOrders } = appSlice.actions
 
 export default appSlice.reducer

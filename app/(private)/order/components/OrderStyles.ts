@@ -63,3 +63,8 @@ export const PayImages = styled.div`
     margin: 0 10px 0 0;
   }
 `
+export const ModuleBox = styled.div`
+  background: var(--color-extralight);
+  border-radius: var(--radius);
+  padding: var(--pb);
+`
