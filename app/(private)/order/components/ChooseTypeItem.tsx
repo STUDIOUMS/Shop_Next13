@@ -1,7 +1,7 @@
 import CheckField, { LabelBox, Radio } from "@/components/CheckField"
 import React from "react"
 import { styled } from "styled-components"
-import { FaceType } from "./OrderForm"
+import { FaceType } from "@/options/types"
 
 interface IChooseTypeItem {
   current: FaceType
