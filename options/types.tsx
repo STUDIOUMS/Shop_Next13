@@ -125,5 +125,23 @@ export type OrderType = {
   pack: string
 }
 
+export type FaceType = 'individual' | 'legal'
+export type CreatedOrderType = {
+  name: string
+  email?: string
+  phone: string
+  addition: string
+  city?: string
+  street?: string
+  address?: string
+  delivery: DeliveryType
+  payment: PaymentType
+  status: 'waiting' | 'canceled' | 'processed' | 'done'
+  price: number
+  deliveryPrice: number
+  total: number
+  list: BasketType[]
+}
+
 export type DeliveryType = 'courier' | 'pickup'
 export type PaymentType = 'acquiring' | 'bill'
