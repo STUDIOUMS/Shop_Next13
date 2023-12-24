@@ -1,6 +1,6 @@
 'use client'
 
-import { Navigation, Pagination } from "swiper"
+import { Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import ozon from "@/assets/ozon.svg"
 import wildberries from "@/assets/wildberries.webp"

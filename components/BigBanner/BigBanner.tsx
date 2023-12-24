@@ -1,6 +1,6 @@
 'use client'
 
-import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper'
+import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/autoplay'
