@@ -8,6 +8,9 @@ import { styled } from "styled-components"
 // Styles
 const List = styled.div`
   display: flex;
+  @media screen and (max-width: 750px) {
+    justify-content: center;
+  }
 `
 const Item = styled.a`
   align-items: center;

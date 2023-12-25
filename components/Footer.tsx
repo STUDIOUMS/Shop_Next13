@@ -5,7 +5,7 @@ import Image from "next/image"
 import { navItems } from "@/options/helpers"
 import Link from "next/link"
 import { styled } from "styled-components"
-import Socials from "../Socials"
+import Socials from "./Socials"
 import { CatType } from "@/options/types"
 
 // Styles
@@ -15,6 +15,9 @@ const FooterBox = styled.footer`
   ul {
     margin: 0; padding: 0;
     li { list-style: none; }
+  }
+  @media screen and (max-width: 750px) {
+    text-align: center;
   }
 `
 const FooterTitle = styled.div`
@@ -40,13 +43,13 @@ const Footer: React.FC<IFooter> = ({ cats, isError }) => {
             </div>
             &copy; 2023 site.com
           </div>
-          <div>
+          <div className="mb-hidden">
             <FooterTitle>Меню</FooterTitle>
             <ul>
               {navItems.map(el => <li key={el.id}><Link href={el.path}>{el.title}</Link></li>)}
             </ul>
           </div>
-          <div>
+          <div className="mb-hidden">
             <FooterTitle>Категории</FooterTitle>
             <ul>
               {!isError && cats.filter(el => el.parent === null).map(el => (
@@ -55,7 +58,7 @@ const Footer: React.FC<IFooter> = ({ cats, isError }) => {
             </ul>
           </div>
           <div>
-            <FooterTitle>Контакты</FooterTitle>
+            <FooterTitle className="mb-hidden">Контакты</FooterTitle>
             <Socials />
             <p>+7 (999) 999-99-99</p>
           </div>
