@@ -17,7 +17,7 @@ export default function Page() {
     <div className="section">
       <BreadCrumbs list={crumbs} />
       <h1>Вакансии</h1>
-      
+      <p>Вакансии</p>
     </div>
   )
 }
