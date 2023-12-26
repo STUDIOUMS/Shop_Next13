@@ -40,7 +40,7 @@ export const navItems: NavItemType[] = [
   {
     id: 5,
     title: "Для партнеров",
-    path: "/partners",
+    path: "#",
     children: [
       { id: 9, title: "Документы", path: "/" },
       { id: 10, title: "Условия", path: "/" },
