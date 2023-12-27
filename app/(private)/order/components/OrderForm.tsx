@@ -19,8 +19,10 @@ import OrderSuccess from "./OrderSuccess"
 import { cleanOrders } from "@/store/appSlice"
 import { useAppDispatch } from "@/store/hooks"
 
+
 // Courier price
 const courierPrice: number = 500
+
 
 const OrderForm: React.FC = () => {
   const [faceType, setFaceType] = useState<FaceType>('individual')
@@ -63,7 +65,7 @@ const OrderForm: React.FC = () => {
       total: deliveryPrice + totalPrice,
       list: orderList
     }
-    //dispatch(cleanOrders())
+    dispatch(cleanOrders())
     setOrder(newOrder)
     reset()
     window.scrollTo(0, 0)
