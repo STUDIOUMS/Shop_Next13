@@ -17,7 +17,6 @@ export default function Page() {
   return (
     <div>
       <BreadCrumbs list={crumbs} />
-      <h1>Корзина</h1>
       <BasketList />
     </div>
   )
