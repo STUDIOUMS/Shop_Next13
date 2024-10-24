@@ -1,29 +1,33 @@
-import { useForm } from 'react-hook-form'
-import Btn from '../../ui/Btn'
-import FormInput from '../../ui/FormInput'
-import FormLine from '../../ui/FormLine'
-import Modal from '../../ui/Modal'
-import { errorText } from "@/options/settings"
+import { useForm } from "react-hook-form";
+import Btn from "../../ui/Btn";
+import FormInput from "../../ui/FormInput";
+import FormLine from "../../ui/FormLine";
+import Modal from "../../ui/Modal";
+import { ERROR_TEXT } from "@/options/settings";
 
 type FeedBackFormValues = {
-  name: string
-  email: string
-  phone: string
-  message: string
-}
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+};
 
 interface IFeedbackModal {
-  show: boolean
-  handler: React.Dispatch<React.SetStateAction<boolean>>
+  show: boolean;
+  handler: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const FeedbackModal: React.FC<IFeedbackModal> = ({ handler, show }) => {
-  const { handleSubmit, register, formState: { errors } } = useForm<FeedBackFormValues>()
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<FeedBackFormValues>();
 
   // sendMessage
   const sendMessage = (data: any) => {
-    console.log(data)
-  }
+    console.log(data);
+  };
 
   return (
     <Modal title="Обратная связь" show={show} handler={handler}>
@@ -32,7 +36,7 @@ const FeedbackModal: React.FC<IFeedbackModal> = ({ handler, show }) => {
           <FormInput
             placeholder="Ваше имя"
             expand
-            valid={register("name", { required: errorText })}
+            valid={register("name", { required: ERROR_TEXT })}
             error={errors.name && errors.name?.message}
           />
         </FormLine>
@@ -43,10 +47,11 @@ const FeedbackModal: React.FC<IFeedbackModal> = ({ handler, show }) => {
             expand
             type="email"
             valid={register("email", {
-              required: errorText, pattern: {
+              required: ERROR_TEXT,
+              pattern: {
                 value: /^\S+@\S+$/i,
-                message: 'Некорректный e-mail'
-              }
+                message: "Некорректный e-mail",
+              },
             })}
             error={errors.email && errors.email?.message}
           />
@@ -73,7 +78,7 @@ const FeedbackModal: React.FC<IFeedbackModal> = ({ handler, show }) => {
         <Btn title="Оправить" type="submit" />
       </form>
     </Modal>
-  )
-}
+  );
+};
 
-export default FeedbackModal
+export default FeedbackModal;
