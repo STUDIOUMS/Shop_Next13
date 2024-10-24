@@ -1,7 +1,9 @@
 import { SERVER_URL } from "./settings";
-import { blogType, CatType, ProductType, ResponseType } from "./types";
+import { blogType, Cat, ProductType, Response } from "./types";
 
 // Variables
+export const URI_CATS = `/catalog/categories`;
+
 export const URL_CATS = `${SERVER_URL}/catalog/categories/`;
 export const URL_PRODUCTS = `${SERVER_URL}/catalog/products/`;
 export const URL_PACKAGES = `${SERVER_URL}/catalog/packs/`;
@@ -9,16 +11,11 @@ export const URL_BLOG = `${SERVER_URL}/blog/articles/`;
 
 // GET REQUESTS
 
-// get categories
-export async function getCats(): Promise<ResponseType<CatType>> {
-  try {
-    const response = await fetch(`${URL_CATS}`, { cache: "no-cache" });
-    const data: ResponseType<CatType> = await response.json();
-    return data;
-  } catch (e) {
-    return { error: true };
-  }
-}
+export const getData = async <T,>(uri: string): Promise<Response<T>> => {
+  const response = await fetch(SERVER_URL + uri);
+  const data = await response.json();
+  return data;
+};
 
 // get category
 export async function getCat(slug: string) {
@@ -109,12 +106,12 @@ type productsWidjetParam = "hit" | "discount" | "new";
 export async function getProductsWidget(
   param: productsWidjetParam,
   limit: number
-): Promise<ResponseType<ProductType>> {
+): Promise<Response<ProductType>> {
   try {
     const response = await fetch(
       `${URL_PRODUCTS}?ordering=-id&${param}=true&limit=${limit}`
     );
-    const data: ResponseType<ProductType> = await response.json();
+    const data: Response<ProductType> = await response.json();
     return data;
   } catch (e) {
     console.log(e);
@@ -150,14 +147,14 @@ export async function getPacks() {
 export async function getBlogs(
   limit: number,
   uri: string
-): Promise<ResponseType<blogType>> {
+): Promise<Response<blogType>> {
   try {
     const isLimit = uri.includes("limit");
     const uri_limit = isLimit ? `&${uri}` : `&limit=${limit}`;
     const response = await fetch(`${URL_BLOG}?ordering=-id${uri_limit}`, {
       cache: "no-cache",
     });
-    const data: ResponseType<blogType> = await response.json();
+    const data: Response<blogType> = await response.json();
     return data;
   } catch (e) {
     console.log(e);
@@ -192,7 +189,7 @@ export async function getBlogPage(slug: number) {
 // Product
 export async function getSearch(
   search: string
-): Promise<ResponseType<ProductType>> {
+): Promise<Response<ProductType>> {
   try {
     const response = await fetch(`${URL_PRODUCTS}?search=${search}`);
     const data = await response.json();

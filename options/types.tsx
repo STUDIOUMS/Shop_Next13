@@ -1,161 +1,150 @@
-export type ViewType = 'grid' | 'list'
+export type View = "grid" | "list";
 
-export type ResponseType<T> = {
-  count?: number
-  next?: string
-  previous?: string
-  results?: T[]
-  error?: boolean
-}
+export type Response<T> = {
+  count?: number;
+  next?: string;
+  previous?: string;
+  results?: T[];
+  error?: boolean;
+};
 
 export type ResponseErrorType = {
-  error?: boolean
-}
+  error?: boolean;
+};
 
-export type CatTypeParent = {
-  pk: number
-  name: string
-  slug: string
-}
+export type CatParent = {
+  pk: number;
+  name: string;
+  slug: string;
+};
 
-export type CatType = {
-  id: number
-  parent: CatTypeParent | null
-  slug: string
-  name: string
-  description: string
-  img: string
-}
+export type Cat = {
+  id: number;
+  parent: CatParent | null;
+  slug: string;
+  name: string;
+  description: string;
+  img: string;
+};
 
 export type RelatedAttrsType = {
-  id: number
+  id: number;
   attribute: {
-    id: number
-    name: string
-  }
-  value: string
-  product: 0
-}
+    id: number;
+    name: string;
+  };
+  value: string;
+  product: 0;
+};
 
 export type PackType = {
-  id: number
-  name: string
-}
+  id: number;
+  name: string;
+};
 
 export type RelatedPacksType = {
-  id: number
+  id: number;
   pack: {
-    id: number
-    name: string
-  }
-  img: string
-  price: string
-  oldPrice: string
-  product: number
-}
+    id: number;
+    name: string;
+  };
+  img: string;
+  price: string;
+  oldPrice: string;
+  product: number;
+};
 
 export type ProductCatType = {
-  pk: number
-  name: string
-  slug: string
-}
+  pk: number;
+  name: string;
+  slug: string;
+};
 
-export type ProductType = {
-  id: number
-  relatedAttrs: RelatedAttrsType[]
-  relatedPacks: RelatedPacksType[]
-  defaultPack: RelatedPacksType
-  categories: ProductCatType[]
-  slug: string
-  title: string
-  description: string
-  art: string
-  new: boolean
-  hit: boolean
-  createdAt: Date
-}
+export type Product = {
+  id: number;
+  relatedAttrs: RelatedAttrsType[];
+  relatedPacks: RelatedPacksType[];
+  defaultPack: RelatedPacksType;
+  categories: ProductCatType[];
+  slug: string;
+  title: string;
+  description: string;
+  art: string;
+  new: boolean;
+  hit: boolean;
+  createdAt: Date;
+};
 
 export type BreadCrumbsType = {
-  name: string
-  slug: string
-}
+  name: string;
+  slug: string;
+};
 
 export type SortItemType = {
-  value: string
-  name: string
-}
+  value: string;
+  name: string;
+};
 
 export type NavItemType = {
-  id: number
-  title: string
-  path: string
-  children?: NavItemType[]
-}
+  id: number;
+  title: string;
+  path: string;
+  children?: NavItemType[];
+};
 
 export type blogType = {
-  id: number
-  title: string
-  slug: string
-  short?: string
-  description: string
-  createdAt: string
-  updatedAt: string
-}
+  id: number;
+  title: string;
+  slug: string;
+  short?: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
-export type BasketType = {
-  id: string
-  title: string
-  price: string
-  slug: string
-  img: string
-  art: string
-  count?: number
-  total: string
-  pack: string
-}
+export type Order = {
+  id: string;
+  title: string;
+  price: string;
+  slug: string;
+  img: string;
+  art: string;
+  count?: number;
+  total: string;
+  pack: string;
+};
 
-export type OrderType = {
-  id: string
-  title: string
-  slug: string
-  art: string
-  price: string
-  total: string
-  img: string
-  pack: string
-}
-
-export type FaceType = 'individual' | 'legal'
+export type FaceType = "individual" | "legal";
 export type CreatedOrderType = {
-  name: string
-  email?: string
-  phone: string
-  addition: string
-  city?: string
-  street?: string
-  address?: string
-  delivery: DeliveryType
-  payment: PaymentType
-  inn?: number
-  company?: string
-  status: 'waiting' | 'canceled' | 'processed' | 'done'
-  price: number
-  deliveryPrice: number
-  total: number
-  list: BasketType[]
-}
+  name: string;
+  email?: string;
+  phone: string;
+  addition: string;
+  city?: string;
+  street?: string;
+  address?: string;
+  delivery: DeliveryType;
+  payment: PaymentType;
+  inn?: number;
+  company?: string;
+  status: "waiting" | "canceled" | "processed" | "done";
+  price: number;
+  deliveryPrice: number;
+  total: number;
+  list: Order[];
+};
 
-export type DeliveryType = 'courier' | 'pickup'
-export type PaymentType = 'acquiring' | 'bill'
+export type DeliveryType = "courier" | "pickup";
+export type PaymentType = "acquiring" | "bill";
 
 export type FormOrderValues = {
-  name: string
-  email?: string
-  phone: string
-  city: string
-  street: string
-  address: string
-  addition: string
-  inn?: string
-  company?: string
-}
+  name: string;
+  email?: string;
+  phone: string;
+  city: string;
+  street: string;
+  address: string;
+  addition: string;
+  inn?: string;
+  company?: string;
+};

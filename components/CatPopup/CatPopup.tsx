@@ -1,17 +1,16 @@
-import { CatType } from "@/options/types"
-import { useState } from "react"
-import CatPopupItem from "./CatPopupItem"
-import Btn from "../../ui/Btn"
-import { Overlay, Popup, PopupHeader, Wrap } from "./CatPopupStyles"
-import Alert from "../../ui/Alert"
+import { CatType } from "@/options/types";
+import { useState } from "react";
+import CatPopupItem from "./CatPopupItem";
+import Btn from "../../ui/Btn";
+import { Overlay, Popup, PopupHeader, Wrap } from "./CatPopupStyles";
 
-interface ICatPopup {
-  cats: CatType[]
-  isError: boolean
-}
+type CatPopupProps = {
+  cats: CatType[];
+};
 
-const CatPopup: React.FC<ICatPopup> = ({ cats, isError }) => {
-  const [show, setShow] = useState<boolean>(false)
+const CatPopup = (props: CatPopupProps): JSX.Element => {
+  const { cats } = props;
+  const [show, setShow] = useState<boolean>(false);
 
   return (
     <Wrap $show={show}>
@@ -19,16 +18,26 @@ const CatPopup: React.FC<ICatPopup> = ({ cats, isError }) => {
       <Popup>
         <PopupHeader>Каталог</PopupHeader>
         <div className="grid grid-3 grid-mb-1">
-          {!isError && cats.filter(el => el.parent === null).map(el => {
-            const subcats: CatType[] = cats.filter(cat => cat.parent?.pk === el.id)
-            return <CatPopupItem key={el.id} el={el} setShow={setShow} subcats={subcats} />
-          })}
+          {cats
+            .filter((el) => el.parent === null)
+            .map((el) => {
+              const subcats: CatType[] = cats.filter(
+                (cat) => cat.parent?.pk === el.id
+              );
+              return (
+                <CatPopupItem
+                  key={el.id}
+                  el={el}
+                  setShow={setShow}
+                  subcats={subcats}
+                />
+              );
+            })}
         </div>
-        {isError && <Alert color="danger">Server error</Alert>}
       </Popup>
       <Overlay onClick={() => setShow(false)} />
     </Wrap>
-  )
-}
+  );
+};
 
-export default CatPopup
+export default CatPopup;
