@@ -1,5 +1,5 @@
-import { SERVER_URL } from "./settings";
-import { blogType, Cat, ProductType, Response } from "./types";
+import { SERVER_URL } from "./constants";
+import { blogType, Product, Response } from "./types";
 
 // Variables
 export const URI_CATS = `/catalog/categories`;
@@ -106,12 +106,12 @@ type productsWidjetParam = "hit" | "discount" | "new";
 export async function getProductsWidget(
   param: productsWidjetParam,
   limit: number
-): Promise<Response<ProductType>> {
+): Promise<Response<Product>> {
   try {
     const response = await fetch(
       `${URL_PRODUCTS}?ordering=-id&${param}=true&limit=${limit}`
     );
-    const data: Response<ProductType> = await response.json();
+    const data: Response<Product> = await response.json();
     return data;
   } catch (e) {
     console.log(e);
@@ -187,9 +187,7 @@ export async function getBlogPage(slug: number) {
 }
 
 // Product
-export async function getSearch(
-  search: string
-): Promise<Response<ProductType>> {
+export async function getSearch(search: string): Promise<Response<Product>> {
   try {
     const response = await fetch(`${URL_PRODUCTS}?search=${search}`);
     const data = await response.json();

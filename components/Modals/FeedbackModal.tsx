@@ -1,9 +1,9 @@
+import { ERROR_TEXT } from "@/options/constants";
 import { useForm } from "react-hook-form";
 import Btn from "../../ui/Btn";
 import FormInput from "../../ui/FormInput";
 import FormLine from "../../ui/FormLine";
 import Modal from "../../ui/Modal";
-import { ERROR_TEXT } from "@/options/settings";
 
 type FeedBackFormValues = {
   name: string;
