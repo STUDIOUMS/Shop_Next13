@@ -92,7 +92,7 @@ export type NavItemType = {
   children?: NavItemType[];
 };
 
-export type blogType = {
+export type BlogItem = {
   id: number;
   title: string;
   slug: string;

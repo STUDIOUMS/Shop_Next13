@@ -1,5 +1,6 @@
-export const SERVER_URL: string = "https://api.alba-72.ru/api/v1";
-export const CURRENCY: string = "руб.";
-export const PHONE: string = "+7 (123) 456 78 90";
-export const PHONE_NUMBER: string = "+71234567890";
-export const ERROR_TEXT: string = "Обязательное поле";
+export const SERVER_URL = "https://api.alba-72.ru/api/v1";
+export const CURRENCY = "руб.";
+export const PHONE = "+7 (123) 456 78 90";
+export const PHONE_NUMBER = "+71234567890";
+export const ERROR_TEXT = "Обязательное поле";
+export const BLOG_LIMIT = 3;
