@@ -1,5 +1,5 @@
-import Btn from '@/ui/Btn'
- 
+import Btn from "@/ui/Btn";
+
 export default function NotFound() {
   return (
     <div className="section">
@@ -7,5 +7,5 @@ export default function NotFound() {
       <p>Could not find requested resource</p>
       <Btn to="/" title="Вернуться на главную" className="mb-expand" />
     </div>
-  )
+  );
 }

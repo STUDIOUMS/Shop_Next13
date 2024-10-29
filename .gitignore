@@ -42,3 +42,5 @@ _static
 sw.*
 workbox-*
 swe-worker-*
+
+.vscode
