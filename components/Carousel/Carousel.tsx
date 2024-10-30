@@ -1,26 +1,24 @@
-'use client'
+"use client";
 
-import { Navigation, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import { ProductType } from '@/options/types'
-import Card from '@/components/Card/Card'
-import Alert from '../../ui/Alert'
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { ProductType } from "@/options/types";
+import Card from "@/components_old/Card/Card";
+import Alert from "../../ui_old/Alert";
 
 interface ICarousel {
-  error: boolean
-  list: ProductType[]
-  title: string
+  error: boolean;
+  list: ProductType[];
+  title: string;
 }
 
 const Carousel: React.FC<ICarousel> = ({ error, list, title }) => {
-  
   if (error) {
-    return <Alert color="danger">Server error</Alert>
+    return <Alert color="danger">Server error</Alert>;
   }
-
 
   return (
     <div className="carousel_body">
@@ -35,18 +33,17 @@ const Carousel: React.FC<ICarousel> = ({ error, list, title }) => {
         breakpoints={{
           540: { slidesPerView: 2 },
           750: { slidesPerView: 3 },
-          1020: { slidesPerView: 4 }
+          1020: { slidesPerView: 4 },
         }}
       >
-        {list.map(el => (
+        {list.map((el) => (
           <SwiperSlide key={el.id}>
             <Card el={el} slide />
           </SwiperSlide>
         ))}
       </Swiper>
-
     </div>
-  )
-}
+  );
+};
 
-export default Carousel
+export default Carousel;

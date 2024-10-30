@@ -1,18 +1,18 @@
-import { BreadCrumbsType } from "@/options/types"
-import BreadCrumbs from "@/components/BreadCrumbs"
-import OrderForm from "./components/OrderForm"
+import { BreadCrumbsType } from "@/options/types";
+import BreadCrumbs from "@/components_old/BreadCrumbs";
+import OrderForm from "./components/OrderForm";
 
 // Metatags
 export const metadata = {
-  title: 'Оформление заказа',
-  description: 'Оформление заказа',
-}
+  title: "Оформление заказа",
+  description: "Оформление заказа",
+};
 
 /* BreadCrumbs */
 const crumbs: BreadCrumbsType[] = [
-  { name: 'Корзина', slug: `/basket` },
-  { name: 'Оформление заказа', slug: `/order` }
-]
+  { name: "Корзина", slug: `/basket` },
+  { name: "Оформление заказа", slug: `/order` },
+];
 
 function OrderPage() {
   return (
@@ -21,7 +21,7 @@ function OrderPage() {
       <h1>Оформление заказа</h1>
       <OrderForm />
     </div>
-  )
+  );
 }
 
-export default OrderPage
+export default OrderPage;

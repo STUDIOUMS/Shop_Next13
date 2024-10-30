@@ -1,8 +1,8 @@
 "use client";
 
-import { store } from "../store/store";
-import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ThemeProvider } from "@mui/material";
+import theme from "@/theme";
 
 type ProvidersProps = {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ const Providers = (props: ProvidersProps): JSX.Element => {
   const { children } = props;
   return (
     <QueryClientProvider client={client}>
-      <Provider store={store}>{children}</Provider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </QueryClientProvider>
   );
 };

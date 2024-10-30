@@ -1,7 +1,7 @@
 import { CatType } from "@/options/types";
 import { useState } from "react";
 import CatPopupItem from "./CatPopupItem";
-import Btn from "../../ui/Btn";
+import Btn from "../../ui_old/Btn";
 import { Overlay, Popup, PopupHeader, Wrap } from "./CatPopupStyles";
 
 type CatPopupProps = {

@@ -1,16 +1,14 @@
-import { BreadCrumbsType } from "@/options/types"
-import BreadCrumbs from "@/components/BreadCrumbs"
+import { BreadCrumbsType } from "@/options/types";
+import BreadCrumbs from "@/components_old/BreadCrumbs";
 
 // Metatags
 export const metadata = {
-  title: 'Вакансии',
-  description: 'Вакансии',
-}
+  title: "Вакансии",
+  description: "Вакансии",
+};
 
 // Breadscrumbs
-const crumbs: BreadCrumbsType[] = [
-  { name: "Вакансии", slug: "vacancies" }
-]
+const crumbs: BreadCrumbsType[] = [{ name: "Вакансии", slug: "vacancies" }];
 
 export default function Page() {
   return (
@@ -19,5 +17,5 @@ export default function Page() {
       <h1>Вакансии</h1>
       <p>Вакансии</p>
     </div>
-  )
+  );
 }

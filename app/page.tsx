@@ -1,11 +1,7 @@
-import { getBlogsWidjet, getProductsWidget } from "@/options/api";
 import Advantages from "@/components/Advantages/Advantages";
 import Banners from "@/components/Banners/Banners";
 import BigBanner from "@/components/BigBanner/BigBanner";
-import BlogsWidjet from "@/components/BlogsWidjet/BlogsWidjet";
 import Brands from "@/components/Brands/Brands";
-import Carousel from "@/components/Carousel/Carousel";
-import { useQuery } from "react-query";
 
 // Metatags
 export const metadata = {

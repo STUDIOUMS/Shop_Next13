@@ -1,9 +1,10 @@
 import { ERROR_TEXT } from "@/options/constants";
+import CustomBtn from "@/ui/CustomBtn";
+import CustomModal from "@/ui/CustomModal";
 import { useForm } from "react-hook-form";
-import Btn from "../../ui/Btn";
-import FormInput from "../../ui/FormInput";
-import FormLine from "../../ui/FormLine";
-import Modal from "../../ui/Modal";
+import Btn from "../../ui_old/Btn";
+import FormInput from "../../ui_old/FormInput";
+import FormLine from "../../ui_old/FormLine";
 
 type FeedBackFormValues = {
   name: string;
@@ -12,12 +13,13 @@ type FeedBackFormValues = {
   message: string;
 };
 
-interface IFeedbackModal {
+type FeedbackModalProps = {
   show: boolean;
-  handler: React.Dispatch<React.SetStateAction<boolean>>;
-}
+  close: () => void;
+};
 
-const FeedbackModal: React.FC<IFeedbackModal> = ({ handler, show }) => {
+const FeedbackModal = (props: FeedbackModalProps): JSX.Element => {
+  const { close, show } = props;
   const {
     handleSubmit,
     register,
@@ -30,7 +32,7 @@ const FeedbackModal: React.FC<IFeedbackModal> = ({ handler, show }) => {
   };
 
   return (
-    <Modal title="Обратная связь" show={show} handler={handler}>
+    <CustomModal close={close} open={show} title="Обратная связь">
       <form onSubmit={handleSubmit(sendMessage)} autoCorrect="false">
         <FormLine label="Ваше имя *">
           <FormInput
@@ -75,9 +77,11 @@ const FeedbackModal: React.FC<IFeedbackModal> = ({ handler, show }) => {
           />
         </FormLine>
 
-        <Btn title="Оправить" type="submit" />
+        <CustomBtn type="submit" color="primary" fullWidth>
+          Оправить
+        </CustomBtn>
       </form>
-    </Modal>
+    </CustomModal>
   );
 };
 

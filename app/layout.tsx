@@ -1,12 +1,9 @@
 "use client";
 
-import "./globals.scss";
-import Header from "@/components/Header/Header";
 import Providers from "@/components/Providers";
-import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import Toast from "@/ui/Toast";
-import SCRegistry from "@/options/registry";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -14,22 +11,20 @@ type LayoutProps = {
 
 const RootLayout = (props: LayoutProps): JSX.Element => {
   const { children } = props;
+
   return (
-    <SCRegistry>
-      <html lang="en">
-        <body>
-          <Providers>
-            <div className="app">
-              <Header />
-              <div className="container main_container">{children}</div>
-              <Footer />
-            </div>
-            <ScrollToTop />
-            <Toast />
-          </Providers>
-        </body>
-      </html>
-    </SCRegistry>
+    <html lang="en">
+      <body>
+        <Providers>
+          <div className="app">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
+          <ScrollToTop />
+        </Providers>
+      </body>
+    </html>
   );
 };
 

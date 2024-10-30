@@ -1,4 +1,4 @@
-import { Skelet } from "@/ui/Skelet"
+import { Skelet } from "@/ui_old/Skelet";
 
 export default function Loading() {
   return (
@@ -16,5 +16,5 @@ export default function Loading() {
       <Skelet $size="line" $width="title" />
       <Skelet $size="line" $width="title" $margin="big" />
     </div>
-  )
+  );
 }

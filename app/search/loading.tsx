@@ -1,18 +1,20 @@
-import { Skelet } from "@/ui/Skelet"
-import { createArray } from "@/options/helpers"
+import { Skelet } from "@/ui_old/Skelet";
+import { createArray } from "@/options/helpers";
 
 export default function Loading() {
-  const list = createArray(8)
+  const list = createArray(8);
 
-  return <div>
-    <Skelet />
-    <Skelet $size="h1" />
-    <div className="grid grid-4 grid-tb-3 grid-mb-1 goodlist">
-      {list.map(el => (
-        <div key={el}>
-          <Skelet style={{height: '260px'}} $margin="none" />
-        </div>
-      ))}
+  return (
+    <div>
+      <Skelet />
+      <Skelet $size="h1" />
+      <div className="grid grid-4 grid-tb-3 grid-mb-1 goodlist">
+        {list.map((el) => (
+          <div key={el}>
+            <Skelet style={{ height: "260px" }} $margin="none" />
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
+  );
 }

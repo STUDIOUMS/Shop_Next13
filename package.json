@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@fancyapps/ui": "^5.0.19",
-    "@reduxjs/toolkit": "^1.9.3",
+    "@mui/material": "^6.1.6",
     "@types/node": "18.14.6",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
@@ -21,9 +23,6 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
     "react-query": "^3.39.3",
-    "react-redux": "^8.0.5",
-    "sass": "^1.58.3",
-    "styled-components": "^6.1.1",
     "swiper": "^11.0.5",
     "typescript": "4.9.5",
     "zustand": "^5.0.0"

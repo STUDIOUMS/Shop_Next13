@@ -1,10 +1,10 @@
-import Image from "next/image"
-import "@fancyapps/ui/dist/fancybox/fancybox.css"
-import Fancybox from "@/components/Fancybox"
+import Image from "next/image";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import Fancybox from "@/components_old/Fancybox";
 
 interface IGallery {
-  img: string
-  title: string
+  img: string;
+  title: string;
 }
 
 const Gallery: React.FC<IGallery> = ({ img, title }) => {
@@ -16,7 +16,7 @@ const Gallery: React.FC<IGallery> = ({ img, title }) => {
         </a>
       </Fancybox>
     </div>
-  )
-}
+  );
+};
 
-export default Gallery
+export default Gallery;

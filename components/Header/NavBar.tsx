@@ -1,37 +1,39 @@
-'use client'
+"use client";
 
-import { navItems } from "@/options/helpers"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { useState } from "react"
-import { BtnNav, ChildrenUl, NavA, NavItem, NavList } from "./HeaderStyles"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { navItems } from "./constants";
+import { Navbox } from "./styles";
 
+const Navbar = (): JSX.Element => {
+  const pathname = usePathname();
+  const [opened, setOpened] = useState<boolean>(false);
 
-const Navbar: React.FC = () => {
-  const pathname = usePathname()
-  const [opened, setOpened] = useState<boolean>(false)
-  
   return (
-    <nav>
-      <BtnNav aria-label="Основное меню" $active={opened} onClick={() => setOpened(!opened)}>
-        <span></span>
-      </BtnNav>
-      <NavList $show={opened}>
-        {navItems.map(item => {
-          const activeItem = pathname === item.path
-          const isChild = !!item.children
-          return <NavItem key={item.id}>
-            <NavA href={item.path} $active={activeItem} onClick={() => setOpened(false)}>{item.title}</NavA>
-            {isChild &&
-              <ChildrenUl>
-                {item.children!.map(child => <li key={child.id}><Link href={child.path}>{child.title}</Link></li>)}
-              </ChildrenUl>
-            }
-        </NavItem>
+    <Navbox>
+      <ul>
+        {navItems.map((item) => {
+          const activeItem = pathname === item.path;
+          const isChild = !!item.children;
+          return (
+            <li key={item.id}>
+              <Link href={item.path}>{item.title}</Link>
+              {isChild && (
+                <ul>
+                  {item.children!.map((child) => (
+                    <li key={child.id}>
+                      <Link href={child.path}>{child.title}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          );
         })}
-      </NavList>
-    </nav>
-  )
-}
+      </ul>
+    </Navbox>
+  );
+};
 
-export default Navbar
+export default Navbar;

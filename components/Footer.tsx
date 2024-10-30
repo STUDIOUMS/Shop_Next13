@@ -2,11 +2,10 @@
 
 import logo from "@/assets/logo.webp";
 import Image from "next/image";
-import { navItems } from "@/options/helpers";
 import Link from "next/link";
 import { styled } from "styled-components";
+import { navItems } from "./Header/constants";
 import Socials from "./Socials";
-import { CatType } from "@/options/types";
 
 // Styles
 const FooterBox = styled.footer`

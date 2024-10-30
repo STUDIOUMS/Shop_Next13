@@ -1,5 +1,5 @@
 import { BlogItem, BreadCrumbsType } from "@/options/types";
-import BreadCrumbs from "@/components/BreadCrumbs";
+import BreadCrumbs from "@/components_old/BreadCrumbs";
 import { useQuery } from "react-query";
 
 type BlogProps = {

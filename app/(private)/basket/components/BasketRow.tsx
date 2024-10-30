@@ -1,29 +1,34 @@
-import PriceBox from "@/components/PriceBox"
-import Counter from "@/ui/Counter"
-import { removeOrder } from "@/store/appSlice"
-import { useAppDispatch } from "@/store/hooks"
-import { BasketType } from "@/options/types"
-import Image from "next/image"
-import Link from "next/link"
-import { BasketItem, BasketItemText, Delete, MobileTitle } from "./BasketStyles"
-import { useState } from "react"
-import Modal from "@/ui/Modal"
-import Btn from "@/ui/Btn"
+import PriceBox from "@/components_old/PriceBox";
+import Counter from "@/ui_old/Counter";
+import { removeOrder } from "@/store/appSlice";
+import { useAppDispatch } from "@/store/hooks";
+import { BasketType } from "@/options/types";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  BasketItem,
+  BasketItemText,
+  Delete,
+  MobileTitle,
+} from "./BasketStyles";
+import { useState } from "react";
+import Modal from "@/ui_old/Modal";
+import Btn from "@/ui_old/Btn";
 
 interface IBasketRow {
-  order: BasketType
+  order: BasketType;
 }
 
 const BasketRow: React.FC<IBasketRow> = ({ order }) => {
-  const dispatch = useAppDispatch()
-  const [modal, setModal] = useState<boolean>(false)
+  const dispatch = useAppDispatch();
+  const [modal, setModal] = useState<boolean>(false);
 
   // removeItem
   const removeItem = () => {
-    setModal(false)
-    dispatch(removeOrder(order.id))
-    document.body.classList.remove('overflow')
-  }
+    setModal(false);
+    dispatch(removeOrder(order.id));
+    document.body.classList.remove("overflow");
+  };
 
   return (
     <>
@@ -34,9 +39,15 @@ const BasketRow: React.FC<IBasketRow> = ({ order }) => {
           </Link>
         </div>
         <div>
-          <h3><Link href={`/product/${order.slug}`}>{order.title}</Link></h3>
-          <BasketItemText><span>Фасовка:</span> <b>{order.pack}</b></BasketItemText>
-          <BasketItemText><span>Код товара:</span> <b>{order.art}</b></BasketItemText>
+          <h3>
+            <Link href={`/product/${order.slug}`}>{order.title}</Link>
+          </h3>
+          <BasketItemText>
+            <span>Фасовка:</span> <b>{order.pack}</b>
+          </BasketItemText>
+          <BasketItemText>
+            <span>Код товара:</span> <b>{order.art}</b>
+          </BasketItemText>
         </div>
         <div>
           <MobileTitle>Цена</MobileTitle>
@@ -53,7 +64,11 @@ const BasketRow: React.FC<IBasketRow> = ({ order }) => {
         <Delete onClick={() => setModal(true)} />
       </BasketItem>
 
-      <Modal show={modal} handler={() => setModal(false)} title="Удаление товара">
+      <Modal
+        show={modal}
+        handler={() => setModal(false)}
+        title="Удаление товара"
+      >
         <p>Подтерждаете удаление товара?</p>
         <div className="grid grid-2">
           <Btn title="Отмена" handler={() => setModal(false)} />
@@ -61,7 +76,7 @@ const BasketRow: React.FC<IBasketRow> = ({ order }) => {
         </div>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default BasketRow
+export default BasketRow;

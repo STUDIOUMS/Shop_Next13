@@ -1,8 +1,8 @@
-import { createArray } from "@/options/helpers"
-import { Skelet } from "@/ui/Skelet"
+import { createArray } from "@/options/helpers";
+import { Skelet } from "@/ui_old/Skelet";
 
 export default function Loading() {
-  const list = createArray(3)
+  const list = createArray(3);
 
   return (
     <div className="section">
@@ -10,12 +10,14 @@ export default function Loading() {
       <div className="section">
         <Skelet $size="h1" $width="text" $margin="big" />
       </div>
-      {list.map(el => <div key={el} className="section">
-        <Skelet />
-        <Skelet $size="line" $width="title" />
-        <Skelet $size="line" $width="title" />
-        <Skelet $size="line" $width="title" />
-      </div>)}
+      {list.map((el) => (
+        <div key={el} className="section">
+          <Skelet />
+          <Skelet $size="line" $width="title" />
+          <Skelet $size="line" $width="title" />
+          <Skelet $size="line" $width="title" />
+        </div>
+      ))}
     </div>
-  )
+  );
 }
