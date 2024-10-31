@@ -1,11 +1,11 @@
-import Btn from "@/ui_old/Btn";
+import CustomBtn from "@/ui/CustomBtn";
 
 export default function NotFound() {
   return (
     <div className="section">
       <h2>Not Found</h2>
       <p>Could not find requested resource</p>
-      <Btn to="/" title="Вернуться на главную" className="mb-expand" />
+      <CustomBtn href="/">Вернуться на главную</CustomBtn>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { ERROR_TEXT } from "@/options/constants";
 import CustomBtn from "@/ui/CustomBtn";
+import CustomInput from "@/ui/CustomInput";
 import CustomModal from "@/ui/CustomModal";
 import { useForm } from "react-hook-form";
 import Btn from "../../ui_old/Btn";
@@ -34,48 +35,37 @@ const FeedbackModal = (props: FeedbackModalProps): JSX.Element => {
   return (
     <CustomModal close={close} open={show} title="Обратная связь">
       <form onSubmit={handleSubmit(sendMessage)} autoCorrect="false">
-        <FormLine label="Ваше имя *">
-          <FormInput
-            placeholder="Ваше имя"
-            expand
-            valid={register("name", { required: ERROR_TEXT })}
-            error={errors.name && errors.name?.message}
-          />
-        </FormLine>
+        <CustomInput
+          label="ФИО"
+          fullWidth
+          inputProps={{ ...register("name", { required: ERROR_TEXT }) }}
+          helperText={errors.name && errors.name.message}
+          error={errors.name ? true : false}
+        />
 
-        <FormLine label="Ваш E-mail *">
-          <FormInput
-            placeholder="mail@mail.com"
-            expand
-            type="email"
-            valid={register("email", {
-              required: ERROR_TEXT,
-              pattern: {
-                value: /^\S+@\S+$/i,
-                message: "Некорректный e-mail",
-              },
-            })}
-            error={errors.email && errors.email?.message}
-          />
-        </FormLine>
+        <CustomInput
+          label="E-mail"
+          fullWidth
+          type="email"
+          inputProps={{ ...register("email") }}
+        />
 
-        <FormLine label="Ваш телефон">
-          <FormInput
-            placeholder="+ 7 (123) 45-67-89"
-            expand
-            type="tel"
-            valid={register("phone")}
-          />
-        </FormLine>
+        <CustomInput
+          label="Телефон"
+          fullWidth
+          type="tel"
+          inputProps={{ ...register("phone", { required: ERROR_TEXT }) }}
+          helperText={errors.phone && errors.phone.message}
+          error={errors.phone ? true : false}
+        />
 
-        <FormLine label="Сообщение">
-          <FormInput
-            placeholder="Сообщение"
-            expand
-            type="area"
-            valid={register("message")}
-          />
-        </FormLine>
+        <CustomInput
+          label="Сообщение"
+          fullWidth
+          multiline
+          rows={3}
+          inputProps={{ ...register("message") }}
+        />
 
         <CustomBtn type="submit" color="primary" fullWidth>
           Оправить
