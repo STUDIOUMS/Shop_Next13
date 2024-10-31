@@ -4,6 +4,7 @@ import Providers from "@/components/Providers";
 import ScrollToTop from "@/components/ScrollToTop";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
+import { Container } from "@mui/material";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ const RootLayout = (props: LayoutProps): JSX.Element => {
         <Providers>
           <div className="app">
             <Header />
-            <main>{children}</main>
+            <Container>{children}</Container>
             <Footer />
           </div>
           <ScrollToTop />

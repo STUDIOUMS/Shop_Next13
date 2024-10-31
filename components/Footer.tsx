@@ -1,40 +1,34 @@
 "use client";
 
-import logo from "@/assets/logo.webp";
-import Image from "next/image";
+import {
+  Box,
+  Container,
+  Grid2,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import Link from "next/link";
-import { styled } from "styled-components";
+import Image from "next/image";
+import logo from "@/assets/logo.webp";
 import { navItems } from "./Header/constants";
 import Socials from "./Socials";
 
-// Styles
-const FooterBox = styled.footer`
-  background: var(--color-extralight);
-  padding: var(--gap) 0 calc(var(--gap) * 2);
-  ul {
-    margin: 0;
-    padding: 0;
-    li {
-      list-style: none;
-    }
-  }
-  @media screen and (max-width: 750px) {
-    text-align: center;
-  }
-`;
-const FooterTitle = styled.div`
-  font-family: var(--font2);
-  font-size: 20px;
-  font-weight: 500;
-  margin: 0 0 var(--gap);
-`;
-
 const Footer = (): JSX.Element => {
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
+
   return (
-    <FooterBox>
-      <div className="container">
-        <div className="grid grid-4 grid-mb-1">
-          <div>
+    <Box
+      sx={(theme) => ({
+        bgcolor: theme.palette.grey[100],
+        pt: 8,
+        pb: 8,
+      })}
+    >
+      <Container>
+        <Grid2 container spacing={6}>
+          <Grid2 size={{ lg: 3, xs: 12 }}>
             <div className="header-logo">
               <Image
                 src={logo.src}
@@ -45,28 +39,35 @@ const Footer = (): JSX.Element => {
               />
             </div>
             &copy; 2023 site.com
-          </div>
-          <div className="mb-hidden">
-            <FooterTitle>Меню</FooterTitle>
-            <ul>
-              {navItems.map((el) => (
-                <li key={el.id}>
-                  <Link href={el.path}>{el.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="mb-hidden">
-            <FooterTitle>Категории</FooterTitle>
-          </div>
-          <div>
-            <FooterTitle className="mb-hidden">Контакты</FooterTitle>
+          </Grid2>
+
+          {isDesktop && (
+            <>
+              <Grid2 size={{ lg: 3, xs: 12 }}>
+                <Typography variant="h3">Меню</Typography>
+                <ul>
+                  {navItems.map((el) => (
+                    <li key={el.id}>
+                      <Link href={el.path}>{el.title}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </Grid2>
+
+              <Grid2 size={{ lg: 3, xs: 12 }}>
+                <Typography variant="h3">Категории</Typography>
+              </Grid2>
+            </>
+          )}
+
+          <Grid2 size={{ lg: 3, xs: 12 }}>
+            <Typography variant="h3">Контакты</Typography>
             <Socials />
             <p>+7 (999) 999-99-99</p>
-          </div>
-        </div>
-      </div>
-    </FooterBox>
+          </Grid2>
+        </Grid2>
+      </Container>
+    </Box>
   );
 };
 

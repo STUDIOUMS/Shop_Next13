@@ -14,11 +14,17 @@ const CustomModal = (props: CustomModalProps): JSX.Element => {
     <Dialog
       open={open}
       onClose={close}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
+      sx={{
+        "& .MuiPaper-root": {
+          borderRadius: "8px",
+          maxWidth: "520px",
+        },
+      }}
     >
-      <DialogTitle>{title}</DialogTitle>
-      <DialogContent>{children}</DialogContent>
+      <DialogTitle sx={{ p: "30px" }}>{title}</DialogTitle>
+      <DialogContent sx={{ p: "8px 30px 30px !important" }}>
+        {children}
+      </DialogContent>
     </Dialog>
   );
 };

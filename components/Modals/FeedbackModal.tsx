@@ -2,12 +2,10 @@ import { ERROR_TEXT } from "@/options/constants";
 import CustomBtn from "@/ui/CustomBtn";
 import CustomInput from "@/ui/CustomInput";
 import CustomModal from "@/ui/CustomModal";
+import { CircularProgress } from "@mui/material";
 import { useForm } from "react-hook-form";
-import Btn from "../../ui_old/Btn";
-import FormInput from "../../ui_old/FormInput";
-import FormLine from "../../ui_old/FormLine";
 
-type FeedBackFormValues = {
+type FormData = {
   name: string;
   email: string;
   phone: string;
@@ -25,16 +23,15 @@ const FeedbackModal = (props: FeedbackModalProps): JSX.Element => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<FeedBackFormValues>();
+  } = useForm<FormData>();
 
-  // sendMessage
-  const sendMessage = (data: any) => {
+  const feedbackHandler = (data: any) => {
     console.log(data);
   };
 
   return (
     <CustomModal close={close} open={show} title="Обратная связь">
-      <form onSubmit={handleSubmit(sendMessage)} autoCorrect="false">
+      <form onSubmit={handleSubmit(feedbackHandler)} autoCorrect="false">
         <CustomInput
           label="ФИО"
           fullWidth
@@ -69,6 +66,7 @@ const FeedbackModal = (props: FeedbackModalProps): JSX.Element => {
 
         <CustomBtn type="submit" color="primary" fullWidth>
           Оправить
+          <CircularProgress size={20} color="secondary" sx={{ ml: 3 }} />
         </CustomBtn>
       </form>
     </CustomModal>

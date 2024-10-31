@@ -1,18 +1,15 @@
-'use client'
+"use client";
 
-import { Navigation, Pagination } from "swiper/modules"
-import { Swiper, SwiperSlide } from "swiper/react"
-import ozon from "@/assets/ozon.svg"
-import wildberries from "@/assets/wildberries.webp"
-import svetofor from "@/assets/svetofor.webp"
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import { styled } from "styled-components"
-
-interface IBrands {
-  title?: string
-}
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import ozon from "@/assets/ozon.svg";
+import wildberries from "@/assets/wildberries.webp";
+import svetofor from "@/assets/svetofor.webp";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Box } from "@mui/material";
+import Image from "next/image";
 
 const list = [
   { id: 1, img: ozon },
@@ -23,21 +20,12 @@ const list = [
   { id: 6, img: svetofor },
   { id: 7, img: ozon },
   { id: 8, img: wildberries },
-  { id: 9, img: svetofor }
-]
+  { id: 9, img: svetofor },
+];
 
-const Imgbox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 0;
-  img { display: block; max-width: 140px; max-height: 50px; }
-`
-
-const Brands: React.FC<IBrands> = ({ title = 'Бренды' }) => {
+const Brands = (): JSX.Element => {
   return (
-    <div className="carousel_body">
-      <div className="pagetitle">{title}</div>
+    <Box>
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={16}
@@ -47,19 +35,25 @@ const Brands: React.FC<IBrands> = ({ title = 'Бренды' }) => {
         breakpoints={{
           400: { slidesPerView: 3 },
           750: { slidesPerView: 4 },
-          1020: { slidesPerView: 6 }
+          1020: { slidesPerView: 6 },
         }}
       >
-        {list.map(el => (
+        {list.map((el) => (
           <SwiperSlide key={el.id}>
-            <Imgbox>
-              <img src={el.img.src} alt="" />
-            </Imgbox>
-          </SwiperSlide>  
+            <Box sx={{ pt: 6, pb: 6 }}>
+              <Image
+                src={el.img.src}
+                alt=""
+                width={100}
+                height={100}
+                style={{ objectFit: "contain" }}
+              />
+            </Box>
+          </SwiperSlide>
         ))}
       </Swiper>
-    </div>
-  )
-}
+    </Box>
+  );
+};
 
-export default Brands
+export default Brands;

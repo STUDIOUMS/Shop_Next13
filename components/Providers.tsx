@@ -1,7 +1,7 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ThemeProvider } from "@mui/material";
+import { GlobalStyles, ThemeProvider } from "@mui/material";
 import theme from "@/theme";
 
 type ProvidersProps = {
@@ -14,7 +14,18 @@ const Providers = (props: ProvidersProps): JSX.Element => {
   const { children } = props;
   return (
     <QueryClientProvider client={client}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles
+          styles={{
+            body: {
+              margin: 0,
+              fontFamily: theme.typography.body1.fontFamily,
+              fontSize: theme.typography.body1.fontSize,
+            },
+          }}
+        />
+        {children}
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };

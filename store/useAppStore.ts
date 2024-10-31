@@ -11,7 +11,7 @@ interface appState {
   setView: (data: View) => void;
 }
 
-const useAppStore = create<appState>()(
+export const useAppStore = create<appState>()(
   devtools(
     persist(
       (set) => ({

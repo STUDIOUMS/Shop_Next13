@@ -20,6 +20,9 @@ const CustomBtn = (props: ButtonProps) => {
         "&.MuiButton-sizeLarge": {
           p: "20px 32px",
         },
+        "&:disabled": {
+          opacity: 0.5,
+        },
       })}
       {...props}
     />

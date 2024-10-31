@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material";
 
 const theme = createTheme({
+  spacing: 4,
   palette: {
     primary: {
       main: "rgb(87, 127, 27)",
@@ -28,9 +29,11 @@ const theme = createTheme({
     },
     h1: {
       fontSize: 28,
+      fontWeight: 700,
     },
     h2: {
       fontSize: 24,
+      fontWeight: 700,
     },
     h3: {
       fontSize: 20,

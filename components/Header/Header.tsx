@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Container } from "@mui/material";
+import { Box, Link } from "@mui/material";
 import Navbar from "./NavBar";
 import CustomBtn from "@/ui/CustomBtn";
-import CustomModal from "@/ui/CustomModal";
 import FeedbackModal from "../Modals/FeedbackModal";
+import { MiddleHeader, Wrap } from "./styles";
+import Image from "next/image";
+import logo from "@/assets/logo.webp";
+import SmallCart from "./SmallCart";
 
 const Header = (): JSX.Element => {
   const [feedBack, setFeedBack] = useState<boolean>(false);
@@ -17,17 +20,10 @@ const Header = (): JSX.Element => {
           borderBottomColor: theme.palette.divider,
           borderBottomWidth: 1,
           borderBottomStyle: "solid",
-          pt: 2,
-          pb: 2,
+          p: "16px 0",
         })}
       >
-        <Container
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+        <Wrap>
           <Navbar />
           <CustomBtn
             color="secondary"
@@ -36,37 +32,25 @@ const Header = (): JSX.Element => {
           >
             Обратная связь
           </CustomBtn>
-        </Container>
+        </Wrap>
       </Box>
-      {/* <HeaderTop>
-        <HeaderContainer className="container">
-          <Navbar />
-          <Btn
-            title="Обратная связь"
-            size="small"
-            handler={() => setFeedBack(true)}
-          />
-        </HeaderContainer>
-      </HeaderTop>
 
-      <HeaderMiddle>
-        <HeaderContainer className="container">
-          <HeaderLogo>
-            <Link href="/">
-              <Image
-                src={logo.src}
-                alt=""
-                width={50}
-                height={50}
-                style={{ objectFit: "contain" }}
-              />
-            </Link>
-          </HeaderLogo>
-          <CatPopup cats={[]} />
-          <Search />
+      <MiddleHeader>
+        <Wrap>
+          <Link href="/">
+            <Image
+              src={logo.src}
+              alt=""
+              width={50}
+              height={50}
+              style={{ objectFit: "contain" }}
+            />
+          </Link>
+          {/* <CatPopup cats={[]} />
+          <Search /> */}
           <SmallCart />
-        </HeaderContainer>
-      </HeaderMiddle> */}
+        </Wrap>
+      </MiddleHeader>
 
       <FeedbackModal close={() => setFeedBack(false)} show={feedBack} />
     </>
