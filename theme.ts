@@ -22,6 +22,7 @@ const theme = createTheme({
     body1: {
       fontSize: 16,
       lineHeight: "20px",
+      marginBottom: "24px",
     },
     body2: {
       fontSize: 14,
@@ -30,14 +31,17 @@ const theme = createTheme({
     h1: {
       fontSize: 28,
       fontWeight: 700,
+      marginBottom: "32px",
     },
     h2: {
       fontSize: 24,
       fontWeight: 700,
+      marginBottom: "24px",
     },
     h3: {
       fontSize: 20,
       fontWeight: 700,
+      marginBottom: "24px",
     },
   },
 });

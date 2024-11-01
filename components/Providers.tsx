@@ -16,13 +16,16 @@ const Providers = (props: ProvidersProps): JSX.Element => {
     <QueryClientProvider client={client}>
       <ThemeProvider theme={theme}>
         <GlobalStyles
-          styles={{
+          styles={(theme) => ({
             body: {
               margin: 0,
               fontFamily: theme.typography.body1.fontFamily,
               fontSize: theme.typography.body1.fontSize,
             },
-          }}
+            a: {
+              color: "inherit",
+            },
+          })}
         />
         {children}
       </ThemeProvider>

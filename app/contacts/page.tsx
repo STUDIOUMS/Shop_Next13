@@ -1,6 +1,7 @@
+import BreadCrumbs from "@/components/BreadCrumbs";
 import { BreadCrumbsType } from "@/options/types";
-import BreadCrumbs from "@/components_old/BreadCrumbs";
-import styles from "./contacts.module.scss";
+import Section from "@/ui/Section";
+import { Grid2, Typography } from "@mui/material";
 import MapFrame from "./MapFrame";
 
 // Metatags
@@ -14,13 +15,13 @@ const crumbs: BreadCrumbsType[] = [{ name: "Контакты", slug: "contacts" 
 
 export default function Page() {
   return (
-    <div className="section">
+    <Section>
       <BreadCrumbs list={crumbs} />
-      <h1>Контакты</h1>
+      <Typography variant="h1">Контакты</Typography>
 
-      <div className="grid grid-2 grid-tb-1">
-        <div>
-          <h4>Телефоны</h4>
+      <Grid2 container spacing={6}>
+        <Grid2 size={{ xs: 12, lg: 6 }}>
+          <Typography variant="h3">Телефоны</Typography>
           <p>
             <a href="tel:83452388366">8 (3452) 388-366</a> - городской
             <br />
@@ -29,23 +30,23 @@ export default function Page() {
             <a href="tel:89199508366">8 (919)-950-8366</a>
           </p>
 
-          <h4>E-mail</h4>
+          <Typography variant="h3">E-mail</Typography>
           <p>
             <a href="mailto:alba72-22@yandex.ru">alba72-22@yandex.ru</a>
           </p>
 
-          <h4>Группа VK</h4>
+          <Typography variant="h3">Группа VK</Typography>
           <p>
             <a href="https://vk.com/alba_higo" target="_blank">
               https://vk.com/alba_higo
             </a>
           </p>
-        </div>
-        <div className={styles.mapbox}>
-          <h4>Карта</h4>
+        </Grid2>
+        <Grid2 size={{ xs: 12, lg: 6 }}>
+          <Typography variant="h3">Карта</Typography>
           <MapFrame />
-        </div>
-      </div>
-    </div>
+        </Grid2>
+      </Grid2>
+    </Section>
   );
 }
