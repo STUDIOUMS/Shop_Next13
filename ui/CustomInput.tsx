@@ -19,6 +19,9 @@ const CustomInput = (props: TextFieldProps): JSX.Element => {
           {
             borderColor: theme.palette.common.black,
           },
+        "& .MuiFormHelperText-root": {
+          fontSize: theme.typography.body2.fontSize,
+        },
       })}
     />
   );

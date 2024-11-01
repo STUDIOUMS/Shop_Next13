@@ -12,7 +12,7 @@ export const metadata = {
 const crumbs: BreadCrumbsType[] = [{ name: "Блог", slug: "blog" }];
 
 export default async function Blog() {
-  const posts = await getData("/posts?_limit=10");
+  const posts = await getData("/blog/articles");
 
   return (
     <div className="section">
