@@ -22,6 +22,7 @@ const Banner = (props: BannerProps): JSX.Element => {
         alt=""
         fill={true}
         style={{ borderRadius: "6px", objectFit: "cover" }}
+        sizes="200px"
       />
     </Box>
   );

@@ -1,5 +1,6 @@
-import { Dialog, DialogContent, DialogProps, DialogTitle } from "@mui/material";
-import React from "react";
+import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
+import closeIcon from "@/assets/close.svg";
+import Image from "next/image";
 
 type CustomModalProps = {
   children: React.ReactNode;
@@ -21,7 +22,16 @@ const CustomModal = (props: CustomModalProps): JSX.Element => {
         },
       }}
     >
-      <DialogTitle sx={{ p: "30px" }}>{title}</DialogTitle>
+      <DialogTitle
+        sx={{ p: "30px" }}
+        display="flex"
+        justifyContent="space-between"
+      >
+        {title}
+        <IconButton onClick={close}>
+          <Image src={closeIcon} alt="" width={20} height={20} />
+        </IconButton>
+      </DialogTitle>
       <DialogContent sx={{ p: "8px 30px 30px !important" }}>
         {children}
       </DialogContent>

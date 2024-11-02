@@ -3,13 +3,7 @@
 import BasketHead from "./BasketHead";
 import BasketRow from "./BasketRow";
 import BasketTotal from "./BasketTotal";
-import Btn from "@/ui_old/Btn";
-import Alert from "@/ui_old/Alert";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import Title from "@/ui_old/Title";
-import Modal from "@/ui_old/Modal";
 import { useState } from "react";
-import { cleanOrders } from "@/store/appSlice";
 
 const BasketList = () => {
   const [modal, setModal] = useState<boolean>(false);

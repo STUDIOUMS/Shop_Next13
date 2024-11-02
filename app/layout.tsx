@@ -2,9 +2,9 @@
 
 import Providers from "@/components/Providers";
 import ScrollToTop from "@/components/ScrollToTop";
-import Header from "@/components/Header/Header";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Container, Snackbar } from "@mui/material";
+import { Box, Container, Snackbar, Stack } from "@mui/material";
 import { useAppStore } from "@/store/useAppStore";
 
 type LayoutProps = {
@@ -19,11 +19,13 @@ const RootLayout = (props: LayoutProps): JSX.Element => {
     <html lang="en">
       <body>
         <Providers>
-          <div className="app">
+          <Stack sx={{ minHeight: "100vh" }} className="app">
             <Header />
-            <Container>{children}</Container>
+            <Box sx={{ flexGrow: 1 }}>
+              <Container>{children}</Container>
+            </Box>
             <Footer />
-          </div>
+          </Stack>
           <Snackbar
             open={!!message}
             autoHideDuration={5000}

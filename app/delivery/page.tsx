@@ -2,6 +2,7 @@ import { BreadCrumbsItem } from "@/types";
 import { Typography } from "@mui/material";
 import Section from "@/ui/Section";
 import BreadCrumbs from "@/ui/BreadCrumbs";
+import View from "@/ui/View";
 
 // Metatags
 export const metadata = {
@@ -19,6 +20,7 @@ export default function Page() {
     <Section>
       <BreadCrumbs links={crumbs} />
       <Typography variant="h1">Доставка и оплата</Typography>
+      <View />
     </Section>
   );
 }

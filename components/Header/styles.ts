@@ -30,10 +30,26 @@ export const Navbox = styled(Box)(({ theme }) => ({
       display: "block",
       padding: theme.spacing(2),
       textDecoration: "none",
+      "&:hover, &.active": {
+        color: theme.palette.primary.main,
+      },
     },
     ul: {
+      backgroundColor: theme.palette.common.white,
+      borderRadius: "6px",
+      boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+      padding: theme.spacing(4),
+      display: "block",
       position: "absolute",
       left: 0,
+      zIndex: 700,
+      opacity: 0,
+      visibility: "hidden",
+      transition: theme.transitions.create(["opacity", "visibility"]),
+    },
+    "&:hover ul": {
+      opacity: 1,
+      visibility: "visible",
     },
   },
 }));

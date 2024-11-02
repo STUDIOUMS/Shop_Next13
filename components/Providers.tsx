@@ -1,8 +1,9 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "react-query";
-import { GlobalStyles, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import theme from "@/theme";
+import Styles from "./Styles";
 
 type ProvidersProps = {
   children: React.ReactNode;
@@ -15,31 +16,7 @@ const Providers = (props: ProvidersProps): JSX.Element => {
   return (
     <QueryClientProvider client={client}>
       <ThemeProvider theme={theme}>
-        <GlobalStyles
-          styles={{
-            body: {
-              margin: 0,
-              fontFamily: theme.typography.body1.fontFamily,
-              fontSize: theme.typography.body1.fontSize,
-            },
-            p: {
-              marginBottom: theme.spacing(6),
-              marginTop: theme.spacing(6),
-            },
-            ul: {
-              marginBottom: theme.spacing(6),
-              marginTop: theme.spacing(6),
-              marginLeft: theme.spacing(4),
-              padding: 0,
-              li: {
-                listStyle: "inside disc",
-              },
-            },
-            a: {
-              color: "inherit",
-            },
-          }}
-        />
+        <Styles />
         {children}
       </ThemeProvider>
     </QueryClientProvider>
