@@ -1,6 +1,8 @@
-import { BreadCrumbsItem } from "@/types";
+import { BlogItem, BreadCrumbsItem, Response } from "@/types";
 import BreadCrumbs from "@/ui/BreadCrumbs";
+import Section from "@/ui/Section";
 import { getData } from "@/utils/api";
+import { Typography } from "@mui/material";
 
 // Metatags
 export const metadata = {
@@ -12,13 +14,15 @@ export const metadata = {
 const crumbs: BreadCrumbsItem[] = [{ name: "Блог", slug: "blog" }];
 
 export default async function Blog() {
-  const posts = await getData("/blog/articles");
+  const posts = await getData<Response<BlogItem>>("/blog/articles");
 
   return (
-    <div className="section">
+    <Section>
       <BreadCrumbs links={crumbs} />
       <h1>Блог</h1>
-      <pre>{JSON.stringify(posts, null, 2)}</pre>
-    </div>
+      {posts.results.length === 0 && (
+        <Typography variant="body1">Нет записей в базе данных</Typography>
+      )}
+    </Section>
   );
 }

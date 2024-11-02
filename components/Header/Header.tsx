@@ -16,10 +16,10 @@ import { Cat, Response } from "@/types";
 const Header = (): JSX.Element => {
   const [feedBack, setFeedBack] = useState<boolean>(false);
 
-  const { data, isSuccess, isLoading } = useGetData<Response<Cat>>({
-    key: ["cats"],
-    uri: "/catalog/categories",
-  });
+  // const { data, isSuccess, isLoading } = useGetData<Response<Cat>>({
+  //   key: ["cats"],
+  //   uri: "/catalog/categories",
+  // });
 
   return (
     <>
@@ -56,8 +56,8 @@ const Header = (): JSX.Element => {
           </Link>
 
           <Box sx={{ ml: 8, mr: "auto" }}>
-            {isLoading && <CircularProgress size={24} />}
-            {isSuccess && <CatPopup cats={[]} />}
+            {/* {isLoading && <CircularProgress size={24} />}
+            {isSuccess && <CatPopup cats={[]} />} */}
           </Box>
 
           {/* <Search /> */}
