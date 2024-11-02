@@ -1,7 +1,7 @@
-import Advantages from "@/components/Advantages/Advantages";
+import Advantages from "@/components/Advantages";
 import Banner from "@/components/Banner";
 import BigBanner from "@/components/BigBanner/BigBanner";
-import Brands from "@/components/Brands/Brands";
+import Brands from "@/components/Brands";
 import Section from "@/ui/Section";
 import { Grid2 } from "@mui/material";
 import banner4 from "../assets/bigbanners/banner3.webp";

@@ -3,14 +3,15 @@
 import { useCallback, useEffect, useRef } from "react";
 import View from "@/OLD_ui/View/View";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { styled } from "styled-components";
 import { SortItem } from "./constants";
+import { Box, Stack } from "@mui/material";
 
-interface ISort {
+type SortProps = {
   list: SortItem[];
-}
+};
 
-const Sort: React.FC<ISort> = ({ list }) => {
+const Sort = (props: SortProps): JSX.Element => {
+  const { list } = props;
   const ref = useRef<HTMLSelectElement>(null);
 
   // url params
@@ -49,24 +50,22 @@ const Sort: React.FC<ISort> = ({ list }) => {
   const sortHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     let uri = createQueryString("ordering", e.target.value);
     router.push(pathname + `?` + uri);
-    dispatch(setLoadSort(true));
   };
 
   return (
-    <SortBox>
-      <SortBoxLeft>
-        <SelectBox onChange={sortHandler} defaultValue={valueQuery} ref={ref}>
+    <Stack direction="row" justifyContent="space-between">
+      <Box>
+        {/* <SelectBox onChange={sortHandler} defaultValue={valueQuery} ref={ref}>
           <option value="default-value">Сортировать</option>
           {list.map((el) => (
             <option key={el.value} value={el.value}>
               {el.name}
             </option>
           ))}
-        </SelectBox>
-        {load && <Spinner size="small" />}
-      </SortBoxLeft>
+        </SelectBox> */}
+      </Box>
       <View />
-    </SortBox>
+    </Stack>
   );
 };
 

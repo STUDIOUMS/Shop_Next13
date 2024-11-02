@@ -1,12 +1,10 @@
-import { Order, View } from "@/options/types";
+import { Order } from "@/types";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
 interface OrderStore {
   orders: Order[];
-  view: View;
   setOrder: (data: Order) => void;
-  setView: (data: View) => void;
 }
 
 export const useOrderStore = create<OrderStore>()(
@@ -14,10 +12,6 @@ export const useOrderStore = create<OrderStore>()(
     persist(
       (set) => ({
         orders: [],
-
-        view: "grid",
-
-        setView: (data) => set(() => ({ view: data })),
 
         setOrder: (data) =>
           set((state) => {

@@ -2,31 +2,15 @@
 
 import { useCallback } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { setLoadPager } from "@/store/appSlice";
-import Btn from "../OLD_ui/Btn";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import Spinner from "../OLD_ui/Spinner";
 import { styled } from "styled-components";
 
-interface ILoadmore {
+type LoadmoreProps = {
   pages: number;
   all: number;
-}
+};
 
-// Styles
-const Wrap = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  & > *:nth-child(2) {
-    margin-left: var(--pb);
-  }
-`;
-
-const Loadmore: React.FC<ILoadmore> = ({ all, pages }) => {
-  const load = useAppSelector((state) => state.app.loadPager);
-  const dispatch = useAppDispatch();
-
+const Loadmore = (props: LoadmoreProps): JSX.Element => {
+  const { all, pages } = props;
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -44,7 +28,6 @@ const Loadmore: React.FC<ILoadmore> = ({ all, pages }) => {
   const loadmoreHandler = () => {
     const uri = setLoadmore();
     router.push(pathname + "?" + uri);
-    dispatch(setLoadPager(true));
   };
 
   // hide if there's no need

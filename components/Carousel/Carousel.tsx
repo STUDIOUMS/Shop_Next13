@@ -2,24 +2,18 @@
 
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Product } from "@/types";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { ProductType } from "@/options/types";
-import Card from "@/components_old/Card/Card";
-import Alert from "../../OLD_ui/Alert";
 
 interface ICarousel {
   error: boolean;
-  list: ProductType[];
+  list: Product[];
   title: string;
 }
 
 const Carousel: React.FC<ICarousel> = ({ error, list, title }) => {
-  if (error) {
-    return <Alert color="danger">Server error</Alert>;
-  }
-
   return (
     <div className="carousel_body">
       <div className="pagetitle">{title}</div>
@@ -38,7 +32,7 @@ const Carousel: React.FC<ICarousel> = ({ error, list, title }) => {
       >
         {list.map((el) => (
           <SwiperSlide key={el.id}>
-            <Card el={el} slide />
+            <Good el={el} slide />
           </SwiperSlide>
         ))}
       </Swiper>

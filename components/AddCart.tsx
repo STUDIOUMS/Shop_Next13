@@ -1,20 +1,20 @@
-import { setOrder, setToast } from "@/store/appSlice";
-import { BasketType, ProductType } from "@/options/types";
-import { useAppDispatch } from "../store/hooks";
-import Btn from "../OLD_ui/Btn";
+import { useOrderStore } from "@/store/useOrderStore";
+import { Order, Product } from "@/types";
+import CustomBtn from "@/ui/CustomBtn";
 
-interface IAddCart {
-  big?: boolean;
-  el: ProductType;
+type AddCartProps = {
+  el: Product;
   pack: string;
   img: string;
   price: string;
-}
+  big?: boolean;
+};
 
-const AddCart: React.FC<IAddCart> = ({ big, el, img, pack, price }) => {
-  const dispatch = useAppDispatch();
+const AddCart = (props: AddCartProps): JSX.Element => {
+  const { el, img, pack, price, big } = props;
+  const { setOrder } = useOrderStore();
 
-  const order: BasketType = {
+  const order: Order = {
     id: String(el.id) + "-" + pack,
     title: el.title,
     slug: el.slug,
@@ -25,13 +25,11 @@ const AddCart: React.FC<IAddCart> = ({ big, el, img, pack, price }) => {
     pack,
   };
 
-  // addCartHandler
-  const addCartHandler = () => {
-    dispatch(setOrder(order));
-    dispatch(setToast(`Товар, ${el.title} - ${pack}, добавлен в корзину`));
-  };
-
-  return <Btn title="В корзину" color="success" handler={addCartHandler} />;
+  return (
+    <CustomBtn color="primary" onClick={() => setOrder(order)}>
+      В корзину
+    </CustomBtn>
+  );
 };
 
 export default AddCart;

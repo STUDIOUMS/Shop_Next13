@@ -1,42 +1,37 @@
-import { set_currency } from "@/options/settings"
-import { styled } from "styled-components"
+import { CURRENCY } from "@/constants";
+import { Typography } from "@mui/material";
+import { Box } from "@mui/system";
 
-type PriceSizeType = 'large' | 'small'
+type PriceSizeType = "large" | "small";
 
-interface IPriceBox {
-  price: string
-  oldprice?: string
-  size?: PriceSizeType
-}
+type PriceBoxProps = {
+  price: string;
+  oldprice?: string;
+  size?: PriceSizeType;
+};
 
-// Styles
-export const Price = styled.div<{ $size: PriceSizeType }>`
-  color: var(--color-text);
-  font-size: ${({ $size }) => $size === 'large' ? '24px' : '18px'};
-  font-weight: ${({ $size }) => $size === 'large' ? '700' : '500'};
-  margin: 0 0 var(--pb);
-  small {
-    color: var(--color-text2);
-    font-size: ${({ $size }) => $size === 'large' ? '14px' : '12px'};
-    font-weight: 400;
-  }
-`
-export const PriceOld = styled.div<{ $size: PriceSizeType }>`
-  font-size: ${({ $size }) => $size === 'large' ? '18px' : '14px'};
-  color: var(--color-danger);
-  display: inline;
-  margin-left: var(--pb);
-  text-decoration: line-through;
-  small { color: var(--color-danger); }
-`
-
-const PriceBox: React.FC<IPriceBox> = ({ price, oldprice, size = 'small' }) => {
+const PriceBox = (props: PriceBoxProps): JSX.Element => {
+  const { price, oldprice, size = "small" } = props;
   return (
-    <Price $size={size}>
-      {price} <small>{set_currency}</small>
-      {oldprice && <PriceOld $size={size}>{oldprice} <small>{set_currency}</small></PriceOld>}
-    </Price>
-  )
-}
+    <Box>
+      <Typography variant="body1" component="span">
+        {price}
+      </Typography>
+      <Typography variant="body2" component="span">
+        {CURRENCY}
+      </Typography>
+      {oldprice && (
+        <Box>
+          <Typography variant="body1" component="span">
+            {oldprice}
+          </Typography>
+          <Typography variant="body2" component="span">
+            {CURRENCY}
+          </Typography>
+        </Box>
+      )}
+    </Box>
+  );
+};
 
-export default PriceBox
+export default PriceBox;
