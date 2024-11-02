@@ -11,7 +11,7 @@ const CustomBtn = (props: ButtonProps) => {
         fontSize: theme.typography.body1.fontSize,
         lineHeight: theme.typography.body1.lineHeight,
         textTransform: "none",
-        p: "14px 22px",
+        p: "10px 22px",
         "&.MuiButton-sizeSmall": {
           p: "8px 18px",
           fontSize: theme.typography.body2.fontSize,

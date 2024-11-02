@@ -1,11 +1,10 @@
 export type View = "grid" | "list";
 
-export type ResponseType<T> = {
-  count?: number;
-  next?: string;
-  previous?: string;
-  results?: T[];
-  error?: boolean;
+export type Response<T> = {
+  count: number;
+  next: string;
+  previous: string;
+  results: T[];
 };
 
 export type CatParent = {
