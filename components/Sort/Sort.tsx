@@ -1,43 +1,16 @@
 "use client";
 
-import View from "@/ui_old/View/View";
-import { setLoadSort } from "@/store/appSlice";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { SortItemType } from "@/options/types";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef } from "react";
+import View from "@/OLD_ui/View/View";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { styled } from "styled-components";
-import { InputStyles } from "../../ui_old/FormInput";
-import select from "@/assets/select.svg";
-import Spinner from "../../ui_old/Spinner";
-
-// Styles
-const SortBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 0 var(--gap);
-`;
-const SortBoxLeft = styled.div`
-  display: flex;
-  align-items: center;
-`;
-export const SelectBox = styled.select<{ $error?: boolean; $expand?: boolean }>`
-  ${InputStyles}
-  background: url(${select.src}) calc(100% - 10px) center / 18px no-repeat;
-  cursor: pointer;
-  margin-right: var(--pb);
-  padding-right: 32px;
-  -webkit-appearance: none;
-`;
+import { SortItem } from "./constants";
 
 interface ISort {
-  list: SortItemType[];
+  list: SortItem[];
 }
 
 const Sort: React.FC<ISort> = ({ list }) => {
-  const load = useAppSelector((state) => state.app.loadSort);
-  const dispatch = useAppDispatch();
   const ref = useRef<HTMLSelectElement>(null);
 
   // url params

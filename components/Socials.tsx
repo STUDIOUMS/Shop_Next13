@@ -1,48 +1,27 @@
-import Image from "next/image"
-import facebook from "@/assets/facebook.svg"
-import instagram from "@/assets/instagram.svg"
-import twitter from "@/assets/twitter.svg"
-import vk from "@/assets/vk.svg"
-import { styled } from "styled-components"
+import { IconButton, Stack } from "@mui/material";
+import Image from "next/image";
+import facebook from "@/assets/facebook.svg";
+import instagram from "@/assets/instagram.svg";
+import twitter from "@/assets/twitter.svg";
+import vk from "@/assets/vk.svg";
 
-// Styles
-const List = styled.div`
-  display: flex;
-  @media screen and (max-width: 750px) {
-    justify-content: center;
-  }
-`
-const Item = styled.a`
-  align-items: center;
-  background: var(--color-light);
-  border-radius: var(--radius);
-  display: flex;
-  justify-content: center;
-  height: 40px;
-  margin: 0 4px 0 0;
-  width: 40px;
-  transition: all 200ms ease-in-out;
-  &:hover { background: #d1d1d1; }
-  &:last-child { margin: 0; }
-`
-
-const Socials: React.FC = () => {
+const Socials = (): JSX.Element => {
   return (
-    <List>
-      <Item href="/" target="_blank">
+    <Stack direction="row">
+      <IconButton href="/" color="secondary" sx={{ mr: 1 }}>
         <Image src={facebook} alt="Facebook" width={20} height={20}></Image>
-      </Item>
-      <Item href="/" target="_blank">
+      </IconButton>
+      <IconButton href="/" color="secondary" sx={{ mr: 1 }}>
         <Image src={instagram} alt="Instagram" width={20} height={20}></Image>
-      </Item>
-      <Item href="/" target="_blank">
+      </IconButton>
+      <IconButton href="/" color="secondary" sx={{ mr: 1 }}>
         <Image src={twitter} alt="Twitter" width={20} height={20}></Image>
-      </Item>
-      <Item href="https://vk.com/alba_higo" target="_blank">
+      </IconButton>
+      <IconButton href="https://vk.com/alba_higo" color="secondary">
         <Image src={vk} alt="Vk" width={20} height={20}></Image>
-      </Item>
-    </List>
-  )
-}
+      </IconButton>
+    </Stack>
+  );
+};
 
-export default Socials
+export default Socials;

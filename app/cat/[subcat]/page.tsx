@@ -5,7 +5,7 @@ import GoodList from "./components/GoodList";
 import Loadmore from "@/components_old/Loadmore";
 import Sort from "@/components_old/Sort/Sort";
 import SubCats from "../../../components_old/SubCats";
-import { getCat, getPacks, getProducts, getSubcats } from "@/options/api";
+import { getCat, getPacks, getProducts, getSubcats } from "@/OLD_options/api";
 import Filter from "@/components_old/Filter/Filter";
 import ChosenFilter from "@/components_old/ChosenFilter/ChosenFilter";
 import Alert from "@/ui_old/Alert";

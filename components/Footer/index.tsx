@@ -11,8 +11,8 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/logo.webp";
-import { navItems } from "./Header/constants";
-import Socials from "./Socials";
+import { NAV_ITEMS } from "../Header/constants";
+import Socials from "../Socials";
 
 const Footer = (): JSX.Element => {
   const theme = useTheme();
@@ -46,7 +46,7 @@ const Footer = (): JSX.Element => {
               <Grid2 size={{ lg: 3, xs: 12 }}>
                 <Typography variant="h3">Меню</Typography>
                 <ul>
-                  {navItems.map((el) => (
+                  {NAV_ITEMS.map((el) => (
                     <li key={el.id}>
                       <Link href={el.path}>{el.title}</Link>
                     </li>

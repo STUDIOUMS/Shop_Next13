@@ -1,7 +1,7 @@
-import { BreadCrumbsType } from "@/options/types";
-import BreadCrumbs from "@/components/BreadCrumbs";
+import { BreadCrumbsItem } from "@/types";
 import { Typography } from "@mui/material";
 import Section from "@/ui/Section";
+import BreadCrumbs from "@/ui/BreadCrumbs";
 
 // Metatags
 export const metadata = {
@@ -10,14 +10,14 @@ export const metadata = {
 };
 
 // Breadscrumbs
-const crumbs: BreadCrumbsType[] = [
+const crumbs: BreadCrumbsItem[] = [
   { name: "Доставка и оплата", slug: "delivery" },
 ];
 
 export default function Page() {
   return (
     <Section>
-      <BreadCrumbs list={crumbs} />
+      <BreadCrumbs links={crumbs} />
       <Typography variant="h1">Доставка и оплата</Typography>
     </Section>
   );

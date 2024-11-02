@@ -2,7 +2,7 @@ import BreadCrumbs from "@/components_old/BreadCrumbs";
 import { BreadCrumbsType, ProductType } from "@/options/types";
 import ProductTabs from "./components/ProductTabs";
 import ProductCard from "./components/ProductCard";
-import { getProduct } from "@/options/api";
+import { getProduct } from "@/OLD_options/api";
 import Alert from "@/ui_old/Alert";
 
 // Metatags

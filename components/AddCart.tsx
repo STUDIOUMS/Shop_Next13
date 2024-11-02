@@ -1,7 +1,7 @@
 import { setOrder, setToast } from "@/store/appSlice";
 import { BasketType, ProductType } from "@/options/types";
 import { useAppDispatch } from "../store/hooks";
-import Btn from "../ui_old/Btn";
+import Btn from "../OLD_ui/Btn";
 
 interface IAddCart {
   big?: boolean;

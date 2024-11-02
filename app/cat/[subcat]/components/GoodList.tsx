@@ -5,7 +5,7 @@ import Card from "@/components_old/Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { setLoadSort, setLoadFilter, setLoadPager } from "@/store/appSlice";
-import { getProducts } from "@/options/api";
+import { getProducts } from "@/OLD_options/api";
 import { ProductType } from "@/options/types";
 import Alert from "@/ui_old/Alert";
 

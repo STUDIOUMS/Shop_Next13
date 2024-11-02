@@ -1,5 +1,5 @@
-import { BreadCrumbsType } from "@/options/types";
-import BreadCrumbs from "@/components/BreadCrumbs";
+import { BreadCrumbsItem } from "@/types";
+import BreadCrumbs from "@/ui/BreadCrumbs";
 import { getData } from "@/utils/api";
 
 // Metatags
@@ -9,14 +9,14 @@ export const metadata = {
 };
 
 // Breadcrumbs
-const crumbs: BreadCrumbsType[] = [{ name: "Блог", slug: "blog" }];
+const crumbs: BreadCrumbsItem[] = [{ name: "Блог", slug: "blog" }];
 
 export default async function Blog() {
   const posts = await getData("/blog/articles");
 
   return (
     <div className="section">
-      <BreadCrumbs list={crumbs} />
+      <BreadCrumbs links={crumbs} />
       <h1>Блог</h1>
       <pre>{JSON.stringify(posts, null, 2)}</pre>
     </div>

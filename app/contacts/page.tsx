@@ -1,5 +1,5 @@
-import BreadCrumbs from "@/components/BreadCrumbs";
-import { BreadCrumbsType } from "@/options/types";
+import BreadCrumbs from "@/ui/BreadCrumbs";
+import { BreadCrumbsItem } from "@/types";
 import Section from "@/ui/Section";
 import { Grid2, Typography } from "@mui/material";
 import MapFrame from "./MapFrame";
@@ -11,12 +11,12 @@ export const metadata = {
 };
 
 // Breadscrumbs
-const crumbs: BreadCrumbsType[] = [{ name: "Контакты", slug: "contacts" }];
+const crumbs: BreadCrumbsItem[] = [{ name: "Контакты", slug: "contacts" }];
 
 export default function Page() {
   return (
     <Section>
-      <BreadCrumbs list={crumbs} />
+      <BreadCrumbs links={crumbs} />
       <Typography variant="h1">Контакты</Typography>
 
       <Grid2 container spacing={6}>

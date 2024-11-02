@@ -1,5 +1,10 @@
 export type View = "grid" | "list";
 
+export type BreadCrumbsItem = {
+  name: string;
+  slug: string;
+};
+
 export type Response<T> = {
   count: number;
   next: string;
@@ -68,16 +73,6 @@ export type Product = {
   new: boolean;
   hit: boolean;
   createdAt: Date;
-};
-
-export type BreadCrumbs = {
-  name: string;
-  slug: string;
-};
-
-export type SortItem = {
-  value: string;
-  name: string;
 };
 
 export type BlogItem = {

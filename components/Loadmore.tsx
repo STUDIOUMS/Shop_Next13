@@ -3,9 +3,9 @@
 import { useCallback } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { setLoadPager } from "@/store/appSlice";
-import Btn from "../ui_old/Btn";
+import Btn from "../OLD_ui/Btn";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import Spinner from "../ui_old/Spinner";
+import Spinner from "../OLD_ui/Spinner";
 import { styled } from "styled-components";
 
 interface ILoadmore {

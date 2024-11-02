@@ -1,5 +1,5 @@
-import { getSearch } from "@/options/api";
-import { BreadCrumbsType } from "@/options/types";
+import { getSearch } from "@/OLD_options/api";
+import { BreadCrumbsItem } from "@/types";
 import Card from "@/components_old/Card/Card";
 import BreadCrumbs from "@/components_old/BreadCrumbs";
 import Alert from "@/ui_old/Alert";
@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 // Breadscrumbs
-const crumbs: BreadCrumbsType[] = [
+const crumbs: BreadCrumbsItem[] = [
   { name: "Результаты поиска", slug: "search" },
 ];
 

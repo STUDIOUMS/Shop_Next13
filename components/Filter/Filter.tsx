@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CheckField from "../CheckField";
 import Range from "../Range/Range";
 import { set_currency } from "@/options/settings";
-import Btn from "../../ui_old/Btn";
+import Btn from "../../OLD_ui/Btn";
 import {
   FilterBody,
   FilterBox,
@@ -20,7 +20,7 @@ import {
   FilterTitle,
 } from "./FilterStyles";
 import FilterItem from "./FilterItem";
-import Spinner from "../../ui_old/Spinner";
+import Spinner from "../../OLD_ui/Spinner";
 
 interface IFilter {
   packs: PackType[];

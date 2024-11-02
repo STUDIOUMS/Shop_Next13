@@ -1,4 +1,4 @@
-import { ERROR_TEXT } from "@/options/constants";
+import { ERROR_TEXT } from "@/constants";
 import CustomBtn from "@/ui/CustomBtn";
 import CustomInput from "@/ui/CustomInput";
 import CustomModal from "@/ui/CustomModal";
@@ -25,7 +25,7 @@ const FeedbackModal = (props: FeedbackModalProps): JSX.Element => {
     formState: { errors },
   } = useForm<FormData>();
 
-  const feedbackHandler = (data: any) => {
+  const feedbackHandler = (data: FormData) => {
     console.log(data);
   };
 

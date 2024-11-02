@@ -5,7 +5,7 @@ type NavItem = {
   children?: NavItem[];
 };
 
-export const navItems: NavItem[] = [
+export const NAV_ITEMS: NavItem[] = [
   { id: 1, title: "Главная", path: "/" },
   { id: 2, title: "Блог", path: "/blog" },
   { id: 3, title: "О компании", path: "/about" },

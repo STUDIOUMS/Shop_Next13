@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { navItems } from "./constants";
+import { NAV_ITEMS } from "./constants";
 import { Navbox } from "./styles";
 
 const Navbar = (): JSX.Element => {
@@ -13,7 +13,7 @@ const Navbar = (): JSX.Element => {
   return (
     <Navbox>
       <ul>
-        {navItems.map((item) => {
+        {NAV_ITEMS.map((item) => {
           const activeItem = pathname === item.path;
           const isChild = !!item.children;
           return (

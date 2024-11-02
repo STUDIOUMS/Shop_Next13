@@ -1,51 +1,49 @@
-import { errorText } from "@/options/settings";
+import { ERROR_TEXT } from "@/constants";
+import CustomBtn from "@/ui/CustomBtn";
+import CustomInput from "@/ui/CustomInput";
+import CustomModal from "@/ui/CustomModal";
+import { CircularProgress } from "@mui/material";
 import { useForm } from "react-hook-form";
-import Btn from "../../ui_old/Btn";
-import FormInput from "../../ui_old/FormInput";
-import FormLine from "../../ui_old/FormLine";
-import Modal from "../../ui_old/Modal";
 
-type FormStateType = {
+type FormData = {
   phone: string;
 };
 
-interface IQuickModal {
-  handler: React.Dispatch<React.SetStateAction<boolean>>;
+type QuickModalProps = {
+  close: () => void;
   productId: number;
   show: boolean;
-}
+};
 
-const QuickModal: React.FC<IQuickModal> = ({ handler, productId, show }) => {
+const QuickModal = (props: QuickModalProps): JSX.Element => {
+  const { close, productId, show } = props;
   const {
     handleSubmit,
     reset,
     register,
     formState: { errors },
-  } = useForm<FormStateType>();
+  } = useForm<FormData>();
 
-  // sendOrder
-  const sendOrder = (data: any) => {
+  const quickHandler = (data: FormData) => {
     console.log(data, productId);
   };
 
   return (
-    <Modal title="Быстрый заказ" show={show} handler={handler}>
-      <FormLine label="Номер телефона">
-        <FormInput
-          placeholder="+ 7 (123) 456-78-90"
-          expand
-          valid={register("phone", { required: errorText })}
-          error={errors.phone && errors.phone.message}
+    <CustomModal close={close} open={show} title="Быстрый заказ">
+      <form onSubmit={handleSubmit(quickHandler)} autoCorrect="false">
+        <CustomInput
+          label="Номер телефона"
+          fullWidth
+          inputProps={{ ...register("phone", { required: ERROR_TEXT }) }}
+          helperText={errors.phone && errors.phone.message}
+          error={errors.phone ? true : false}
         />
-      </FormLine>
-      <Btn
-        type="submit"
-        title="Отправить"
-        expand
-        color="success"
-        handler={handleSubmit(sendOrder)}
-      />
-    </Modal>
+        <CustomBtn type="submit" color="primary" fullWidth>
+          Оправить
+          <CircularProgress size={20} color="secondary" sx={{ ml: 3 }} />
+        </CustomBtn>
+      </form>
+    </CustomModal>
   );
 };
 

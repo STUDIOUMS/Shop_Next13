@@ -57,7 +57,7 @@ const Header = (): JSX.Element => {
 
           <Box sx={{ ml: 8, mr: "auto" }}>
             {isLoading && <CircularProgress size={24} />}
-            {isSuccess && <CatPopup cats={data.results} />}
+            {isSuccess && <CatPopup cats={[]} />}
           </Box>
 
           {/* <Search /> */}

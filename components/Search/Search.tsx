@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import FormInput, { Input } from "../../ui_old/FormInput";
+import FormInput, { Input } from "../../OLD_ui/FormInput";
 import { styled } from "styled-components";
 import { useRouter, useSearchParams } from "next/navigation";
 import search from "@/assets/search.svg";
