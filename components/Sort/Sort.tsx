@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-import View from "@/OLD_ui/View/View";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { SortItem } from "./constants";
 import { Box, Stack } from "@mui/material";
+import View from "@/ui/View";
 
 type SortProps = {
   list: SortItem[];
