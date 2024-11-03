@@ -2,16 +2,12 @@
 
 import { useCallback, useEffect, useRef } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { SortItem } from "./constants";
-import { Box, Stack } from "@mui/material";
+import { SORT_ITEMS } from "./constants";
+import { Stack } from "@mui/material";
 import View from "@/ui/View";
+import CustomSelect from "@/ui/CustomSelect";
 
-type SortProps = {
-  list: SortItem[];
-};
-
-const Sort = (props: SortProps): JSX.Element => {
-  const { list } = props;
+const Sort = (): JSX.Element => {
   const ref = useRef<HTMLSelectElement>(null);
 
   // url params
@@ -54,16 +50,7 @@ const Sort = (props: SortProps): JSX.Element => {
 
   return (
     <Stack direction="row" justifyContent="space-between">
-      <Box>
-        {/* <SelectBox onChange={sortHandler} defaultValue={valueQuery} ref={ref}>
-          <option value="default-value">Сортировать</option>
-          {list.map((el) => (
-            <option key={el.value} value={el.value}>
-              {el.name}
-            </option>
-          ))}
-        </SelectBox> */}
-      </Box>
+      <CustomSelect list={SORT_ITEMS} size="small" />
       <View />
     </Stack>
   );

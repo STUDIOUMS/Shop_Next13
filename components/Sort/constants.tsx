@@ -1,11 +1,8 @@
-export type SortItem = {
-  value: string;
-  name: string;
-};
+import { SelectItem } from "@/ui/CustomSelect";
 
-export const SORT_ITEMS: SortItem[] = [
-  { name: "От дешевых", value: "price" },
-  { name: "От дорогих", value: "-price" },
-  { name: "По алфавиту [А-Я]", value: "title" },
-  { name: "По алфавиту [Я-А]", value: "-title" },
+export const SORT_ITEMS: SelectItem[] = [
+  { label: "От дешевых", value: "price" },
+  { label: "От дорогих", value: "-price" },
+  { label: "По алфавиту [А-Я]", value: "title" },
+  { label: "По алфавиту [Я-А]", value: "-title" },
 ];

@@ -1,3 +1,5 @@
+"use client";
+
 import { styled, TextField, TextFieldProps } from "@mui/material";
 
 const InputField = styled(TextField)<TextFieldProps>(({ theme }) => ({
@@ -16,6 +18,9 @@ const InputField = styled(TextField)<TextFieldProps>(({ theme }) => ({
   },
   "& .MuiFormHelperText-root": {
     fontSize: theme.typography.body2.fontSize,
+  },
+  "& .MuiSelect-outlined.MuiOutlinedInput-input": {
+    paddingRight: "40px !important",
   },
 }));
 
