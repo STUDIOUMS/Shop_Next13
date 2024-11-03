@@ -1,41 +1,41 @@
-import BreadCrumbs from "@/components_old/BreadCrumbs";
-import { getBlogPage } from "@/OLD_options/api";
-import { createDate } from "@/options/helpers";
-import { blogType, BreadCrumbsType } from "@/options/types";
+import { BlogItem, BreadCrumbsItem } from "@/types";
+import BreadCrumbs from "@/ui/BreadCrumbs";
+import Section from "@/ui/Section";
+import { getData } from "@/utils/api";
+import { createDate } from "@/utils/helpers";
+import { Typography } from "@mui/material";
+
+type Params = {
+  slug: string;
+};
 
 // Metatags
-export async function generateMetadata({
-  params,
-}: {
-  params: { blog: number };
-}) {
-  const post: blogType = await getBlogPage(params.blog);
+export async function generateMetadata(params: Params) {
+  const { slug } = await params;
+  const post = await getData<BlogItem>(`/blog/articles/${slug}`);
   return {
     title: post.title,
     description: post.short,
   };
 }
 
-export default async function BlogPage({
-  params,
-}: {
-  params: { blog: number };
-}) {
-  const post: blogType = await getBlogPage(params.blog);
+export default async function BlogPage(params: Params) {
+  const { slug } = await params;
+  const post = await getData<BlogItem>(`/blog/articles/${slug}`);
   const date: string = createDate(post.createdAt);
 
   // Breadcrumbs
-  let crumbs: BreadCrumbsType[] = [
+  let crumbs: BreadCrumbsItem[] = [
     { name: "Блог", slug: "/blog" },
     { name: post.title, slug: post.slug },
   ];
 
   return (
-    <div className="section">
-      <BreadCrumbs list={crumbs} />
-      <h1>{post.title}</h1>
+    <Section>
+      <BreadCrumbs links={crumbs} />
+      <Typography variant="h1">{post.title}</Typography>
       <p>{date}</p>
       <div dangerouslySetInnerHTML={{ __html: post.description! }}></div>
-    </div>
+    </Section>
   );
 }

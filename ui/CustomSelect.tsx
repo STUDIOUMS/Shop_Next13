@@ -1,3 +1,5 @@
+"use client";
+
 import { MenuItem, TextFieldProps } from "@mui/material";
 import CustomInput from "./CustomInput";
 

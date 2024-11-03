@@ -1,15 +1,21 @@
-import { Typography } from "@mui/material";
-import { Box, BoxProps } from "@mui/system";
+"use client";
+
+import { Typography, Box, BoxProps, styled } from "@mui/material";
 
 type SectionProps = BoxProps & {
   children: React.ReactNode;
   title?: string;
 };
 
+const Div = styled(Box)<BoxProps>(({ theme }) => ({
+  paddingBottom: theme.spacing(10),
+  paddingTop: theme.spacing(10),
+}));
+
 const Section = (props: SectionProps) => {
   const { children, title } = props;
   return (
-    <Box sx={{ pt: 10, pb: 10 }} {...props}>
+    <Div {...props}>
       {title && (
         <Typography
           variant="h1"
@@ -21,7 +27,7 @@ const Section = (props: SectionProps) => {
         </Typography>
       )}
       {children}
-    </Box>
+    </Div>
   );
 };
 

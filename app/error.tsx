@@ -1,7 +1,7 @@
 "use client";
 
+import ErrorAlert from "@/components/ErrorAlert";
 import Section from "@/ui/Section";
-import { Alert, AlertTitle } from "@mui/material";
 
 type ErrorProps = {
   error: Error & { digest?: string };
@@ -11,10 +11,7 @@ type ErrorProps = {
 export default function Error(props: ErrorProps) {
   return (
     <Section>
-      <Alert variant="outlined" severity="error">
-        <AlertTitle>500 - Ошибка сервера</AlertTitle>
-        Попробуйте посетить данную страницу позже.
-      </Alert>
+      <ErrorAlert />
     </Section>
   );
 }
