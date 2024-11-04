@@ -34,7 +34,7 @@ const CatPopupItem = (props: CatPopupItemProps): JSX.Element => {
   return (
     <Item size={{ xs: 12, lg: 4 }}>
       <ItemTitle>
-        <Link href={`cat/${cat.slug}`}>
+        <Link href={`/cat/${cat.slug}`}>
           {cat.img && (
             <Image
               src={cat.img}
@@ -57,7 +57,7 @@ const CatPopupItem = (props: CatPopupItemProps): JSX.Element => {
       <ul>
         {subcats.map((el) => (
           <li key={el.id}>
-            <Link href={`cat/${el.slug}`}>{el.name}</Link>
+            <Link href={`/cat/${el.slug}`}>{el.name}</Link>
           </li>
         ))}
       </ul>

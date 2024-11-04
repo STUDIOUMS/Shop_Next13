@@ -47,8 +47,6 @@ const CatPopup = (props: CatPopupProps): JSX.Element => {
                 const subcats = cats.filter(
                   (el) => el.parent && el.parent.pk === cat.id
                 );
-                console.log(subcats);
-
                 return (
                   <CatPopupItem key={cat.id} cat={cat} subcats={subcats} />
                 );
