@@ -15,7 +15,11 @@ export const GoodChip = styled(Chip)<ChipProps>(({ theme }) => ({
   fontSize: theme.typography.body2.fontSize,
   letterSpacing: 1,
   marginRight: 3,
+  height: "auto",
   textTransform: "uppercase",
+  "& .MuiChip-label": {
+    padding: "4px 8px",
+  },
 }));
 
 export const GoodItemTitle = styled(Box)(({ theme }) => ({

@@ -25,3 +25,5 @@ export function createDate(dateString: string, time?: boolean) {
   const timeString = `, ${hours}:${mins}`;
   return `${day} ${month} ${year}${time ? timeString : ""}`;
 }
+
+export const createArray = (num: number) => Array.from(new Array(num));

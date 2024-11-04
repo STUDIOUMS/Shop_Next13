@@ -1,3 +1,5 @@
+"use client";
+
 import cart from "@/assets/cart.svg";
 import { useOrderStore } from "@/store/useOrderStore";
 import CustomBtn from "@/ui/CustomBtn";
@@ -8,10 +10,11 @@ import { useRouter } from "next/navigation";
 const SmallCart = (): JSX.Element => {
   const { push } = useRouter();
   const { orders } = useOrderStore();
+  const count = orders.reduce((acum, el) => (acum += el.count), 0);
 
   return (
     <Badge
-      badgeContent={0}
+      badgeContent={count}
       color="primary"
       sx={{
         "& .MuiBadge-badge": { fontSize: "11px" },

@@ -16,8 +16,6 @@ const Btn = styled(Button)(({ theme }) => ({
 const View = (): JSX.Element => {
   const { view, setView } = useAppStore();
 
-  console.log(view);
-
   return (
     <ButtonGroup variant="outlined" color="inherit">
       <Btn

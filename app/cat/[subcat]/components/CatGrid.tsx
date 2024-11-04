@@ -1,5 +1,6 @@
 "use client";
 
+import Filter from "@/components/Filter";
 import Good from "@/components/Good";
 import Sort from "@/components/Sort/Sort";
 import Subcats from "@/components/Subcats";
@@ -8,10 +9,10 @@ import useGetData from "@/hooks/useGetData";
 import { useAppStore } from "@/store/useAppStore";
 import { Cat, Product, Response } from "@/types";
 import { Grid2 } from "@mui/material";
+import CatLoading from "./CatLoading";
 
 type CatGridProps = {
   cat: Cat;
-  cats: Cat[];
 };
 
 const CatGrid = (props: CatGridProps): JSX.Element => {
@@ -25,16 +26,20 @@ const CatGrid = (props: CatGridProps): JSX.Element => {
     }
   );
 
+  if (isLoading) return <CatLoading />;
+
   return (
     <Grid2 container spacing={6}>
-      <Grid2 size={{ xs: 12, lg: 3 }}>Filter</Grid2>
+      <Grid2 size={{ xs: 12, lg: 3 }}>
+        <Filter packs={[]} />
+      </Grid2>
 
       <Grid2 size={{ xs: 12, lg: 9 }}>
         <Subcats cat={cat} />
 
         <Sort />
 
-        <Grid2 container spacing={6}>
+        <Grid2 container spacing={6} sx={{ mb: 10 }}>
           {isSuccess &&
             data.results.map((product) => (
               <Grid2
@@ -42,7 +47,6 @@ const CatGrid = (props: CatGridProps): JSX.Element => {
                 size={{
                   xs: 12,
                   sm: view === "grid" ? 4 : 12,
-                  md: view === "grid" ? 3 : 12,
                 }}
               >
                 <Good el={product} />

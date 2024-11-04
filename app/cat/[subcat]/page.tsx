@@ -29,6 +29,14 @@ async function SubCat(props: Params) {
     { name: cat.name, slug: `/cat/${cat.slug}` },
   ];
 
+  if (cat.parent !== null) {
+    const parentCrumb: BreadCrumbsItem = {
+      name: cat.parent.name,
+      slug: `/cat/${cat.parent.slug}`,
+    };
+    crumbs.unshift(parentCrumb);
+  }
+
   return (
     <Section>
       <BreadCrumbs links={crumbs} />
@@ -37,7 +45,6 @@ async function SubCat(props: Params) {
       <CatGrid cat={cat} />
 
       <Box>
-        <Typography variant="h2">{cat.name}</Typography>
         <div dangerouslySetInnerHTML={{ __html: cat.description }}></div>
       </Box>
     </Section>

@@ -92,7 +92,7 @@ export type Order = {
   slug: string;
   img: string;
   art: string;
-  count?: number;
+  count: number;
   total: string;
   pack: string;
 };

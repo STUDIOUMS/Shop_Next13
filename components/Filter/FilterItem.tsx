@@ -1,19 +1,26 @@
-import { FilterName, FilterSection, FilterSectionBody } from "./FilterStyles"
+import { Box, BoxProps, styled, Typography } from "@mui/material";
 
-interface IFilterItem {
-  children: React.ReactNode
-  title?: string
-}
+type FilterItemProps = {
+  children: React.ReactNode;
+  title?: string;
+};
 
-const FilterItem: React.FC<IFilterItem> = ({ children, title }) => {
+const Div = styled(Box)<BoxProps>(({ theme }) => ({
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: theme.palette.grey[300],
+  borderRadius: "6px",
+  marginBottom: theme.spacing(4),
+}));
+
+const FilterItem = (props: FilterItemProps): JSX.Element => {
+  const { children, title } = props;
   return (
-    <FilterSection>
-      {title && <FilterName>{title}</FilterName>}
-      <FilterSectionBody>
-        {children}
-      </FilterSectionBody>
-    </FilterSection>
-  )
-}
+    <Div>
+      {title && <Typography variant="h5">{title}</Typography>}
+      <Box>{children}</Box>
+    </Div>
+  );
+};
 
-export default FilterItem
+export default FilterItem;
