@@ -16,17 +16,8 @@ const Styles = (): JSX.Element => {
           marginBottom: theme.spacing(6),
           marginTop: theme.spacing(6),
         },
-        ul: {
-          marginBottom: theme.spacing(6),
-          marginTop: theme.spacing(6),
-          marginLeft: theme.spacing(4),
-          padding: 0,
-          li: {
-            listStyle: "inside disc",
-          },
-        },
         a: {
-          color: "inherit",
+          color: theme.palette.primary.main,
         },
       }}
     />

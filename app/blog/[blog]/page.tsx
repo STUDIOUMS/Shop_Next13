@@ -2,17 +2,18 @@ import { BlogItem, BreadCrumbsItem } from "@/types";
 import BreadCrumbs from "@/ui/BreadCrumbs";
 import Section from "@/ui/Section";
 import { getData } from "@/utils/api";
-import { createDate } from "@/utils/helpers";
-import { Typography } from "@mui/material";
+import BlogCard from "../components/BlogCard";
 
 type Params = {
-  slug: string;
+  params: {
+    blog: string;
+  };
 };
 
 // Metatags
 export async function generateMetadata(params: Params) {
-  const { slug } = await params;
-  const post = await getData<BlogItem>(`/blog/articles/${slug}`);
+  const { blog } = await params.params;
+  const post = await getData<BlogItem>(`/blog/articles/${blog}`);
   return {
     title: post.title,
     description: post.short,
@@ -20,9 +21,8 @@ export async function generateMetadata(params: Params) {
 }
 
 export default async function BlogPage(params: Params) {
-  const { slug } = await params;
-  const post = await getData<BlogItem>(`/blog/articles/${slug}`);
-  const date: string = createDate(post.createdAt);
+  const { blog } = await params.params;
+  const post = await getData<BlogItem>(`/blog/articles/${blog}`);
 
   // Breadcrumbs
   let crumbs: BreadCrumbsItem[] = [
@@ -33,9 +33,7 @@ export default async function BlogPage(params: Params) {
   return (
     <Section>
       <BreadCrumbs links={crumbs} />
-      <Typography variant="h1">{post.title}</Typography>
-      <p>{date}</p>
-      <div dangerouslySetInnerHTML={{ __html: post.description! }}></div>
+      <BlogCard item={post} full />
     </Section>
   );
 }

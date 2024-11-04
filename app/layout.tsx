@@ -4,8 +4,9 @@ import Providers from "@/components/Providers";
 import ScrollToTop from "@/components/ScrollToTop";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Box, Container, Snackbar, Stack } from "@mui/material";
+import { Box, Snackbar, Stack } from "@mui/material";
 import { useAppStore } from "@/store/useAppStore";
+import CustomContainer from "@/ui/CustomContainer";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -22,7 +23,7 @@ const RootLayout = (props: LayoutProps): JSX.Element => {
           <Stack sx={{ minHeight: "100vh" }} className="app">
             <Header />
             <Box sx={{ flexGrow: 1 }}>
-              <Container>{children}</Container>
+              <CustomContainer>{children}</CustomContainer>
             </Box>
             <Footer />
           </Stack>

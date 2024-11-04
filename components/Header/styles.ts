@@ -1,6 +1,7 @@
-import { styled, Box, Container } from "@mui/material";
+import CustomContainer from "@/ui/CustomContainer";
+import { styled, Box } from "@mui/material";
 
-export const Wrap = styled(Container)(() => ({
+export const Wrap = styled(CustomContainer)(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",

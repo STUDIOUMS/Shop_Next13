@@ -1,6 +1,7 @@
 import Advantages from "@/components/Advantages";
 import Banner from "@/components/Banner";
 import BigBanner from "@/components/BigBanner/BigBanner";
+import BlogsWidjet from "@/components/BlogsWidjet";
 import Brands from "@/components/Brands";
 import Section from "@/ui/Section";
 import { Grid2 } from "@mui/material";
@@ -47,7 +48,9 @@ export default async function Home() {
         <Brands />
       </Section>
 
-      {/* <BlogsWidjet list={blogs} error={error} /> */}
+      <Section title="Блог">
+        <BlogsWidjet />
+      </Section>
     </div>
   );
 }

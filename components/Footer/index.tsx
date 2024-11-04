@@ -1,18 +1,12 @@
 "use client";
 
-import {
-  Box,
-  Container,
-  Grid2,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Grid2, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/logo.webp";
 import { NAV_ITEMS } from "../Header/constants";
 import Socials from "../Socials";
+import CustomContainer from "@/ui/CustomContainer";
 
 const Footer = (): JSX.Element => {
   const theme = useTheme();
@@ -26,7 +20,7 @@ const Footer = (): JSX.Element => {
         pb: 8,
       })}
     >
-      <Container>
+      <CustomContainer>
         <Grid2 container spacing={6}>
           <Grid2 size={{ lg: 3, xs: 12 }}>
             <div className="header-logo">
@@ -66,7 +60,7 @@ const Footer = (): JSX.Element => {
             <p>+7 (999) 999-99-99</p>
           </Grid2>
         </Grid2>
-      </Container>
+      </CustomContainer>
     </Box>
   );
 };

@@ -1,5 +1,3 @@
-import { SortItem } from "@/types";
-
 // createDate
 export function createDate(dateString: string, time?: boolean) {
   const months = [
@@ -18,7 +16,7 @@ export function createDate(dateString: string, time?: boolean) {
   ];
 
   const date = new Date(dateString);
-  const day = date.getDay();
+  const day = date.getDate();
   const month = months[date.getMonth()];
   const year = date.getFullYear();
   const hours = date.getHours();

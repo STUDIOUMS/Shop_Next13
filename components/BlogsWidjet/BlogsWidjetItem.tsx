@@ -1,48 +1,39 @@
-'use client'
+"use client";
 
-import { createDate } from '@/options/helpers'
-import { blogType } from '@/options/types'
-import Link from 'next/link'
-import styled from 'styled-components';
+import { Grid2, styled, Typography } from "@mui/material";
+import { BlogItem } from "@/types";
+import { createDate } from "@/utils/helpers";
+import Link from "next/link";
 
-interface BlogsWidjetItem {
-  el: blogType
-}
+type BlogsWidjetItemProps = {
+  item: BlogItem;
+};
+const Item = styled(Grid2)(({ theme }) => ({
+  backgroundColor: theme.palette.grey[100],
+  borderRadius: "6px",
+  padding: theme.spacing(5),
+}));
 
-export const Item = styled.div`
-  background: var(--color-extralight);
-  border-radius: var(--radius);
-  padding: var(--pb);
-  color: var(--color-text2);
-`
-export const Title = styled.div`
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 20px;
-  margin: 0 0 10px;
-  a {
-    color: var(--color-text);
-    &:hover { color: var(--color-success); }
-  }
-`
-export const Date = styled.div`
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 16px;
-  margin: 0 0 10px;
-`
-
-const BlogsWidjetItem: React.FC<BlogsWidjetItem> = ({ el }) => {
-  const date = createDate(el.createdAt)
+const BlogsWidjetItem = (props: BlogsWidjetItemProps): JSX.Element => {
+  const { item } = props;
   return (
-    <Item>
-      <Title>
-        <Link href={`/blog/${el.slug}`}>{el.title}</Link>
-      </Title>
-      <Date>{date}</Date>
-      <div dangerouslySetInnerHTML={{__html: el.short!}}></div>
+    <Item size={{ xs: 12, lg: 6 }}>
+      <Typography variant="h4" component="div" sx={{ mb: 2 }}>
+        <Link href={`/blog/${item.slug}`}>{item.title}</Link>
+      </Typography>
+      <Typography
+        variant="body2"
+        component="div"
+        color="textSecondary"
+        sx={{ mb: 4 }}
+      >
+        {createDate(item.createdAt)}
+      </Typography>
+      <Typography variant="body1" component="div">
+        {item.short}
+      </Typography>
     </Item>
-  )
-}
+  );
+};
 
-export default BlogsWidjetItem
+export default BlogsWidjetItem;
