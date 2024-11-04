@@ -26,7 +26,11 @@ const AddCart = (props: AddCartProps): JSX.Element => {
   };
 
   return (
-    <CustomBtn color="primary" onClick={() => setOrder(order)}>
+    <CustomBtn
+      color="primary"
+      variant="outlined"
+      onClick={() => setOrder(order)}
+    >
       В корзину
     </CustomBtn>
   );

@@ -20,17 +20,19 @@ const PackBtn = styled(Button)<ButtonProps>(({ theme }) => ({
   borderColor: theme.palette.grey[300],
   boxShadow: "none !important",
   color: theme.palette.common.black,
+  fontSize: theme.typography.body2.fontSize,
+  fontWeight: 700,
+  textTransform: "none",
   "&.MuiButton-contained": {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.common.white,
+    backgroundColor: theme.palette.grey[300],
   },
 }));
 
 const Packages = (props: PackagesProps): JSX.Element => {
   const { currentPackID, handler, packs } = props;
   return (
-    <Box>
-      <Typography variant="h4" component="div">
+    <Box sx={{ mb: 6 }}>
+      <Typography variant="h6" component="div" sx={{ mb: 1 }}>
         Фасовка:
       </Typography>
       <ButtonGroup>
@@ -40,7 +42,7 @@ const Packages = (props: PackagesProps): JSX.Element => {
             variant={currentPackID === el.id ? "contained" : "outlined"}
             onClick={() => handler(el.pack.id, el.pack.name)}
           >
-            1
+            {el.pack.name}
           </PackBtn>
         ))}
       </ButtonGroup>

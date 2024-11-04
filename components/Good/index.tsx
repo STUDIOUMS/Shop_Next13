@@ -3,13 +3,13 @@
 import { usePriceImg } from "@/hooks/usePriceImg";
 import { useAppStore } from "@/store/useAppStore";
 import { Product } from "@/types";
-import { Box, Chip, Typography } from "@mui/material";
+import Packages from "@/ui/Packages";
+import { Box, Chip, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import AddCart from "../AddCart";
-import Packages from "../Packages";
 import PriceBox from "../PriceBox";
-import { GoodItem } from "./СardStyles";
+import { GoodChip, GoodItem, GoodItemTitle } from "./СardStyles";
 
 type GoodProps = {
   el: Product;
@@ -19,6 +19,7 @@ type GoodProps = {
 const Good = (props: GoodProps): JSX.Element => {
   const { el, slide } = props;
   const { view } = useAppStore();
+  const isGrid = view === "grid";
 
   const { choosePack, img, price, oldprice, currentPack, currentPackID } =
     usePriceImg(el.relatedPacks);
@@ -26,23 +27,28 @@ const Good = (props: GoodProps): JSX.Element => {
   const isSale = el.relatedPacks.some((el) => el.oldPrice !== null);
 
   return (
-    <GoodItem>
-      <Box>
+    <GoodItem
+      direction={isGrid ? "column" : "row"}
+      alignItems={isGrid ? "normal" : "center"}
+    >
+      <Stack direction={isGrid ? "column" : "row"} sx={{ flexGrow: 1 }}>
         <Box>
           <Link href={`/product/${el.slug}`}>
-            <Image src={img} alt="" height={120} width={140} />
+            <img src={img} alt="" />
           </Link>
         </Box>
         <Box>
-          <Typography variant="body1" fontWeight={700} component="div">
+          <GoodItemTitle>
             <Link href={`/product/${el.slug}`}>{el.title}</Link>
-          </Typography>
-          <PriceBox price={price} oldprice={oldprice} />
-          <Box>
-            {el.hit && <Chip label="hit" />}
-            {isSale && <Chip label="sale" />}
-            {el.new && <Chip label="new" />}
-          </Box>
+          </GoodItemTitle>
+
+          <Stack direction="row" alignItems="center" sx={{ mb: 3 }}>
+            {el.hit && <GoodChip color="warning" label="hit" />}
+            {isSale && <GoodChip color="error" label="sale" />}
+            {el.new && <GoodChip color="primary" label="new" />}
+          </Stack>
+
+          <PriceBox price={price} oldprice={oldprice} sx={{ mb: 6 }} />
 
           <Packages
             currentPackID={currentPackID}
@@ -50,7 +56,7 @@ const Good = (props: GoodProps): JSX.Element => {
             packs={el.relatedPacks}
           />
         </Box>
-      </Box>
+      </Stack>
       <AddCart el={el} img={img} pack={currentPack} price={price} />
     </GoodItem>
   );

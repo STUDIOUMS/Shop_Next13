@@ -1,49 +1,47 @@
-import BreadCrumbs from "@/components_old/BreadCrumbs";
-import { BreadCrumbsType, ProductType } from "@/options/types";
-import ProductTabs from "./components/ProductTabs";
-import ProductCard from "./components/ProductCard";
-import { getProduct } from "@/OLD_options/api";
-import Alert from "@/ui_old/Alert";
+import { BreadCrumbsItem, Product } from "@/types";
+import BreadCrumbs from "@/ui/BreadCrumbs";
+import Section from "@/ui/Section";
+import { getData } from "@/utils/api";
+import { Typography } from "@mui/material";
+
+type Params = {
+  params: { product: string };
+};
 
 // Metatags
-export async function generateMetadata({
-  params,
-}: {
-  params: { product: string };
-}) {
-  const product: ProductType = await getProduct(params.product);
+export async function generateMetadata(props: Params) {
+  const { product } = await props.params;
+  const item = await getData<Product>(`/catalog/products/${product}`);
   return {
-    title: product ? product.title : "Not found",
+    title: item ? item.title : "Not found",
   };
 }
 
-async function ProductPage({ params }: { params: { product: string } }) {
-  const product: ProductType = await getProduct(params.product);
+async function ProductPage(props: Params) {
+  const { product } = await props.params;
+  const item = await getData<Product>(`/catalog/products/${product}`);
 
   // Breadcrumbs
-  let crumbs: BreadCrumbsType[] = [];
+  let crumbs: BreadCrumbsItem[] = [];
   if (product) {
-    product.categories.forEach((el) => {
+    item.categories.forEach((el) => {
       crumbs.push({ name: el.name, slug: `/cat/${el.slug}` });
     });
-    crumbs.push({ name: product.title, slug: `/product/${product.slug}` });
+    crumbs.push({ name: item.title, slug: `/product/${item.slug}` });
   }
 
-  if (!product) return <Alert color="danger">Server error</Alert>;
-
   return (
-    <div>
-      <BreadCrumbs list={crumbs} />
+    <Section>
+      <BreadCrumbs links={crumbs} />
+      <Typography variant="h1">{item.title}</Typography>
 
-      <h1>{product.title}</h1>
+      {/* <ProductCard good={item} /> */}
 
-      <ProductCard good={product} />
-
-      <ProductTabs
+      {/* <ProductTabs
         description={product.description}
         features={product.relatedAttrs}
-      />
-    </div>
+      /> */}
+    </Section>
   );
 }
 

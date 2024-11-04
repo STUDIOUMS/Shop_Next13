@@ -52,6 +52,11 @@ const theme = createTheme({
       fontWeight: 700,
       marginBottom: 18,
     },
+    h6: {
+      fontSize: 14,
+      fontWeight: 700,
+      marginBottom: 16,
+    },
   },
 });
 
