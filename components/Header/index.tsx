@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Link } from "@mui/material";
+import { Box, CircularProgress, Link } from "@mui/material";
 import Navbar from "./NavBar";
 import CustomBtn from "@/ui/CustomBtn";
 import FeedbackModal from "../Modals/FeedbackModal";
@@ -9,14 +9,17 @@ import { MiddleHeader, Wrap } from "./styles";
 import Image from "next/image";
 import logo from "@/assets/logo.webp";
 import SmallCart from "./SmallCart";
+import useGetData from "@/hooks/useGetData";
+import { Cat, Response } from "@/types";
+import CatPopup from "../CatPopup";
 
 const Header = (): JSX.Element => {
   const [feedBack, setFeedBack] = useState<boolean>(false);
 
-  // const { data, isSuccess, isLoading } = useGetData<Response<Cat>>({
-  //   key: ["cats"],
-  //   uri: "/catalog/categories",
-  // });
+  const { data, isSuccess, isLoading } = useGetData<Response<Cat>>({
+    key: ["cats"],
+    uri: "/catalog/categories",
+  });
 
   return (
     <>
@@ -53,8 +56,8 @@ const Header = (): JSX.Element => {
           </Link>
 
           <Box sx={{ ml: 8, mr: "auto" }}>
-            {/* {isLoading && <CircularProgress size={24} />}
-            {isSuccess && <CatPopup cats={[]} />} */}
+            {isLoading && <CircularProgress size={24} />}
+            {isSuccess && <CatPopup cats={data.results} />}
           </Box>
 
           {/* <Search /> */}
