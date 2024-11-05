@@ -24,6 +24,7 @@ const SmallCart = (): JSX.Element => {
         color="secondary"
         disabled={!orders.length}
         style={{ padding: 0, minWidth: 0, width: "40px", height: "40px" }}
+        href="/basket"
       >
         <Image src={cart.src} alt="Cart" width={20} height={20} />
       </CustomBtn>

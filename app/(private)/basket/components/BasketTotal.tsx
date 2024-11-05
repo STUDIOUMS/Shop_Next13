@@ -1,18 +1,22 @@
-import { set_currency } from "@/options/settings"
-import { BasketType } from "@/options/types"
-import { BasketTotalDiv } from "./BasketStyles"
+import { CURRENCY } from "@/constants";
+import { Order } from "@/types";
+import { BasketTotalDiv } from "./BasketStyles";
 
-interface IBasketTotal {
-  orders: BasketType[]
-}
+type BasketTotalProps = {
+  orders: Order[];
+};
 
-const BasketTotal: React.FC<IBasketTotal> = ({ orders }) => {
-  const total: number = orders.reduce((acum, el) => acum += Number(el.total), 0)
+const BasketTotal = (props: BasketTotalProps): JSX.Element => {
+  const { orders } = props;
+  const total: number = orders.reduce(
+    (acum, el) => (acum += Number(el.total)),
+    0
+  );
   return (
     <BasketTotalDiv>
-      Итого: <b>{total}</b> <small>{set_currency}</small>
+      Итого: <b>{total}</b> <small>{CURRENCY}</small>
     </BasketTotalDiv>
-  )
-}
+  );
+};
 
-export default BasketTotal
+export default BasketTotal;

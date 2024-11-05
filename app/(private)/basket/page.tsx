@@ -1,6 +1,8 @@
-import BreadCrumbs from "@/components_old/BreadCrumbs";
-import { BreadCrumbsType } from "@/options/types";
+import BreadCrumbs from "@/ui/BreadCrumbs";
+import { BreadCrumbsItem } from "@/types";
 import BasketList from "./components/BasketList";
+import Section from "@/ui/Section";
+import { Typography } from "@mui/material";
 
 // Metatags
 export const metadata = {
@@ -9,13 +11,14 @@ export const metadata = {
 };
 
 /* BreadCrumbs */
-const crumbs: BreadCrumbsType[] = [{ name: "Корзина", slug: `/basket` }];
+const crumbs: BreadCrumbsItem[] = [{ name: "Корзина", slug: `/basket` }];
 
 export default function Page() {
   return (
-    <div>
-      <BreadCrumbs list={crumbs} />
+    <Section>
+      <Typography variant="h1">Корзина</Typography>
+      <BreadCrumbs links={crumbs} />
       <BasketList />
-    </div>
+    </Section>
   );
 }

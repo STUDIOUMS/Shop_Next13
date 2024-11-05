@@ -3,6 +3,7 @@ import BreadCrumbs from "@/ui/BreadCrumbs";
 import Section from "@/ui/Section";
 import { getData } from "@/utils/api";
 import { Typography } from "@mui/material";
+import ProductCard from "./components/ProductCard";
 
 type Params = {
   params: { product: string };
@@ -35,7 +36,7 @@ async function ProductPage(props: Params) {
       <BreadCrumbs links={crumbs} />
       <Typography variant="h1">{item.title}</Typography>
 
-      {/* <ProductCard good={item} /> */}
+      <ProductCard good={item} />
 
       {/* <ProductTabs
         description={product.description}

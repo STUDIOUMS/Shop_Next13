@@ -19,16 +19,16 @@ const CustomModal = (props: CustomModalProps): JSX.Element => {
         "& .MuiPaper-root": {
           borderRadius: "8px",
           maxWidth: "520px",
+          position: "relative",
         },
       }}
     >
-      <DialogTitle
-        sx={{ p: "30px" }}
-        display="flex"
-        justifyContent="space-between"
-      >
+      <DialogTitle sx={{ p: 8, pb: 3 }} fontSize={24}>
         {title}
-        <IconButton onClick={close}>
+        <IconButton
+          onClick={close}
+          sx={{ position: "absolute", right: 14, top: 14 }}
+        >
           <Image src={closeIcon} alt="" width={20} height={20} />
         </IconButton>
       </DialogTitle>

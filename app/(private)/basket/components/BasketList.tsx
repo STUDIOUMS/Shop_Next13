@@ -4,31 +4,23 @@ import BasketHead from "./BasketHead";
 import BasketRow from "./BasketRow";
 import BasketTotal from "./BasketTotal";
 import { useState } from "react";
+import Section from "@/ui/Section";
+import CustomBtn from "@/ui/CustomBtn";
+import { useOrderStore } from "@/store/useOrderStore";
 
-const BasketList = () => {
+const BasketList = (): JSX.Element => {
   const [modal, setModal] = useState<boolean>(false);
-  const orders = useAppSelector((state) => state.app.orders);
-  const dispatch = useAppDispatch();
+  const { orders } = useOrderStore();
 
   // removeAllItems
   const removeAllItems = () => {
     setModal(false);
-    dispatch(cleanOrders());
-    document.body.classList.remove("overflow");
   };
 
   return (
-    <div className="section">
+    <>
       {orders.length ? (
         <>
-          <Title title="Корзина">
-            <Btn
-              title="Очистить корзину"
-              size="small"
-              handler={() => setModal(true)}
-            />
-          </Title>
-
           <div>
             <BasketHead />
             {orders.map((el) => (
@@ -39,16 +31,12 @@ const BasketList = () => {
 
           <BasketTotal orders={orders} />
 
-          <div className="text-right">
-            <Btn
-              title="Оформить заказ"
-              color="success"
-              to="/order"
-              className="mb-expand"
-            />
-          </div>
+          <CustomBtn href="/order">Оформить заказ</CustomBtn>
+          <CustomBtn variant="outlined" color="secondary">
+            Очистить корзину
+          </CustomBtn>
 
-          <Modal
+          {/* <Modal
             title="Очистить корзину"
             show={modal}
             handler={() => setModal(false)}
@@ -58,15 +46,17 @@ const BasketList = () => {
               <Btn title="Отмена" handler={() => setModal(false)} />
               <Btn title="Очистить" color="danger" handler={removeAllItems} />
             </div>
-          </Modal>
+          </Modal> */}
         </>
       ) : (
         <>
-          <Alert>Ваша корзина пуста</Alert>
-          <Btn title="Вернуться на главную" to="/" className="mb-expand" />
+          {/* <Alert>Ваша корзина пуста</Alert> */}
+          <CustomBtn variant="outlined" color="secondary">
+            Вернуться на главную
+          </CustomBtn>
         </>
       )}
-    </div>
+    </>
   );
 };
 

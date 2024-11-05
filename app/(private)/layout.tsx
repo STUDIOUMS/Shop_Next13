@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import { redirect } from 'next/navigation'
+import { useOrderStore } from "@/store/useOrderStore";
+import { redirect } from "next/navigation";
 
-export default function PrivateLayout({ children }: { children: React.ReactNode }) {
-  const orders = localStorage.getItem('orders')
+type PrivateLayoutProps = {
+  children: React.ReactNode;
+};
 
-  if (!orders) redirect('/')
-  
-  return (
-    <div>
-      {children}
-    </div>
-  )
+export default function PrivateLayout(props: PrivateLayoutProps) {
+  const { children } = props;
+  const orders = useOrderStore();
+  if (!orders) redirect("/");
+  return <div>{children}</div>;
 }

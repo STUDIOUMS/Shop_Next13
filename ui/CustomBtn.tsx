@@ -17,6 +17,10 @@ const Btn = styled(Button)<ButtonProps>(({ theme }) => ({
   "&.MuiButton-sizeLarge": {
     padding: "20px 32px",
   },
+  "&.MuiButton-outlinedSecondary": {
+    borderColor: theme.palette.grey[300],
+    color: theme.palette.common.black,
+  },
   "&:disabled": {
     opacity: 0.5,
   },

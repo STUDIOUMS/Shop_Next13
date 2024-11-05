@@ -1,6 +1,5 @@
-import Image from "next/image";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
-import Fancybox from "@/components_old/Fancybox";
+import Fancybox from "@/components/Fancybox";
 
 interface IGallery {
   img: string;
@@ -9,13 +8,11 @@ interface IGallery {
 
 const Gallery: React.FC<IGallery> = ({ img, title }) => {
   return (
-    <div>
-      <Fancybox>
-        <a href={img} data-fancybox data-caption={title}>
-          <Image src={img} alt="" width={240} height={240} />
-        </a>
-      </Fancybox>
-    </div>
+    <Fancybox>
+      <a href={img} data-fancybox data-caption={title}>
+        <img src={img} alt="" width={240} height={240} />
+      </a>
+    </Fancybox>
   );
 };
 

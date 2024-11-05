@@ -1,104 +1,87 @@
 "use client";
 
-import AddCart from "@/components_old/AddCart";
-import QuickModal from "@/components_old/Modals/QuickModal";
-import Packages from "@/components_old/Packages/Packages";
-import { usePriceImg } from "@/components_old/price.hook";
-import PriceBox from "@/components_old/PriceBox";
-import Tag from "@/ui_old/Tag";
-import Btn from "@/ui_old/Btn";
-import { ProductType } from "@/options/types";
 import { useState } from "react";
-import { styled } from "styled-components";
+import { Box, Grid2, Stack, styled, Typography } from "@mui/material";
+import AddCart from "@/components/AddCart";
+import { GoodChip } from "@/components/Good/СardStyles";
+import QuickModal from "@/components/Modals/QuickModal";
+import PriceBox from "@/components/PriceBox";
+import { usePriceImg } from "@/hooks/usePriceImg";
+import { Product } from "@/types";
+import CustomBtn from "@/ui/CustomBtn";
+import Packages from "@/ui/Packages";
 import Gallery from "./Gallery";
 
-interface IProductCard {
-  good: ProductType;
-}
+type ProductCardProps = {
+  good: Product;
+};
 
 // Styles
-const Image = styled.div`
-  border: 1px solid var(--color-light);
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
-  position: relative;
-  img {
-    display: block;
-    max-height: 260px;
-  }
-  @media screen and (max-width: 750px) {
-    min-height: 200px;
-    img {
-      max-height: 180px;
-    }
-  }
-`;
-const ImageTags = styled.div`
-  position: absolute;
-  right: 15px;
-  top: 15px;
-`;
-const WrapPacks = styled.div`
-  margin: 0 0 var(--gap);
-`;
-const WrapBtns = styled.div`
-  display: flex;
-  * {
-    margin: 0 calc(var(--gap) / 2) 0 0;
-  }
-`;
-const Code = styled.div`
-  color: var(--color-text2);
-  margin: 0 0 var(--gap);
-  b {
-    color: var(--color-text);
-  }
-`;
+const ImageBox = styled(Box)(({ theme }) => ({
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: theme.palette.grey[300],
+  borderRadius: "6px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: 300,
+  position: "relative",
+  "& img": {
+    display: "block",
+    maxHeight: "260px",
+  },
+}));
 
-const ProductCard: React.FC<IProductCard> = ({ good }) => {
-  const packs = good.relatedPacks;
+const ProductCard = (props: ProductCardProps): JSX.Element => {
+  const { good } = props;
   const [quickModal, setQuickModal] = useState<boolean>(false);
+
   const { choosePack, img, price, oldprice, currentPack, currentPackID } =
-    usePriceImg(packs);
+    usePriceImg(good.relatedPacks);
 
   const isSale = good.relatedPacks.some((el) => el.oldPrice !== null);
 
   return (
     <>
-      <div className="grid grid-2 grid-mb-1 section">
-        <div>
-          <Image>
+      <Grid2 container spacing={6}>
+        <Grid2 size={{ xs: 12, lg: 6 }}>
+          <ImageBox>
             <Gallery
               img={img}
               title={`${good.title}. Упаковка: ${currentPack}`}
             />
-            <ImageTags>
-              {good.hit && <Tag type="hit" />}
-              {good.new && <Tag type="new" />}
-              {isSale && <Tag type="sale" />}
-            </ImageTags>
-          </Image>
-        </div>
+            <Stack
+              direction="row"
+              alignItems="center"
+              sx={{ position: "absolute", right: 2, top: 4 }}
+            >
+              {good.hit && <GoodChip color="warning" label="hit" />}
+              {isSale && <GoodChip color="error" label="sale" />}
+              {good.new && <GoodChip color="primary" label="new" />}
+            </Stack>
+          </ImageBox>
+        </Grid2>
 
-        <div>
-          <Code>
+        <Grid2 size={{ xs: 12, lg: 6 }}>
+          <Typography variant="body1" component="div" sx={{ mb: 6 }}>
             Код товара: <b>{good.art}</b>
-          </Code>
+          </Typography>
 
-          <PriceBox price={price} oldprice={oldprice} size="large" />
+          <PriceBox
+            price={price}
+            oldprice={oldprice}
+            size="large"
+            sx={{ mb: 6 }}
+          />
 
-          <WrapPacks>
-            <Packages
-              currentPackID={currentPackID}
-              handler={choosePack}
-              packs={packs}
-            />
-          </WrapPacks>
+          <Packages
+            currentPackID={currentPackID}
+            handler={choosePack}
+            packs={good.relatedPacks}
+          />
 
-          <WrapBtns>
+          <Stack direction="row">
             <AddCart
               big={true}
               el={good}
@@ -106,20 +89,27 @@ const ProductCard: React.FC<IProductCard> = ({ good }) => {
               price={price}
               img={img}
             />
-            <Btn title="Быстрый заказ" handler={() => setQuickModal(true)} />
-          </WrapBtns>
+            <CustomBtn
+              onClick={() => setQuickModal(true)}
+              color="secondary"
+              variant="outlined"
+              sx={{ ml: 4 }}
+            >
+              Быстрый заказ
+            </CustomBtn>
+          </Stack>
 
           <p>Какой-то текст или информация о доставке</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
             adipisci eius necessitatibus, est unde consequuntur!
           </p>
-        </div>
-      </div>
+        </Grid2>
+      </Grid2>
 
       <QuickModal
         show={quickModal}
-        handler={setQuickModal}
+        close={() => setQuickModal(false)}
         productId={good.id}
       />
     </>

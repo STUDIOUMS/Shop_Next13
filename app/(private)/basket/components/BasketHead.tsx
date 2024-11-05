@@ -1,6 +1,6 @@
-import { BasketItem } from "./BasketStyles"
+import { BasketItem } from "./BasketStyles";
 
-const BasketHead: React.FC = () => {
+const BasketHead = (): JSX.Element => {
   return (
     <BasketItem className="top">
       <div>Изображение</div>
@@ -9,7 +9,7 @@ const BasketHead: React.FC = () => {
       <div>Кол-во</div>
       <div>Стоимость</div>
     </BasketItem>
-  )
-}
+  );
+};
 
-export default BasketHead
+export default BasketHead;

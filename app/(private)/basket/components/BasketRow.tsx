@@ -1,8 +1,5 @@
-import PriceBox from "@/components_old/PriceBox";
-import Counter from "@/OLD_ui/Counter";
-import { removeOrder } from "@/store/appSlice";
-import { useAppDispatch } from "@/store/hooks";
-import { BasketType } from "@/options/types";
+import PriceBox from "@/components/PriceBox";
+import { Order } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,21 +9,18 @@ import {
   MobileTitle,
 } from "./BasketStyles";
 import { useState } from "react";
-import Modal from "@/ui_old/Modal";
-import Btn from "@/ui_old/Btn";
 
-interface IBasketRow {
-  order: BasketType;
-}
+type BasketRowProps = {
+  order: Order;
+};
 
-const BasketRow: React.FC<IBasketRow> = ({ order }) => {
-  const dispatch = useAppDispatch();
+const BasketRow = (props: BasketRowProps): JSX.Element => {
+  const { order } = props;
   const [modal, setModal] = useState<boolean>(false);
 
   // removeItem
   const removeItem = () => {
     setModal(false);
-    dispatch(removeOrder(order.id));
     document.body.classList.remove("overflow");
   };
 
@@ -35,7 +29,7 @@ const BasketRow: React.FC<IBasketRow> = ({ order }) => {
       <BasketItem>
         <div>
           <Link href={`/product/${order.slug}`}>
-            <Image src={order.img} alt="" width={70} height={70} />
+            {/* <Image src={order.img} alt="" width={70} height={70} /> */}
           </Link>
         </div>
         <div>
@@ -55,7 +49,7 @@ const BasketRow: React.FC<IBasketRow> = ({ order }) => {
         </div>
         <div>
           <MobileTitle>Кол-во</MobileTitle>
-          <Counter productId={order.id} val={order.count!} />
+          {/* <Counter productId={order.id} val={order.count!} /> */}
         </div>
         <div>
           <MobileTitle>Стоимость</MobileTitle>
@@ -64,7 +58,7 @@ const BasketRow: React.FC<IBasketRow> = ({ order }) => {
         <Delete onClick={() => setModal(true)} />
       </BasketItem>
 
-      <Modal
+      {/* <Modal
         show={modal}
         handler={() => setModal(false)}
         title="Удаление товара"
@@ -74,7 +68,7 @@ const BasketRow: React.FC<IBasketRow> = ({ order }) => {
           <Btn title="Отмена" handler={() => setModal(false)} />
           <Btn title="Да, удалить" color="danger" handler={removeItem} />
         </div>
-      </Modal>
+      </Modal> */}
     </>
   );
 };
