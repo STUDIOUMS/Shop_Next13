@@ -1,9 +1,12 @@
 import Advantages from "@/components/Advantages";
 import Banner from "@/components/Banner";
-import BigBanner from "@/components/BigBanner/BigBanner";
+import BigBanner from "@/components/BigBanner";
 import BlogsWidjet from "@/components/BlogsWidjet";
 import Brands from "@/components/Brands";
+import Carousel from "@/components/Carousel";
+import { Product, Response } from "@/types";
 import Section from "@/ui/Section";
+import { getData } from "@/utils/api";
 import { Grid2 } from "@mui/material";
 import banner4 from "../assets/bigbanners/banner3.webp";
 import banner5 from "../assets/bigbanners/banner5.webp";
@@ -16,11 +19,18 @@ export const metadata = {
 };
 
 export default async function Home() {
+  // const novelties = await getData<Response<Product>>(
+  //   `/catalog/products/?new=true&limit=10`
+  // );
+  // const hits = await getData<Response<Product>>(
+  //   `/catalog/products/?hit=true&limit=10`
+  // );
+
   return (
     <div>
       <BigBanner />
 
-      {/* <Carousel title="Новинки" list={novelties.results!} error={!novelties.results} /> */}
+      <Carousel title="Новинки" list={[]} />
 
       <Section>
         <Grid2 container spacing={6}>
@@ -36,9 +46,7 @@ export default async function Home() {
         </Grid2>
       </Section>
 
-      {/* <Carousel title="Скидки" list={sales.results!} error={!sales.results} /> */}
-
-      {/* <Carousel title="Хиты" list={hits.results!} error={!hits.results} /> */}
+      <Carousel title="Хиты" list={[]} />
 
       <Section title="Преимущества">
         <Advantages />

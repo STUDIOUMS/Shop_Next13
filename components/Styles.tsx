@@ -19,6 +19,17 @@ const Styles = (): JSX.Element => {
         a: {
           color: theme.palette.primary.main,
         },
+        "& .swiper-pagination-bullet-active": {
+          background: `${theme.palette.common.black} !important`,
+        },
+        "& .swiper-button-prev, & .swiper-button-next": {
+          color: `${theme.palette.common.black} !important`,
+          width: "16px !important",
+          height: "32px !important",
+          "&::after": {
+            fontSize: "26px !important",
+          },
+        },
       }}
     />
   );

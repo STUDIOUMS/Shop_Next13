@@ -2,22 +2,23 @@
 
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Section from "@/ui/Section";
 import { Product } from "@/types";
+import Good from "../Good";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-interface ICarousel {
-  error: boolean;
+type CarouselProps = {
   list: Product[];
   title: string;
-}
+};
 
-const Carousel: React.FC<ICarousel> = ({ error, list, title }) => {
+const Carousel = (props: CarouselProps): JSX.Element => {
+  const { list, title } = props;
+
   return (
-    <div className="carousel_body">
-      <div className="pagetitle">{title}</div>
-
+    <Section title={title}>
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={20}
@@ -36,7 +37,7 @@ const Carousel: React.FC<ICarousel> = ({ error, list, title }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </Section>
   );
 };
 
