@@ -1,4 +1,3 @@
-import Image from "next/image";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import Fancybox from "@/components/Fancybox";
 
@@ -12,7 +11,7 @@ const Gallery: React.FC<IGallery> = ({ img, title }) => {
     <div>
       <Fancybox>
         <a href={img} data-fancybox data-caption={title}>
-          <img src={img} alt="" width={240} height={240} />
+          <img src={img} alt="" style={{ maxWidth: 240, maxHeight: 240 }} />
         </a>
       </Fancybox>
     </div>
