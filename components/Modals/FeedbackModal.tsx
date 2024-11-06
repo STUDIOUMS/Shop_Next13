@@ -1,4 +1,8 @@
+"use client";
+
 import { ERROR_TEXT } from "@/constants";
+import useMutateData from "@/hooks/useMutateData";
+import { Feedback } from "@/types";
 import CustomBtn from "@/ui/CustomBtn";
 import CustomInput from "@/ui/CustomInput";
 import CustomModal from "@/ui/CustomModal";
@@ -25,8 +29,26 @@ const FeedbackModal = (props: FeedbackModalProps): JSX.Element => {
     formState: { errors },
   } = useForm<FormData>();
 
+  const { mutate, isLoading } = useMutateData<Feedback>({
+    key: ["feedback"],
+    method: "POST",
+    uri: "/web/feedback",
+  });
+
   const feedbackHandler = (data: FormData) => {
-    console.log(data);
+    mutate(
+      {
+        message: data.message,
+        sender: data.name,
+        senderEmail: data.email,
+        senderPhone: data.phone,
+      },
+      {
+        onSuccess: (data) => {
+          console.log(data);
+        },
+      }
+    );
   };
 
   return (
@@ -66,7 +88,9 @@ const FeedbackModal = (props: FeedbackModalProps): JSX.Element => {
 
         <CustomBtn type="submit" color="primary" fullWidth>
           Оправить
-          <CircularProgress size={20} color="secondary" sx={{ ml: 3 }} />
+          {isLoading && (
+            <CircularProgress size={20} color="secondary" sx={{ ml: 3 }} />
+          )}
         </CustomBtn>
       </form>
     </CustomModal>

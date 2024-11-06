@@ -5,6 +5,7 @@ import { useAppStore } from "@/store/useAppStore";
 import { Product } from "@/types";
 import Packages from "@/ui/Packages";
 import { Box, Stack } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 import AddCart from "../AddCart";
 import PriceBox from "../PriceBox";
@@ -31,9 +32,13 @@ const Good = (props: GoodProps): JSX.Element => {
       alignItems={isGrid ? "normal" : "center"}
     >
       <Stack direction={isGrid ? "column" : "row"} sx={{ flexGrow: 1 }}>
-        <Box>
+        <Box sx={{ mb: 6 }}>
           <Link href={`/product/${el.slug}`}>
-            <img src={img} alt="" />
+            <img
+              src={img}
+              alt=""
+              style={{ display: "block", margin: "0 auto", height: 160 }}
+            />
           </Link>
         </Box>
         <Box>

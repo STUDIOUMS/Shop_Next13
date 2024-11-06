@@ -131,3 +131,10 @@ export type FormOrderValues = {
   inn?: string;
   company?: string;
 };
+
+export type Feedback = {
+  sender: string;
+  senderPhone: string;
+  senderEmail: string;
+  message: string;
+};

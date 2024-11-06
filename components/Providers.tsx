@@ -1,9 +1,9 @@
 "use client";
 
-import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "@mui/material";
 import theme from "@/theme";
 import Styles from "./Styles";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 type ProvidersProps = {
   children: React.ReactNode;
