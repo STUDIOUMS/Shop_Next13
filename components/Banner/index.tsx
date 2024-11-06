@@ -6,15 +6,16 @@ import Image from "next/image";
 type BannerProps = {
   src: string;
   link?: string;
+  large?: boolean;
 };
 
 const Banner = (props: BannerProps): JSX.Element => {
-  const { link, src } = props;
+  const { src, large, link } = props;
   return (
     <Box
       sx={{
         position: "relative",
-        height: 280,
+        height: large ? 400 : 280,
       }}
     >
       <Image

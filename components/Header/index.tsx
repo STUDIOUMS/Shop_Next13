@@ -35,6 +35,7 @@ const Header = (): JSX.Element => {
           <Navbar />
           <CustomBtn
             color="secondary"
+            variant="outlined"
             size="small"
             onClick={() => setFeedBack(true)}
           >

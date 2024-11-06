@@ -2,8 +2,6 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
-import Section from "@/ui/Section";
-import { SlideNextButton, SlidePrevButton } from "@/ui/SwiperBtns";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
@@ -15,11 +13,22 @@ import banner5 from "@/assets/bigbanners/banner5.webp";
 import banner6 from "@/assets/bigbanners/banner6.webp";
 import banner7 from "@/assets/bigbanners/banner7.webp";
 import Banner from "../Banner";
-import { Box, Stack } from "@mui/material";
+import { Box, styled } from "@mui/material";
+
+const SliderWrap = styled(Box)(({ theme }) => ({
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderRadius: 7,
+  borderColor: theme.palette.grey[300],
+  height: 400,
+  marginTop: theme.spacing(10),
+  overflow: "hidden",
+  position: "relative",
+}));
 
 const BigBanner = (): JSX.Element => {
   return (
-    <Section sx={{ position: "relative" }}>
+    <SliderWrap>
       <Swiper
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
         autoplay={{
@@ -33,32 +42,28 @@ const BigBanner = (): JSX.Element => {
         loop
       >
         <SwiperSlide>
-          <Banner src={banner1.src} />
+          <Banner src={banner1.src} large />
         </SwiperSlide>
         <SwiperSlide>
-          <Banner src={banner2.src} />
+          <Banner src={banner2.src} large />
         </SwiperSlide>
         <SwiperSlide>
-          <Banner src={banner3.src} />
+          <Banner src={banner3.src} large />
         </SwiperSlide>
         <SwiperSlide>
-          <Banner src={banner4.src} />
+          <Banner src={banner4.src} large />
         </SwiperSlide>
         <SwiperSlide>
-          <Banner src={banner5.src} />
+          <Banner src={banner5.src} large />
         </SwiperSlide>
         <SwiperSlide>
-          <Banner src={banner6.src} />
+          <Banner src={banner6.src} large />
         </SwiperSlide>
         <SwiperSlide>
-          <Banner src={banner7.src} />
+          <Banner src={banner7.src} large />
         </SwiperSlide>
-        {/* <Stack direction="row" justifyContent="center">
-          <SlidePrevButton />
-          <SlideNextButton />
-        </Stack> */}
       </Swiper>
-    </Section>
+    </SliderWrap>
   );
 };
 

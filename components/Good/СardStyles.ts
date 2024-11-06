@@ -6,6 +6,7 @@ export const GoodItem = styled(Stack)<BoxProps>(({ theme }) => ({
   borderStyle: "solid",
   borderColor: theme.palette.grey[300],
   borderRadius: "6px",
+  minHeight: "100%",
   padding: theme.spacing(3),
   position: "relative",
 }));

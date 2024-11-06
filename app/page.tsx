@@ -23,9 +23,7 @@ export default async function Home() {
 
       <Carousel title="Новинки" param="new" />
 
-      <Section>
-        <Banner src={banner4.src} />
-      </Section>
+      <Banner src={banner4.src} />
 
       <Carousel title="Скидки" param="discount" />
 

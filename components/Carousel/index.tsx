@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import useGetData from "@/hooks/useGetData";
 import ErrorAlert from "../ErrorAlert";
 import CarouselLoading from "./CarouselLoading";
+import { Alert, AlertTitle } from "@mui/material";
 
 type CarouselProps = {
   title: string;
@@ -29,6 +30,12 @@ const Carousel = (props: CarouselProps): JSX.Element => {
 
   if (isLoading) return <CarouselLoading />;
   if (isError) return <ErrorAlert />;
+  if (isSuccess && !data.results.length)
+    return (
+      <Alert variant="outlined" severity="info">
+        <AlertTitle>Нет записей</AlertTitle> Нет подобных товаров статьи.
+      </Alert>
+    );
 
   return (
     <Section title={title}>

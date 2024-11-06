@@ -29,13 +29,20 @@ const FeedbackModal = (props: FeedbackModalProps): JSX.Element => {
     formState: { errors },
   } = useForm<FormData>();
 
-  const { mutate, isLoading } = useMutateData<Feedback>({
+  const { mutate, isPending } = useMutateData<Feedback>({
     key: ["feedback"],
     method: "POST",
     uri: "/web/feedback",
   });
 
   const feedbackHandler = (data: FormData) => {
+    // console.log({
+    //   message: data.message,
+    //   sender: data.name,
+    //   senderEmail: data.email,
+    //   senderPhone: data.phone,
+    // });
+
     mutate(
       {
         message: data.message,
@@ -88,7 +95,7 @@ const FeedbackModal = (props: FeedbackModalProps): JSX.Element => {
 
         <CustomBtn type="submit" color="primary" fullWidth>
           Оправить
-          {isLoading && (
+          {isPending && (
             <CircularProgress size={20} color="secondary" sx={{ ml: 3 }} />
           )}
         </CustomBtn>

@@ -36,11 +36,11 @@ const PriceBox = (props: PriceBoxProps): JSX.Element => {
           })}
         >
           <Typography
-            variant="body1"
+            variant="h4"
             component="span"
             color="error"
             fontWeight={700}
-            sx={{ mr: 1 }}
+            sx={{ mb: 0, mr: 1 }}
           >
             {oldprice}
           </Typography>

@@ -10,7 +10,7 @@ const Gallery: React.FC<IGallery> = ({ img, title }) => {
   return (
     <Fancybox>
       <a href={img} data-fancybox data-caption={title}>
-        <img src={img} alt="" width={240} height={240} />
+        <img src={img} alt="" style={{ maxWidth: 300, maxHeight: 300 }} />
       </a>
     </Fancybox>
   );
