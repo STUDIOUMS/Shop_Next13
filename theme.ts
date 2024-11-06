@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import "./fonts.css";
 
 const theme = createTheme({
   spacing: 4,
@@ -29,32 +30,38 @@ const theme = createTheme({
     },
     h1: {
       fontSize: 28,
-      fontWeight: 700,
+      fontFamily: '"Roboto Condensed", sans-serif',
+      fontWeight: 500,
       marginBottom: 32,
     },
     h2: {
       fontSize: 24,
-      fontWeight: 700,
+      fontFamily: '"Roboto Condensed", sans-serif',
+      fontWeight: 500,
       marginBottom: 24,
     },
     h3: {
       fontSize: 20,
-      fontWeight: 700,
+      fontFamily: '"Roboto Condensed", sans-serif',
+      fontWeight: 500,
       marginBottom: 24,
     },
     h4: {
       fontSize: 18,
-      fontWeight: 700,
+      fontFamily: '"Roboto Condensed", sans-serif',
+      fontWeight: 500,
       marginBottom: 18,
     },
     h5: {
       fontSize: 16,
-      fontWeight: 700,
+      fontFamily: '"Roboto Condensed", sans-serif',
+      fontWeight: 500,
       marginBottom: 18,
     },
     h6: {
       fontSize: 14,
-      fontWeight: 700,
+      fontFamily: '"Roboto Condensed", sans-serif',
+      fontWeight: 500,
       marginBottom: 16,
     },
   },

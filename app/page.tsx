@@ -4,9 +4,7 @@ import BigBanner from "@/components/BigBanner";
 import BlogsWidjet from "@/components/BlogsWidjet";
 import Brands from "@/components/Brands";
 import Carousel from "@/components/Carousel";
-import { Product, Response } from "@/types";
 import Section from "@/ui/Section";
-import { getData } from "@/utils/api";
 import { Grid2 } from "@mui/material";
 import banner4 from "../assets/bigbanners/banner3.webp";
 import banner5 from "../assets/bigbanners/banner5.webp";
@@ -19,24 +17,20 @@ export const metadata = {
 };
 
 export default async function Home() {
-  // const novelties = await getData<Response<Product>>(
-  //   `/catalog/products/?new=true&limit=10`
-  // );
-  // const hits = await getData<Response<Product>>(
-  //   `/catalog/products/?hit=true&limit=10`
-  // );
-
   return (
     <div>
       <BigBanner />
 
-      <Carousel title="Новинки" list={[]} />
+      <Carousel title="Новинки" param="new" />
+
+      <Section>
+        <Banner src={banner4.src} />
+      </Section>
+
+      <Carousel title="Скидки" param="discount" />
 
       <Section>
         <Grid2 container spacing={6}>
-          <Grid2 size={12}>
-            <Banner src={banner4.src} />
-          </Grid2>
           <Grid2 size={{ lg: 6, xs: 12 }}>
             <Banner src={banner5.src} />
           </Grid2>
@@ -46,7 +40,7 @@ export default async function Home() {
         </Grid2>
       </Section>
 
-      <Carousel title="Хиты" list={[]} />
+      <Carousel title="Хиты" param="hit" />
 
       <Section title="Преимущества">
         <Advantages />

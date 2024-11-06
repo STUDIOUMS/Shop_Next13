@@ -18,7 +18,9 @@ const Navbar = (): JSX.Element => {
           const isChild = !!item.children;
           return (
             <li key={item.id}>
-              <Link href={item.path}>{item.title}</Link>
+              <Link href={item.path} className={activeItem ? "active" : ""}>
+                {item.title}
+              </Link>
               {isChild && (
                 <ul>
                   {item.children!.map((child) => (

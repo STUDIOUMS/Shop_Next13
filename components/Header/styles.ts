@@ -26,6 +26,7 @@ export const Navbox = styled(Box)(({ theme }) => ({
   li: {
     listStyle: "none",
     position: "relative",
+    fontFamily: theme.typography.h1.fontFamily,
     "& > a": {
       color: theme.palette.common.black,
       display: "block",
