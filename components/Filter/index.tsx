@@ -5,14 +5,7 @@ import { Pack } from "@/types";
 import CheckField from "../CheckField";
 import FilterItem from "./FilterItem";
 import { useCallback, useState } from "react";
-import {
-  Box,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, FormGroup, Stack, Typography } from "@mui/material";
 import { CURRENCY } from "@/constants";
 import CustomBtn from "@/ui/CustomBtn";
 
@@ -146,33 +139,6 @@ const Filter = (props: FilterProps): JSX.Element => {
               value="new"
             />
           </FormGroup>
-          {/* <CheckField
-            handler={chooseFilterParam}
-            title="Хит"
-            type="checkbox"
-            value="hit"
-            name="hit"
-            checked={hit}
-            reset={reset}
-          />
-          <CheckField
-            handler={chooseFilterParam}
-            title="Скидка"
-            type="checkbox"
-            value="discount"
-            name="discount"
-            checked={discount}
-            reset={reset}
-          />
-          <CheckField
-            handler={chooseFilterParam}
-            title="Новинки"
-            type="checkbox"
-            value="new"
-            name="new"
-            checked={newf}
-            reset={reset}
-          /> */}
         </FilterItem>
 
         {/* <FilterItem title={`Цена (${CURRENCY})`}>
@@ -182,28 +148,38 @@ const Filter = (props: FilterProps): JSX.Element => {
             from={priceFrom}
             to={priceTo}
           />
-        </FilterItem>
+        </FilterItem> */}
 
         <FilterItem title="Упаковка">
-          {packs.map((el) => {
-            const checkedPack = searchParams
-              .get("pack")
-              ?.split(",")
-              .some((i) => Number(i) === el.id);
-            return (
-              <CheckField
-                key={el.id}
-                handler={choosePackFunc}
-                title={el.name}
-                type="checkbox"
-                value={String(el.id)}
-                name="pack"
-                checked={checkedPack}
-                reset={reset}
-              />
-            );
-          })}
-        </FilterItem> */}
+          <FormGroup>
+            {packs.map((el) => {
+              // const checkedPack = searchParams
+              //   .get("pack")
+              //   ?.split(",")
+              //   .some((i) => Number(i) === el.id);
+              // return (
+              //   <CheckField
+              //     key={el.id}
+              //     handler={choosePackFunc}
+              //     title={el.name}
+              //     type="checkbox"
+              //     value={String(el.id)}
+              //     name="pack"
+              //     checked={checkedPack}
+              //     reset={reset}
+              //   />
+              // );
+              return (
+                <CheckField
+                  key={el.id}
+                  handler={chooseFilterParam}
+                  label={el.name}
+                  value={el.id.toString()}
+                />
+              );
+            })}
+          </FormGroup>
+        </FilterItem>
       </Box>
 
       <Stack direction="row">

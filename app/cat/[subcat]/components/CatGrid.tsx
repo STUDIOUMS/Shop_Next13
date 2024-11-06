@@ -7,7 +7,7 @@ import Subcats from "@/components/Subcats";
 import { PRODUCTS_LIMIT } from "@/constants";
 import useGetData from "@/hooks/useGetData";
 import { useAppStore } from "@/store/useAppStore";
-import { Cat, Product, Response } from "@/types";
+import { Cat, Pack, Product, Response } from "@/types";
 import { Grid2 } from "@mui/material";
 import CatLoading from "./CatLoading";
 
@@ -26,12 +26,19 @@ const CatGrid = (props: CatGridProps): JSX.Element => {
     }
   );
 
+  const { data: dataPacks, isSuccess: succesPacks } = useGetData<
+    Response<Pack>
+  >({
+    key: ["packs"],
+    uri: `/catalog/packs`,
+  });
+
   if (isLoading) return <CatLoading />;
 
   return (
     <Grid2 container spacing={6}>
       <Grid2 size={{ xs: 12, lg: 3 }}>
-        <Filter packs={[]} />
+        {succesPacks && <Filter packs={dataPacks.results} />}
       </Grid2>
 
       <Grid2 size={{ xs: 12, lg: 9 }}>

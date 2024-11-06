@@ -11,6 +11,7 @@ const Div = styled(Box)<BoxProps>(({ theme }) => ({
   borderColor: theme.palette.grey[300],
   borderRadius: "6px",
   marginBottom: theme.spacing(4),
+  padding: theme.spacing(4),
 }));
 
 const FilterItem = (props: FilterItemProps): JSX.Element => {
