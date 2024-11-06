@@ -7,7 +7,6 @@ import PriceBox from "@/components/PriceBox";
 import Tag from "@/ui/Tag";
 import { RootState } from "@/store/store";
 import { ProductType } from "@/options/types";
-import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import {
@@ -38,7 +37,7 @@ const Card: React.FC<ICard> = ({ el, slide }) => {
       <ItemDetails $view={view}>
         <ItemImage $view={view}>
           <Link href={`/product/${el.slug}`}>
-            <Image src={img} alt="" height={120} width={140} />
+            <img src={img} alt="" />
           </Link>
         </ItemImage>
         <div>
