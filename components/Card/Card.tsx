@@ -1,29 +1,37 @@
-'use client'
+"use client";
 
-import AddCart from "@/components/AddCart"
-import Packages from "@/components/Packages/Packages"
-import { usePriceImg } from "@/components/price.hook"
-import PriceBox from "@/components/PriceBox"
-import Tag from "@/ui/Tag"
-import { RootState } from "@/store/store"
-import { ProductType } from "@/options/types"
-import Image from "next/image"
-import Link from "next/link"
-import { useSelector } from "react-redux"
-import { Item, ItemDetails, ItemIcons, ItemImage, ItemPacks, ItemTitle } from "./СardStyles"
+import AddCart from "@/components/AddCart";
+import Packages from "@/components/Packages/Packages";
+import { usePriceImg } from "@/components/price.hook";
+import PriceBox from "@/components/PriceBox";
+import Tag from "@/ui/Tag";
+import { RootState } from "@/store/store";
+import { ProductType } from "@/options/types";
+import Image from "next/image";
+import Link from "next/link";
+import { useSelector } from "react-redux";
+import {
+  Item,
+  ItemDetails,
+  ItemIcons,
+  ItemImage,
+  ItemPacks,
+  ItemTitle,
+} from "./СardStyles";
 
 interface ICard {
-  el: ProductType
-  slide?: boolean
+  el: ProductType;
+  slide?: boolean;
 }
 
 const Card: React.FC<ICard> = ({ el, slide }) => {
-  const view = useSelector((state: RootState) => state.app.view)
+  const view = useSelector((state: RootState) => state.app.view);
 
-  const { choosePack, img, price, oldprice, currentPack, currentPackID } = usePriceImg(el.relatedPacks)
+  const { choosePack, img, price, oldprice, currentPack, currentPackID } =
+    usePriceImg(el.relatedPacks);
 
   // isSale
-  const isSale = el.relatedPacks.some(el => el.oldPrice !== null)
+  const isSale = el.relatedPacks.some((el) => el.oldPrice !== null);
 
   return (
     <Item $view={view}>
@@ -39,18 +47,22 @@ const Card: React.FC<ICard> = ({ el, slide }) => {
           </ItemTitle>
           <PriceBox price={price} oldprice={oldprice} />
           <ItemIcons $view={view}>
-            {el.hit && <Tag type='hit' />}
-            {isSale && <Tag type='sale' />}
-            {el.new && <Tag type='new' />}
+            {el.hit && <Tag type="hit" />}
+            {isSale && <Tag type="sale" />}
+            {el.new && <Tag type="new" />}
           </ItemIcons>
           <ItemPacks>
-            <Packages currentPackID={currentPackID} handler={choosePack} packs={el.relatedPacks} />
+            <Packages
+              currentPackID={currentPackID}
+              handler={choosePack}
+              packs={el.relatedPacks}
+            />
           </ItemPacks>
         </div>
       </ItemDetails>
       <AddCart el={el} img={img} pack={currentPack} price={price} />
     </Item>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
