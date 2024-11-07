@@ -3,11 +3,11 @@
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Pack } from "@/types";
 import CheckField from "../CheckField";
-import FilterItem from "./FilterItem";
 import { useCallback, useState } from "react";
-import { Box, FormGroup, Stack, Typography } from "@mui/material";
-import { CURRENCY } from "@/constants";
+import { Box, FormGroup } from "@mui/material";
 import CustomBtn from "@/ui/CustomBtn";
+import Range from "@/ui/Range";
+import { FilterDiv, FilterFooter, FilterHeader } from "./styles";
 
 type FilterProps = {
   packs: Pack[];
@@ -122,10 +122,10 @@ const Filter = (props: FilterProps): JSX.Element => {
   };
 
   return (
-    <Box>
-      <Typography variant="h5">Фильтр</Typography>
+    <FilterDiv>
+      <FilterHeader>Фильтр</FilterHeader>
       <Box>
-        <FilterItem>
+        <Box sx={{ p: 4 }}>
           <FormGroup>
             <CheckField handler={chooseFilterParam} label="Хит" value="hit" />
             <CheckField
@@ -139,36 +139,17 @@ const Filter = (props: FilterProps): JSX.Element => {
               value="new"
             />
           </FormGroup>
-        </FilterItem>
+        </Box>
 
-        {/* <FilterItem title={`Цена (${CURRENCY})`}>
-          <Range
-            handlerFrom={setPriceFrom}
-            handlerTo={setPriceTo}
-            from={priceFrom}
-            to={priceTo}
-          />
-        </FilterItem> */}
+        <FilterHeader size="small">Цена</FilterHeader>
+        <Box sx={{ p: 4 }}>
+          <Range />
+        </Box>
 
-        <FilterItem title="Упаковка">
+        <FilterHeader size="small">Упаковка</FilterHeader>
+        <Box sx={{ p: 4 }}>
           <FormGroup>
             {packs.map((el) => {
-              // const checkedPack = searchParams
-              //   .get("pack")
-              //   ?.split(",")
-              //   .some((i) => Number(i) === el.id);
-              // return (
-              //   <CheckField
-              //     key={el.id}
-              //     handler={choosePackFunc}
-              //     title={el.name}
-              //     type="checkbox"
-              //     value={String(el.id)}
-              //     name="pack"
-              //     checked={checkedPack}
-              //     reset={reset}
-              //   />
-              // );
               return (
                 <CheckField
                   key={el.id}
@@ -179,10 +160,10 @@ const Filter = (props: FilterProps): JSX.Element => {
               );
             })}
           </FormGroup>
-        </FilterItem>
+        </Box>
       </Box>
 
-      <Stack direction="row">
+      <FilterFooter direction="row">
         <CustomBtn
           variant="outlined"
           color="primary"
@@ -201,8 +182,8 @@ const Filter = (props: FilterProps): JSX.Element => {
         >
           Сбросить
         </CustomBtn>
-      </Stack>
-    </Box>
+      </FilterFooter>
+    </FilterDiv>
   );
 };
 
