@@ -2,6 +2,7 @@ import theme from "@/theme";
 import { Checkbox, FormControlLabel, styled } from "@mui/material";
 
 type CheckFieldProps = {
+  checked: boolean;
   label: string;
   value: string;
   handler: (val: string) => void;
@@ -14,7 +15,7 @@ const Item = styled(FormControlLabel)(() => ({
 }));
 
 const CheckField = (props: CheckFieldProps) => {
-  const { handler, label, value } = props;
+  const { checked, handler, label, value } = props;
   return (
     <Item
       control={
@@ -25,6 +26,7 @@ const CheckField = (props: CheckFieldProps) => {
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             handler(e.target.value)
           }
+          defaultChecked={checked}
         />
       }
       label={label}
