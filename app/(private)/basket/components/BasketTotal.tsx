@@ -1,6 +1,6 @@
 import { CURRENCY } from "@/constants";
 import { Order } from "@/types";
-import { BasketTotalDiv } from "./BasketStyles";
+import { Typography } from "@mui/material";
 
 type BasketTotalProps = {
   orders: Order[];
@@ -13,9 +13,9 @@ const BasketTotal = (props: BasketTotalProps): JSX.Element => {
     0
   );
   return (
-    <BasketTotalDiv>
+    <Typography variant="h2" fontWeight={400} textAlign="right">
       Итого: <b>{total}</b> <small>{CURRENCY}</small>
-    </BasketTotalDiv>
+    </Typography>
   );
 };
 

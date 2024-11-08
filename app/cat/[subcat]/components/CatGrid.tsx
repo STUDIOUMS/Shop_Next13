@@ -53,18 +53,10 @@ const CatGrid = (props: CatGridProps): JSX.Element => {
 
         <Sort />
 
-        <Grid2 container spacing={6} sx={{ mb: 10 }}>
+        <Grid2 container spacing={4} sx={{ mb: 10 }}>
           {isSuccess &&
             data.results.map((product) => (
-              <Grid2
-                key={product.id}
-                size={{
-                  xs: 12,
-                  sm: view === "grid" ? 4 : 12,
-                }}
-              >
-                <Good el={product} />
-              </Grid2>
+              <Good key={product.id} el={product} />
             ))}
         </Grid2>
       </Grid2>

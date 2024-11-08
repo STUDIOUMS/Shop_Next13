@@ -16,8 +16,8 @@ const crumbs: BreadCrumbsItem[] = [{ name: "Корзина", slug: `/basket` }];
 export default function Page() {
   return (
     <Section>
-      <Typography variant="h1">Корзина</Typography>
       <BreadCrumbs links={crumbs} />
+      <Typography variant="h1">Корзина</Typography>
       <BasketList />
     </Section>
   );

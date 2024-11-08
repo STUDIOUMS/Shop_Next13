@@ -1,15 +1,20 @@
-import { Box, Chip, ChipProps, Stack, styled } from "@mui/material";
+import { View } from "@/types";
+import { Box, Chip, ChipProps, Grid2, Stack, styled } from "@mui/material";
 import { BoxProps } from "@mui/system";
 
-export const GoodItem = styled(Stack)<BoxProps>(({ theme }) => ({
-  borderWidth: 1,
-  borderStyle: "solid",
-  borderColor: theme.palette.grey[300],
-  borderRadius: "6px",
-  minHeight: "100%",
-  padding: theme.spacing(3),
-  position: "relative",
-}));
+export const GoodItem = styled(Grid2)<BoxProps & { view: View }>(
+  ({ theme, view }) => ({
+    alignItems: view === "grid" ? "normal" : "center",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: theme.palette.grey[300],
+    borderRadius: "6px",
+    display: "flex",
+    flexDirection: view === "grid" ? "column" : "row",
+    padding: theme.spacing(3),
+    position: "relative",
+  })
+);
 
 export const GoodChip = styled(Chip)<ChipProps>(({ theme }) => ({
   borderRadius: "6px",
@@ -26,7 +31,6 @@ export const GoodChip = styled(Chip)<ChipProps>(({ theme }) => ({
 export const GoodItemTitle = styled(Box)(({ theme }) => ({
   fontSize: theme.typography.h4.fontSize,
   fontWeight: 700,
-  marginBottom: theme.spacing(6),
   a: {
     color: theme.palette.common.black,
     textDecoration: "none",

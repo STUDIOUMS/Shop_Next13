@@ -1,57 +1,55 @@
 "use client";
 
+import { useState } from "react";
+import { Alert, Stack, Table, TableBody, TableContainer } from "@mui/material";
+import { useOrderStore } from "@/store/useOrderStore";
 import BasketHead from "./BasketHead";
 import BasketRow from "./BasketRow";
 import BasketTotal from "./BasketTotal";
-import { useState } from "react";
-import Section from "@/ui/Section";
 import CustomBtn from "@/ui/CustomBtn";
-import { useOrderStore } from "@/store/useOrderStore";
+import BasketModal from "./BasketModal";
 
 const BasketList = (): JSX.Element => {
   const [modal, setModal] = useState<boolean>(false);
   const { orders } = useOrderStore();
 
-  // removeAllItems
-  const removeAllItems = () => {
-    setModal(false);
-  };
-
   return (
     <>
       {orders.length ? (
         <>
-          <div>
-            <BasketHead />
-            {orders.map((el) => (
-              <BasketRow key={el.id} order={el} />
-            ))}
-            {!orders.length && <p>Loading...</p>}
-          </div>
+          <TableContainer sx={{ mb: 6 }}>
+            <Table>
+              <BasketHead />
+              <TableBody>
+                {orders.map((el) => (
+                  <BasketRow key={el.id} order={el} />
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
 
           <BasketTotal orders={orders} />
 
-          <CustomBtn href="/order">Оформить заказ</CustomBtn>
-          <CustomBtn variant="outlined" color="secondary">
-            Очистить корзину
-          </CustomBtn>
+          <Stack direction="row" justifyContent="flex-end">
+            <CustomBtn
+              variant="outlined"
+              color="secondary"
+              onClick={() => setModal(true)}
+              sx={{ mr: 4 }}
+            >
+              Очистить корзину
+            </CustomBtn>
+            <CustomBtn href="/order">Оформить заказ</CustomBtn>
+          </Stack>
 
-          {/* <Modal
-            title="Очистить корзину"
-            show={modal}
-            handler={() => setModal(false)}
-          >
-            <p>Все товары будут удалены из корзины.</p>
-            <div className="grid grid-2">
-              <Btn title="Отмена" handler={() => setModal(false)} />
-              <Btn title="Очистить" color="danger" handler={removeAllItems} />
-            </div>
-          </Modal> */}
+          <BasketModal close={() => setModal(false)} open={modal} />
         </>
       ) : (
         <>
-          {/* <Alert>Ваша корзина пуста</Alert> */}
-          <CustomBtn variant="outlined" color="secondary">
+          <Alert variant="outlined" color="info" severity="info" sx={{ mb: 6 }}>
+            Ваша корзина пуста
+          </Alert>
+          <CustomBtn variant="outlined" color="secondary" href="/">
             Вернуться на главную
           </CustomBtn>
         </>

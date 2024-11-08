@@ -1,14 +1,10 @@
+"use client";
+
 import PriceBox from "@/components/PriceBox";
+import { useOrderStore } from "@/store/useOrderStore";
 import { Order } from "@/types";
-import Image from "next/image";
+import { IconButton, TableCell, TableRow, Typography } from "@mui/material";
 import Link from "next/link";
-import {
-  BasketItem,
-  BasketItemText,
-  Delete,
-  MobileTitle,
-} from "./BasketStyles";
-import { useState } from "react";
 
 type BasketRowProps = {
   order: Order;
@@ -16,60 +12,41 @@ type BasketRowProps = {
 
 const BasketRow = (props: BasketRowProps): JSX.Element => {
   const { order } = props;
-  const [modal, setModal] = useState<boolean>(false);
-
-  // removeItem
-  const removeItem = () => {
-    setModal(false);
-    document.body.classList.remove("overflow");
-  };
+  const { deleteOrder } = useOrderStore();
 
   return (
-    <>
-      <BasketItem>
-        <div>
-          <Link href={`/product/${order.slug}`}>
-            {/* <Image src={order.img} alt="" width={70} height={70} /> */}
-          </Link>
-        </div>
-        <div>
-          <h3>
-            <Link href={`/product/${order.slug}`}>{order.title}</Link>
-          </h3>
-          <BasketItemText>
-            <span>Фасовка:</span> <b>{order.pack}</b>
-          </BasketItemText>
-          <BasketItemText>
-            <span>Код товара:</span> <b>{order.art}</b>
-          </BasketItemText>
-        </div>
-        <div>
-          <MobileTitle>Цена</MobileTitle>
-          <PriceBox price={order.price} />
-        </div>
-        <div>
-          <MobileTitle>Кол-во</MobileTitle>
-          {/* <Counter productId={order.id} val={order.count!} /> */}
-        </div>
-        <div>
-          <MobileTitle>Стоимость</MobileTitle>
-          <PriceBox price={order.total} />
-        </div>
-        <Delete onClick={() => setModal(true)} />
-      </BasketItem>
-
-      {/* <Modal
-        show={modal}
-        handler={() => setModal(false)}
-        title="Удаление товара"
-      >
-        <p>Подтерждаете удаление товара?</p>
-        <div className="grid grid-2">
-          <Btn title="Отмена" handler={() => setModal(false)} />
-          <Btn title="Да, удалить" color="danger" handler={removeItem} />
-        </div>
-      </Modal> */}
-    </>
+    <TableRow sx={{ position: "relative" }}>
+      <TableCell component="th" scope="row">
+        <Link href={`/product/${order.slug}`}>
+          <img src={order.img} alt="" style={{ display: "block", width: 70 }} />
+        </Link>
+      </TableCell>
+      <TableCell>
+        <Typography variant="h4">
+          <Link href={`/product/${order.slug}`}>{order.title}</Link>
+        </Typography>
+        <Typography variant="body2">
+          Фасовка: <b>{order.pack}</b>
+        </Typography>
+        <Typography variant="body2">
+          Код товара: <b>{order.art}</b>
+        </Typography>
+      </TableCell>
+      <TableCell>
+        <PriceBox price={order.price} />
+      </TableCell>
+      <TableCell></TableCell>
+      <TableCell>
+        <PriceBox price={order.total} />
+        <IconButton
+          color="error"
+          sx={{ position: "absolute", right: 0, top: "50%", mt: "-24px" }}
+          onClick={() => deleteOrder(order.id)}
+        >
+          &times;
+        </IconButton>
+      </TableCell>
+    </TableRow>
   );
 };
 

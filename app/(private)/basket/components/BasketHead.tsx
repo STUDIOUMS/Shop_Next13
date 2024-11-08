@@ -1,14 +1,16 @@
-import { BasketItem } from "./BasketStyles";
+import { TableCell, TableHead, TableRow } from "@mui/material";
 
 const BasketHead = (): JSX.Element => {
   return (
-    <BasketItem className="top">
-      <div>Изображение</div>
-      <div>Название товара</div>
-      <div>Цена</div>
-      <div>Кол-во</div>
-      <div>Стоимость</div>
-    </BasketItem>
+    <TableHead>
+      <TableRow>
+        <TableCell>Изображение</TableCell>
+        <TableCell>Название товара</TableCell>
+        <TableCell>Цена</TableCell>
+        <TableCell>Кол-во</TableCell>
+        <TableCell>Стоимость</TableCell>
+      </TableRow>
+    </TableHead>
   );
 };
 

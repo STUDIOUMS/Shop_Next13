@@ -5,6 +5,8 @@ import { devtools, persist } from "zustand/middleware";
 interface OrderStore {
   orders: Order[];
   setOrder: (data: Omit<Order, "count">) => void;
+  deleteOrder: (id: string) => void;
+  deleteAllOrders: () => void;
 }
 
 export const useOrderStore = create<OrderStore>()(
@@ -33,6 +35,13 @@ export const useOrderStore = create<OrderStore>()(
             }
             return { orders: state.orders };
           }),
+
+        deleteOrder: (id) =>
+          set((state) => {
+            return { orders: state.orders.filter((order) => order.id !== id) };
+          }),
+
+        deleteAllOrders: () => set(() => ({ orders: [] })),
       }),
       { name: "orders" }
     )
