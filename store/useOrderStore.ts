@@ -4,7 +4,7 @@ import { devtools, persist } from "zustand/middleware";
 
 interface OrderStore {
   orders: Order[];
-  setOrder: (data: Order) => void;
+  setOrder: (data: Omit<Order, "count">) => void;
 }
 
 export const useOrderStore = create<OrderStore>()(

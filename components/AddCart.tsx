@@ -14,7 +14,7 @@ const AddCart = (props: AddCartProps): JSX.Element => {
   const { el, img, pack, price, big } = props;
   const { setOrder } = useOrderStore();
 
-  const order: Order = {
+  const order: Omit<Order, "count"> = {
     id: String(el.id) + "-" + pack,
     title: el.title,
     slug: el.slug,
