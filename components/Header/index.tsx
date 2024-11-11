@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Box, CircularProgress, Link } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import Navbar from "./NavBar";
 import CustomBtn from "@/ui/CustomBtn";
 import FeedbackModal from "../Modals/FeedbackModal";
@@ -12,6 +12,7 @@ import SmallCart from "./SmallCart";
 import useGetData from "@/hooks/useGetData";
 import { Cat, Response } from "@/types";
 import CatPopup from "../CatPopup";
+import Link from "next/link";
 
 const Header = (): JSX.Element => {
   const [feedBack, setFeedBack] = useState<boolean>(false);

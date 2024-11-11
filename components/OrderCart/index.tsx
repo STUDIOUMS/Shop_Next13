@@ -1,30 +1,44 @@
-import { COURIER_PRICE } from "@/constants";
-import { useOrderStore } from "@/store/useOrderStore";
-import { Delivery } from "@/types";
-import { OrderCartWrap } from "./styles";
+import { Box, styled } from "@mui/material";
+import { CURRENCY } from "@/constants";
+import { Delivery, Order } from "@/types";
+import OrderCartItem, { Item } from "./OrderCartItem";
 
 type OrderCartProps = {
   delivery: Delivery;
+  deliveryPrice: number;
+  orders: Order[];
+  totalPrice: number;
 };
 
+const OrderCartWrap = styled(Box)(({ theme }) => ({
+  borderColor: theme.palette.grey[300],
+  borderStyle: "solid",
+  borderWidth: 1,
+  borderRadius: 6,
+  padding: theme.spacing(5),
+  position: "sticky",
+  top: "85px",
+}));
+
 const OrderCart = (props: OrderCartProps): JSX.Element => {
-  const { delivery } = props;
-  const { orders } = useOrderStore();
-
-  const deliveryPrice = delivery === "courier" ? COURIER_PRICE : 0;
-  const totalPrice =
-    orders.reduce((acum, order) => (acum += Number(order.total)), 0) +
-    deliveryPrice;
-
+  const { delivery, deliveryPrice, orders, totalPrice } = props;
   return (
     <OrderCartWrap>
-      {orders.map((el) => (
-        <p key={el.id}>
-          {el.title} - {el.price} / {el.count} шт. / {el.total}
-        </p>
+      {orders.map((order) => (
+        <OrderCartItem key={order.id} order={order} />
       ))}
-      <p>Доставка: {deliveryPrice}</p>
-      <p>Итого: {totalPrice}</p>
+      <Item display="flex" justifyContent="space-between">
+        Доставка:{" "}
+        <span>
+          <b>{deliveryPrice}</b> {CURRENCY}
+        </span>
+      </Item>
+      <Item display="flex" justifyContent="space-between">
+        Итого:{" "}
+        <span>
+          <b>{totalPrice}</b> {CURRENCY}
+        </span>
+      </Item>
     </OrderCartWrap>
   );
 };

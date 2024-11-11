@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Box, Grid2, Stack, styled, Typography } from "@mui/material";
 import AddCart from "@/components/AddCart";
-import { GoodChip } from "@/components/Good/СardStyles";
 import QuickModal from "@/components/Modals/QuickModal";
 import PriceBox from "@/components/PriceBox";
 import { usePriceImg } from "@/hooks/usePriceImg";
@@ -11,6 +10,7 @@ import { Product } from "@/types";
 import CustomBtn from "@/ui/CustomBtn";
 import Packages from "@/ui/Packages";
 import Gallery from "./Gallery";
+import { GoodChip } from "@/components/Good/styles";
 
 type ProductCardProps = {
   good: Product;

@@ -1,12 +1,17 @@
 "use client";
 
 import { COURIER_PRICE, ERROR_TEXT } from "@/constants";
-import { Delivery, Face, FormOrderValues, Payment } from "@/types";
+import {
+  Delivery,
+  Face,
+  FormOrderValues,
+  Payment,
+  CreatedOrder,
+} from "@/types";
 import CustomBtn from "@/ui/CustomBtn";
 import CustomInput from "@/ui/CustomInput";
 import {
   Alert,
-  Box,
   FormControlLabel,
   Grid2,
   Radio,
@@ -20,11 +25,21 @@ import OrderSection from "./OrderSection";
 import visa from "@/assets/visa.svg";
 import mastercard from "@/assets/mastercard.svg";
 import OrderCart from "@/components/OrderCart";
+import Link from "next/link";
+import { useOrderStore } from "@/store/useOrderStore";
 
 const OrderForm = (): JSX.Element => {
+  const { orders } = useOrderStore();
   const [face, setFace] = useState<Face>("individual");
   const [delivery, setDelivery] = useState<Delivery>("pickup");
   const [payment, setPayment] = useState<Payment>("acquiring");
+
+  const deliveryPrice = delivery === "courier" ? COURIER_PRICE : 0;
+  const totalPrice = orders.reduce(
+    (acum, order) => (acum += Number(order.total)),
+    0
+  );
+  const totalPriceDelivery = totalPrice + deliveryPrice;
 
   const {
     register,
@@ -34,7 +49,24 @@ const OrderForm = (): JSX.Element => {
   } = useForm<FormOrderValues>();
 
   const placeOrder = (data: FormOrderValues) => {
-    console.log(data);
+    const newOrder: CreatedOrder = {
+      addition: data.addition,
+      name: data.name,
+      phone: data.phone,
+      address: data.address,
+      city: data.city,
+      company: data.company,
+      email: data.email,
+      inn: data.inn,
+      delivery,
+      deliveryPrice,
+      list: orders,
+      payment,
+      price: totalPrice,
+      status: "waiting",
+      total: totalPriceDelivery,
+    };
+    console.log(newOrder);
   };
 
   return (
@@ -97,6 +129,13 @@ const OrderForm = (): JSX.Element => {
                       label="ИНН организации"
                       fullWidth
                       sx={{ m: 0 }}
+                      slotProps={{
+                        input: {
+                          ...register("inn", { required: ERROR_TEXT }),
+                        },
+                      }}
+                      error={errors.inn ? true : false}
+                      helperText={errors.inn && errors.inn.message}
                     />
                   </Grid2>
 
@@ -105,6 +144,13 @@ const OrderForm = (): JSX.Element => {
                       label="Название организации"
                       fullWidth
                       sx={{ m: 0 }}
+                      slotProps={{
+                        input: {
+                          ...register("company", { required: ERROR_TEXT }),
+                        },
+                      }}
+                      error={errors.company ? true : false}
+                      helperText={errors.company && errors.company.message}
                     />
                   </Grid2>
                 </>
@@ -136,6 +182,38 @@ const OrderForm = (): JSX.Element => {
                 <br />
                 <b>Время доставки:</b> с 10-00 по 18-00 (Пн-Сб)
               </Alert>
+            )}
+            {delivery === "courier" && (
+              <Grid2 container spacing={6}>
+                <Grid2 size={{ xs: 12, lg: 6 }}>
+                  <CustomInput
+                    label="Город"
+                    fullWidth
+                    sx={{ m: 0 }}
+                    slotProps={{
+                      input: {
+                        ...register("city", { required: ERROR_TEXT }),
+                      },
+                    }}
+                    error={errors.city ? true : false}
+                    helperText={errors.city && errors.city.message}
+                  />
+                </Grid2>
+                <Grid2 size={{ xs: 12, lg: 6 }}>
+                  <CustomInput
+                    label="Улица, дом, кв"
+                    fullWidth
+                    sx={{ m: 0 }}
+                    slotProps={{
+                      input: {
+                        ...register("address", { required: ERROR_TEXT }),
+                      },
+                    }}
+                    error={errors.address ? true : false}
+                    helperText={errors.address && errors.address.message}
+                  />
+                </Grid2>
+              </Grid2>
             )}
           </OrderSection>
 
@@ -191,16 +269,23 @@ const OrderForm = (): JSX.Element => {
           </OrderSection>
 
           <Stack direction="row" justifyContent="space-between">
-            <CustomBtn href="/basket" variant="outlined" color="secondary">
-              Вернуться в корзину
-            </CustomBtn>
+            <Link href="/basket" passHref>
+              <CustomBtn variant="outlined" color="secondary">
+                Вернуться в корзину
+              </CustomBtn>
+            </Link>
             <CustomBtn type="submit">Оформить заказ</CustomBtn>
           </Stack>
         </form>
       </Grid2>
 
       <Grid2 size={{ xs: 12, lg: 4 }}>
-        <OrderCart delivery={delivery} />
+        <OrderCart
+          delivery={delivery}
+          deliveryPrice={deliveryPrice}
+          orders={orders}
+          totalPrice={totalPriceDelivery}
+        />
       </Grid2>
     </Grid2>
   );

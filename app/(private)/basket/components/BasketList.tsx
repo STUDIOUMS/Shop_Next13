@@ -8,6 +8,7 @@ import BasketRow from "./BasketRow";
 import BasketTotal from "./BasketTotal";
 import CustomBtn from "@/ui/CustomBtn";
 import BasketModal from "./BasketModal";
+import Link from "next/link";
 
 const BasketList = (): JSX.Element => {
   const [modal, setModal] = useState<boolean>(false);
@@ -39,7 +40,9 @@ const BasketList = (): JSX.Element => {
             >
               Очистить корзину
             </CustomBtn>
-            <CustomBtn href="/order">Оформить заказ</CustomBtn>
+            <Link href="/order" passHref>
+              <CustomBtn>Оформить заказ</CustomBtn>
+            </Link>
           </Stack>
 
           <BasketModal close={() => setModal(false)} open={modal} />
@@ -49,9 +52,11 @@ const BasketList = (): JSX.Element => {
           <Alert variant="outlined" color="info" severity="info" sx={{ mb: 6 }}>
             Ваша корзина пуста
           </Alert>
-          <CustomBtn variant="outlined" color="secondary" href="/">
-            Вернуться на главную
-          </CustomBtn>
+          <Link href="/" passHref>
+            <CustomBtn variant="outlined" color="secondary">
+              Вернуться на главную
+            </CustomBtn>
+          </Link>
         </>
       )}
     </>

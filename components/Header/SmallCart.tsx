@@ -5,6 +5,7 @@ import { useOrderStore } from "@/store/useOrderStore";
 import CustomBtn from "@/ui/CustomBtn";
 import { Badge } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const SmallCart = (): JSX.Element => {
@@ -20,14 +21,15 @@ const SmallCart = (): JSX.Element => {
         "& .MuiBadge-badge": { fontSize: "11px" },
       }}
     >
-      <CustomBtn
-        color="secondary"
-        disabled={!orders.length}
-        style={{ padding: 0, minWidth: 0, width: "40px", height: "40px" }}
-        href="/basket"
-      >
-        <Image src={cart.src} alt="Cart" width={20} height={20} />
-      </CustomBtn>
+      <Link href="/basket" passHref>
+        <CustomBtn
+          color="secondary"
+          disabled={!orders.length}
+          style={{ padding: 0, minWidth: 0, width: "40px", height: "40px" }}
+        >
+          <Image src={cart.src} alt="Cart" width={20} height={20} />
+        </CustomBtn>
+      </Link>
     </Badge>
   );
 };

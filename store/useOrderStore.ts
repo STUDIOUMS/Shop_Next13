@@ -5,6 +5,7 @@ import { devtools, persist } from "zustand/middleware";
 interface OrderStore {
   orders: Order[];
   setOrder: (data: Omit<Order, "count">) => void;
+  changeCount: (id: string, count: string) => void;
   deleteOrder: (id: string) => void;
   deleteAllOrders: () => void;
 }
@@ -32,6 +33,16 @@ export const useOrderStore = create<OrderStore>()(
               });
             } else {
               state.orders = [...state.orders, newOrder];
+            }
+            return { orders: state.orders };
+          }),
+
+        changeCount: (id, count) =>
+          set((state) => {
+            const found = state.orders.find((order) => order.id === id);
+            if (found) {
+              found.count = Number(count);
+              found.total = String(Number(found.price) * Number(count));
             }
             return { orders: state.orders };
           }),

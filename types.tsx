@@ -104,11 +104,10 @@ export type CreatedOrder = {
   phone: string;
   addition: string;
   city?: string;
-  street?: string;
   address?: string;
   delivery: Delivery;
   payment: Payment;
-  inn?: number;
+  inn?: string;
   company?: string;
   status: "waiting" | "canceled" | "processed" | "done";
   price: number;
@@ -122,13 +121,13 @@ export type Payment = "acquiring" | "bill";
 
 export type FormOrderValues = {
   name: string;
-  email?: string;
+  email: string;
   phone: string;
   city: string;
   street: string;
   address: string;
   addition: string;
-  inn?: string;
+  inn: string;
   company?: string;
 };
 
