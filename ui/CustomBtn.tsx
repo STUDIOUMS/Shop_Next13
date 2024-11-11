@@ -8,9 +8,9 @@ const Btn = styled(Button)<ButtonProps>(({ theme }) => ({
   fontSize: theme.typography.body1.fontSize,
   lineHeight: theme.typography.body1.lineHeight,
   textTransform: "none",
-  padding: "10px 22px",
+  padding: "9px 22px",
   "&.MuiButton-sizeSmall": {
-    padding: "8px 18px",
+    padding: "7px 18px",
     fontSize: theme.typography.body2.fontSize,
     lineHeight: theme.typography.body2.lineHeight,
   },

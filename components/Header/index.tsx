@@ -14,6 +14,7 @@ import { Cat, Response } from "@/types";
 import CatPopup from "../CatPopup";
 import Link from "next/link";
 import NavDrawer from "./NavDrawer";
+import Search from "../Search";
 
 const Header = (): JSX.Element => {
   const [feedBack, setFeedBack] = useState<boolean>(false);
@@ -61,12 +62,12 @@ const Header = (): JSX.Element => {
             />
           </Link>
 
-          <Box sx={{ ml: 8, mr: "auto" }}>
+          <Box sx={{ ml: 4, mr: "auto" }}>
             {isLoading && <CircularProgress size={24} />}
             {isSuccess && <CatPopup cats={data.results} />}
           </Box>
 
-          {/* <Search /> */}
+          <Search />
           <SmallCart />
         </Wrap>
       </MiddleHeader>
