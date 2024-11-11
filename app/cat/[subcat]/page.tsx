@@ -6,9 +6,7 @@ import { Box, Grid2, Typography } from "@mui/material";
 import CatGrid from "./components/CatGrid";
 
 type Params = {
-  params: {
-    subcat: string;
-  };
+  params: Promise<{ subcat: string }>;
 };
 
 // Metatags

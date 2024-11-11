@@ -5,14 +5,12 @@ import { getData } from "@/utils/api";
 import BlogCard from "../components/BlogCard";
 
 type Params = {
-  params: {
-    blog: string;
-  };
+  params: Promise<{ blog: string }>;
 };
 
 // Metatags
-export async function generateMetadata(params: Params) {
-  const { blog } = await params.params;
+export async function generateMetadata(props: Params) {
+  const { blog } = await props.params;
   const post = await getData<BlogItem>(`/blog/articles/${blog}`);
   return {
     title: post.title,
@@ -20,8 +18,8 @@ export async function generateMetadata(params: Params) {
   };
 }
 
-export default async function BlogPage(params: Params) {
-  const { blog } = await params.params;
+export default async function BlogPage(props: Params) {
+  const { blog } = await props.params;
   const post = await getData<BlogItem>(`/blog/articles/${blog}`);
 
   // Breadcrumbs

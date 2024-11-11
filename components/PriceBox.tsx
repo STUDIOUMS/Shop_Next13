@@ -1,6 +1,5 @@
 import { CURRENCY } from "@/constants";
 import { Stack, StackProps, Typography } from "@mui/material";
-import { Box } from "@mui/system";
 
 type PriceSizeType = "large" | "small";
 

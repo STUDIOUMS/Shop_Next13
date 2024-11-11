@@ -6,7 +6,7 @@ import { Typography } from "@mui/material";
 import ProductCard from "./components/ProductCard";
 
 type Params = {
-  params: { product: string };
+  params: Promise<{ product: string }>;
 };
 
 // Metatags

@@ -4,14 +4,7 @@ import PriceBox from "@/components/PriceBox";
 import { useOrderStore } from "@/store/useOrderStore";
 import { Order } from "@/types";
 import CountBox from "@/ui/CountBox";
-import CustomInput from "@/ui/CustomInput";
-import {
-  IconButton,
-  Input,
-  TableCell,
-  TableRow,
-  Typography,
-} from "@mui/material";
+import { IconButton, TableCell, TableRow, Typography } from "@mui/material";
 import Link from "next/link";
 
 type BasketRowProps = {

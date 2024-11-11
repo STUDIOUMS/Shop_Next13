@@ -4,6 +4,7 @@ import { ThemeProvider } from "@mui/material";
 import theme from "@/theme";
 import Styles from "./Styles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Suspense } from "react";
 
 type ProvidersProps = {
   children: React.ReactNode;
@@ -17,7 +18,7 @@ const Providers = (props: ProvidersProps): JSX.Element => {
     <QueryClientProvider client={client}>
       <ThemeProvider theme={theme}>
         <Styles />
-        {children}
+        <Suspense>{children}</Suspense>
       </ThemeProvider>
     </QueryClientProvider>
   );

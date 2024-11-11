@@ -4,7 +4,7 @@ import Section from "@/ui/Section";
 import { Alert, AlertTitle, Typography } from "@mui/material";
 
 type Params = {
-  searchParams: { s: string };
+  searchParams: Promise<{ s: string }>;
 };
 
 // Metatags
