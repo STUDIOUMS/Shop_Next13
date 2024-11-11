@@ -7,6 +7,7 @@ import logo from "@/assets/logo.webp";
 import { NAV_ITEMS } from "../Header/constants";
 import Socials from "../Socials";
 import CustomContainer from "@/ui/CustomContainer";
+import FootMenu from "./FootMenu";
 
 const Footer = (): JSX.Element => {
   const theme = useTheme();
@@ -39,13 +40,7 @@ const Footer = (): JSX.Element => {
             <>
               <Grid2 size={{ lg: 3, xs: 12 }}>
                 <Typography variant="h3">Меню</Typography>
-                <ul>
-                  {NAV_ITEMS.map((el) => (
-                    <li key={el.id}>
-                      <Link href={el.path}>{el.title}</Link>
-                    </li>
-                  ))}
-                </ul>
+                <FootMenu />
               </Grid2>
 
               <Grid2 size={{ lg: 3, xs: 12 }}>

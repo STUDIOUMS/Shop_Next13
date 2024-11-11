@@ -82,13 +82,7 @@ const ProductCard = (props: ProductCardProps): JSX.Element => {
           />
 
           <Stack direction="row">
-            <AddCart
-              big={true}
-              el={good}
-              pack={currentPack}
-              price={price}
-              img={img}
-            />
+            <AddCart el={good} pack={currentPack} price={price} img={img} />
             <CustomBtn
               onClick={() => setQuickModal(true)}
               color="secondary"
