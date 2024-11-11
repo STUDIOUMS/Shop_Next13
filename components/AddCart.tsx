@@ -1,3 +1,4 @@
+import { useAppStore } from "@/store/useAppStore";
 import { useOrderStore } from "@/store/useOrderStore";
 import { Order, Product } from "@/types";
 import CustomBtn from "@/ui/CustomBtn";
@@ -7,12 +8,12 @@ type AddCartProps = {
   pack: string;
   img: string;
   price: string;
-  big?: boolean;
 };
 
 const AddCart = (props: AddCartProps): JSX.Element => {
-  const { el, img, pack, price, big } = props;
+  const { el, img, pack, price } = props;
   const { setOrder } = useOrderStore();
+  const { setMessage } = useAppStore();
 
   const order: Omit<Order, "count"> = {
     id: String(el.id) + "-" + pack,
@@ -25,12 +26,13 @@ const AddCart = (props: AddCartProps): JSX.Element => {
     pack,
   };
 
+  const addCartHandler = () => {
+    setOrder(order);
+    setMessage(`Товар ${el.title} был добавлен в корзину`);
+  };
+
   return (
-    <CustomBtn
-      color="primary"
-      variant="outlined"
-      onClick={() => setOrder(order)}
-    >
+    <CustomBtn color="primary" variant="outlined" onClick={addCartHandler}>
       В корзину
     </CustomBtn>
   );

@@ -14,7 +14,7 @@ type LayoutProps = {
 
 const RootLayout = (props: LayoutProps): JSX.Element => {
   const { children } = props;
-  const { message } = useAppStore();
+  const { message, setMessage } = useAppStore();
 
   return (
     <html lang="en">
@@ -30,8 +30,8 @@ const RootLayout = (props: LayoutProps): JSX.Element => {
           <Snackbar
             open={!!message}
             autoHideDuration={5000}
-            onClose={() => {}}
-            message="Note archived"
+            onClose={() => setMessage(undefined)}
+            message={message}
             anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           />
           <ScrollToTop />

@@ -35,19 +35,19 @@ const Filter = (props: FilterProps): JSX.Element => {
               handler={chooseFilterParam}
               label="Хит"
               value="hit"
-              checked={isHit === "true"}
+              checked={isHit}
             />
             <CheckField
               handler={chooseFilterParam}
               label="Скидка"
               value="discount"
-              checked={isDiscount === "true"}
+              checked={isDiscount}
             />
             <CheckField
               handler={chooseFilterParam}
               label="Новинки"
               value="new"
-              checked={isNew === "true"}
+              checked={isNew}
             />
           </FormGroup>
         </Box>

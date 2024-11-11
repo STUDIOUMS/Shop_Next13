@@ -2,13 +2,13 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 
 type FilterReturn = {
-  isHit: string;
-  isDiscount: string;
-  isNew: string;
+  isHit: boolean;
+  isDiscount: boolean;
+  isNew: boolean;
   isPack: string;
   applyFilter: () => void;
   chooseFilterParam: (val: string) => void;
-  choosePackHandler: (val: string) => void;
+  choosePackHandler: (id: string) => void;
 };
 
 const useFilter = (): FilterReturn => {
@@ -18,69 +18,44 @@ const useFilter = (): FilterReturn => {
   const searchParams = useSearchParams();
 
   // getting of existing params
-  const isHit = searchParams.has("hit") ? "true" : "false";
-  const isDiscount = searchParams.has("discount") ? "true" : "false";
-  const isNew = searchParams.has("new") ? "true" : "false";
-  // const isPriceFrom = searchParams.get("price_min") || "";
-  // const isPriceTo = searchParams.get("price_max") || "";
+  const isHit = searchParams.has("hit") ? true : false;
+  const isDiscount = searchParams.has("discount") ? true : false;
+  const isNew = searchParams.has("new") ? true : false;
   const isPack = searchParams.get("pack") || "";
 
-  const [hit, setHit] = useState<string>(isHit);
-  const [discount, setDiscount] = useState<string>(isDiscount);
-  const [newf, setNewf] = useState<string>(isNew);
-  const [chosenPacks, setChosenPacks] = useState<string>(isPack);
-  const [reset, setReset] = useState<boolean>(false);
+  // State
+  const [filterState, setFilterState] = useState<string[]>([]);
+  const [packState, setPackState] = useState<string[]>([]);
 
   const chooseFilterParam = (val: string) => {
-    setReset(false);
-    if (val === "hit") setHit("hit");
-    if (val === "discount") setDiscount("discount");
-    if (val === "new") setNewf("new");
+    setFilterState((prev) => {
+      if (!prev.includes(val)) return [...prev, val];
+      return prev.filter((el) => el !== val);
+    });
   };
 
   const choosePackHandler = (id: string) => {
-    const exists = chosenPacks.split(",").some((packId) => packId === id);
-    if (!exists) {
-      if (!chosenPacks.length) {
-        setChosenPacks(id);
-      } else {
-        setChosenPacks((prev) => [...prev.split(","), id].sort().join(","));
-      }
-    } else {
-      setChosenPacks((prev) =>
-        prev
-          .split(",")
-          .filter((packId) => packId !== id)
-          .join(",")
-      );
-    }
+    setPackState((prev) => {
+      if (!prev.includes(id)) return [...prev, id];
+      return prev.filter((el) => el !== id);
+    });
   };
 
-  const setFilter = useCallback(
-    (arr: string[]) => {
-      const params = new URLSearchParams(searchParams);
-
-      // removing sort and limit parameters
-      params.delete("ordering");
-      params.delete("limit");
-
-      // setting parameters
-      arr[0] ? params.set("hit", "true") : params.delete("hit");
-      arr[1] ? params.set("discount", "true") : params.delete("discount");
-      arr[2] ? params.set("new", "true") : params.delete("new");
-      arr[3] ? params.set("pack", arr[3]) : params.delete("pack");
-
+  const createQueryString = useCallback(
+    (filters: string[], packs: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      filters.forEach((el) => params.set(el, "true"));
+      isPack.length ? params.set("pack", packs) : params.delete("pack");
       return params.toString();
     },
     [searchParams]
   );
 
-  // applyFilter
   const applyFilter = () => {
-    const uri: string = setFilter([hit, discount, newf, chosenPacks]);
+    const query = createQueryString(filterState, packState.join(","));
+    console.log(query);
 
-    router.push(pathname + "?" + uri);
-    setReset(false);
+    router.push(pathname + "?" + query);
   };
 
   return {
