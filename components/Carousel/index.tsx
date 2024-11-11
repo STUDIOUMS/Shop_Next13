@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 import useGetData from "@/hooks/useGetData";
 import ErrorAlert from "../ErrorAlert";
 import CarouselLoading from "./CarouselLoading";
-import { Alert, AlertTitle } from "@mui/material";
+import { Alert, AlertTitle, Box } from "@mui/material";
 
 type CarouselProps = {
   title: string;
@@ -51,6 +51,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
             750: { slidesPerView: 3 },
             1020: { slidesPerView: 4 },
           }}
+          className="carousel_slider"
         >
           {data.results.map((el) => (
             <SwiperSlide key={el.id} style={{ height: "auto" }}>

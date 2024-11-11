@@ -19,6 +19,12 @@ const Styles = (): JSX.Element => {
         a: {
           color: theme.palette.primary.main,
         },
+        "& .carousel_slider .swiper-pagination": {
+          position: "relative",
+          left: "auto",
+          top: "auto",
+          marginTop: 20,
+        },
         "& .swiper-pagination-bullet-active": {
           background: `${theme.palette.common.black} !important`,
         },
@@ -28,6 +34,9 @@ const Styles = (): JSX.Element => {
           height: "32px !important",
           "&::after": {
             fontSize: "26px !important",
+          },
+          [theme.breakpoints.down("md")]: {
+            display: "none !important",
           },
         },
       }}
