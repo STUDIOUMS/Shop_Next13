@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, useMediaQuery, useTheme } from "@mui/material";
 import Navbar from "./NavBar";
 import CustomBtn from "@/ui/CustomBtn";
 import FeedbackModal from "../Modals/FeedbackModal";
@@ -13,9 +13,12 @@ import useGetData from "@/hooks/useGetData";
 import { Cat, Response } from "@/types";
 import CatPopup from "../CatPopup";
 import Link from "next/link";
+import NavDrawer from "./NavDrawer";
 
 const Header = (): JSX.Element => {
   const [feedBack, setFeedBack] = useState<boolean>(false);
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
   const { data, isSuccess, isLoading } = useGetData<Response<Cat>>({
     key: ["cats"],
@@ -33,7 +36,8 @@ const Header = (): JSX.Element => {
         })}
       >
         <Wrap>
-          <Navbar />
+          {isTablet && <NavDrawer />}
+          {!isTablet && <Navbar />}
           <CustomBtn
             color="secondary"
             variant="outlined"
