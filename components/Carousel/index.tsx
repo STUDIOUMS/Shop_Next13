@@ -53,7 +53,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
           }}
         >
           {data.results.map((el) => (
-            <SwiperSlide key={el.id}>
+            <SwiperSlide key={el.id} style={{ height: "auto" }}>
               <Good el={el} slide />
             </SwiperSlide>
           ))}

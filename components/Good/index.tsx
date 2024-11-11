@@ -25,6 +25,9 @@ const Good = (props: GoodProps): JSX.Element => {
 
   const isSale = el.relatedPacks.some((el) => el.oldPrice !== null);
 
+  const condition1 = slide ? "normal !important" : isGrid ? "normal" : "center";
+  const condition2 = slide ? "column !important" : isGrid ? "column" : "row";
+
   return (
     <GoodItem
       size={
@@ -35,9 +38,13 @@ const Good = (props: GoodProps): JSX.Element => {
               sm: view === "grid" ? 4 : 12,
             }
       }
-      view={view}
+      sx={{
+        height: slide ? "100%" : "auto",
+        alignItems: condition1,
+        flexDirection: condition2,
+      }}
     >
-      <Stack direction={isGrid ? "column" : "row"} sx={{ flexGrow: 1, mb: 4 }}>
+      <Stack sx={{ flexGrow: 1, mb: 4, flexDirection: condition2 }}>
         <Box sx={{ mb: 3 }}>
           <Link href={`/product/${el.slug}`}>
             <img

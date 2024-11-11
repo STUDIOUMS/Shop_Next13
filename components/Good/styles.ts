@@ -2,19 +2,15 @@ import { View } from "@/types";
 import { Box, Chip, ChipProps, Grid2, Stack, styled } from "@mui/material";
 import { BoxProps } from "@mui/system";
 
-export const GoodItem = styled(Grid2)<BoxProps & { view: View }>(
-  ({ theme, view }) => ({
-    alignItems: view === "grid" ? "normal" : "center",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: theme.palette.grey[300],
-    borderRadius: "6px",
-    display: "flex",
-    flexDirection: view === "grid" ? "column" : "row",
-    padding: theme.spacing(3),
-    position: "relative",
-  })
-);
+export const GoodItem = styled(Grid2)<BoxProps>(({ theme }) => ({
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: theme.palette.grey[300],
+  borderRadius: "6px",
+  display: "flex",
+  padding: theme.spacing(3),
+  position: "relative",
+}));
 
 export const GoodChip = styled(Chip)<ChipProps>(({ theme }) => ({
   borderRadius: "6px",
