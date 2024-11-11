@@ -46,7 +46,7 @@ const Header = (): JSX.Element => {
       </Box>
 
       <MiddleHeader>
-        <Wrap>
+        <Wrap sx={{ position: "relative" }}>
           <Link href="/">
             <Image
               src={logo.src}
